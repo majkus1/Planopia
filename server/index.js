@@ -37,7 +37,7 @@ mongoose.connect(process.env.DB_URI, {
 });
 
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? 'https://sprightly-centaur-b4cdcd.netlify.app' : 'http://localhost:3001',
+    origin: process.env.NODE_ENV === 'production' ? 'https://rainbow-brioche-aa30c8.netlify.app' : 'http://localhost:3001',
     credentials: true,
   };  
 
