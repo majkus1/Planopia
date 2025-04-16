@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config'
-import { useAuth } from '../../context/AuthContext'
 import { useTranslation } from 'react-i18next'
 
 function CreateUser() {
@@ -25,7 +24,6 @@ function CreateUser() {
 	const [lastName, setLastName] = useState('')
 	const [selectedRoles, setSelectedRoles] = useState([])
 	const [draggedRole, setDraggedRole] = useState(null)
-	const { csrfToken } = useAuth()
 	const { t, i18n } = useTranslation()
 
 	const handleUsernameChange = e => {
@@ -61,11 +59,7 @@ function CreateUser() {
 		try {
 			const newUser = { username, firstName, lastName, roles: selectedRoles }
 
-			const response = await axios.post(`${API_URL}/api/users/register`, newUser, {
-        headers: {
-					'X-CSRF-Token': csrfToken
-				}
-      })
+			const response = await axios.post(`${API_URL}/api/users/register`, newUser)
 
 			if (response.status === 201) {
 				alert(t('newuser.alertone'))

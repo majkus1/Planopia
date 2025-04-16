@@ -215,19 +215,19 @@ router.post('/login', loginLimiter, async (req, res) => {
 			{ expiresIn: '7d' }
 		)
 
-		const isProduction = process.env.NODE_ENV === 'production'
+		// const isProduction = process.env.NODE_ENV === 'production'
 
 		res.cookie('token', accessToken, {
 			httpOnly: true,
-			secure: isProduction, // tylko przy HTTPS
-			sameSite: 'lax', // pozwala na redirecty, ale chroni przed CSRF
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 			maxAge: 15 * 60 * 1000, // 15 minut
 		})
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: isProduction,
-			sameSite: 'lax', // nie potrzebujesz 'none', jeśli frontend i backend mają wspólną domenę
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
 		})
 

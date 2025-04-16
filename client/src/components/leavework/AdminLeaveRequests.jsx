@@ -4,7 +4,6 @@ import Sidebar from '../dashboard/Sidebar'
 import { useParams, useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function AdminLeaveRequests() {
 	const { userId } = useParams()
@@ -15,7 +14,6 @@ function AdminLeaveRequests() {
 	const [showVacationUpdateMessage, setShowVacationUpdateMessage] = useState(false)
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	useEffect(() => {
 		fetchLeaveRequests()
@@ -59,12 +57,7 @@ function AdminLeaveRequests() {
 		try {
 			await axios.patch(
 				`${API_URL}/api/users/${userId}/vacation-days`,
-				{ vacationDays },
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
-				}
+				{ vacationDays }
 			)
 			alert(t('adminleavereq.alert'))
 			fetchVacationDays()
@@ -75,11 +68,7 @@ function AdminLeaveRequests() {
 
 	const updateLeaveRequestStatus = async (id, newStatus) => {
 		try {
-			await axios.patch(`${API_URL}/api/users/leave-requests/${id}`, { status: newStatus }, {
-				headers: {
-					'X-CSRF-Token': csrfToken,
-				},
-			})
+			await axios.patch(`${API_URL}/api/users/leave-requests/${id}`, { status: newStatus })
 
 			fetchLeaveRequests()
 		} catch (error) {

@@ -6,7 +6,6 @@ import axios from 'axios'
 import Modal from 'react-modal'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 Modal.setAppElement('#root')
 
@@ -30,7 +29,6 @@ function MonthlyCalendar() {
 	const [errorMessage, setErrorMessage] = useState('')
 	const calendarRef = useRef(null)
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	const fetchWorkdays = async cancelToken => {
 		try {
@@ -67,7 +65,6 @@ function MonthlyCalendar() {
 	}
 
 	useEffect(() => {
-		
 		const source = axios.CancelToken.source()
 		fetchWorkdays(source.token)
 		checkConfirmationStatus(source.token)
@@ -82,15 +79,14 @@ function MonthlyCalendar() {
 
 	const toggleConfirmationStatus = async () => {
 		try {
-			await axios.post(`${API_URL}/api/users/workdays/confirm`, {
-				month: currentMonth,
-				year: currentYear,
-				isConfirmed: !isConfirmed,
-			}, {
-				headers: {
-					'X-CSRF-Token': csrfToken,
+			await axios.post(
+				`${API_URL}/api/users/workdays/confirm`,
+				{
+					month: currentMonth,
+					year: currentYear,
+					isConfirmed: !isConfirmed,
 				}
-			})
+			)
 			setIsConfirmed(!isConfirmed)
 		} catch (error) {
 			console.error('Failed to toggle confirmation status:', error)
@@ -118,7 +114,7 @@ function MonthlyCalendar() {
 				overtime += day.additionalWorked
 			}
 			if (day.absenceType) {
-				if (day.absenceType.toLowerCase().includes('urlop') || ('vacation')) {
+				if (day.absenceType.toLowerCase().includes('urlop') || 'vacation') {
 					leaveDays += 1
 				} else {
 					otherAbsences += 1
@@ -207,11 +203,7 @@ function MonthlyCalendar() {
 		// console.log('Data to be submitted:', data)
 
 		try {
-			await axios.post(`${API_URL}/api/users/workdays`, data, {
-				headers: {
-					'X-CSRF-Token': csrfToken,
-				}
-			})
+			await axios.post(`${API_URL}/api/users/workdays`, data)
 			setModalIsOpen(false)
 			setHoursWorked('')
 			setAdditionalWorked('')
@@ -226,13 +218,7 @@ function MonthlyCalendar() {
 
 	const handleDelete = async id => {
 		try {
-			await axios.delete(`${API_URL}/api/users/workdays/${id}`,
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					}
-				}
-			)
+			await axios.delete(`${API_URL}/api/users/workdays/${id}`)
 			fetchWorkdays()
 		} catch (error) {
 			console.error('Failed to delete workday:', error)
@@ -271,7 +257,7 @@ function MonthlyCalendar() {
 						checked={isConfirmed}
 						onChange={() => {
 							toggleConfirmationStatus()
-							alert(isConfirmed ? (t('workcalendar.cancelconfirm')) : (t('workcalendar.successconfirm')))
+							alert(isConfirmed ? t('workcalendar.cancelconfirm') : t('workcalendar.successconfirm'))
 						}}
 						style={{ marginRight: '10px', transform: 'scale(2)', cursor: 'pointer' }}
 					/>
@@ -280,7 +266,7 @@ function MonthlyCalendar() {
 
 				<div className="calendar-controls">
 					<label>
-					{t('workcalendar.monthlabel')}
+						{t('workcalendar.monthlabel')}
 						<select value={currentMonth} onChange={handleMonthSelect} style={{ marginLeft: '5px' }}>
 							{Array.from({ length: 12 }, (_, i) => (
 								<option key={i} value={i}>
@@ -292,7 +278,7 @@ function MonthlyCalendar() {
 						</select>
 					</label>
 					<label style={{ marginLeft: '10px' }}>
-					{t('workcalendar.yearlabel')}
+						{t('workcalendar.yearlabel')}
 						<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }}>
 							{Array.from({ length: 20 }, (_, i) => {
 								const year = new Date().getFullYear() - 10 + i
@@ -316,7 +302,11 @@ function MonthlyCalendar() {
 					events={[
 						...workdays.map(day => ({
 							title: day.hoursWorked
-								? `${day.hoursWorked} ${t('workcalendar.allfrommonthhours')} ${day.additionalWorked ? ` ${t('workcalendar.include')} ${day.additionalWorked} ${t('workcalendar.overtime')}` : ''}`
+								? `${day.hoursWorked} ${t('workcalendar.allfrommonthhours')} ${
+										day.additionalWorked
+											? ` ${t('workcalendar.include')} ${day.additionalWorked} ${t('workcalendar.overtime')}`
+											: ''
+								  }`
 								: day.absenceType,
 							start: day.date,
 							backgroundColor: day.hoursWorked ? 'blue' : 'green',

@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function NewPassword() {
 	const [password, setPassword] = useState('')
@@ -11,7 +10,6 @@ function NewPassword() {
 	const { token } = useParams()
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	const isPasswordValid = password => {
 		const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/
@@ -39,11 +37,6 @@ function NewPassword() {
 				{
 					password,
 					token,
-				},
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
 				}
 			)
 			alert(t('newpass.messtwo'))

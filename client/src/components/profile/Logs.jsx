@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config'
-import { useAuth } from '../../context/AuthContext'
 import { useTranslation } from 'react-i18next'
 
 function Logs() {
@@ -12,7 +11,6 @@ function Logs() {
 	const [editingUser, setEditingUser] = useState(null)
 	const [editedRoles, setEditedRoles] = useState([])
 	const [error, setError] = useState('')
-	const { csrfToken } = useAuth()
 	const { t, i18n } = useTranslation()
 
 	const availableRoles = [
@@ -81,12 +79,7 @@ function Logs() {
 		try {
 			await axios.patch(
 				`${API_URL}/api/users/${userId}/roles`,
-				{ roles: editedRoles },
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
-				}
+				{ roles: editedRoles }
 			)
 			setUsers(prevUsers => prevUsers.map(user => (user._id === userId ? { ...user, roles: editedRoles } : user)))
 			setEditingUser(null)

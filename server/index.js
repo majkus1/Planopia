@@ -10,6 +10,7 @@ const i18nextMiddleware = require('i18next-http-middleware');
 const csurf = require('csurf')
 const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean');
+const helmet = require('helmet')
 
 const app = express();
 
@@ -56,6 +57,7 @@ const csrfProtection = csurf({
 app.use(mongoSanitize())
 
 app.use(csrfProtection)
+app.use(helmet())
 
 app.get('/api/csrf-token', (req, res) => {
 	res.json({ csrfToken: req.csrfToken() })

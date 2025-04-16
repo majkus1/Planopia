@@ -22,7 +22,7 @@ function Login() {
 	const location = useLocation()
 	const from = location.state?.from?.pathname || '/'
 	const { t, i18n } = useTranslation()
-	const { csrfToken, setLoggedIn, setRole, setUsername } = useAuth()
+	const { setLoggedIn, setRole, setUsername } = useAuth()
 
 	const lngs = {
 		en: { nativeName: '', flag: '/img/united-kingdom.png' },
@@ -37,9 +37,6 @@ function Login() {
 				{ username: usernameInput, password },
 				{
 					withCredentials: true,
-					headers: {
-						'X-CSRF-Token': csrfToken, // 👈 tutaj!
-					},
 				}
 			)
 			// localStorage.setItem('roles', JSON.stringify(response.data.roles))

@@ -3,7 +3,6 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function LeaveRequestForm() {
 	const [type, setType] = useState('leaveform.option1')
@@ -15,7 +14,6 @@ function LeaveRequestForm() {
 	const [leaveRequests, setLeaveRequests] = useState([])
 	const [availableLeaveDays, setAvailableLeaveDays] = useState(0)
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	useEffect(() => {
 		fetchAvailableLeaveDays()
@@ -61,11 +59,7 @@ function LeaveRequestForm() {
 		e.preventDefault()
 		try {
 			const data = { type, startDate, endDate, daysRequested, replacement, additionalInfo }
-			await axios.post(`${API_URL}/api/users/leave-request`, data, {
-				headers: {
-					'X-CSRF-Token': csrfToken,
-				}
-			})
+			await axios.post(`${API_URL}/api/users/leave-request`, data)
 			alert(t('leaveform.alertsucces'))
 			fetchLeaveRequests()
 			setType('Urlop wypoczynkowy')

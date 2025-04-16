@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function SetPassword() {
 	const [password, setPassword] = useState('')
@@ -12,7 +11,6 @@ function SetPassword() {
 	const { token } = useParams()
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	const lngs = {
 		en: { nativeName: '', flag: '/img/united-kingdom.png' },
@@ -41,11 +39,6 @@ function SetPassword() {
 					password,
 					token,
 					position,
-				},
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
 				}
 			)
 			alert(t('newpass.messtwo'))

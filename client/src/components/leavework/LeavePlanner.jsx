@@ -6,7 +6,6 @@ import Sidebar from '../dashboard/Sidebar'
 import axios from 'axios'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function LeavePlanner() {
 	const [selectedDates, setSelectedDates] = useState([])
@@ -14,7 +13,6 @@ function LeavePlanner() {
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 	const calendarRef = useRef(null)
 	const { t, i18n } = useTranslation()
-	const { csrfToken } = useAuth()
 
 	useEffect(() => {
 		fetchLeavePlans()
@@ -54,18 +52,11 @@ function LeavePlanner() {
 
 			if (isSelected) {
 				await axios.delete(`${API_URL}/api/users/leave-plans`, {
-					data: { date: formattedDate },
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
+					data: { date: formattedDate }
 				})
 				setSelectedDates(selectedDates.filter(d => d !== formattedDate))
 			} else {
-				await axios.post(`${API_URL}/api/users/leave-plans`, { date: formattedDate }, {
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
-				})
+				await axios.post(`${API_URL}/api/users/leave-plans`, { date: formattedDate })
 				setSelectedDates([...selectedDates, formattedDate])
 			}
 		} catch (error) {
@@ -76,10 +67,7 @@ function LeavePlanner() {
 	const removeDate = async date => {
 		try {
 			await axios.delete(`${API_URL}/api/users/leave-plans`, {
-				data: { date },
-				headers: {
-					'X-CSRF-Token': csrfToken,
-				},
+				data: { date }
 			})
 			setSelectedDates(selectedDates.filter(d => d !== date))
 		} catch (error) {

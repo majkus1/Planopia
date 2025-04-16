@@ -3,7 +3,6 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '../../context/AuthContext'
 
 function ChangePassword() {
 	const [currentPassword, setCurrentPassword] = useState('')
@@ -12,7 +11,6 @@ function ChangePassword() {
 	const [position, setPosition] = useState('')
 	const { t, i18n } = useTranslation()
 	const { role } = useAuth()
-	const { csrfToken } = useAuth()
 
 	const isPasswordValid = newPassword => {
 		const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/
@@ -47,11 +45,6 @@ function ChangePassword() {
 				{
 					currentPassword,
 					newPassword,
-				},
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
 				}
 			)
 			alert(t('editprofile.successchangepass'))
@@ -65,12 +58,7 @@ function ChangePassword() {
 		try {
 			await axios.put(
 				`${API_URL}/api/users/update-position`,
-				{ position },
-				{
-					headers: {
-						'X-CSRF-Token': csrfToken,
-					},
-				}
+				{ position }
 			)
 			alert(t('editprofile.successchangepos'))
 		} catch (error) {

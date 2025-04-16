@@ -10,23 +10,10 @@ export const AuthProvider = ({ children }) => {
 	const [loggedIn, setLoggedIn] = useState(null)
 	const [role, setRole] = useState([])
 	const [username, setUsername] = useState(null)
-	const [csrfToken, setCsrfToken] = useState(null)
 
 	const location = useLocation()
 
 	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/aplikacja-dla-firm', '/blog/jak-usprawnic-firme']
-
-	useEffect(() => {
-		const fetchCsrfToken = async () => {
-			try {
-				const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true })
-				setCsrfToken(res.data.csrfToken)
-			} catch (err) {
-				console.error('Błąd CSRF:', err)
-			}
-		}
-		fetchCsrfToken()
-	}, [])
 
 	useEffect(() => {
 		if (publicPaths.includes(location.pathname)) {
@@ -54,9 +41,6 @@ export const AuthProvider = ({ children }) => {
 				{},
 				{
 					withCredentials: true,
-					headers: {
-						'X-CSRF-Token': csrfToken, // 👈 tutaj!
-					},
 				}
 			)
 			.then(() => {
@@ -75,7 +59,6 @@ export const AuthProvider = ({ children }) => {
 				loggedIn,
 				role,
 				username,
-				csrfToken,
 				setLoggedIn,
 				setRole,
 				setUsername,

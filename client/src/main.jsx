@@ -1,3 +1,4 @@
+import './axiosSetup'
 import React from 'react'
 import ReactDOM from 'react-dom/client' // Zmiana importu
 import App from './App'
