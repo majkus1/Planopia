@@ -50,7 +50,7 @@ const csrfProtection = csurf({
   cookie: {
     httpOnly: false,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'lax',
   }
 });
 
