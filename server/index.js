@@ -49,8 +49,8 @@ app.use(xss());
 const csrfProtection = csurf({
   cookie: {
     httpOnly: false,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'lax',
+    secure: true,
+    sameSite: 'None'
   }
 });
 
