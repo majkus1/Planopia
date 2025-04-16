@@ -8,7 +8,6 @@ const fetchCsrfToken = async () => {
   try {
     const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
     axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
-    console.log('CSRF token fetched');
   } catch (err) {
     console.error('CSRF prefetch error', err);
   }
@@ -25,7 +24,6 @@ axios.interceptors.request.use(async config => {
     try {
       const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
       axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
-      console.log('CSRF token refetched');
     } catch (err) {
       console.error('CSRF fetch error:', err);
     }

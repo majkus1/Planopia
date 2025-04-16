@@ -3,6 +3,7 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config'
 import { useTranslation } from 'react-i18next'
+import { useAuth } from '../../context/AuthContext'
 
 function ChangePassword() {
 	const [currentPassword, setCurrentPassword] = useState('')
