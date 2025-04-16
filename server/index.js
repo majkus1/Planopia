@@ -48,9 +48,9 @@ app.use(xss());
 
 const csrfProtection = csurf({
   cookie: {
-    httpOnly: false, // CSRF token ma być dostępny dla JS (czyli nie HttpOnly!)
+    httpOnly: false,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax', // 'lax' jest wystarczające i bezpieczne w większości przypadków
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   }
 });
 
