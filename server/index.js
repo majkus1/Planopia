@@ -48,11 +48,11 @@ app.use(xss());
 
 const csrfProtection = csurf({
   cookie: {
-    httpOnly: false,
-    secure: true,
-    sameSite: 'None'
+    httpOnly: false, // ← CSRF musi być dostępny dla frontend JS
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   }
-});
+})
 
 app.use(mongoSanitize())
 

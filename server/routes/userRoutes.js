@@ -219,17 +219,18 @@ router.post('/login', loginLimiter, async (req, res) => {
 
 		res.cookie('token', accessToken, {
 			httpOnly: true,
-			secure: true,
-			sameSite: 'None',
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 			maxAge: 15 * 60 * 1000, // 15 minut
-		})
-
-		res.cookie('refreshToken', refreshToken, {
+		  })
+		  
+		  res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: true,
-			sameSite: 'None',
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
-		})
+		  })
+		  
 
 		res.status(200).json({
 			message: 'Logged in successfully',
