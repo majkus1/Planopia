@@ -5,4 +5,3 @@
 
 [build.environment]
   VITE_API_URL = "https://planopia.onrender.com"
-  NODE_ENV = "production"
