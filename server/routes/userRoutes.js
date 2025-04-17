@@ -217,20 +217,22 @@ router.post('/login', loginLimiter, async (req, res) => {
 
 		// const isProduction = process.env.NODE_ENV === 'production'
 
+		// TOKEN
 		res.cookie('token', accessToken, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === 'production',
-			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-			maxAge: 15 * 60 * 1000, // 15 minut
-		  })
+			secure: true, // MUSI być true dla SameSite: 'None'
+			sameSite: 'None',
+			domain: '.planopia.pl',
+			maxAge: 15 * 60 * 1000,
+		  });
 		  
 		  res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === 'production',
-			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
-		  })
-		  
+			secure: true,
+			sameSite: 'None',
+			domain: '.planopia.pl',
+			maxAge: 7 * 24 * 60 * 60 * 1000,
+		  });
 
 		res.status(200).json({
 			message: 'Logged in successfully',

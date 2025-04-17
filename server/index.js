@@ -37,7 +37,7 @@ mongoose.connect(process.env.DB_URI, {
 });
 
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? 'https://rainbow-brioche-aa30c8.netlify.app' : 'http://localhost:3001',
+    origin: process.env.NODE_ENV === 'production' ? 'https://planopia.pl' : 'http://localhost:3001',
     credentials: true,
   };  
 
@@ -48,11 +48,12 @@ app.use(xss());
 
 const csrfProtection = csurf({
   cookie: {
-    httpOnly: false, // ← CSRF musi być dostępny dla frontend JS
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    httpOnly: false, // musi być dostępne dla frontend JS
+    secure: true,
+    sameSite: 'None',
+    domain: '.planopia.pl'
   }
-})
+});
 
 app.use(mongoSanitize())
 
