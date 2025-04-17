@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import Sidebar from '../dashboard/Sidebar'
 import axios from 'axios'
-import { API_URL } from '../../config'
+import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 
 function LeavePlanner() {

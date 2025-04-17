@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'admin-lte/plugins/jquery/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 // import 'admin-lte/dist/js/adminlte.min.js'
-import { API_URL } from '../../config'
+import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../context/AuthContext'
 

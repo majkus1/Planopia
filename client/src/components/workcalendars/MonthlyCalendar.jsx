@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import axios from 'axios'
 import Modal from 'react-modal'
-import { API_URL } from '../../config'
+import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 
 Modal.setAppElement('#root')

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { useParams, useNavigate } from 'react-router-dom'
-import { API_URL } from '../../config'
+import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 
 function AdminLeaveRequests() {

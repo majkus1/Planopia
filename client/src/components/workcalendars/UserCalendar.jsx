@@ -7,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import Sidebar from '../dashboard/Sidebar'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
-import { API_URL } from '../../config'
+import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 
 function UserCalendar() {

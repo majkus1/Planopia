@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client' // Zmiana importu
 import App from './App'
 import { HelmetProvider } from 'react-helmet-async'
-import './i18n';
+import './i18n.js';
 
 // Nowy sposób renderowania korzenia aplikacji w React 18
 const root = ReactDOM.createRoot(document.getElementById('root'))
