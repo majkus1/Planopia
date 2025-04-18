@@ -1,7 +1,7 @@
 // context/AuthContext.js
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import { API_URL } from '../config'
+import { API_URL } from '../config.js'
 import { useLocation } from 'react-router-dom'
 
 const AuthContext = createContext()
