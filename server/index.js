@@ -51,7 +51,7 @@ const csrfProtection = csurf({
     httpOnly: false, // musi być dostępne dla frontend JS
     secure: true,
     sameSite: 'None',
-    domain: '.planopia.pl'
+    domain: 'api.planopia.pl'
   }
 });
 

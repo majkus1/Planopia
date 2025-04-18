@@ -222,7 +222,7 @@ router.post('/login', loginLimiter, async (req, res) => {
 			httpOnly: true,
 			secure: true, // MUSI być true dla SameSite: 'None'
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			domain: 'api.planopia.pl',
 			maxAge: 15 * 60 * 1000,
 		  });
 		  
@@ -230,7 +230,7 @@ router.post('/login', loginLimiter, async (req, res) => {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			domain: 'api.planopia.pl',
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		  });
 
