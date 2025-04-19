@@ -87,7 +87,7 @@ function Login() {
 						<p className="company-txt">Planopia</p>
 					</div>
 				</div>
-				<div className="card">
+				<div className="card boxlog">
 					<div className="card-body login-card-body padr">
 						<form onSubmit={handleLogin}>
 							<div className="input-group mb-3">

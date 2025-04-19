@@ -1282,6 +1282,7 @@ input {
 
 .navbar-toggler {
 	padding: 0px !important;
+	margin-top: 7px;
 }
 
 .update-days {
@@ -1500,5 +1501,8 @@ input {
 	}
 	.logout {
 		max-width: 300px !important;
+	}
+	.boxlog .card-body {
+		padding: 20px !important;
 	}
 }

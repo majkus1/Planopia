@@ -74,7 +74,7 @@ function NewPassword() {
 						<p className="company-txt">Planopia</p>
 					</div>
 				</div>
-				<div className="card">
+				<div className="card boxlog">
 					<div className="card-body login-card-body padr">
 						<div className="set-pass">
 							<h2 style={{ marginBottom: '20px' }}>{t('newpass.h2')}</h2>
