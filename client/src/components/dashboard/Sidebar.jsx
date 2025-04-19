@@ -53,7 +53,7 @@ function Sidebar() {
 					<p className="company-txt">Planopia</p>
 				</Link>
 				<button className="navbar-toggler" type="button" onClick={toggleMenu}>
-					<img src="/img/sort.png" style={{ width: '40px', opacity: '0.8' }} alt="Menu" />
+					<img src="/img/sort.png" style={{ width: '40px' }} alt="Menu" />
 				</button>
 			</nav>
 

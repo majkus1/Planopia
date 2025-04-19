@@ -62,7 +62,7 @@ function EmployeeLeaveCalendar() {
 		<>
     <Sidebar />
 			<div className='leave-calendar-plans-one-employee'>
-				{user && <h3 style={{ padding: '20px' }}>{t('leaveplanone.h3')} {user.firstName} {user.lastName}</h3>}
+				{user && <h3 style={{ padding: '20px', paddingLeft: "10px" }}>{t('leaveplanone.h3')} {user.firstName} {user.lastName}</h3>}
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>
 			</div>
 		</>

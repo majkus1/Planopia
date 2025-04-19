@@ -354,7 +354,7 @@ span {
 	right: 10px;
 	top: 10px;
 	background-color: transparent;
-	color: rgba(255, 255, 255, 0.75);
+	color: rgb(255, 255, 255);
 	border: 1px solid transparent;
 	width: 45px;
 	height: 39px;
@@ -660,6 +660,9 @@ select {
 	#pdf-leave-request {
 		margin-left: 290px !important;
 	}
+	#list-employee {
+		padding: 20px;
+	}
 	.btn-pdf,
 	.btn-print-leavereq {
 		top: 10px;
@@ -922,9 +925,9 @@ hr {
 	padding-right: 20px !important;
 }
 
-.resumecales {
+/* .resumecales {
 	font-weight: normal;
-}
+} */
 
 .event-absence span {
 	color: white !important;
@@ -1105,7 +1108,7 @@ hr {
 
 @media (min-width: 1200px) {
 	.resume-month-work {
-		margin-top: 280px;
+		margin-top: 180px;
 	}
 	.small-mt {
 		margin-top: 70px !important;
@@ -1372,11 +1375,9 @@ input {
 
 [data-scroll-container] {
 	overflow: hidden;
-  }
-  
+}
 
-
-  .hamburger {
+.hamburger {
 	position: absolute;
 	top: 27px;
 	right: 20px;
@@ -1387,16 +1388,16 @@ input {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-  }
-  
-  .bar {
+}
+
+.bar {
 	height: 1px;
 	background-color: #ffffff;
 	border-radius: 1px;
 	transition: all 0.3s ease;
-  }
-  
-  .sidebar-menu {
+}
+
+.sidebar-menu {
 	position: fixed;
 	top: 0;
 	right: -100%;
@@ -1409,56 +1410,95 @@ input {
 	display: flex;
 	flex-direction: column;
 	padding: 40px 20px;
-  }
-  
-  .sidebar-menu.open {
+}
+
+.sidebar-menu.open {
 	right: 0;
-  }
-  
-  .sidebar-menu nav ul {
+}
+
+.sidebar-menu nav ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-  }
-  
-  .sidebar-menu nav ul li {
+}
+
+.sidebar-menu nav ul li {
 	margin-bottom: 20px;
-  }
-  
-  .sidebar-menu nav ul li a {
+}
+
+.sidebar-menu nav ul li a {
 	text-decoration: none;
 	font-size: 1.2rem;
 	color: #333;
 	transition: color 0.3s ease;
-  }
-  
-  .sidebar-menu nav ul li a:hover {
+}
+
+.sidebar-menu nav ul li a:hover {
 	color: #007bff;
-  }
-  
-  .close-btn {
+}
+
+.close-btn {
 	background: none;
 	border: none;
 	font-size: 2rem;
 	align-self: flex-end;
 	cursor: pointer;
-  }
-  
-  .overlay {
+}
+
+.overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100vh;
 	width: 100vw;
-	background: rgba(0,0,0,0.3);
+	background: rgba(0, 0, 0, 0.3);
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.3s ease;
 	z-index: 999;
-  }
-  
-  .overlay.show {
+}
+
+.overlay.show {
 	opacity: 1;
 	pointer-events: all;
+}
+
+/* .p-3, .card-body {
+	padding: 0px !important;
   }
-  
+
+  #leave-planner {
+	margin-top: 5px;
+  }
+   */
+
+@media (max-width: 1024px) {
+	.p-3,
+	.card-body {
+		padding: 0 !important;
+	}
+	#leave-request-form {
+		margin-top: 25px !important;
+		margin-left: 10px !important;
+	}
+	#leave-planner,
+	#all-leaveplans {
+		margin-top: 0 !important;
+		padding-left: 10px !important;
+	}
+	#list-employee {
+		margin-top: 20px !important;
+	}
+	#calendars-works-review {
+		margin-top: 25px !important;
+	}
+	#leave-requests-review {
+		margin-top: 20px !important;
+	}
+	#userandlogs {
+		margin-top: 10px !important;
+	}
+	.logout {
+		max-width: 300px !important;
+	}
+}

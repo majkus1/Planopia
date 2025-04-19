@@ -249,20 +249,7 @@ function MonthlyCalendar() {
 			<div className="col-xl-9">
 				<h3>{t('workcalendar.h3')}</h3>
 				<hr />
-				<p style={{ marginBottom: '0px' }}>{t('workcalendar.confirmmonth')}</p>
-				<label style={{ marginLeft: '10px', marginTop: '15px', marginBottom: '35px' }}>
-					<img src="/img/arrow-right.png" alt="" style={{ width: '40px', marginRight: '10px', marginTop: '-10px' }} />
-					<input
-						type="checkbox"
-						checked={isConfirmed}
-						onChange={() => {
-							toggleConfirmationStatus()
-							alert(isConfirmed ? t('workcalendar.cancelconfirm') : t('workcalendar.successconfirm'))
-						}}
-						style={{ marginRight: '10px', transform: 'scale(2)', cursor: 'pointer' }}
-					/>
-					{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
-				</label>
+				
 
 				<div className="calendar-controls">
 					<label>
@@ -337,6 +324,21 @@ function MonthlyCalendar() {
 				/>
 			</div>
 			<div className="col-xl-3 resume-month-work">
+			<h3 style={{ marginBottom: '0px', textDecoration: "underline", fontSize: "18px !important" }}>{t('workcalendar.confirmmonth')}</h3>
+				<label style={{ marginLeft: '10px', marginTop: '15px', marginBottom: '35px' }}>
+					<img src="/img/arrow-right.png" alt="" style={{ width: '40px', marginRight: '10px', marginTop: '-10px' }} />
+					<input
+						type="checkbox"
+						checked={isConfirmed}
+						onChange={() => {
+							toggleConfirmationStatus()
+							alert(isConfirmed ? t('workcalendar.cancelconfirm') : t('workcalendar.successconfirm'))
+						}}
+						style={{ marginRight: '10px', transform: 'scale(2)', cursor: 'pointer' }}
+					/>
+					{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
+				</label>
+
 				<h3 className="resumecales">{t('workcalendar.allfrommonth')}</h3>
 				<p>
 					{t('workcalendar.allfrommonth1')} {totalWorkDays}
@@ -355,6 +357,7 @@ function MonthlyCalendar() {
 					{t('workcalendar.allfrommonth5')} {totalOtherAbsences}
 				</p>
 			</div>
+			
 
 			<Modal
 				isOpen={modalIsOpen}

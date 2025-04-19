@@ -89,7 +89,7 @@ function LeaveRequestForm() {
 		<>
 			<Sidebar />
 			<div id="leave-request-form">
-				<h2 style={{ marginTop: '40px' }}>{t('leaveform.header')}</h2>
+				<h2 style={{ marginTop: '0px' }}>{t('leaveform.header')}</h2>
 				<hr />
 				<p>
 					{t('leaveform.availableday')}{' '}
