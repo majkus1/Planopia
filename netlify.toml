@@ -4,4 +4,4 @@
   publish = "dist"
 
 [build.environment]
-  VITE_API_URL = "https://planopia.onrender.com"
+  VITE_API_URL = "https://api.planopia.pl"
