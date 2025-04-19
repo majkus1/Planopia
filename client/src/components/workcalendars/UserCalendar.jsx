@@ -237,7 +237,7 @@ function UserCalendar() {
 							/>
 						</div>
 						<div className="col-xl-3 resume-month-work small-mt">
-				<h3 className="resumecales">{t('workcalendar.allfrommonth')}</h3>
+				<h3 className="resumecales h3resume">{t('workcalendar.allfrommonth')}</h3>
 				<p>
 					{t('workcalendar.allfrommonth1')} {totalWorkDays}
 				</p>

@@ -324,7 +324,7 @@ function MonthlyCalendar() {
 				/>
 			</div>
 			<div className="col-xl-3 resume-month-work">
-			<h3 style={{ marginBottom: '0px', textDecoration: "underline", fontSize: "18px !important" }}>{t('workcalendar.confirmmonth')}</h3>
+			<h3 className="h3resume" style={{ marginBottom: '0px', textDecoration: "underline" }}>{t('workcalendar.confirmmonth')}</h3>
 				<label style={{ marginLeft: '10px', marginTop: '15px', marginBottom: '35px' }}>
 					<img src="/img/arrow-right.png" alt="" style={{ width: '40px', marginRight: '10px', marginTop: '-10px' }} />
 					<input
@@ -339,7 +339,7 @@ function MonthlyCalendar() {
 					{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
 				</label>
 
-				<h3 className="resumecales">{t('workcalendar.allfrommonth')}</h3>
+				<h3 className="resumecales h3resume">{t('workcalendar.allfrommonth')}</h3>
 				<p>
 					{t('workcalendar.allfrommonth1')} {totalWorkDays}
 				</p>
