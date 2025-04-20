@@ -33,12 +33,14 @@ function VacationListUser() {
 		navigate(`/leave-requests/${userId}`)
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
-
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div id="list-employee">
 				<h3>{t('vacationlisteq.h3')}</h3>
 				<hr />
@@ -53,6 +55,7 @@ function VacationListUser() {
 					))}
 				</ul>
 			</div>
+			)}
 		</>
 	)
 }

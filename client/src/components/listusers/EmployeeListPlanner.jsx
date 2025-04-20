@@ -30,8 +30,6 @@ function AdminUserList() {
 		navigate(`/leave-plans/${userId}`)
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<div>
 			<h2>Lista Pracowników</h2>

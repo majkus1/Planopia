@@ -107,13 +107,18 @@ function Logs() {
 	// 	}
 	// }
 
-	if (loading) return <Loader />
 
 	return (
 		<>
 			<Sidebar />
 
 			{error && <p className="text-danger">{error}</p>}
+
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<table className="table table-bordered" id="userandlogs">
 				<thead>
 					<tr>
@@ -209,6 +214,7 @@ function Logs() {
 					))}
 				</tbody>
 			</table>
+			)}
 		</>
 	)
 }

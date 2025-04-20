@@ -64,11 +64,14 @@ function EmployeeLeaveCalendar() {
 		))
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div className="leave-calendar-plans-one-employee">
 				{user && (
 					<h3 style={{ padding: '20px', paddingLeft: '10px' }}>
@@ -77,6 +80,7 @@ function EmployeeLeaveCalendar() {
 				)}
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>
 			</div>
+			)}
 		</>
 	)
 }

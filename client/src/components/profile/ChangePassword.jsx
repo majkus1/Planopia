@@ -45,13 +45,10 @@ function ChangePassword() {
 			return
 		}
 		try {
-			await axios.post(
-				`${API_URL}/api/users/change-password`,
-				{
-					currentPassword,
-					newPassword,
-				}
-			)
+			await axios.post(`${API_URL}/api/users/change-password`, {
+				currentPassword,
+				newPassword,
+			})
 			alert(t('editprofile.successchangepass'))
 		} catch (error) {
 			alert(t('editprofile.failchangepass'))
@@ -61,10 +58,7 @@ function ChangePassword() {
 
 	const handlePositionUpdate = async () => {
 		try {
-			await axios.put(
-				`${API_URL}/api/users/update-position`,
-				{ position }
-			)
+			await axios.put(`${API_URL}/api/users/update-position`, { position })
 			alert(t('editprofile.successchangepos'))
 		} catch (error) {
 			alert(t('editprofile.failchangepos'))
@@ -72,100 +66,104 @@ function ChangePassword() {
 		}
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
-			<div className="container my-5">
-				<div className="row justify-content-start">
-					<div className="col-md-8">
-						<div>
-							<div className="card-body">
-								<h4>{t('editprofile.headertxt')}</h4>
-								<hr />
-								<form
-									onSubmit={e => {
-										e.preventDefault()
-										handlePositionUpdate()
-									}}>
-									<div className="mb-3">
-										<label htmlFor="position" className="form-label">
-											{t('editprofile.positionlabel')}
-										</label>
-										<input
-											type="text"
-											className="form-control"
-											id="position"
-											value={position}
-											onChange={e => setPosition(e.target.value)}
-											placeholder={t('editprofile.placeholder1')}
-										/>
-									</div>
-									<button type="submit" className="btn btn-success mb-3">
-										{t('editprofile.confirmposition')}
-									</button>
-								</form>
-
-								<div className="mb-3">
-									<label className="form-label">{t('editprofile.rolelabel')}</label>
-									<input type="text" className="form-control" value={role} readOnly />
-								</div>
-
-								<form onSubmit={handleSubmit} style={{ paddingTop: '40px' }}>
-									<h4>{t('editprofile.changepassh4')}</h4>
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
+				<div className="container my-5">
+					<div className="row justify-content-start">
+						<div className="col-md-8">
+							<div>
+								<div className="card-body">
+									<h4>{t('editprofile.headertxt')}</h4>
 									<hr />
+									<form
+										onSubmit={e => {
+											e.preventDefault()
+											handlePositionUpdate()
+										}}>
+										<div className="mb-3">
+											<label htmlFor="position" className="form-label">
+												{t('editprofile.positionlabel')}
+											</label>
+											<input
+												type="text"
+												className="form-control"
+												id="position"
+												value={position}
+												onChange={e => setPosition(e.target.value)}
+												placeholder={t('editprofile.placeholder1')}
+											/>
+										</div>
+										<button type="submit" className="btn btn-success mb-3">
+											{t('editprofile.confirmposition')}
+										</button>
+									</form>
+
 									<div className="mb-3">
-										<label htmlFor="currentPassword" className="form-label">
-											{t('editprofile.currentpasslabel')}
-										</label>
-										<input
-											type="password"
-											className="form-control"
-											id="currentPassword"
-											value={currentPassword}
-											onChange={e => setCurrentPassword(e.target.value)}
-											required
-											placeholder={t('editprofile.placeholder2')}
-										/>
+										<label className="form-label">{t('editprofile.rolelabel')}</label>
+										<input type="text" className="form-control" value={role} readOnly />
 									</div>
-									<div className="mb-3">
-										<label htmlFor="newPassword" className="form-label">
-											{t('editprofile.newpasslabel')}
-										</label>
-										<input
-											type="password"
-											className="form-control"
-											id="newPassword"
-											value={newPassword}
-											onChange={e => setNewPassword(e.target.value)}
-											required
-											placeholder={t('editprofile.placeholder3')}
-										/>
-									</div>
-									<div className="mb-3">
-										<label htmlFor="confirmPassword" className="form-label">
-											{t('editprofile.confirmnewpasslabel')}
-										</label>
-										<input
-											type="password"
-											className="form-control"
-											id="confirmPassword"
-											value={confirmPassword}
-											onChange={e => setConfirmPassword(e.target.value)}
-											required
-											placeholder={t('editprofile.placeholder4')}
-										/>
-									</div>
-									<button type="submit" className="btn btn-success mb-3">
-										{t('editprofile.confirmnewpassbtn')}
-									</button>
-								</form>
+
+									<form onSubmit={handleSubmit} style={{ paddingTop: '40px' }}>
+										<h4>{t('editprofile.changepassh4')}</h4>
+										<hr />
+										<div className="mb-3">
+											<label htmlFor="currentPassword" className="form-label">
+												{t('editprofile.currentpasslabel')}
+											</label>
+											<input
+												type="password"
+												className="form-control"
+												id="currentPassword"
+												value={currentPassword}
+												onChange={e => setCurrentPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder2')}
+											/>
+										</div>
+										<div className="mb-3">
+											<label htmlFor="newPassword" className="form-label">
+												{t('editprofile.newpasslabel')}
+											</label>
+											<input
+												type="password"
+												className="form-control"
+												id="newPassword"
+												value={newPassword}
+												onChange={e => setNewPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder3')}
+											/>
+										</div>
+										<div className="mb-3">
+											<label htmlFor="confirmPassword" className="form-label">
+												{t('editprofile.confirmnewpasslabel')}
+											</label>
+											<input
+												type="password"
+												className="form-control"
+												id="confirmPassword"
+												value={confirmPassword}
+												onChange={e => setConfirmPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder4')}
+											/>
+										</div>
+										<button type="submit" className="btn btn-success mb-3">
+											{t('editprofile.confirmnewpassbtn')}
+										</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			)}
 		</>
 	)
 }

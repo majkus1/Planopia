@@ -96,12 +96,14 @@ function AdminAllLeaveCalendar() {
 		navigate(`/leave-plans/${userId}`)
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar handleLogout={logout} role={role} username={username} />
-
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div id='all-leaveplans' style={{ padding: "20px" }}>
 				<h3>{t('planslist.h3')}</h3>
 				<hr />
@@ -162,6 +164,7 @@ function AdminAllLeaveCalendar() {
 					/>
 				</div>
 			</div>
+			)}
 		</>
 	)
 }

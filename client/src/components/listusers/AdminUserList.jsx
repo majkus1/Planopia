@@ -35,24 +35,28 @@ function AdminUserList() {
 		navigate(`/work-calendars/${userId}`)
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
-			<div id="list-employee">
-				<h3>{t('evidencework.h3')}</h3>
-				<hr />
-				{error && <p style={{ color: 'red' }}>{error}</p>}
-				<p>{t('planslist.emplo')}</p>
-				<ul>
-					{users.map(user => (
-						<li key={user._id} onClick={() => handleUserClick(user._id)} style={{ cursor: 'pointer' }}>
-							{user.firstName} {user.lastName} – {user.roles.join(', ')} – {user.position || 'Brak stanowiska'}
-						</li>
-					))}
-				</ul>
-			</div>
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
+				<div id="list-employee">
+					<h3>{t('evidencework.h3')}</h3>
+					<hr />
+					{error && <p style={{ color: 'red' }}>{error}</p>}
+					<p>{t('planslist.emplo')}</p>
+					<ul>
+						{users.map(user => (
+							<li key={user._id} onClick={() => handleUserClick(user._id)} style={{ cursor: 'pointer' }}>
+								{user.firstName} {user.lastName} – {user.roles.join(', ')} – {user.position || 'Brak stanowiska'}
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 		</>
 	)
 }

@@ -158,11 +158,14 @@ function UserCalendar() {
 		})
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div id="calendars-works-review">
 				<button onClick={generatePDF} className="btn-pdf btn btn-primary">
 				{t('workcalendar.genepdf')}
@@ -268,6 +271,7 @@ function UserCalendar() {
 					</div>
 				</div>
 			</div>
+			)}
 		</>
 	)
 }

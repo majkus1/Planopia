@@ -222,18 +222,17 @@ router.post('/login', loginLimiter, async (req, res) => {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			// domain: '.planopia.pl',
 			maxAge: 15 * 60 * 1000, // 15 minut
-		  });
-		  
-		  res.cookie('refreshToken', refreshToken, {
+		})
+
+		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			// domain: '.planopia.pl',
 			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
-		  });
-		  
+		})
 
 		res.status(200).json({
 			message: 'Logged in successfully',
@@ -273,18 +272,17 @@ router.post('/refresh-token', (req, res) => {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			// domain: '.planopia.pl',
 			maxAge: 15 * 60 * 1000,
-		  });
-		  
-		  res.cookie('refreshToken', newRefreshToken, {
+		})
+
+		res.cookie('refreshToken', newRefreshToken, {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			domain: '.planopia.pl',
+			// domain: '.planopia.pl',
 			maxAge: 7 * 24 * 60 * 60 * 1000,
-		  });
-		  
+		})
 
 		res.json({ message: 'Token refreshed' })
 	})
@@ -306,17 +304,17 @@ router.post('/logout', (req, res) => {
 		httpOnly: true,
 		secure: true,
 		sameSite: 'None',
-		domain: '.planopia.pl',
-	  });
-	  
-	  res.clearCookie('refreshToken', {
+		// domain: '.planopia.pl',
+	})
+
+	res.clearCookie('refreshToken', {
 		httpOnly: true,
 		secure: true,
 		sameSite: 'None',
-		domain: '.planopia.pl',
-	  });
-	  
-	  res.status(200).json({ message: 'Wylogowano pomyślnie' });
+		// domain: '.planopia.pl',
+	})
+
+	res.status(200).json({ message: 'Wylogowano pomyślnie' })
 })
 
 router.post('/change-password', auth, async (req, res) => {

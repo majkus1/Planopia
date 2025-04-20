@@ -91,11 +91,14 @@ function LeaveRequestForm() {
 		'status.rejected': 'rejected',
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div id="leave-request-form">
 				<h2 style={{ marginTop: '0px' }}>{t('leaveform.header')}</h2>
 				<hr />
@@ -208,6 +211,7 @@ function LeaveRequestForm() {
 					})}
 				</ul>
 			</div>
+			)}
 		</>
 	)
 }

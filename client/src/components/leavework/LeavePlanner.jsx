@@ -86,11 +86,14 @@ function LeavePlanner() {
 		setCurrentYear(newYear)
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div style={{ padding: '20px' }} id="leave-planner">
 				<h3>{t('leaveplanner.mainheader')}</h3>
 				<hr />
@@ -178,6 +181,7 @@ function LeavePlanner() {
 					/>
 				</div>
 			</div>
+			)}
 		</>
 	)
 }

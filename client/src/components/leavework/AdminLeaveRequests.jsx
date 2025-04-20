@@ -97,12 +97,14 @@ function AdminLeaveRequests() {
 		'status.rejected': 'status-rejected',
 	}
 
-	if (loading) return <Loader />
-
 	return (
 		<>
 			<Sidebar />
-
+			{loading ? (
+				<div className="content-with-loader">
+					<Loader />
+				</div>
+			) : (
 			<div id="leave-requests-review">
 				<h3>{t('adminleavereq.h3')}</h3>
 				<hr />
@@ -209,6 +211,7 @@ function AdminLeaveRequests() {
 					))}
 				</ul>
 			</div>
+			)}
 		</>
 	)
 }
