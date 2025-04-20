@@ -136,7 +136,7 @@ function Login() {
 									{t('login.loginto')}
 								</button>
 							</div>
-							<Link to="/reset-password" className="text-center" style={{ textDecoration: 'none', color: 'black' }}>
+							<Link to="/reset-password" style={{ textDecoration: 'none', color: 'black' }}>
 								{t('login.forgotpass')}
 							</Link>
 						</form>
