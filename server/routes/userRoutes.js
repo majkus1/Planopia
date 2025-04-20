@@ -220,19 +220,20 @@ router.post('/login', loginLimiter, async (req, res) => {
 		// TOKEN
 		res.cookie('token', accessToken, {
 			httpOnly: true,
-			secure: true, // MUSI być true dla SameSite: 'None'
+			secure: true,
 			sameSite: 'None',
-			// domain: 'api.planopia.pl',
-			maxAge: 15 * 60 * 1000,
+			domain: '.planopia.pl',
+			maxAge: 15 * 60 * 1000, // 15 minut
 		  });
 		  
 		  res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
 			secure: true,
 			sameSite: 'None',
-			// domain: 'api.planopia.pl',
-			maxAge: 7 * 24 * 60 * 60 * 1000,
+			domain: '.planopia.pl',
+			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
 		  });
+		  
 
 		res.status(200).json({
 			message: 'Logged in successfully',
@@ -268,21 +269,22 @@ router.post('/refresh-token', (req, res) => {
 			{ expiresIn: '7d' }
 		)
 
-		// Ustawiamy nowe ciasteczko dla access tokena
 		res.cookie('token', newAccessToken, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === 'production',
-			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-			maxAge: 15 * 60 * 1000, // 15 minut
-		})
-
-		// Ustawiamy nowe ciasteczko dla refresh tokena (rotacja)
-		res.cookie('refreshToken', newRefreshToken, {
+			secure: true,
+			sameSite: 'None',
+			domain: '.planopia.pl',
+			maxAge: 15 * 60 * 1000,
+		  });
+		  
+		  res.cookie('refreshToken', newRefreshToken, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === 'production',
-			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-			maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dni
-		})
+			secure: true,
+			sameSite: 'None',
+			domain: '.planopia.pl',
+			maxAge: 7 * 24 * 60 * 60 * 1000,
+		  });
+		  
 
 		res.json({ message: 'Token refreshed' })
 	})
@@ -304,19 +306,18 @@ router.post('/logout', (req, res) => {
 		httpOnly: true,
 		secure: true,
 		sameSite: 'None',
-		domain: 'api.planopia.pl',
-	})
-
-	res.clearCookie('refreshToken', {
+		domain: '.planopia.pl',
+	  });
+	  
+	  res.clearCookie('refreshToken', {
 		httpOnly: true,
 		secure: true,
 		sameSite: 'None',
-		domain: 'api.planopia.pl',
-	})
-
-	res.status(200).json({ message: 'Wylogowano pomyślnie' })
+		domain: '.planopia.pl',
+	  });
+	  
+	  res.status(200).json({ message: 'Wylogowano pomyślnie' });
 })
-
 
 router.post('/change-password', auth, async (req, res) => {
 	const { currentPassword, newPassword } = req.body
