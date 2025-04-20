@@ -6,13 +6,15 @@ import { useParams } from 'react-router-dom'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 import Sidebar from '../dashboard/Sidebar'
+import Loader from '../Loader'
 
 function EmployeeLeaveCalendar() {
 	const { userId } = useParams()
 	const [leavePlans, setLeavePlans] = useState([])
 	const currentYear = new Date().getFullYear()
 	const [user, setUser] = useState(null)
-  const { t, i18n } = useTranslation()
+	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchUserDetails()
@@ -25,6 +27,8 @@ function EmployeeLeaveCalendar() {
 			setUser(response.data)
 		} catch (error) {
 			console.error('Failed to fetch user details:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -34,6 +38,8 @@ function EmployeeLeaveCalendar() {
 			setLeavePlans(response.data)
 		} catch (error) {
 			console.error('Error fetching leave plans:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -58,11 +64,17 @@ function EmployeeLeaveCalendar() {
 		))
 	}
 
+	if (loading) return <Loader />
+
 	return (
 		<>
-    <Sidebar />
-			<div className='leave-calendar-plans-one-employee'>
-				{user && <h3 style={{ padding: '20px', paddingLeft: "10px" }}>{t('leaveplanone.h3')} {user.firstName} {user.lastName}</h3>}
+			<Sidebar />
+			<div className="leave-calendar-plans-one-employee">
+				{user && (
+					<h3 style={{ padding: '20px', paddingLeft: '10px' }}>
+						{t('leaveplanone.h3')} {user.firstName} {user.lastName}
+					</h3>
+				)}
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>
 			</div>
 		</>

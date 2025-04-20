@@ -4,6 +4,7 @@ import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../context/AuthContext'
+import Loader from '../Loader'
 
 function ChangePassword() {
 	const [currentPassword, setCurrentPassword] = useState('')
@@ -12,6 +13,7 @@ function ChangePassword() {
 	const [position, setPosition] = useState('')
 	const { t, i18n } = useTranslation()
 	const { role } = useAuth()
+	const [loading, setLoading] = useState(true)
 
 	const isPasswordValid = newPassword => {
 		const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/
@@ -25,6 +27,8 @@ function ChangePassword() {
 				setPosition(response.data.position || '')
 			} catch (error) {
 				console.error('Błąd podczas pobierania danych użytkownika:', error)
+			} finally {
+				setLoading(false)
 			}
 		}
 		fetchUserData()
@@ -67,6 +71,8 @@ function ChangePassword() {
 			console.error(error)
 		}
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

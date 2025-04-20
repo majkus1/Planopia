@@ -7,6 +7,7 @@ import axios from 'axios'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../context/AuthContext'
+import Loader from '../Loader'
 
 function AdminAllLeaveCalendar() {
 	const [leavePlans, setLeavePlans] = useState([])
@@ -20,6 +21,7 @@ function AdminAllLeaveCalendar() {
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
 	const { role, logout, username } = useAuth()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchAllLeavePlans()
@@ -33,6 +35,8 @@ function AdminAllLeaveCalendar() {
 		} catch (error) {
 			console.error('Failed to fetch users:', error)
 			setError(t('list.error'))
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -42,6 +46,8 @@ function AdminAllLeaveCalendar() {
 			setLeavePlans(response.data)
 		} catch (error) {
 			console.error('Error fetching all leave plans:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -89,6 +95,8 @@ function AdminAllLeaveCalendar() {
 	const handleUserClick = userId => {
 		navigate(`/leave-plans/${userId}`)
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

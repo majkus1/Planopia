@@ -6,6 +6,7 @@ import axios from 'axios'
 import Modal from 'react-modal'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 Modal.setAppElement('#root')
 
@@ -29,6 +30,7 @@ function MonthlyCalendar() {
 	const [errorMessage, setErrorMessage] = useState('')
 	const calendarRef = useRef(null)
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	const fetchWorkdays = async cancelToken => {
 		try {
@@ -42,6 +44,8 @@ function MonthlyCalendar() {
 			} else {
 				console.error('Failed to fetch workdays:', error)
 			}
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -61,6 +65,8 @@ function MonthlyCalendar() {
 			} else {
 				console.error('Failed to check confirmation status:', error)
 			}
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -243,6 +249,8 @@ function MonthlyCalendar() {
 		setAbsenceType('')
 		setErrorMessage('')
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<div className="row calendar-my-work">

@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function VacationListUser() {
 	const [users, setUsers] = useState([])
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchUsers()
@@ -22,12 +24,16 @@ function VacationListUser() {
 		} catch (error) {
 			console.error('Failed to fetch users:', error)
 			setError(t('list.error'))
+		} finally {
+			setLoading(false)
 		}
 	}
 
 	const handleUserClick = userId => {
 		navigate(`/leave-requests/${userId}`)
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

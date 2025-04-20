@@ -3,6 +3,7 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function LeaveRequestForm() {
 	const [type, setType] = useState('leaveform.option1')
@@ -14,6 +15,7 @@ function LeaveRequestForm() {
 	const [leaveRequests, setLeaveRequests] = useState([])
 	const [availableLeaveDays, setAvailableLeaveDays] = useState(0)
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchAvailableLeaveDays()
@@ -34,6 +36,8 @@ function LeaveRequestForm() {
 			setAvailableLeaveDays(response.data.vacationDays)
 		} catch (error) {
 			console.error('Błąd podczas pobierania dostępnych dni urlopu:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -43,6 +47,8 @@ function LeaveRequestForm() {
 			setLeaveRequests(response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
 		} catch (error) {
 			console.error('Błąd podczas pobierania zgłoszeń:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -84,6 +90,8 @@ function LeaveRequestForm() {
 		'status.pending': 'pending',
 		'status.rejected': 'rejected',
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

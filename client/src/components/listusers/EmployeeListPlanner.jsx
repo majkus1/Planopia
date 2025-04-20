@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config.js'
+import Loader from '../Loader'
 
 function AdminUserList() {
 	const [users, setUsers] = useState([])
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchUsers()
@@ -19,12 +21,16 @@ function AdminUserList() {
 		} catch (error) {
 			console.error('Failed to fetch users:', error)
 			setError('Nie udało się pobrać listy użytkowników. Spróbuj zalogować się ponownie.')
+		} finally {
+			setLoading(false)
 		}
 	}
 
 	const handleUserClick = userId => {
 		navigate(`/leave-plans/${userId}`)
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<div>

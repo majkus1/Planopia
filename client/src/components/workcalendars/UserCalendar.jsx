@@ -9,6 +9,7 @@ import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function UserCalendar() {
 	const { userId } = useParams()
@@ -26,6 +27,7 @@ function UserCalendar() {
 	const pdfRef = useRef()
 	const calendarRef = useRef(null)
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchUserDetails()
@@ -47,6 +49,8 @@ function UserCalendar() {
 			setUser(response.data)
 		} catch (error) {
 			console.error('Failed to fetch user details:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -57,6 +61,8 @@ function UserCalendar() {
 			setWorkdays(response.data)
 		} catch (error) {
 			console.error('Failed to fetch workdays:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -68,6 +74,8 @@ function UserCalendar() {
 			setIsConfirmed(response.data.isConfirmed || false)
 		} catch (error) {
 			console.error('Failed to check confirmation status:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -149,6 +157,8 @@ function UserCalendar() {
 			pdf.save(`${t('pdf.filename')}_${user?.firstName}_${user?.lastName}_${currentMonth + 1}_${currentYear}.pdf`)
 		})
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

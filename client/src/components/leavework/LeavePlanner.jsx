@@ -6,6 +6,7 @@ import Sidebar from '../dashboard/Sidebar'
 import axios from 'axios'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function LeavePlanner() {
 	const [selectedDates, setSelectedDates] = useState([])
@@ -13,6 +14,7 @@ function LeavePlanner() {
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 	const calendarRef = useRef(null)
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchLeavePlans()
@@ -41,6 +43,8 @@ function LeavePlanner() {
 			setSelectedDates(response.data)
 		} catch (error) {
 			console.error('Error fetching leave plans:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -81,6 +85,8 @@ function LeavePlanner() {
 		setCurrentMonth(newMonth)
 		setCurrentYear(newYear)
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

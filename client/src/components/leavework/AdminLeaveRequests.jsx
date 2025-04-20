@@ -4,6 +4,7 @@ import Sidebar from '../dashboard/Sidebar'
 import { useParams, useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function AdminLeaveRequests() {
 	const { userId } = useParams()
@@ -14,6 +15,7 @@ function AdminLeaveRequests() {
 	const [showVacationUpdateMessage, setShowVacationUpdateMessage] = useState(false)
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetchLeaveRequests()
@@ -28,6 +30,8 @@ function AdminLeaveRequests() {
 			setUser(response.data)
 		} catch (error) {
 			console.error('Failed to fetch user details:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -39,6 +43,8 @@ function AdminLeaveRequests() {
 			setLeaveRequests(sortedRequests)
 		} catch (error) {
 			console.error('Błąd podczas pobierania zgłoszeń:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -90,6 +96,8 @@ function AdminLeaveRequests() {
 		'status.pending': 'status-pending',
 		'status.rejected': 'status-rejected',
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>

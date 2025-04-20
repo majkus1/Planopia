@@ -302,16 +302,21 @@ router.get('/me', auth, async (req, res) => {
 router.post('/logout', (req, res) => {
 	res.clearCookie('token', {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === 'production',
-		sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+		secure: true,
+		sameSite: 'None',
+		domain: 'api.planopia.pl',
 	})
+
 	res.clearCookie('refreshToken', {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === 'production',
-		sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+		secure: true,
+		sameSite: 'None',
+		domain: 'api.planopia.pl',
 	})
+
 	res.status(200).json({ message: 'Wylogowano pomyślnie' })
 })
+
 
 router.post('/change-password', auth, async (req, res) => {
 	const { currentPassword, newPassword } = req.body

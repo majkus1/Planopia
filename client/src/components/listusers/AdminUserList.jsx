@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function AdminUserList() {
 	const [users, setUsers] = useState([])
 	const [error, setError] = useState('')
+	const [loading, setLoading] = useState(true)
 	const navigate = useNavigate()
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 
 	useEffect(() => {
 		fetchUsers()
@@ -17,17 +19,23 @@ function AdminUserList() {
 
 	const fetchUsers = async () => {
 		try {
-			const response = await axios.get(`${API_URL}/api/users/all-users`)
+			const response = await axios.get(`${API_URL}/api/users/all-users`, {
+				withCredentials: true,
+			})
 			setUsers(response.data)
 		} catch (error) {
 			console.error('Failed to fetch users:', error)
 			setError(t('list.error'))
+		} finally {
+			setLoading(false)
 		}
 	}
 
 	const handleUserClick = userId => {
 		navigate(`/work-calendars/${userId}`)
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<>
@@ -40,7 +48,7 @@ function AdminUserList() {
 				<ul>
 					{users.map(user => (
 						<li key={user._id} onClick={() => handleUserClick(user._id)} style={{ cursor: 'pointer' }}>
-							{user.firstName} {user.lastName} - {user.roles.join(', ')} - {user.position || 'Brak stanowiska'}
+							{user.firstName} {user.lastName} – {user.roles.join(', ')} – {user.position || 'Brak stanowiska'}
 						</li>
 					))}
 				</ul>

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import Loader from '../Loader'
 
 function Logs() {
 	const [users, setUsers] = useState([])
@@ -12,6 +13,7 @@ function Logs() {
 	const [editedRoles, setEditedRoles] = useState([])
 	const [error, setError] = useState('')
 	const { t, i18n } = useTranslation()
+	const [loading, setLoading] = useState(true)
 
 	const availableRoles = [
 		'Admin',
@@ -35,6 +37,8 @@ function Logs() {
 			} catch (error) {
 				console.error('Error fetching users:', error)
 				setError('Nie udało się pobrać listy użytkowników')
+			} finally {
+				setLoading(false)
 			}
 		}
 
@@ -52,6 +56,8 @@ function Logs() {
 		} catch (error) {
 			console.error('Error fetching logs:', error)
 			setError('Nie udało się pobrać logów')
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -100,6 +106,8 @@ function Logs() {
 	// 		setError('Nie udało się usunąć użytkownika')
 	// 	}
 	// }
+
+	if (loading) return <Loader />
 
 	return (
 		<>
