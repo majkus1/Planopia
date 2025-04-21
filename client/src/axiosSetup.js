@@ -105,8 +105,6 @@ axios.interceptors.response.use(
       } catch (refreshError) {
         processQueue(refreshError, null)
         return Promise.reject(refreshError)
-      } finally {
-        isRefreshing = false
       }
     }
 
