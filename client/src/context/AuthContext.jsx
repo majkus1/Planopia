@@ -15,55 +15,24 @@ export const AuthProvider = ({ children }) => {
 
 	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/aplikacja-dla-firm', '/blog/jak-usprawnic-firme']
 
-	// useEffect(() => {
-	// 	if (publicPaths.includes(location.pathname)) {
-	// 		setLoggedIn(false)
-	// 		return
-	// 	}
-	// 	axios
-	// 		.get(`${API_URL}/api/users/me`, { withCredentials: true })
-	// 		.then(res => {
-	// 			setLoggedIn(true)
-	// 			setRole(res.data.roles)
-	// 			setUsername(res.data.username)
-	// 		})
-	// 		.catch(() => {
-	// 			setLoggedIn(false)
-	// 			setRole([])
-	// 			setUsername(null)
-	// 		})
-	// }, [])
-
 	useEffect(() => {
-		const checkAuth = async () => {
-		  try {
-			const res = await axios.get(`${API_URL}/api/users/me`)
-			setLoggedIn(true)
-			setRole(res.data.roles)
-			setUsername(res.data.username)
-		  } catch (err) {
-			try {
-			  await axios.post(`${API_URL}/api/users/refresh-token`)
-			  const res = await axios.get(`${API_URL}/api/users/me`)
-			  setLoggedIn(true)
-			  setRole(res.data.roles)
-			  setUsername(res.data.username)
-			} catch (refreshErr) {
-			  // Refresh token też nie działa → użytkownik nie jest zalogowany
-			  setLoggedIn(false)
-			  setRole([])
-			  setUsername(null)
-			}
-		  }
+		if (publicPaths.includes(location.pathname)) {
+			setLoggedIn(false)
+			return
 		}
-	  
-		if (!publicPaths.includes(location.pathname)) {
-		  checkAuth()
-		} else {
-		  setLoggedIn(false)
-		}
-	  }, [location.pathname])
-	  
+		axios
+			.get(`${API_URL}/api/users/me`, { withCredentials: true })
+			.then(res => {
+				setLoggedIn(true)
+				setRole(res.data.roles)
+				setUsername(res.data.username)
+			})
+			.catch(() => {
+				setLoggedIn(false)
+				setRole([])
+				setUsername(null)
+			})
+	}, [])
 
 	const logout = () => {
 		axios
