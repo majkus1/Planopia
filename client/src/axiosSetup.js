@@ -34,50 +34,45 @@
 import axios from 'axios'
 import { API_URL } from './config.js'
 
-axios.defaults.withCredentials = true // ważne do obsługi cookie
+axios.defaults.withCredentials = true
 
 // Prefetch CSRF token
 const fetchCsrfToken = async () => {
   try {
-    const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
-    axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
+    const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true })
+    axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken
   } catch (err) {
-    console.error('CSRF prefetch error', err);
+    console.error('CSRF prefetch error', err)
   }
-};
+}
+fetchCsrfToken()
 
-fetchCsrfToken();
-
-// Request Interceptor - CSRF token
+// Request interceptor – CSRF token
 axios.interceptors.request.use(async config => {
-  const method = config.method?.toLowerCase();
-  const needsCsrf = ['post', 'put', 'delete', 'patch'].includes(method);
+  const method = config.method?.toLowerCase()
+  const needsCsrf = ['post', 'put', 'delete', 'patch'].includes(method)
 
   if (needsCsrf && !axios.defaults.headers.common['X-CSRF-Token']) {
     try {
-      const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
-      axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
+      const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true })
+      axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken
     } catch (err) {
-      console.error('CSRF fetch error:', err);
+      console.error('CSRF fetch error:', err)
     }
   }
 
-  return config;
-}, error => Promise.reject(error));
+  return config
+}, error => Promise.reject(error))
 
-// Response Interceptor - Refresh token logic
+// Response interceptor – handle refresh token
 let isRefreshing = false
 let failedQueue = []
 
 const processQueue = (error, token = null) => {
   failedQueue.forEach(prom => {
-    if (error) {
-      prom.reject(error)
-    } else {
-      prom.resolve(token)
-    }
+    if (error) prom.reject(error)
+    else prom.resolve(token)
   })
-
   failedQueue = []
 }
 
@@ -88,7 +83,7 @@ axios.interceptors.response.use(
 
     if (err.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject })
         })
           .then(() => axios(originalRequest))
@@ -102,9 +97,9 @@ axios.interceptors.response.use(
         await axios.post(`${API_URL}/api/users/refresh-token`, {}, { withCredentials: true })
         processQueue(null)
         return axios(originalRequest)
-      } catch (refreshError) {
-        processQueue(refreshError, null)
-        return Promise.reject(refreshError)
+      } catch (refreshErr) {
+        processQueue(refreshErr, null)
+        return Promise.reject(refreshErr)
       } finally {
         isRefreshing = false
       }
