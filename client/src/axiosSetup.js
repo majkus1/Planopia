@@ -1,31 +1,33 @@
-import axios from 'axios'
-import { API_URL } from './config.js'
+import axios from 'axios';
+import { API_URL } from './config.js';
 
-axios.defaults.withCredentials = true // ważne do obsługi cookie
+axios.defaults.withCredentials = true;
 
-// Prefetch CSRF token
 const fetchCsrfToken = async () => {
   try {
-    const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
+    const res = await axios.get(`${API_URL}/api/csrf-token`, {
+      withCredentials: true
+    });
     axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
   } catch (err) {
-    console.error('CSRF prefetch error', err);
+    console.error('CSRF prefetch error:', err);
   }
 };
 
 fetchCsrfToken();
 
-// Interceptor
 axios.interceptors.request.use(async config => {
   const method = config.method?.toLowerCase();
-  const needsCsrf = ['post', 'put', 'delete', 'patch'].includes(method);
+  const needsCsrf = ['post', 'put', 'patch', 'delete'].includes(method);
 
-  if (needsCsrf && !axios.defaults.headers.common['X-CSRF-Token']) {
+  if (needsCsrf && !config.headers['X-CSRF-Token']) {
     try {
-      const res = await axios.get(`${API_URL}/api/csrf-token`, { withCredentials: true });
-      axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrfToken;
+      const res = await axios.get(`${API_URL}/api/csrf-token`, {
+        withCredentials: true
+      });
+      config.headers['X-CSRF-Token'] = res.data.csrfToken;
     } catch (err) {
-      console.error('CSRF fetch error:', err);
+      console.error('Interceptor CSRF fetch error:', err);
     }
   }
 

@@ -92,25 +92,25 @@ function Sidebar() {
 				<div className="p-2 btns-pages">
 					<NavLink
 						to="/edit-profile"
-						className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn1')}
 					</NavLink>
-					<NavLink to="/" className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+					<NavLink to="/" className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn2')}
 					</NavLink>
 					<NavLink
 						to="/leave-request"
-						className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn3')}
 					</NavLink>
 					<NavLink
 						to="/leave-planner"
-						className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn4')}
 					</NavLink>
 					<NavLink
 						to="/all-leave-plans"
-						className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isLeavePlans ? ' active' : '')}>
+						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isLeavePlans ? ' active' : '')}>
 						{t('sidebar.btn5')}
 					</NavLink>
 					<div className="admins-links">
@@ -125,7 +125,7 @@ function Sidebar() {
 						) && (
 							<NavLink
 								to="/calendars-list"
-								className={() => 'btn btn-light btn-sm mb-2 w-100' + (isListOrCalendarActive ? ' active' : '')}>
+								className={() => 'btn btn-primary btn-sm mb-2 w-100' + (isListOrCalendarActive ? ' active' : '')}>
 								{t('sidebar.btn6')}
 							</NavLink>
 						)}
@@ -140,7 +140,7 @@ function Sidebar() {
 						) && (
 							<NavLink
 								to="/leave-list"
-								className={() => 'btn btn-light btn-sm mb-2 w-100' + (isListOrLeavereqActive ? ' active' : '')}>
+								className={() => 'btn btn-primary btn-sm mb-2 w-100' + (isListOrLeavereqActive ? ' active' : '')}>
 								{t('sidebar.btn7')}
 							</NavLink>
 						)}
@@ -149,14 +149,14 @@ function Sidebar() {
 						{hasRole('Admin') && (
 							<NavLink
 								to="/create-user"
-								className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 								{t('sidebar.btn8')}
 							</NavLink>
 						)}
 						{hasRole('Admin') && (
 							<NavLink
 								to="/logs"
-								className={({ isActive }) => 'btn btn-light btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 								{t('sidebar.btn9')}
 							</NavLink>
 						)}

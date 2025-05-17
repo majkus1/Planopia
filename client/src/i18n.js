@@ -37,8 +37,8 @@ i18n
 					resetpass: {
 						txt1: 'Reset password',
 						txt3: 'Send reset link',
-						messok: 'The password reset link has been sent.',
-						messfail: 'There was a problem sending the password reset link.',
+						messok: 'If the email address is registered, an email with a password reset link will be sent.',
+						messfail: 'If the email address is registered, an email with a password reset link will be sent.',
 						toomany: 'Too many password reset attempts. Please try again in 15 minutes.'
 					},
 					newpass: {
@@ -256,8 +256,8 @@ i18n
 					resetpass: {
 						txt1: 'Resetowanie hasła',
 						txt3: 'Wyślij link resetujący',
-						messok: 'Link do resetowania hasła został wysłany.',
-						messfail: 'Wystąpił problem z wysłaniem linku do resetowania hasła.',
+						messok: 'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
+						messfail: 'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
 						toomany: 'Zbyt wiele prób resetowania hasła. Spróbuj ponownie za 15 minut.'
 					},
 					newpass: {

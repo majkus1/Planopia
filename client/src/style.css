@@ -370,11 +370,11 @@ span {
 
 .btns-pages a {
 	max-width: 300px;
-	background: none;
+	background: #dae0e5;
 	border: none;
 	text-align: center;
-	color: white;
-	border: 2px solid #6d6dff;
+	color: rgb(0, 0, 0);
+	border: 2px solid #dae0e5;
 }
 
 .btns-pages a:hover {
@@ -1119,45 +1119,39 @@ hr {
 }
 
 .btn-success {
-	background: transparent;
-	border: 3px solid rgb(36, 200, 36);
-	color: green;
+	/* background: transparent; */
+	color: white;
 	border-radius: 5px;
 }
 
 .btn-primary {
-	background: transparent;
-	border: 3px solid rgb(1, 30, 219);
-	color: rgb(1, 30, 219);
+	/* background: transparent; */
+	color: white;
 	border-radius: 5px;
 }
 
 .btn-danger {
-	background: transparent;
-	border: 3px solid rgb(184, 1, 46);
-	color: rgb(184, 1, 46);
+	/* background: transparent; */
+	color: white;
 	border-radius: 5px;
 }
 
 .btn-info {
-	background: transparent;
-	border: 3px solid #17a2b8;
-	color: #17a2b8;
+	/* background: transparent; */
+	color: white;
 	border-radius: 5px;
 }
 
 .btn-secondary {
-	background: transparent;
-	border: 3px solid #6c757d;
-	color: #6c757d;
+	/* background: transparent; */
+	color: white;
 	border-radius: 5px;
 }
 
 .logout {
 	color: white;
-	background: none;
+	/* background: none; */
 	margin-bottom: 10px;
-	border: 1px solid red;
 }
 
 .btn-light {
