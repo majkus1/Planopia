@@ -20,16 +20,20 @@ axios.interceptors.request.use(async config => {
   const method = config.method?.toLowerCase();
   const needsCsrf = ['post', 'put', 'patch', 'delete'].includes(method);
 
-  if (needsCsrf && !config.headers['X-CSRF-Token']) {
-    try {
-      const res = await axios.get(`${API_URL}/api/csrf-token`, {
-        withCredentials: true
-      });
-      config.headers['X-CSRF-Token'] = res.data.csrfToken;
-    } catch (err) {
-      console.error('Interceptor CSRF fetch error:', err);
+  if (needsCsrf) {
+    config.headers = config.headers || {};
+    if (!config.headers['X-CSRF-Token']) {
+      try {
+        const res = await axios.get(`${API_URL}/api/csrf-token`, {
+          withCredentials: true
+        });
+        config.headers['X-CSRF-Token'] = res.data.csrfToken;
+      } catch (err) {
+        console.error('Interceptor CSRF fetch error:', err);
+      }
     }
   }
 
   return config;
 }, error => Promise.reject(error));
+
