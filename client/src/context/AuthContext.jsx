@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
 	const location = useLocation()
 
-	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/pl', '/en']
+	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/', '/en', '/blog', '/en/blog', '/blog/ewidencja-czasu-pracy-i-urlopow', '/en/blog/time-tracking-and-leave-management', '/blog/integracja-z-rcp', '/en/blog/time-attendance-integration', '/blog/planowanie-urlopow', '/en/blog/leave-planning', '/blog/ewidencja-czasu-pracy', '/en/blog/work-time-tracking']
 
 	useEffect(() => {
 		if (publicPaths.includes(location.pathname)) {
