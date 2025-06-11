@@ -81,7 +81,7 @@ function ChangePassword() {
 								<div className="card-body">
 									<h4>{t('editprofile.headertxt')}</h4>
 									<hr />
-									<form
+									{/* <form
 										onSubmit={e => {
 											e.preventDefault()
 											handlePositionUpdate()
@@ -102,6 +102,33 @@ function ChangePassword() {
 										<button type="submit" className="btn btn-success mb-3">
 											{t('editprofile.confirmposition')}
 										</button>
+									</form> */}
+
+									<form
+										onSubmit={e => {
+											e.preventDefault()
+											handlePositionUpdate()
+										}}
+										className="max-w-md space-y-6">
+										<div>
+											<label htmlFor="position" className="block text-gray-700 font-medium mb-1">
+												{t('editprofile.positionlabel')}
+											</label>
+											<input
+												type="text"
+												id="position"
+												value={position}
+												onChange={e => setPosition(e.target.value)}
+												placeholder={t('editprofile.placeholder1')}
+												className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+											/>
+										</div>
+
+										<button
+											type="submit"
+											className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mb-4">
+											{t('editprofile.confirmposition')}
+										</button>
 									</form>
 
 									<div className="mb-3">
@@ -109,7 +136,7 @@ function ChangePassword() {
 										<input type="text" className="form-control" value={role} readOnly />
 									</div>
 
-									<form onSubmit={handleSubmit} style={{ paddingTop: '40px' }}>
+									{/* <form onSubmit={handleSubmit} style={{ paddingTop: '40px' }}>
 										<h4>{t('editprofile.changepassh4')}</h4>
 										<hr />
 										<div className="mb-3">
@@ -155,6 +182,62 @@ function ChangePassword() {
 											/>
 										</div>
 										<button type="submit" className="btn btn-success mb-3">
+											{t('editprofile.confirmnewpassbtn')}
+										</button>
+									</form> */}
+
+									<form onSubmit={handleSubmit} className="max-w-md space-y-6 pt-10">
+										<h4 className="text-xl font-semibold text-gray-800">{t('editprofile.changepassh4')}</h4>
+										<hr className="mb-4" />
+
+										<div>
+											<label htmlFor="currentPassword" className="block text-gray-700 font-medium mb-1">
+												{t('editprofile.currentpasslabel')}
+											</label>
+											<input
+												type="password"
+												id="currentPassword"
+												value={currentPassword}
+												onChange={e => setCurrentPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder2')}
+												className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+											/>
+										</div>
+
+										<div>
+											<label htmlFor="newPassword" className="block text-gray-700 font-medium mb-1">
+												{t('editprofile.newpasslabel')}
+											</label>
+											<input
+												type="password"
+												id="newPassword"
+												value={newPassword}
+												onChange={e => setNewPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder3')}
+												className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+											/>
+										</div>
+
+										<div>
+											<label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-1">
+												{t('editprofile.confirmnewpasslabel')}
+											</label>
+											<input
+												type="password"
+												id="confirmPassword"
+												value={confirmPassword}
+												onChange={e => setConfirmPassword(e.target.value)}
+												required
+												placeholder={t('editprofile.placeholder4')}
+												className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+											/>
+										</div>
+
+										<button
+											type="submit"
+											className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition">
 											{t('editprofile.confirmnewpassbtn')}
 										</button>
 									</form>

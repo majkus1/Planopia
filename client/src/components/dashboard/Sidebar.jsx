@@ -95,7 +95,7 @@ function Sidebar() {
 						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn1')}
 					</NavLink>
-					<NavLink to="/" className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+					<NavLink to="/dashboard" className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
 						{t('sidebar.btn2')}
 					</NavLink>
 					<NavLink

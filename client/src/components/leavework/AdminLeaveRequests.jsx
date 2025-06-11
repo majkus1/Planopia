@@ -130,7 +130,8 @@ function AdminLeaveRequests() {
 										setVacationDays(Number(value))
 									}
 								}}
-								style={{ width: '60px' }}
+								style={{ width: '60px', paddingLeft: '2px' }}
+								className='w-full border border-gray-300 rounded-md py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
 							/>
 							<button onClick={updateVacationDays} style={{ marginLeft: '5px' }} className="btn btn-success">
 								{t('adminleavereq.btnupdatenumber')}

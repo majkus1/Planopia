@@ -32,13 +32,10 @@ function NewPassword() {
 			return
 		}
 		try {
-			const response = await axios.post(
-				`${API_URL}/api/users/new-password`,
-				{
-					password,
-					token,
-				}
-			)
+			const response = await axios.post(`${API_URL}/api/users/new-password`, {
+				password,
+				token,
+			})
 			alert(t('newpass.messtwo'))
 			navigate('/')
 		} catch (error) {
@@ -70,7 +67,7 @@ function NewPassword() {
 			</div>
 			<div className="login-box">
 				<div className="login-logo">
-					<div style={{ backgroundColor: '#213555' }}>
+					<div>
 						<p className="company-txt">Planopia</p>
 					</div>
 				</div>
@@ -78,34 +75,36 @@ function NewPassword() {
 					<div className="card-body login-card-body padr">
 						<div className="set-pass">
 							<h2 style={{ marginBottom: '20px' }}>{t('newpass.h2')}</h2>
-							<form onSubmit={handleSubmit} style={{ width: '100%' }}>
-								<div className="mb-3">
-									<input
-										type="password"
-										className="form-control"
-										id="password"
-										value={password}
-										onChange={e => setPassword(e.target.value)}
-										required
-										placeholder={t('newpass.newpassone')}
-									/>
-								</div>
-								<div className="mb-3">
-									<input
-										type="password"
-										className="form-control"
-										id="confirmPassword"
-										value={confirmPassword}
-										onChange={e => setConfirmPassword(e.target.value)}
-										required
-										placeholder={t('newpass.newpassrepeat')}
-									/>
-								</div>
-								<small style={{ color: 'gray' }}>
-									{t('newpass.requirements')}{' '}
-									{/* np. "Hasło musi mieć min. 8 znaków, dużą, małą literę, cyfrę i znak specjalny" */}
-								</small>
-								<button type="submit" className="btn btn-success" style={{ width: '100%', marginBottom: '15px', marginTop: '15px' }}>
+							<form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+								{/* New password */}
+								<input
+									type="password"
+									id="password"
+									value={password}
+									onChange={e => setPassword(e.target.value)}
+									required
+									placeholder={t('newpass.newpassone')}
+									className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+								/>
+
+								{/* Confirm password */}
+								<input
+									type="password"
+									id="confirmPassword"
+									value={confirmPassword}
+									onChange={e => setConfirmPassword(e.target.value)}
+									required
+									placeholder={t('newpass.newpassrepeat')}
+									className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+								/>
+
+								{/* Password requirements */}
+								<small className="text-gray-500 block">{t('newpass.requirements')}</small>
+
+								{/* Submit button */}
+								<button
+									type="submit"
+									className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
 									{t('newpass.btnsuccess')}
 								</button>
 							</form>

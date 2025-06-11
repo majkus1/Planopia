@@ -166,13 +166,13 @@ function UserCalendar() {
 					<Loader />
 				</div>
 			) : (
-			<div id="calendars-works-review">
+			<div id="calendars-works-review" className='flex flex-wrap gap-4 items-center'>
 				<button onClick={generatePDF} className="btn-pdf btn btn-primary">
 				{t('workcalendar.genepdf')}
 				</button>
-				<label style={{ marginLeft: '30px' }}>
+				<label style={{ marginLeft: '30px' }} className="flex items-center space-x-2">
 				{t('workcalendar.monthlabel')}
-					<select value={currentMonth} onChange={handleMonthSelect} style={{ marginRight: '5px', marginLeft: '5px' }}>
+					<select value={currentMonth} onChange={handleMonthSelect} style={{ marginRight: '5px', marginLeft: '5px' }} className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 						{Array.from({ length: 12 }, (_, i) => (
 							<option key={i} value={i}>
 								{new Date(0, i).toLocaleString(i18n.resolvedLanguage, { month: 'long' })}
@@ -180,9 +180,9 @@ function UserCalendar() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="flex items-center space-x-2">
 				{t('workcalendar.yearlabel')}
-					<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }}>
+					<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }} className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 						{Array.from({ length: 20 }, (_, i) => {
 							const year = new Date().getFullYear() - 10 + i
 							return (

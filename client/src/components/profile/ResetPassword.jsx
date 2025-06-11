@@ -59,29 +59,36 @@ function ResetPassword() {
 			</div>
 			<div className="login-box">
 				<div className="login-logo">
-					<div style={{ backgroundColor: '#213555' }}>
+					<div>
 						<p className="company-txt">Planopia</p>
 					</div>
 				</div>
 				<div className="card">
 					<div className="reset-password-container">
 						<h2 style={{ marginBottom: '20px', marginTop: '20px' }}>{t('resetpass.txt1')}</h2>
-						<form onSubmit={handleSubmit} style={{ width: '100%' }}>
-							<div className="form-group">
+						<form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+							{/* Email input */}
+							<div>
 								<input
 									type="email"
-									className="form-control"
 									id="email"
 									value={email}
-									placeholder="Email"
 									onChange={handleEmailChange}
+									placeholder="Email"
 									required
+									className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 								/>
 							</div>
-							<button type="submit" className="btn btn-success" style={{ marginBottom: '30px', width: '100%' }}>
+
+							{/* Submit button */}
+							<button
+								type="submit"
+								className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition mb-4">
 								{t('resetpass.txt3')}
 							</button>
-							{message && <p style={{ maxWidth: '300px' }}>{message}</p>}
+
+							{/* Optional message */}
+							{message && <p className="text-sm text-gray-700 max-w-xs">{message}</p>}
 						</form>
 					</div>
 				</div>

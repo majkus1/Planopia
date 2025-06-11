@@ -32,14 +32,14 @@ i18n
 						loginto: 'Log in',
 						forgotpass: 'I dont remember my password',
 						failed: 'Login failed',
-						alerttoomanyreq: 'Too many login attempts. Please try again in 15 minutes.'
+						alerttoomanyreq: 'Too many login attempts. Please try again in 15 minutes.',
 					},
 					resetpass: {
 						txt1: 'Reset password',
 						txt3: 'Send reset link',
 						messok: 'If the email address is registered, an email with a password reset link will be sent.',
 						messfail: 'If the email address is registered, an email with a password reset link will be sent.',
-						toomany: 'Too many password reset attempts. Please try again in 15 minutes.'
+						toomany: 'Too many password reset attempts. Please try again in 15 minutes.',
 					},
 					newpass: {
 						h2: 'Set password',
@@ -51,8 +51,10 @@ i18n
 						messthree: 'Error setting password, please try again.',
 						position: 'Job position',
 						h2n: 'Set password and job position',
-						invalidPassword: 'The password must have at least 8 characters, contain a lowercase letter, an uppercase letter, a digit, and a special character.',
-						requirements: 'The password must have a minimum of 8 characters, an uppercase letter, a lowercase letter, a digit, and a special character.'
+						invalidPassword:
+							'The password must have at least 8 characters, contain a lowercase letter, an uppercase letter, a digit, and a special character.',
+						requirements:
+							'The password must have a minimum of 8 characters, an uppercase letter, a lowercase letter, a digit, and a special character.',
 					},
 					workcalendar: {
 						h3: 'Working time records',
@@ -214,6 +216,7 @@ i18n
 						register: 'Register',
 						alertone:
 							'User registered. A message with password setup instructions has been sent to the provided email address.',
+						error_user_exists: 'User already exists',
 					},
 					logs: {
 						user: 'User',
@@ -228,8 +231,8 @@ i18n
 						userl: 'User logs',
 						actionth: 'Action',
 						detailsth: 'Details',
-						timeth: 'Time'
-					}
+						timeth: 'Time',
+					},
 				},
 			},
 			pl: {
@@ -251,14 +254,16 @@ i18n
 						loginto: 'Zaloguj się',
 						forgotpass: 'Nie pamiętam hasła',
 						failed: 'Logowanie nie powiodło się',
-						alerttoomanyreq: 'Zbyt wiele prób logowania. Spróbuj ponownie za 15 minut.'
+						alerttoomanyreq: 'Zbyt wiele prób logowania. Spróbuj ponownie za 15 minut.',
 					},
 					resetpass: {
 						txt1: 'Resetowanie hasła',
 						txt3: 'Wyślij link resetujący',
-						messok: 'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
-						messfail: 'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
-						toomany: 'Zbyt wiele prób resetowania hasła. Spróbuj ponownie za 15 minut.'
+						messok:
+							'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
+						messfail:
+							'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
+						toomany: 'Zbyt wiele prób resetowania hasła. Spróbuj ponownie za 15 minut.',
 					},
 					newpass: {
 						h2: 'Ustaw hasło',
@@ -270,8 +275,9 @@ i18n
 						messthree: 'Błąd przy ustawianiu hasła, spróbuj ponownie.',
 						position: 'Stanowisko',
 						h2n: 'Ustaw hasło i stanowisko',
-						invalidPassword: 'Hasło musi mieć co najmniej 8 znaków, zawierać małą i dużą literę, cyfrę oraz znak specjalny.',
-						requirements: 'Hasło musi mieć min. 8 znaków, dużą, małą literę, cyfrę i znak specjalny.'
+						invalidPassword:
+							'Hasło musi mieć co najmniej 8 znaków, zawierać małą i dużą literę, cyfrę oraz znak specjalny.',
+						requirements: 'Hasło musi mieć min. 8 znaków, dużą, małą literę, cyfrę i znak specjalny.',
 					},
 					workcalendar: {
 						h3: 'Ewidencja czasu pracy',
@@ -431,6 +437,7 @@ i18n
 						register: 'Rejestruj',
 						alertone:
 							'Użytkownik zarejestrowany. Wiadomość z informacją o ustawieniu hasła została wysłana na podany adres e-mail.',
+						error_user_exists: 'Użytkownik już istnieje',
 					},
 					logs: {
 						user: 'Użytkownik',
@@ -445,8 +452,8 @@ i18n
 						userl: 'Logi użytkownika',
 						actionth: 'Akcja',
 						detailsth: 'Szczegóły',
-						timeth: 'Czas'
-					}
+						timeth: 'Czas',
+					},
 				},
 			},
 		},

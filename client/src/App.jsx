@@ -21,7 +21,16 @@ import AdminAllLeaveCalendar from './components/leavework/AdminAllLeaveCalendar'
 import VacationListUser from './components/listusers/VacationListUser'
 import NewPassword from './components/profile/NewPassword'
 import ProductPromotion from './components/ProductPromotion'
-import BlogPost from './components/BlogPost'
+import ENProductPromotion from './components/ENProductPromotion.jsx'
+import ENBlogOne from './components/ENBlogOne.jsx'
+import Blog from './components/Blog.jsx'
+import ENBlog from './components/ENBlog.jsx'
+import BlogOne from './components/BlogOne.jsx'
+import BlogTwo from './components/BlogTwo.jsx'
+import BlogThree from './components/BlogThree.jsx'
+import ENBlogThree from './components/ENBlogThree.jsx'
+import ENBlogTwo from './components/ENBlogTwo.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 import { Helmet } from 'react-helmet-async'
 import { API_URL } from './config.js'
 import '../src/style.css'
@@ -58,25 +67,49 @@ function AppContent() {
 		return () => axios.interceptors.response.eject(interceptor)
 	}, [])
 
+	function ScrollToHashElement() {
+		const { hash } = useLocation()
+
+		useEffect(() => {
+			if (hash) {
+				const element = document.querySelector(hash)
+				if (element) {
+					setTimeout(() => {
+						element.scrollIntoView({ behavior: 'smooth' })
+					}, 100) // opóźnienie pozwala na załadowanie elementu
+				}
+			}
+		}, [hash])
+
+		return null
+	}
+
 	return (
 		<>
 			<Helmet>
-				<title>Planopia | Czas pracy, urlopy i nie tylko</title>
+				<title>Planopia</title>
 			</Helmet>
 
 			<div>
+				<ScrollToHashElement />
+				<ScrollToTop />
 				<Routes>
-					<Route
-						path="/login"
-						element={loggedIn ? <Navigate to="/" /> : <Login />}
-					/>
-					<Route path="/aplikacja-dla-firm" element={<ProductPromotion />} />
-					<Route path="/blog/jak-usprawnic-firme" element={<BlogPost />} />
+					<Route path="/login" element={loggedIn ? <Navigate to="/dashboard" /> : <Login />} />
+					<Route path="/" element={loggedIn ? <Navigate to="/dashboard" replace /> : <ProductPromotion />} />
+					<Route path="/en" element={<ENProductPromotion />} />
+					<Route path="/blog" element={<Blog />} />
+					<Route path="/en/blog" element={<ENBlog />} />
+					<Route path="/blog/ewidencja-czasu-pracy-i-urlopow" element={<BlogOne />} />
+					<Route path="/en/blog/time-tracking-and-leave-management" element={<ENBlogOne />} />
+					<Route path="/blog/integracja-z-rcp" element={<BlogTwo />} />
+					<Route path="/en/blog/time-attendance-integration" element={<ENBlogTwo />} />
+					<Route path="/blog/planowanie-urlopow" element={<BlogThree />} />
+					<Route path="/en/blog/leave-planning" element={<ENBlogThree />} />
 					<Route path="/set-password/:token" element={<SetPassword />} />
 					<Route path="/reset-password" element={<ResetPassword />} />
 					<Route path="/new-password/:token" element={<NewPassword />} />
 					<Route element={<ProtectedRoute isLoggedIn={loggedIn} handleLogout={logout} />}>
-						<Route path="/" element={<Dashboard />} />
+						<Route path="/dashboard" element={<Dashboard />} />
 						<Route path="/create-user" element={<CreateUser />} />
 						<Route path="/leave-request" element={<LeaveRequestForm />} />
 						<Route
@@ -133,21 +166,9 @@ function AppContent() {
 								)
 							}
 						/>
-						<Route
-							path="/leave-request-pdf-preview"
-							element={<LeaveRequestPDFPreview />}
-						/>
+						<Route path="/leave-request-pdf-preview" element={<LeaveRequestPDFPreview />} />
 						<Route path="/edit-profile" element={<ChangePassword />} />
-						<Route
-							path="/logs"
-							element={
-								['Admin'].some(r => role.includes(r)) ? (
-									<Logs />
-								) : (
-									<Navigate to="/" />
-								)
-							}
-						/>
+						<Route path="/logs" element={['Admin'].some(r => role.includes(r)) ? <Logs /> : <Navigate to="/" />} />
 						<Route
 							path="/work-calendars/:userId"
 							element={
@@ -207,10 +228,7 @@ function AppContent() {
 								)
 							}
 						/>
-						<Route
-							path="/all-leave-plans"
-							element={<AdminAllLeaveCalendar />}
-						/>
+						<Route path="/all-leave-plans" element={<AdminAllLeaveCalendar />} />
 					</Route>
 				</Routes>
 			</div>

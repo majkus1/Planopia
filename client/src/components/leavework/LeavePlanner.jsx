@@ -56,7 +56,7 @@ function LeavePlanner() {
 
 			if (isSelected) {
 				await axios.delete(`${API_URL}/api/users/leave-plans`, {
-					data: { date: formattedDate }
+					data: { date: formattedDate },
 				})
 				setSelectedDates(selectedDates.filter(d => d !== formattedDate))
 			} else {
@@ -71,7 +71,7 @@ function LeavePlanner() {
 	const removeDate = async date => {
 		try {
 			await axios.delete(`${API_URL}/api/users/leave-plans`, {
-				data: { date }
+				data: { date },
 			})
 			setSelectedDates(selectedDates.filter(d => d !== date))
 		} catch (error) {
@@ -94,93 +94,108 @@ function LeavePlanner() {
 					<Loader />
 				</div>
 			) : (
-			<div style={{ padding: '20px' }} id="leave-planner">
-				<h3>{t('leaveplanner.mainheader')}</h3>
-				<hr />
-				<div style={{ marginBottom: '20px' }}>
-					<h4>{t('leaveplanner.header')}</h4>
-					<ul style={{ listStyle: 'none', padding: 0 }}>
-						{selectedDates.map(date => (
-							<li
-								key={date}
-								style={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									alignItems: 'center',
-									padding: '5px 10px',
-									border: '1px solid #ddd',
-									marginBottom: '5px',
-									backgroundColor: '#f0f0f0',
-									maxWidth: '300px',
-								}}>
-								{date}
-								<button
+				<div style={{ padding: '20px' }} id="leave-planner">
+					<h3>{t('leaveplanner.mainheader')}</h3>
+					<hr />
+					<div style={{ marginBottom: '20px' }}>
+						<h4>{t('leaveplanner.header')}</h4>
+						<ul style={{ listStyle: 'none', padding: 0 }}>
+							{selectedDates.map(date => (
+								<li
+									key={date}
 									style={{
-										background: 'red',
-										color: 'white',
-										border: 'none',
-										borderRadius: '5px',
-										cursor: 'pointer',
+										display: 'flex',
+										justifyContent: 'space-between',
+										alignItems: 'center',
 										padding: '5px 10px',
-									}}
-									onClick={() => removeDate(date)}>
-									X
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>
+										border: '1px solid #ddd',
+										marginBottom: '5px',
+										backgroundColor: '#f0f0f0',
+										maxWidth: '300px',
+									}}>
+									{/* {date} */}
+									{(() => {
+										const d = new Date(date)
+										return `${d.getDate().toString().padStart(2, '0')}-${(d.getMonth() + 1)
+											.toString()
+											.padStart(2, '0')}-${d.getFullYear()}`
+									})()}
 
-				<div className="calendar-controls">
-					<label>
-						{t('workcalendar.monthlabel')}
-						<select value={currentMonth} onChange={handleMonthSelect} style={{ marginLeft: '5px' }}>
-							{Array.from({ length: 12 }, (_, i) => (
-								<option key={i} value={i}>
-									{new Date(0, i)
-										.toLocaleString(i18n.resolvedLanguage, { month: 'long' })
-										.replace(/^./, str => str.toUpperCase())}
-								</option>
+									<button
+										style={{
+											background: 'red',
+											color: 'white',
+											border: 'none',
+											borderRadius: '5px',
+											cursor: 'pointer',
+											padding: '5px 10px',
+										}}
+										onClick={() => removeDate(date)}>
+										X
+									</button>
+								</li>
 							))}
-						</select>
-					</label>
-					<label style={{ marginLeft: '10px' }}>
-						{t('workcalendar.yearlabel')}
-						<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }}>
-							{Array.from({ length: 20 }, (_, i) => {
-								const year = new Date().getFullYear() - 10 + i
-								return (
-									<option key={year} value={year}>
-										{year}
-									</option>
-								)
-							})}
-						</select>
-					</label>
-				</div>
+						</ul>
+					</div>
 
-				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-					<FullCalendar
-						plugins={[dayGridPlugin, interactionPlugin]}
-						initialView="dayGridMonth"
-						initialDate={new Date()}
-						// locale="pl"
-						locale={i18n.resolvedLanguage}
-						height="auto"
-						firstDay={1}
-						showNonCurrentDates={false}
-						events={selectedDates.map(date => ({
-							title: t('leaveplanner.vactiontitle'),
-							start: date,
-							allDay: true,
-							backgroundColor: 'blue',
-						}))}
-						dateClick={info => toggleDate(info.dateStr)}
-						ref={calendarRef}
-						datesSet={handleMonthChange}
-					/>
+					<div className="calendar-controls flex flex-wrap gap-4 items-center" style={{ marginTop: '40px' }}>
+						<label className="flex items-center space-x-2">
+							{t('workcalendar.monthlabel')}
+							<select
+								value={currentMonth}
+								onChange={handleMonthSelect}
+								style={{ marginLeft: '5px' }}
+								className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+								{Array.from({ length: 12 }, (_, i) => (
+									<option key={i} value={i}>
+										{new Date(0, i)
+											.toLocaleString(i18n.resolvedLanguage, { month: 'long' })
+											.replace(/^./, str => str.toUpperCase())}
+									</option>
+								))}
+							</select>
+						</label>
+						<label style={{ marginLeft: '10px' }} className="flex items-center space-x-2">
+							{t('workcalendar.yearlabel')}
+							<select
+								value={currentYear}
+								onChange={handleYearSelect}
+								style={{ marginLeft: '5px' }}
+								className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+								{Array.from({ length: 20 }, (_, i) => {
+									const year = new Date().getFullYear() - 10 + i
+									return (
+										<option key={year} value={year}>
+											{year}
+										</option>
+									)
+								})}
+							</select>
+						</label>
+					</div>
+
+					<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+						<FullCalendar
+							plugins={[dayGridPlugin, interactionPlugin]}
+							initialView="dayGridMonth"
+							initialDate={new Date()}
+							// locale="pl"
+							locale={i18n.resolvedLanguage}
+							height="auto"
+							firstDay={1}
+							showNonCurrentDates={false}
+							events={selectedDates.map(date => ({
+								title: t('leaveplanner.vactiontitle'),
+								start: date,
+								allDay: true,
+								backgroundColor: 'blue',
+							}))}
+							dateClick={info => toggleDate(info.dateStr)}
+							ref={calendarRef}
+							datesSet={handleMonthChange}
+						/>
+					</div>
 				</div>
-			</div>
 			)}
 		</>
 	)

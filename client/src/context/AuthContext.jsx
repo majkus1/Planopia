@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
 	const location = useLocation()
 
-	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/aplikacja-dla-firm', '/blog/jak-usprawnic-firme']
+	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/pl', '/en']
 
 	useEffect(() => {
 		if (publicPaths.includes(location.pathname)) {

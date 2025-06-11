@@ -8,6 +8,8 @@
 	margin: 0 auto;
 }
 
+@import 'tailwindcss';
+
 @keyframes fadeInUp {
 	0% {
 		opacity: 0;
@@ -249,7 +251,7 @@
 	font-optical-sizing: auto;
 	font-weight: 100;
 	font-style: normal;
-	color: white !important;
+	color: rgb(0, 0, 0) !important;
 	letter-spacing: 3.5px;
 	margin-bottom: 0;
 	font-size: 25px !important;
@@ -354,7 +356,7 @@ span {
 	right: 10px;
 	top: 10px;
 	background-color: transparent;
-	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
 	border: 1px solid transparent;
 	width: 45px;
 	height: 39px;
@@ -379,8 +381,8 @@ span {
 
 .btns-pages a:hover {
 	border: 2px solid white;
-	background: transparent;
-	color: white;
+	background: white;
+	color: rgb(5, 5, 5);
 }
 
 .admins-links {
@@ -557,6 +559,10 @@ select {
 	display: flex;
 	justify-content: center;
 	height: 50px;
+	background-color: #f5f9ff;
+	-webkit-box-shadow: -1px 14px 15px -6px rgba(149, 153, 205, 1);
+	-moz-box-shadow: -1px 14px 15px -6px rgba(149, 153, 205, 1);
+	box-shadow: -1px 14px 15px -6px rgba(149, 153, 205, 1);
 }
 
 .login-logo div img {
@@ -632,6 +638,9 @@ select {
 	}
 	.sidebar {
 		width: 260px;
+		-webkit-box-shadow: 13px 0px 3px -11px rgba(149, 153, 205, 1);
+		-moz-box-shadow: 13px 0px 3px -11px rgba(149, 153, 205, 1);
+		box-shadow: 13px 0px 3px -11px rgba(149, 153, 205, 1);
 	}
 	.closesidebar {
 		display: none;
@@ -691,7 +700,7 @@ select {
 }
 
 h5 {
-	color: white !important;
+	color: rgb(0, 0, 0) !important;
 }
 
 .reset-password-container,
@@ -779,9 +788,12 @@ td {
 	margin-top: 30px;
 }
 
+.resume-month-work label {
+	display: flex;
+}
+
 .resume-month-work h3 {
 	font-size: 20px;
-	text-decoration: underline;
 }
 
 .fc .fc-daygrid-body {
@@ -1194,6 +1206,10 @@ input {
 	max-width: 400px !important;
 }
 
+#formleave input {
+	max-width: 100% !important;
+}
+
 .input-group-text {
 	display: none;
 }
@@ -1250,7 +1266,7 @@ input {
 	}
 
 	#calendars-works-review .fc-dayGridMonth-view {
-		overflow: scroll;
+		overflow: scroll !important;
 		scrollbar-width: thin;
 		scrollbar-color: #2169dc #f1f1f1;
 	}
@@ -1503,4 +1519,155 @@ input {
 
 .h3resume {
 	font-size: 16px !important;
+}
+
+@media (max-width: 768px) {
+	#planopiaheader nav {
+		display: none;
+	}
+
+	#planopia-welcome {
+		padding-top: 15px;
+	}
+
+	#planopia-welcome > div > div {
+		gap: 20px !important;
+	}
+}
+
+#planopiaheader .companyname {
+	font-size: 25px !important;
+	letter-spacing: 3px;
+}
+
+#planopia-welcome h1 {
+	font-size: 30px !important;
+}
+
+.planopiaimgparallax {
+	display: block;
+}
+
+.ordering {
+	order: 0;
+}
+
+@media (max-width: 768px) {
+	.planopiaimgparallax {
+		display: none;
+	}
+	.ordering {
+		order: 2;
+	}
+
+	.my-person {
+		padding-top: 15px !important;
+	}
+
+	/* #kontakt, #cennik {
+		padding-top: 25px !important;
+	} */
+}
+
+.planopiaimgaboutmobile {
+	margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+	.planopiaimgaboutmobile {
+		display: none;
+	}
+	.navdesktop {
+		display: flex !important;
+		align-items: center;
+	}
+	.blogh1 {
+		text-align: center;
+	}
+}
+
+@media (min-width: 1024px) {
+	#planopia-welcome h1 {
+		font-size: 45px !important;
+	}
+}
+
+.sidebar {
+	background-color: #e8ecf1 !important;
+}
+
+.navbar {
+	background-color: #e8ecf1 !important;
+	-webkit-box-shadow: 1px 13px 3px -11px rgba(149, 153, 205, 1);
+	-moz-box-shadow: 1px 13px 3px -11px rgba(149, 153, 205, 1);
+	box-shadow: 1px 13px 3px -11px rgba(149, 153, 205, 1);
+}
+
+#leave-request-form ul li,
+#leave-requests-review ul li {
+	-webkit-box-shadow: 0px 0px 8px 2px rgba(149, 153, 205, 1);
+	-moz-box-shadow: 0px 0px 8px 2px rgba(149, 153, 205, 1);
+	box-shadow: 0px 0px 8px 2px rgba(149, 153, 205, 1);
+	padding: 10px;
+	max-width: 500px;
+}
+
+.resume-month-work {
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	padding-top: 10px;
+	border-radius: 8px;
+}
+
+@media (max-width: 1200px) {
+	.resume-month-work {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+	.fc-dayGridMonth-view {
+		border-radius: 8px !important;
+	}
+}
+
+.fc-dayGridMonth-view {
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	box-shadow: 0px 0px 3px 0px rgba(127, 146, 194, 1);
+	border-radius: 50px;
+}
+
+#addusers label {
+	font-size: 16px;
+}
+
+.companyfooter {
+	font-size: 30px !important;
+	letter-spacing: 5px;
+}
+
+.myimageface {
+	border-radius: 50px;
+	width: 80px;
+}
+
+.mylinkedin {
+	border-radius: 30px;
+	width: 30px;
+	margin-right: 5px;
+}
+
+.languagechoose img {
+	width: 25px;
+	height: 25px;
+	transition: all 0.3s;
+}
+
+.languagechoose img:hover {
+	transform: scale(1.2);
+}
+
+.logoinmenu {
+	text-decoration: none !important;
+	color: black !important;
 }

@@ -85,14 +85,11 @@ function MonthlyCalendar() {
 
 	const toggleConfirmationStatus = async () => {
 		try {
-			await axios.post(
-				`${API_URL}/api/users/workdays/confirm`,
-				{
-					month: currentMonth,
-					year: currentYear,
-					isConfirmed: !isConfirmed,
-				}
-			)
+			await axios.post(`${API_URL}/api/users/workdays/confirm`, {
+				month: currentMonth,
+				year: currentYear,
+				isConfirmed: !isConfirmed,
+			})
 			setIsConfirmed(!isConfirmed)
 		} catch (error) {
 			console.error('Failed to toggle confirmation status:', error)
@@ -257,12 +254,14 @@ function MonthlyCalendar() {
 			<div className="col-xl-9">
 				<h3>{t('workcalendar.h3')}</h3>
 				<hr />
-				
 
-				<div className="calendar-controls">
-					<label>
-						{t('workcalendar.monthlabel')}
-						<select value={currentMonth} onChange={handleMonthSelect} style={{ marginLeft: '5px' }}>
+				<div className="calendar-controls flex flex-wrap gap-4 items-center">
+					<label className="flex items-center space-x-2">
+						<span className="text-gray-700">{t('workcalendar.monthlabel')}</span>
+						<select
+							value={currentMonth}
+							onChange={handleMonthSelect}
+							className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 							{Array.from({ length: 12 }, (_, i) => (
 								<option key={i} value={i}>
 									{new Date(0, i)
@@ -272,9 +271,13 @@ function MonthlyCalendar() {
 							))}
 						</select>
 					</label>
-					<label style={{ marginLeft: '10px' }}>
-						{t('workcalendar.yearlabel')}
-						<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }}>
+
+					<label className="flex items-center space-x-2">
+						<span className="text-gray-700">{t('workcalendar.yearlabel')}</span>
+						<select
+							value={currentYear}
+							onChange={handleYearSelect}
+							className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 							{Array.from({ length: 20 }, (_, i) => {
 								const year = new Date().getFullYear() - 10 + i
 								return (
@@ -329,10 +332,13 @@ function MonthlyCalendar() {
 					displayEventTime={false}
 					datesSet={handleMonthChange}
 					height="auto"
+					className="rounded-2xl overflow-hidden shadow-md"
 				/>
 			</div>
 			<div className="col-xl-3 resume-month-work">
-			<h3 className="h3resume" style={{ marginBottom: '0px', textDecoration: "underline" }}>{t('workcalendar.confirmmonth')}</h3>
+				<h3 className="h3resume" style={{ marginBottom: '0px' }}>
+					{t('workcalendar.confirmmonth')}
+				</h3>
 				<label style={{ marginLeft: '10px', marginTop: '15px', marginBottom: '35px' }}>
 					<img src="/img/arrow-right.png" alt="" style={{ width: '40px', marginRight: '10px', marginTop: '-10px' }} />
 					<input
@@ -365,9 +371,8 @@ function MonthlyCalendar() {
 					{t('workcalendar.allfrommonth5')} {totalOtherAbsences}
 				</p>
 			</div>
-			
 
-			<Modal
+			{/* <Modal
 				isOpen={modalIsOpen}
 				onRequestClose={() => {
 					setModalIsOpen(false)
@@ -446,6 +451,98 @@ function MonthlyCalendar() {
 						className="btn btn-danger">
 						Anuluj
 					</button>
+				</form>
+			</Modal> */}
+
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={() => {
+					setModalIsOpen(false)
+					resetFormFields()
+				}}
+				style={{
+					overlay: {
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						backgroundColor: 'rgba(0, 0, 0, 0.5)',
+					},
+					content: {
+						position: 'relative',
+						inset: 'unset',
+						margin: '0',
+						maxWidth: '100%',
+						width: '360px',
+						borderRadius: '1rem',
+						padding: '2rem',
+					},
+				}}
+				contentLabel="Dodaj godziny pracy lub nieobecność">
+				<h2 className="text-xl font-semibold mb-2 text-gray-800">{t('workcalendar.h2modal')}</h2>
+
+				<form onSubmit={handleSubmit} className="space-y-4">
+					<div>
+						<input
+							type="number"
+							min="1"
+							max="24"
+							placeholder={t('workcalendar.placeholder1')}
+							value={hoursWorked}
+							onChange={e => setHoursWorked(e.target.value)}
+							className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+
+					<div>
+						<input
+							type="number"
+							min="0"
+							placeholder={t('workcalendar.placeholder2')}
+							value={additionalWorked}
+							onChange={e => setAdditionalWorked(e.target.value)}
+							className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+
+					<div>
+						<input
+							type="text"
+							placeholder={t('workcalendar.placeholder3')}
+							value={realTimeDayWorked}
+							onChange={e => setRealTimeDayWorked(e.target.value)}
+							className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+
+					<div>
+						<h2 className="text-lg font-semibold mt-4 mb-2 text-gray-800">{t('workcalendar.h2modalabsence')}</h2>
+						<input
+							type="text"
+							placeholder={t('workcalendar.placeholder4')}
+							value={absenceType}
+							onChange={e => setAbsenceType(e.target.value)}
+							className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+
+					{errorMessage && <div className="text-red-600 text-sm mt-2">{errorMessage}</div>}
+
+					<div className="flex justify-end gap-3 pt-4">
+						<button
+							type="submit"
+							className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+							Zapisz
+						</button>
+						<button
+							type="button"
+							onClick={() => {
+								setModalIsOpen(false)
+								resetFormFields()
+							}}
+							className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
+							Anuluj
+						</button>
+					</div>
 				</form>
 			</Modal>
 		</div>

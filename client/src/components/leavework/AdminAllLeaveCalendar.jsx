@@ -116,10 +116,10 @@ function AdminAllLeaveCalendar() {
 						</li>
 					))}
 				</ul>
-				<div className="calendar-controls">
-					<label>
+				<div className="calendar-controls flex flex-wrap gap-4 items-center" style={{ marginTop: '40px' }}>
+					<label className="flex items-center space-x-2">
 					{t('workcalendar.monthlabel')}
-						<select value={currentMonth} onChange={handleMonthSelect} style={{ marginLeft: '5px' }}>
+						<select value={currentMonth} onChange={handleMonthSelect} style={{ marginLeft: '5px' }} className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 							{Array.from({ length: 12 }, (_, i) => (
 								<option key={i} value={i}>
 									{new Date(0, i)
@@ -129,9 +129,9 @@ function AdminAllLeaveCalendar() {
 							))}
 						</select>
 					</label>
-					<label style={{ marginLeft: '10px' }}>
+					<label style={{ marginLeft: '10px' }} className="flex items-center space-x-2">
 					{t('workcalendar.yearlabel')}
-						<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }}>
+						<select value={currentYear} onChange={handleYearSelect} style={{ marginLeft: '5px' }} className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 							{Array.from({ length: 20 }, (_, i) => {
 								const year = new Date().getFullYear() - 10 + i
 								return (

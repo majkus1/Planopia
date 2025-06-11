@@ -20,7 +20,7 @@ function Login() {
 	// const [rememberMe, setRememberMe] = useState(false)
 	const navigate = useNavigate()
 	const location = useLocation()
-	const from = location.state?.from?.pathname || '/'
+	const from = location.state?.from?.pathname || '/dashboard'
 	const { t, i18n } = useTranslation()
 	const { setLoggedIn, setRole, setUsername } = useAuth()
 
@@ -83,63 +83,68 @@ function Login() {
 			</div>
 			<div className="login-box">
 				<div className="login-logo">
-					<div style={{ backgroundColor: '#213555' }}>
+					<div>
 						<p className="company-txt">Planopia</p>
 					</div>
 				</div>
 				<div className="card boxlog">
 					<div className="card-body login-card-body padr">
-						<form onSubmit={handleLogin}>
-							<div className="input-group mb-3">
-								<input
-									type="email"
-									className="form-control"
-									placeholder="Email"
-									value={usernameInput}
-									onChange={e => setUsernameInput(e.target.value.toLowerCase())}
-								/>
-								<div className="input-group-append">
-									<div className="input-group-text">
-										<span className="fas fa-envelope"></span>
-									</div>
-								</div>
-							</div>
-							<div className="input-group mb-3">
-								<input
-									type="password"
-									className="form-control"
-									placeholder={t('login.password')}
-									value={password}
-									onChange={e => setPassword(e.target.value)}
-								/>
-								<div className="input-group-append">
-									<div className="input-group-text">
-										<span className="fas fa-lock"></span>
-									</div>
-								</div>
-							</div>
+						<form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
+							{/* Email */}
 							<div>
-								{/* <input
-									type="checkbox"
-									id="rememberMe"
-									checked={rememberMe}
-									onChange={e => setRememberMe(e.target.checked)}
-								/> */}
-								{/* <label
-									htmlFor="rememberMe"
-									style={{ marginLeft: '5px', fontWeight: 'normal', cursor: 'pointer', color: 'black' }}>
-									Zapamiętaj mnie
-								</label> */}
+								
+								<div className="relative">
+									<input
+										type="email"
+										id="email"
+										placeholder="Email"
+										value={usernameInput}
+										onChange={e => setUsernameInput(e.target.value.toLowerCase())}
+										required
+										className="w-full border border-gray-300 rounded-md px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+									/>
+									<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+										<i className="fas fa-envelope" />
+									</div>
+								</div>
 							</div>
-							<div className="btnlog">
-								<button type="submit" className="btn btn-success btn-block" style={{ marginBottom: '10px' }}>
+
+							{/* Password */}
+							<div>
+								
+								<div className="relative">
+									<input
+										type="password"
+										id="password"
+										placeholder={t('login.password')}
+										value={password}
+										onChange={e => setPassword(e.target.value)}
+										required
+										className="w-full border border-gray-300 rounded-md px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+									/>
+									<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+										<i className="fas fa-lock" />
+									</div>
+								</div>
+							</div>
+
+							{/* Login button */}
+							<div>
+								<button
+									type="submit"
+									className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
 									{t('login.loginto')}
 								</button>
 							</div>
-							<Link to="/reset-password" style={{ textDecoration: 'none', color: 'black' }}>
-								{t('login.forgotpass')}
-							</Link>
+
+							{/* Forgot password */}
+							<div className="text-center">
+								<Link to="/reset-password" className="text-sm text-blue-600 hover:underline">
+									{t('login.forgotpass')}
+								</Link>
+							</div>
 						</form>
+
 						{errorMessage && (
 							<p className="mt-3 text-danger" style={{ textAlign: 'center' }}>
 								{errorMessage}
