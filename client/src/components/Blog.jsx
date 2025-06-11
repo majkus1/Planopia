@@ -59,7 +59,10 @@ function Blog() {
 			{/* HEADER + MENU */}
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -233,6 +236,30 @@ function Blog() {
 							</p>
 							<RouterLink
 								to="/blog/planowanie-urlopow"
+								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
+								Czytaj więcej
+							</RouterLink>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section className="px-4 py-16 bg-white">
+				<div className="max-w-7xl mx-auto">
+					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+						{/* Karta wpisu 1 */}
+						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
+							<img src="/img/worktimeblog.png" alt="Tytuł wpisu 4" className="rounded-md mb-4 h-48 object-cover" />
+							<h3 className="text-xl font-semibold text-gray-800 mb-2">
+								Jak prosto i wygodnie ewidencjonować czas pracy pracowników?
+							</h3>
+							<p className="text-gray-600 flex-1">
+								Rzetelna ewidencja czasu pracy to obowiązek każdego pracodawcy, ale też kluczowy element sprawnego
+								zarządzania zespołem. Niezależnie od branży czy wielkości firmy, brak przejrzystości w rejestrowaniu
+								godzin pracy może prowadzić do nieporozumień, błędów płacowych i nieefektywności.
+							</p>
+							<RouterLink
+								to="/blog/ewidencja-czasu-pracy"
 								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
 								Czytaj więcej
 							</RouterLink>

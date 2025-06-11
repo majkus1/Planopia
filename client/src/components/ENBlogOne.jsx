@@ -9,10 +9,10 @@ function ENBlogOne() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'en' }}>
-				<title>How to Track Work Hours Effectively? Discover the Planopia App</title>
+				<title>Planopia – work time and leave management in one place</title>
 				<meta
 					name="description"
-					content="Discover the benefits of Planopia – a modern web application for work time tracking, leave management, and streamlining HR processes."
+					content="Discover all the features of the Planopia app. Track work hours, manage leave requests, report absences, and integrate with RCP systems."
 				/>
 				<meta
 					name="keywords"
@@ -21,7 +21,7 @@ function ENBlogOne() {
 				<meta name="author" content="Michał Lipka" />
 				<meta name="robots" content="index, follow" />
 				<link rel="canonical" href="https://planopia.pl/en/blog/time-tracking-and-leave-management" />
-                <link rel="alternate" href="https://planopia.pl/en/blog/time-tracking-and-leave-management" hreflang="en" />
+				<link rel="alternate" href="https://planopia.pl/en/blog/time-tracking-and-leave-management" hreflang="en" />
 				<link rel="alternate" href="https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow" hreflang="pl" />
 				<meta property="og:title" content="How to Track Work Hours Effectively? Discover the Planopia App" />
 				<meta
@@ -69,7 +69,10 @@ function ENBlogOne() {
 
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/en" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/en"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -174,7 +177,10 @@ function ENBlogOne() {
 							onClick={toggleMenu}>
 							Login
 						</RouterLink>
-						<RouterLink to="/blog/ewidencja-czasu-pracy-i-urlopow" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
+						<RouterLink
+							to="/blog/ewidencja-czasu-pracy-i-urlopow"
+							className="flex items-center languagechoose"
+							style={{ marginTop: '15px' }}>
 							<img src="/img/poland.png" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>

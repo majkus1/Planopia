@@ -106,7 +106,10 @@ function ProductPromotion() {
 			{/* HEADER + MENU */}
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -287,6 +290,10 @@ function ProductPromotion() {
 						<li>
 							<strong>Responsywność</strong> – aplikacja działa poprawnie i wygodnie również na urządzeniach mobilnych
 							(smartfony, tablety).
+						</li>
+						<li>
+							<strong>Aplikacja PWA</strong> – dodaj Planopię do ekranu głównego swojego telefonu i korzystaj z niej jak
+							z pełnoprawnej aplikacji mobilnej – bez pobierania ze sklepu.
 						</li>
 						<li>
 							<strong>Integracja z systemami RCP</strong> – możliwość dostosowania aplikacji do importu danych z

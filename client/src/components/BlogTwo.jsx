@@ -217,6 +217,7 @@ function BlogTwo() {
 					<li>Oszczędność czasu dla działu kadr i managerów zespołów.</li>
 					<li>Możliwość dalszego korzystania z istniejących urządzeń i infrastruktury RCP.</li>
 					<li>Centralne zarządzanie czasem pracy, nieobecnościami i urlopami – wszystko w jednym miejscu.</li>
+					<li>Wygodny dostęp na telefonie – aplikację można dodać do ekranu głównego i korzystać z niej jak z normalnej aplikacji, bez pobierania ze sklepu.</li>
 				</ul>
 
 				<h2 className="text-2xl font-semibold mb-3">Dla kogo jest ta funkcja?</h2>

@@ -60,7 +60,10 @@ function ENBlog() {
 			{/* HEADER + MENU */}
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/en" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/en"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -189,7 +192,11 @@ function ENBlog() {
 					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{/* Karta wpisu 1 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/mockupdesktop.png" alt="Title of article1" className="rounded-md mb-4 h-48 object-cover" />
+							<img
+								src="/img/mockupdesktop.png"
+								alt="Title img of article1"
+								className="rounded-md mb-4 h-48 object-cover"
+							/>
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Planopia – modern software for employee time tracking and leave management
 							</h3>
@@ -206,7 +213,7 @@ function ENBlog() {
 
 						{/* Karta wpisu 2 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/rcpblog.png" alt="Title of article 2" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/rcpblog.png" alt="Title img of article 2" className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Integrate Your Time & Attendance System (T&A) with Planopia – Take Full Control of Work Time Tracking
 							</h3>
@@ -225,7 +232,7 @@ function ENBlog() {
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
 							<img
 								src="/img/planvacationblog.png"
-								alt="Title of article 3"
+								alt="Title img of article 3"
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -237,6 +244,34 @@ function ENBlog() {
 							</p>
 							<RouterLink
 								to="/en/blog/leave-planning"
+								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
+								Read more
+							</RouterLink>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section className="px-4 py-16 bg-white">
+				<div className="max-w-7xl mx-auto">
+					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+						{/* Karta wpisu 1 */}
+						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
+							<img
+								src="/img/worktimeblog.png"
+								alt="Title img of article 4"
+								className="rounded-md mb-4 h-48 object-cover"
+							/>
+							<h3 className="text-xl font-semibold text-gray-800 mb-2">
+								How to easily and efficiently track employee work time?
+							</h3>
+							<p className="text-gray-600 flex-1">
+								Accurate work time tracking is a legal obligation for every employer and a key element of effective team
+								management. Regardless of the industry or company size, a lack of transparency in recording working
+								hours can lead to misunderstandings, payroll errors, and inefficiencies.
+							</p>
+							<RouterLink
+								to="/en/blog/work-time-tracking"
 								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
 								Read more
 							</RouterLink>

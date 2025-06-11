@@ -9,10 +9,10 @@ function BlogOne() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'pl' }}>
-				<title>Jak skutecznie ewidencjonować czas pracy? Poznaj aplikację Planopia</title>
+				<title>Planopia – ewidencja czasu pracy i urlopów w jednym miejscu</title>
 				<meta
 					name="description"
-					content="Poznaj zalety aplikacji Planopia – nowoczesnego systemu do ewidencji czasu pracy, zarządzania urlopami i usprawniania procesów kadrowych."
+					content="Poznaj wszystkie funkcje aplikacji Planopia. Ewidencjonuj czas pracy, planuj urlopy, zgłaszaj nieobecności i integruj system z RCP."
 				/>
 				<meta
 					name="keywords"
@@ -21,7 +21,7 @@ function BlogOne() {
 				<meta name="author" content="Michał Lipka" />
 				<meta name="robots" content="index, follow" />
 				<link rel="canonical" href="https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow" />
-                <link rel="alternate" href="https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow" hreflang="pl" />
+				<link rel="alternate" href="https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow" hreflang="pl" />
 				<link rel="alternate" href="https://planopia.pl/en/blog/time-tracking-and-leave-management" hreflang="en" />
 				<meta property="og:title" content="Jak skutecznie ewidencjonować czas pracy? Poznaj aplikację Planopia" />
 				<meta
@@ -69,7 +69,10 @@ function BlogOne() {
 
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -174,7 +177,10 @@ function BlogOne() {
 							onClick={toggleMenu}>
 							Logowanie
 						</RouterLink>
-						<RouterLink to="/en/blog/time-tracking-and-leave-management" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
+						<RouterLink
+							to="/en/blog/time-tracking-and-leave-management"
+							className="flex items-center languagechoose"
+							style={{ marginTop: '15px' }}>
 							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
@@ -190,7 +196,11 @@ function BlogOne() {
 								Planopia – nowoczesna aplikacja do ewidencji czasu pracy i zarządzania urlopami
 							</h1>
 						</div>
-						<img src="/img/mockupdesktop.png" alt="mockup naszej aplikacji na komputerze" className="rounded-xl shadow-lg" />
+						<img
+							src="/img/mockupdesktop.png"
+							alt="mockup naszej aplikacji na komputerze"
+							className="rounded-xl shadow-lg"
+						/>
 					</div>
 				</div>
 			</section>
@@ -262,6 +272,13 @@ function BlogOne() {
 					<a href="/#test" className="underline">
 						przetestuj Planopię za darmo
 					</a>{' '}
+				</p>
+
+				<p className="mt-8 text-gray-700">
+					Chcesz dowiedzieć się więcej o cyfrowej ewidencji czasu pracy? Przeczytaj nasz poradnik:{' '}
+					<a href="/blog/ewidencja-czasu-pracy" className="text-blue-600 underline">
+						Jak prosto i wygodnie ewidencjonować czas pracy?
+					</a>
 				</p>
 			</article>
 

@@ -102,7 +102,10 @@ function ENProductPromotion() {
 			{/* HEADER + MENU */}
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-					<RouterLink to="/en" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
+					<RouterLink
+						to="/en"
+						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
+						style={{ marginBottom: '0px' }}>
 						Planopia
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
@@ -277,6 +280,10 @@ function ENProductPromotion() {
 						</li>
 						<li>
 							<strong>Responsive design</strong> – works flawlessly on mobile devices (smartphones, tablets).
+						</li>
+						<li>
+							<strong>PWA application</strong> – add Planopia to your phone’s home screen and use it like a
+							full-featured mobile app – no download required from the store.
 						</li>
 						<li>
 							<strong>Integration with RCP systems</strong> – ability to import data from external time tracking systems

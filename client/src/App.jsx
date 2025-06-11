@@ -28,6 +28,8 @@ import ENBlog from './components/ENBlog.jsx'
 import BlogOne from './components/BlogOne.jsx'
 import BlogTwo from './components/BlogTwo.jsx'
 import BlogThree from './components/BlogThree.jsx'
+import BlogFour from './components/BlogFour.jsx'
+import ENBlogFour from './components/ENBlogFour.jsx'
 import ENBlogThree from './components/ENBlogThree.jsx'
 import ENBlogTwo from './components/ENBlogTwo.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
@@ -105,6 +107,8 @@ function AppContent() {
 					<Route path="/en/blog/time-attendance-integration" element={<ENBlogTwo />} />
 					<Route path="/blog/planowanie-urlopow" element={<BlogThree />} />
 					<Route path="/en/blog/leave-planning" element={<ENBlogThree />} />
+					<Route path="/blog/ewidencja-czasu-pracy" element={<BlogFour />} />
+					<Route path="/en/blog/work-time-tracking" element={<ENBlogFour />} />
 					<Route path="/set-password/:token" element={<SetPassword />} />
 					<Route path="/reset-password" element={<ResetPassword />} />
 					<Route path="/new-password/:token" element={<NewPassword />} />

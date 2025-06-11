@@ -223,6 +223,7 @@ function ENBlogTwo() {
 					<li>Saved time for HR departments and team managers.</li>
 					<li>No need to replace your current T&A system – continue using your existing infrastructure.</li>
 					<li>Centralized management of work time, absences, and leave – all in one platform.</li>
+					<li>Easy access on your phone – you can add the app to your home screen and use it like a regular mobile app, without downloading it from a store.</li>
 				</ul>
 
 				<h2 className="text-2xl font-semibold mb-3">Who is it for?</h2>
