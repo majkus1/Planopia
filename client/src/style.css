@@ -790,6 +790,7 @@ td {
 
 .resume-month-work label {
 	display: flex;
+	align-items: center !important;
 }
 
 .resume-month-work h3 {
