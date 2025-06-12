@@ -1695,3 +1695,7 @@ input {
 	background-color: #007bff6f;
 	opacity: 0.5;
 }
+
+div.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard > div.fc-header-toolbar.fc-toolbar {
+	align-items: center !important;
+}
