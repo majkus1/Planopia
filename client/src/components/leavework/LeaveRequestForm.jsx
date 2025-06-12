@@ -181,7 +181,7 @@ function LeaveRequestForm() {
 						</div>
 
 						{/* Daty od-do */}
-						<div>
+						<div style={{ maxWidth: '400px', marginRight: '2px' }}>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.datefrom')}</label>
 							<input
 								type="date"

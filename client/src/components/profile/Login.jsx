@@ -84,7 +84,7 @@ function Login() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<p className="company-txt">Planopia</p>
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card boxlog">

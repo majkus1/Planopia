@@ -63,7 +63,7 @@ function Blog() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						Planopia
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -113,7 +113,7 @@ function Blog() {
 					</nav>
 
 					<button
-						className="md:hidden text-gray-700 text-3xl focus:outline-none"
+						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
 						style={{ fontSize: '25px' }}>
 						{menuOpen ? '✕' : '☰'}
@@ -121,7 +121,7 @@ function Blog() {
 				</div>
 				{menuOpen && (
 					<div
-						className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
+						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
 						<RouterLink
 							to="/#oaplikacji"
@@ -191,13 +191,12 @@ function Blog() {
 					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{/* Karta wpisu 1 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/mockupdesktop.png" alt="Tytuł wpisu 1" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/mockupdesktop.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Planopia – nowoczesna aplikacja do ewidencji czasu pracy i zarządzania urlopami
 							</h3>
 							<p className="text-gray-600 flex-1">
-								W dzisiejszych czasach efektywne zarządzanie czasem pracy oraz nieobecnościami pracowników to klucz do
-								sukcesu każdej firmy.
+								Efektywne zarządzanie czasem pracy oraz nieobecnościami pracowników to klucz do sukcesu każdej firmy.
 							</p>
 							<RouterLink
 								to="/blog/ewidencja-czasu-pracy-i-urlopow"
@@ -208,13 +207,13 @@ function Blog() {
 
 						{/* Karta wpisu 2 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/rcpblog.png" alt="Tytuł wpisu 2" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/rcpblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Integracja z systemami RCP – wykorzystaj pełen potencjał Twojego systemu rejestracji czasu pracy
+								Integracja z systemami RCP – wykorzystaj pełen potencjał Twojego systemu
 							</h3>
 							<p className="text-gray-600 flex-1">
-								Jeśli Twoja firma korzysta z czytników kart, bramek wejściowych lub innych systemów RCP (Rejestracji
-								Czasu Pracy), nie musisz rezygnować z obecnych rozwiązań.
+								Korzystasz z czytników kart lub bramek? Sprawdź, jak połączyć je z Planopią i zautomatyzować ewidencję
+								czasu pracy.
 							</p>
 							<RouterLink
 								to="/blog/integracja-z-rcp"
@@ -225,14 +224,13 @@ function Blog() {
 
 						{/* Karta wpisu 3 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/planvacationblog.png" alt="Tytuł wpisu 3" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/planvacationblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Jak planować urlopy pracowników w firmie? Praktyczne wskazówki i narzędzia.
+								Jak planować urlopy pracowników? Praktyczne wskazówki
 							</h3>
 							<p className="text-gray-600 flex-1">
-								Planowanie urlopów pracowników to jedno z większych wyzwań dla działu HR oraz managerów zespołów.
-								Niezależnie od wielkości firmy, brak przejrzystości w dostępności pracowników może prowadzić do chaosu,
-								przestojów i frustracji.
+								Brak przejrzystości w dostępności pracowników może prowadzić do chaosu i przestojów – sprawdź, jak temu
+								zapobiec.
 							</p>
 							<RouterLink
 								to="/blog/planowanie-urlopow"
@@ -240,23 +238,15 @@ function Blog() {
 								Czytaj więcej
 							</RouterLink>
 						</div>
-					</div>
-				</div>
-			</section>
 
-			<section className="px-4 py-16 bg-white">
-				<div className="max-w-7xl mx-auto">
-					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-						{/* Karta wpisu 1 */}
+						{/* Karta wpisu 4 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/worktimeblog.png" alt="Tytuł wpisu 4" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/worktimeblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Jak prosto i wygodnie ewidencjonować czas pracy pracowników?
+								Jak prosto i wygodnie ewidencjonować czas pracy?
 							</h3>
 							<p className="text-gray-600 flex-1">
-								Rzetelna ewidencja czasu pracy to obowiązek każdego pracodawcy, ale też kluczowy element sprawnego
-								zarządzania zespołem. Niezależnie od branży czy wielkości firmy, brak przejrzystości w rejestrowaniu
-								godzin pracy może prowadzić do nieporozumień, błędów płacowych i nieefektywności.
+								Rzetelna ewidencja czasu pracy to obowiązek pracodawcy i klucz do sprawnego zarządzania zespołem.
 							</p>
 							<RouterLink
 								to="/blog/ewidencja-czasu-pracy"
@@ -269,8 +259,8 @@ function Blog() {
 			</section>
 
 			{/* FOOTER */}
-			<footer className="py-10 px-6 bg-white border-t text-center">
-				<p className="font-bold text-blue-700 companyfooter">Planopia</p>
+			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
+				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

@@ -50,7 +50,7 @@ function Sidebar() {
 		<div className="container-fluid p-0">
 			<nav className="navbar navbar-expand-lg d-md-none" style={{ paddingLeft: '15px', paddingRight: '15px' }}>
 				<Link to="/" className="navbar-brand">
-					<p className="company-txt">Planopia</p>
+					<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }}/>
 				</Link>
 				<button className="navbar-toggler" type="button" onClick={toggleMenu}>
 					<img src="/img/sort.png" style={{ width: '40px' }} alt="Menu" />
@@ -79,8 +79,8 @@ function Sidebar() {
 					))}
 				</div>
 
-				<Link to="/" className="logo-sidebar mt-2 mb-2">
-					<p className="company-txt">Planopia</p>
+				<Link to="/" className="logo-sidebar mt-2 mb-2 d-flex justify-center">
+					<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }}/>
 				</Link>
 
 				<button onClick={toggleMenu} className="closesidebar">

@@ -106,7 +106,7 @@ function ENProductPromotion() {
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						Planopia
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<ScrollLink
@@ -159,7 +159,7 @@ function ENProductPromotion() {
 					</nav>
 
 					<button
-						className="md:hidden text-gray-700 text-3xl focus:outline-none"
+						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
 						style={{ fontSize: '25px' }}>
 						{menuOpen ? '✕' : '☰'}
@@ -167,13 +167,13 @@ function ENProductPromotion() {
 				</div>
 
 				{menuOpen && (
-					<div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start">
+					<div className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start">
 						<ScrollLink
 							to="aboutapp"
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							About the App
 						</ScrollLink>
 						<ScrollLink
@@ -181,7 +181,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Pricing
 						</ScrollLink>
 						<ScrollLink
@@ -189,7 +189,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Try the App
 						</ScrollLink>
 						<ScrollLink
@@ -197,18 +197,18 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Contact
 						</ScrollLink>
 						<RouterLink
 							to="/en/blog"
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
 							onClick={toggleMenu}>
 							Blog
 						</RouterLink>
 						<RouterLink
 							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
 							onClick={toggleMenu}>
 							Login
 						</RouterLink>
@@ -224,14 +224,18 @@ function ENProductPromotion() {
 				<div className="max-w-7xl mx-auto text-left">
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
-							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-								Time tracking and leave management app.
+							<h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
+								A time tracking and leave management app.
 							</h1>
+							<h2 className="font-semibold text-gray-800 mb-2" id="underheader">
+								With Planopia, everything is in its place.
+							</h2>
+							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Simple. Light. Clear.</p>
 						</div>
 						<img
 							src="/img/planopiaheader.png"
 							alt="businessman highlighting an application"
-							className="rounded-xl shadow-lg"
+							className="rounded-xl"
 						/>
 					</div>
 				</div>
@@ -247,7 +251,7 @@ function ENProductPromotion() {
 						<strong> working time records</strong>, handle
 						<strong> leaves and absences</strong>, and improve internal communication. With an intuitive interface and
 						HR process automation, you save time, avoid mistakes, and gain full control over work organization in your
-						team. The system runs in your browser and requires no installation.
+						team.
 					</p>
 
 					<ul className="list-disc pl-4 text-gray-800 text-base space-y-2 mb-4">
@@ -269,33 +273,44 @@ function ENProductPromotion() {
 						<li>
 							<strong>PDF export</strong> – generate printable calendars and leave request forms for archiving.
 						</li>
-						<li>
-							<strong>Security</strong> – the app was designed with strong focus on data security and user privacy.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Security</strong> – the app was designed with strong focus on data security and user privacy.
 						</li>
-						<li>
-							<strong>Fast performance</strong> – the app runs smoothly even for larger teams.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Fast performance</strong> – the app runs smoothly even for larger teams.
 						</li>
-						<li>
-							<strong>Language support</strong> – the app is available in both Polish and English.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Language support</strong> – the app is available in both Polish and English.
 						</li>
 						<li>
 							<strong>Responsive design</strong> – works flawlessly on mobile devices (smartphones, tablets).
 						</li>
-						<li>
-							<strong>PWA application</strong> – add Planopia to your phone’s home screen and use it like a
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">PWA application</strong> – add Planopia to your phone’s home screen and use it like a
 							full-featured mobile app – no download required from the store.
 						</li>
-						<li>
-							<strong>Integration with RCP systems</strong> – ability to import data from external time tracking systems
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Branded appearance</strong> – customize the colors, logo, and style of the app to match your
+							company's visual identity.
+						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Dedicated subdomain and database</strong> – each company gets its own
+							isolated application environment for full privacy and customization.
+						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Integration with RCP systems</strong> – ability to import data from external time tracking systems
 							(e.g. entry/exit badge scans).
 						</li>
 					</ul>
 
-					<h2 className="text-2xl font-semibold mt-12 mb-4">Need a custom feature?</h2>
+					<h2 className="text-2xl font-semibold mt-12 mb-4" style={{ marginTop: '50px', marginBottom: '15px' }}>
+						Need a custom feature or integration?
+					</h2>
 					<p className="text-gray-700 text-base">
-						Planopia can be tailored to your company’s needs. Need an internal chat? XLSX reports? Additional
-						integrations? Or perhaps you'd like us to build a completely different IT system? Contact us – we offer
-						<strong> software customization</strong> and dedicated development services.
+						Planopia can be tailored to your company’s needs. Need an internal chat? Work schedule? XLSX reports?
+						<strong className="text-green-700"> Additional integrations?</strong> Or perhaps you'd like us to build a completely different IT system? Contact us – we
+						offer
+						<strong className="text-green-700"> software customization</strong> and dedicated development services.
 					</p>
 				</div>
 
@@ -343,7 +358,10 @@ function ENProductPromotion() {
 							onChange={e => setEmail(e.target.value)}
 							required
 						/>
-						<button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700">
+						<button
+							type="submit"
+							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
+							style={{ padding: '15px' }}>
 							Send
 						</button>
 						{message && <p className="mt-2 text-sm">{message}</p>}
@@ -405,7 +423,7 @@ function ENProductPromotion() {
 								timeCaption="Time"
 								locale="en"
 								placeholderText="Select date and time"
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 							/>
 
 							<input
@@ -417,7 +435,10 @@ function ENProductPromotion() {
 								required
 							/>
 
-							<button type="submit" className="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700">
+							<button
+								type="submit"
+								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
+								style={{ padding: '15px' }}>
 								Schedule
 							</button>
 
@@ -428,8 +449,8 @@ function ENProductPromotion() {
 			</section>
 
 			{/* FOOTER */}
-			<footer className="py-10 px-6 bg-white border-t text-center">
-				<p className="font-bold text-blue-700 companyfooter">Planopia</p>
+			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
+				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

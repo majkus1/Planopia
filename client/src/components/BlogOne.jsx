@@ -73,7 +73,7 @@ function BlogOne() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						Planopia
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -123,7 +123,7 @@ function BlogOne() {
 					</nav>
 
 					<button
-						className="md:hidden text-gray-700 text-3xl focus:outline-none"
+						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
 						style={{ fontSize: '25px' }}>
 						{menuOpen ? '✕' : '☰'}
@@ -131,7 +131,7 @@ function BlogOne() {
 				</div>
 				{menuOpen && (
 					<div
-						className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
+						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
 						<RouterLink
 							to="/#oaplikacji"
@@ -283,8 +283,11 @@ function BlogOne() {
 			</article>
 
 			{/* FOOTER */}
-			<footer className="py-10 px-6 bg-white border-t text-center">
-				<p className="font-bold text-blue-700 companyfooter">Planopia</p>
+			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
+				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
+					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
+				</a> */}
 			</footer>
 		</>
 	)

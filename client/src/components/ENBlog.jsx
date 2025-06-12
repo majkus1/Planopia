@@ -64,7 +64,7 @@ function ENBlog() {
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						Planopia
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -114,7 +114,7 @@ function ENBlog() {
 					</nav>
 
 					<button
-						className="md:hidden text-gray-700 text-3xl focus:outline-none"
+						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
 						style={{ fontSize: '25px' }}>
 						{menuOpen ? '✕' : '☰'}
@@ -122,7 +122,7 @@ function ENBlog() {
 				</div>
 				{menuOpen && (
 					<div
-						className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
+						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
 						<RouterLink
 							to="/en#aboutapp"
@@ -248,14 +248,7 @@ function ENBlog() {
 								Read more
 							</RouterLink>
 						</div>
-					</div>
-				</div>
-			</section>
 
-			<section className="px-4 py-16 bg-white">
-				<div className="max-w-7xl mx-auto">
-					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-						{/* Karta wpisu 1 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
 							<img
 								src="/img/worktimeblog.png"
@@ -281,11 +274,11 @@ function ENBlog() {
 			</section>
 
 			{/* FOOTER */}
-			<footer className="py-10 px-6 bg-white border-t text-center">
-				<p className="font-bold text-blue-700 companyfooter">Planopia</p>
+			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
+				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
-                    Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
-                </a> */}
+					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
+				</a> */}
 			</footer>
 		</>
 	)

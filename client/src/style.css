@@ -1258,9 +1258,9 @@ input {
 	font-weight: 300 !important;
 }
 
-@media (max-width: 900px) {
+@media(max-width: 900px) {
 	.calendar-my-work .fc-dayGridMonth-view {
-		overflow: scroll;
+		overflow: scroll !important;
 		scrollbar-width: thin;
 		scrollbar-color: #2169dc #f1f1f1;
 	}
@@ -1522,9 +1522,6 @@ input {
 }
 
 @media (max-width: 768px) {
-	#planopiaheader nav {
-		display: none;
-	}
 
 	#planopia-welcome {
 		padding-top: 15px;
@@ -1620,6 +1617,12 @@ input {
 	border-radius: 8px;
 }
 
+@media(max-width: 1024px) {
+	#planopiaheader nav {
+		display: none !important;
+	}
+}
+
 @media (max-width: 1200px) {
 	.resume-month-work {
 		margin-left: 15px;
@@ -1670,4 +1673,25 @@ input {
 .logoinmenu {
 	text-decoration: none !important;
 	color: black !important;
+}
+
+#underheader {
+	border-top: 2px solid black;
+	max-width: 400px;
+	padding-top: 12px;
+	margin-top: 18px;
+	font-size: 22px !important;
+}
+
+.underheadertwo {
+	font-size: 20px !important;
+}
+
+.custom-marker::marker {
+	color: #16a34a; /* Tailwind green-600 */
+}
+
+.calendar-my-work .fc-daygrid-day-frame:hover, #leave-planner .fc-daygrid-day-frame:hover {
+	background-color: #007bff6f;
+	opacity: 0.5;
 }

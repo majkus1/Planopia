@@ -40,6 +40,7 @@ i18n
 						messok: 'If the email address is registered, an email with a password reset link will be sent.',
 						messfail: 'If the email address is registered, an email with a password reset link will be sent.',
 						toomany: 'Too many password reset attempts. Please try again in 15 minutes.',
+						backto: '< Back (Login)'
 					},
 					newpass: {
 						h2: 'Set password',
@@ -264,6 +265,7 @@ i18n
 						messfail:
 							'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
 						toomany: 'Zbyt wiele prób resetowania hasła. Spróbuj ponownie za 15 minut.',
+						backto: '< Wróc do logowania'
 					},
 					newpass: {
 						h2: 'Ustaw hasło',

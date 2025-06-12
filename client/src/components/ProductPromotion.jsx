@@ -110,7 +110,7 @@ function ProductPromotion() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						Planopia
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<ScrollLink
@@ -163,7 +163,7 @@ function ProductPromotion() {
 					</nav>
 
 					<button
-						className="md:hidden text-gray-700 text-3xl focus:outline-none"
+						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
 						style={{ fontSize: '25px' }}>
 						{menuOpen ? '✕' : '☰'}
@@ -171,14 +171,14 @@ function ProductPromotion() {
 				</div>
 				{menuOpen && (
 					<div
-						className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
+						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
 						<ScrollLink
 							to="oaplikacji"
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							O Aplikacji
 						</ScrollLink>
 						<ScrollLink
@@ -186,7 +186,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Cennik
 						</ScrollLink>
 						<ScrollLink
@@ -194,7 +194,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Test
 						</ScrollLink>
 						<ScrollLink
@@ -202,18 +202,18 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Kontakt
 						</ScrollLink>
 						<RouterLink
 							to="/blog"
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
 							onClick={toggleMenu}>
 							Blog
 						</RouterLink>
 						<RouterLink
 							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
 							onClick={toggleMenu}>
 							Logowanie
 						</RouterLink>
@@ -225,25 +225,29 @@ function ProductPromotion() {
 			</header>
 
 			{/* HERO */}
-			<section className="px-4 py-20 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
+			<section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
 				<div className="max-w-7xl mx-auto text-left">
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
-							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+							<h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
 								Aplikacja do ewidencji czasu pracy i zarządzania urlopami.
-							</h1>
+							</h1>{' '}
+							<h2 className="font-semibold text-gray-800 mb-2" id="underheader">
+								Z Planopią wszystko ma swoje miejsce.
+							</h2>
+							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p>
 						</div>
 						<img
 							src="/img/planopiaheader.png"
 							alt="biznesmen zaznaczający aplikację"
-							className="rounded-xl shadow-lg"
+							className="rounded-xl"
 						/>
 					</div>
 				</div>
 			</section>
 
 			<section className="py-13 px-6 bg-white" id="oaplikacji">
-				<div className="max-w-7xl mx-auto">
+				<div className="max-w-6xl mx-auto">
 					<h2 className="text-4xl font-bold" style={{ marginBottom: '35px' }}>
 						O aplikacji Planopia
 					</h2>
@@ -252,7 +256,7 @@ function ProductPromotion() {
 						<strong> ewidencję czasu pracy</strong>, zarządzać
 						<strong> urlopami i nieobecnościami</strong> oraz usprawnić komunikację wewnętrzną. Dzięki intuicyjnemu
 						interfejsowi i automatyzacji procesów kadrowych, oszczędzasz czas, unikasz błędów i zyskujesz pełną kontrolę
-						nad organizacją pracy w Twoim zespole. System działa w przeglądarce i nie wymaga instalacji.
+						nad organizacją pracy w Twoim zespole.
 					</p>
 
 					<ul className="list-disc pl-4 text-gray-800 text-base space-y-2 mb-4">
@@ -276,39 +280,49 @@ function ProductPromotion() {
 							<strong>Wydruk PDF</strong> – generowanie kalendarzy pracy oraz wniosków urlopowych do druku lub
 							archiwizacji.
 						</li>
-						<li>
-							<strong>Bezpieczeństwo</strong> – aplikacja została zaprojektowana z dużym naciskiem na bezpieczeństwo
-							informacji i prywatność użytkowników.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Bezpieczeństwo</strong> – aplikacja została zaprojektowana z dużym
+							naciskiem na bezpieczeństwo informacji i prywatność użytkowników.
 						</li>
-						<li>
-							<strong>Błyskawiczne działanie</strong> – aplikacja działa szybko i płynnie, nawet w większych zespołach.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Błyskawiczne działanie</strong> – aplikacja działa szybko i płynnie,
+							nawet w większych zespołach.
 						</li>
-						<li>
-							<strong>Dostępność językowa</strong> – aplikacja dostępna jest w dwóch wersjach językowych: polskiej i
-							angielskiej.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Dostępność językowa</strong> – aplikacja dostępna jest w dwóch wersjach
+							językowych: polskiej i angielskiej.
 						</li>
 						<li>
 							<strong>Responsywność</strong> – aplikacja działa poprawnie i wygodnie również na urządzeniach mobilnych
 							(smartfony, tablety).
 						</li>
-						<li>
-							<strong>Aplikacja PWA</strong> – dodaj Planopię do ekranu głównego swojego telefonu i korzystaj z niej jak
-							z pełnoprawnej aplikacji mobilnej – bez pobierania ze sklepu.
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Aplikacja PWA</strong> – dodaj Planopię do ekranu głównego swojego
+							telefonu i korzystaj z niej jak z pełnoprawnej aplikacji mobilnej – bez pobierania ze sklepu.
 						</li>
-						<li>
-							<strong>Integracja z systemami RCP</strong> – możliwość dostosowania aplikacji do importu danych z
-							systemów rejestracji czasu pracy (np. dane z kart wejścia/wyjścia).
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Wygląd dopasowany do firmy</strong> – personalizacja kolorów, logo i
+							stylu aplikacji zgodnie z identyfikacją marki.
+						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Osobna subdomena i baza danych</strong> – każda firma otrzymuje własne,
+							odizolowane środowisko aplikacji dla pełnej prywatności i personalizacji.
+						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Integracja z systemami RCP</strong> – możliwość dostosowania aplikacji
+							do importu danych z systemów rejestracji czasu pracy (np. dane z kart wejścia/wyjścia).
 						</li>
 					</ul>
 
 					<h2 className="text-2xl font-semibold" style={{ marginTop: '50px', marginBottom: '15px' }}>
-						Potrzebujesz dodatkowej funkcji?
+						Potrzebujesz dodatkowej funkcji lub integracji?
 					</h2>
 					<p className="text-gray-700 text-base">
 						Planopia to aplikacja, którą możemy dopasować do specyfiki Twojej firmy. Potrzebujesz wewnętrznego czatu?
-						Raportów XLSX? Dodatkowych integracji? A może chcesz zlecić stworzenie innego systemu IT? Skontaktuj się z
-						nami – oferujemy
-						<strong> personalizację oprogramowania</strong> oraz realizację dedykowanych usług programistycznych.
+						Grafiku pracy? Raportów XLSX? <strong className="text-green-700"> Dodatkowych integracji?</strong> A może
+						chcesz zlecić stworzenie innego systemu IT? Skontaktuj się z nami – oferujemy
+						<strong className="text-green-700"> personalizację oprogramowania</strong> oraz realizację dedykowanych
+						usług programistycznych.
 					</p>
 				</div>
 
@@ -358,7 +372,10 @@ function ProductPromotion() {
 							onChange={e => setEmail(e.target.value)}
 							required
 						/>
-						<button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700">
+						<button
+							type="submit"
+							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
+							style={{ padding: '15px' }}>
 							Wyślij
 						</button>
 						{message && <p className="mt-2 text-sm">{message}</p>}
@@ -436,7 +453,10 @@ function ProductPromotion() {
 								required
 							/>
 
-							<button type="submit" className="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700">
+							<button
+								type="submit"
+								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
+								style={{ padding: '15px' }}>
 								Umów
 							</button>
 
@@ -447,8 +467,8 @@ function ProductPromotion() {
 			</section>
 
 			{/* FOOTER */}
-			<footer className="py-10 px-6 bg-white border-t text-center">
-				<p className="font-bold text-blue-700 companyfooter">Planopia</p>
+			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
+				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

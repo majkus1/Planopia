@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 function ResetPassword() {
 	const [email, setEmail] = useState('')
@@ -60,7 +61,7 @@ function ResetPassword() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<p className="company-txt">Planopia</p>
+						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card">
@@ -93,6 +94,9 @@ function ResetPassword() {
 					</div>
 				</div>
 			</div>
+			<Link to="/login" style={{ margin: '20px', fontSize: '16px', textDecoration: 'none', color: 'blue', opacity: '0.6' }}>
+			{t('resetpass.backto')}
+			</Link>
 		</div>
 	)
 }

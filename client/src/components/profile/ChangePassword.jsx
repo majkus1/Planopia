@@ -237,7 +237,7 @@ function ChangePassword() {
 
 										<button
 											type="submit"
-											className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition">
+											className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mb-4">
 											{t('editprofile.confirmnewpassbtn')}
 										</button>
 									</form>
