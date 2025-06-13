@@ -166,7 +166,7 @@ function UserCalendar() {
 					<Loader />
 				</div>
 			) : (
-			<div id="calendars-works-review" className='flex flex-wrap gap-4 items-center'>
+			<div id="calendars-works-review" className='custom-flex'>
 				<button onClick={generatePDF} className="btn-pdf btn btn-primary">
 				{t('workcalendar.genepdf')}
 				</button>
@@ -204,7 +204,7 @@ function UserCalendar() {
 					)}
 
 					<div className="calendar-controls" style={{ marginTop: '15px' }}>
-						<label style={{ marginLeft: '25px' }}>
+						<label style={{ marginLeft: '25px', display: 'flex', alignItems: 'center' }}>
 							<input type="checkbox" checked={isConfirmed} readOnly style={{ marginRight: '5px' }} />
 							{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
 						</label>

@@ -140,7 +140,7 @@ function BlogFour() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							O Aplikacji
 						</RouterLink>
 						<RouterLink
@@ -148,7 +148,7 @@ function BlogFour() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Cennik
 						</RouterLink>
 						<RouterLink
@@ -156,7 +156,7 @@ function BlogFour() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Test
 						</RouterLink>
 						<RouterLink
@@ -164,12 +164,12 @@ function BlogFour() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Kontakt
 						</RouterLink>
 						<RouterLink
 							to="/blog"
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
 							onClick={toggleMenu}>
 							Blog
 						</RouterLink>
@@ -199,7 +199,7 @@ function BlogFour() {
 						<img
 							src="/img/worktimeblog.webp"
 							alt="osoba korzystajaca z naszej aplikacji planując szybko i łatwo czas pracy"
-							className="rounded-xl shadow-lg"
+							className="rounded-xl w-full h-auto aspect-[3/2] shadow-lg"
 						/>
 					</div>
 				</div>

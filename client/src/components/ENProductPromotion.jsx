@@ -234,7 +234,7 @@ function ENProductPromotion() {
 						<img
 							src="/img/planopiaheader.webp"
 							alt="businessman highlighting an application"
-							className="rounded-xl"
+							className="rounded-xl w-full h-auto aspect-[3/2]"
 						/>
 					</div>
 				</div>

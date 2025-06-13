@@ -174,7 +174,7 @@ function LeavePlanner() {
 						</label>
 					</div>
 
-					<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+					<div>
 						<FullCalendar
 							plugins={[dayGridPlugin, interactionPlugin]}
 							initialView="dayGridMonth"

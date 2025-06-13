@@ -129,7 +129,7 @@ function ENBlog() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							About the App
 						</RouterLink>
 						<RouterLink
@@ -137,7 +137,7 @@ function ENBlog() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Pricing
 						</RouterLink>
 						<RouterLink
@@ -145,7 +145,7 @@ function ENBlog() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Try the App
 						</RouterLink>
 						<RouterLink
@@ -153,12 +153,12 @@ function ENBlog() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Contact
 						</RouterLink>
 						<RouterLink
 							to="/en/blog"
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
 							onClick={toggleMenu}>
 							Blog
 						</RouterLink>
@@ -182,7 +182,7 @@ function ENBlog() {
 						<div className="ordering">
 							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 blogh1">Blog</h1>
 						</div>
-						<img src="/img/blog.webp" alt="blog graphic" className="rounded-xl shadow-lg" />
+						<img src="/img/blog.webp" alt="blog graphic" className="rounded-xl w-full h-auto aspect-[3/2] shadow-lg" />
 					</div>
 				</div>
 			</section>

@@ -109,7 +109,7 @@ function ProductPromotion() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<a
@@ -239,7 +239,7 @@ function ProductPromotion() {
 						<img
 							src="/img/planopiaheader.webp"
 							alt="biznesmen zaznaczający aplikację"
-							className="rounded-xl"
+							className="rounded-xl w-full h-auto aspect-[3/2]"
 						/>
 					</div>
 				</div>
@@ -467,7 +467,7 @@ function ProductPromotion() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

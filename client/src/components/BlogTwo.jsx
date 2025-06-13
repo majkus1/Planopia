@@ -135,7 +135,7 @@ function BlogTwo() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							O Aplikacji
 						</RouterLink>
 						<RouterLink
@@ -143,7 +143,7 @@ function BlogTwo() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Cennik
 						</RouterLink>
 						<RouterLink
@@ -151,7 +151,7 @@ function BlogTwo() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Test
 						</RouterLink>
 						<RouterLink
@@ -159,12 +159,12 @@ function BlogTwo() {
 							smooth={true}
 							duration={500}
 							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Kontakt
 						</RouterLink>
 						<RouterLink
 							to="/blog"
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
+							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
 							onClick={toggleMenu}>
 							Blog
 						</RouterLink>
@@ -190,7 +190,7 @@ function BlogTwo() {
 								Integracja z systemami RCP – wykorzystaj pełen potencjał Twojego systemu rejestracji czasu pracy
 							</h1>
 						</div>
-						<img src="/img/rcpblog.webp" alt="osoba korzystajaca z systemu rcp w swojej pracy" className="rounded-xl shadow-lg" />
+						<img src="/img/rcpblog.webp" alt="osoba korzystajaca z systemu rcp w swojej pracy" className="rounded-xl w-full h-auto aspect-[3/2] shadow-lg" />
 					</div>
 				</div>
 			</section>

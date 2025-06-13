@@ -385,6 +385,7 @@ i18n
 					},
 					pdf: {
 						filename: 'czas_pracy',
+						filename2: 'wniosek_urlopowy'
 					},
 					adminleavereq: {
 						h3: 'Zgłoszenia urlopów/nieobecności',
