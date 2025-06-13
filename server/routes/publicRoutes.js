@@ -33,9 +33,10 @@ router.post('/request-demo', async (req, res) => {
 })
 
 router.post('/schedule-call', async (req, res) => {
-	const { email, datetime } = req.body
-	if (!email || !datetime) {
-		return res.status(400).json({ message: 'Email i termin są wymagane' })
+	const { email, datetime, message } = req.body
+
+	if (!email || (!datetime && (!message || message.trim() === ''))) {
+		return res.status(400).json({ message: 'Wymagany jest termin lub wiadomość oraz adres email.' })
 	}
 
 	try {
@@ -49,14 +50,21 @@ router.post('/schedule-call', async (req, res) => {
 			},
 		})
 
+		let htmlContent = `<p>Email klienta: <strong>${email}</strong></p>`
+
+		if (datetime) {
+			htmlContent += `<p>Wybrany termin: <strong>${new Date(datetime).toLocaleString('pl-PL')}</strong></p>`
+		}
+
+		if (message && message.trim() !== '') {
+			htmlContent += `<p>Wiadomość od klienta:</p><blockquote>${message.trim()}</blockquote>`
+		}
+
 		await transporter.sendMail({
 			from: `"Planopia" <${process.env.EMAIL_USER}>`,
 			to: 'michalipka1@gmail.com',
-			subject: 'Umówienie rozmowy',
-			html: `
-				<p>Email klienta: <strong>${email}</strong></p>
-				<p>Wybrany termin: <strong>${new Date(datetime).toLocaleString('pl-PL')}</strong></p>
-			`,
+			subject: 'Nowe zgłoszenie kontaktowe',
+			html: htmlContent,
 		})
 
 		res.status(200).json({ message: 'Email wysłany pomyślnie' })

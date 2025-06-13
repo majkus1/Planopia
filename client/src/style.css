@@ -1593,6 +1593,9 @@ input {
 	/* #kontakt, #cennik {
 		padding-top: 25px !important;
 	} */
+	 .contactform {
+		padding-top: 20px;
+	 }
 }
 
 .planopiaimgaboutmobile {

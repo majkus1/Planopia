@@ -13,7 +13,7 @@ function ProductPromotion() {
 	const toggleMenu = () => setMenuOpen(prev => !prev)
 	const [email, setEmail] = useState('')
 	const [message, setMessage] = useState('')
-
+	const [userMessage, setUserMessage] = useState('')
 	const [email2, setEmail2] = useState('')
 	const [datetime, setDatetime] = useState(null)
 	const [msg2, setMsg2] = useState('')
@@ -38,17 +38,25 @@ function ProductPromotion() {
 
 	const handleSubmitMeeting = async e => {
 		e.preventDefault()
+
+		if (!datetime && (!userMessage || userMessage.trim() === '')) {
+			alert('Please select a date or enter a message.')
+			return
+		}
+
 		try {
 			await axios.post(`${API_URL}/api/public/schedule-call`, {
 				email: email2,
 				datetime: datetime?.toISOString(),
+				message: userMessage,
 			})
-			setMsg2('Dziękujemy! Termin został zgłoszony.')
+			setMsg2('Dziękujemy! Wysłano wiadomość.')
 			setEmail2('')
 			setDatetime(null)
 		} catch {
-			setMsg2('Błąd podczas wysyłania. Spróbuj ponownie później.')
+			setMsg2('Wystąpił błąd. Spróbuj ponownie później.')
 		}
+		console.log({ datetime, email: email2, message })
 	}
 
 	return (
@@ -311,6 +319,10 @@ function ProductPromotion() {
 							<strong className="text-green-700">Integracja z systemami RCP</strong> – możliwość dostosowania aplikacji
 							do importu danych z systemów rejestracji czasu pracy (np. dane z kart wejścia/wyjścia).
 						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Indywidualne wsparcie</strong> – zapewniamy indywidualną opiekę oraz
+							szybkie wsparcie – jesteśmy tu, by pomóc Ci w każdej sytuacji.
+						</li>
 					</ul>
 
 					<h2 className="text-2xl font-semibold" style={{ marginTop: '50px', marginBottom: '15px' }}>
@@ -335,6 +347,18 @@ function ProductPromotion() {
 			<section id="cennik" className="py-10 px-6 bg-gray-50">
 				<div className="max-w-5xl mx-auto text-center">
 					<h2 className="text-4xl font-bold mb-8">Cennik</h2>
+					<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-10 mt-4">
+						<p className="text-xl sm:text-2xl font-semibold text-green-800 mb-2">
+							Pierwszy miesiąc za darmo — bez zobowiązań.
+						</p>
+						<p className="text-gray-700 mb-4">Skontaktuj się z nami i przetestuj Planopię całkowicie za darmo.</p>
+						<button
+							onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+							className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
+							Zacznij za darmo
+						</button>
+					</div>
+
 					<div className="grid gap-6 md:grid-cols-2 mt-10">
 						<div className="bg-white shadow p-8 rounded-lg">
 							<p className="text-2xl font-semibold mb-2">w trakcie...</p>
@@ -345,6 +369,25 @@ function ProductPromotion() {
 							<p className="text-3xl font-bold">...</p>
 						</div>
 					</div>
+				</div>
+				<div className="mt-16 max-w-4xl mx-auto text-center">
+					<h3 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Dla kogo jest Planopia?</h3>
+					<p className="text-gray-700 text-lg leading-relaxed">
+						Planopia to idealne rozwiązanie dla zespołów każdej wielkości — od kilku do kilkuset pracowników. Nasza
+						aplikacja została stworzona z myślą o firmach, które chcą:
+					</p>
+					<ul className="list-disc text-left mt-6 text-gray-700 text-base space-y-2 pl-8 sm:pl-12">
+						<li>łatwo i szybko prowadzić ewidencję czasu pracy i urlopów,</li>
+						<li>nie przepłacać za funkcje, których nie potrzebują,</li>
+						<li>
+							korzystać z bezpiecznej, nowoczesnej aplikacji — dostępnej pod adresem przypisanym wyłącznie Twojej
+							firmie.
+						</li>
+					</ul>
+					<p className="text-gray-600 text-base mt-6">
+						Każda firma otrzymuje własną wersję aplikacji, z osobnym linkiem oraz oddzielną bazą danych — dzięki temu
+						Planopia działa szybko, bezpiecznie i niezależnie dla każdego klienta.
+					</p>
 				</div>
 
 				<img
@@ -423,12 +466,23 @@ function ProductPromotion() {
 
 					{/* Prawa kolumna – formularz */}
 					<div className="w-full md:w-1/2 p-6 rounded-md">
-						<p className="text-2xl font-bold mb-6 text-center md:text-left">Umów rozmowę</p>
+						<p className="text-2xl font-bold mb-6 text-center md:text-left contactform">Formularz kontaktowy</p>
 						<p className="mb-6 text-gray-700 text-center md:text-left">
-							Wybierz datę i godzinę, podaj swój e-mail i umów się na spotkanie online
+							Możesz umówić się na rozmowę online lub po prostu wysłać wiadomość — wybierz to, co Ci bardziej odpowiada.
 						</p>
 
 						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
+							{/* Email na górze */}
+							<input
+								type="email"
+								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								placeholder="Twój adres e-mail"
+								value={email2}
+								onChange={e => setEmail2(e.target.value)}
+								required
+							/>
+
+							{/* Datepicker */}
 							<DatePicker
 								selected={datetime}
 								onChange={setDatetime}
@@ -440,23 +494,24 @@ function ProductPromotion() {
 								timeCaption="Godzina"
 								locale="pl"
 								placeholderText="Wybierz datę i godzinę"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-							/>
-
-							<input
-								type="email"
 								className="w-full p-2 border border-gray-300 rounded-md mb-4"
-								placeholder="Twój email"
-								value={email2}
-								onChange={e => setEmail2(e.target.value)}
-								required
 							/>
 
+							{/* Wiadomość */}
+							<textarea
+								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								rows={4}
+								placeholder="Twoja wiadomość"
+								value={userMessage}
+								onChange={e => setUserMessage(e.target.value)}
+							/>
+
+							{/* Przycisk */}
 							<button
 								type="submit"
 								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
 								style={{ padding: '15px' }}>
-								Umów
+								Wyślij
 							</button>
 
 							{msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}

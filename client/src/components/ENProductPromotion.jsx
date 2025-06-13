@@ -13,6 +13,7 @@ function ENProductPromotion() {
 	const toggleMenu = () => setMenuOpen(prev => !prev)
 	const [email, setEmail] = useState('')
 	const [message, setMessage] = useState('')
+	const [userMessage, setUserMessage] = useState('')
 	const [email2, setEmail2] = useState('')
 	const [datetime, setDatetime] = useState(null)
 	const [msg2, setMsg2] = useState('')
@@ -37,17 +38,25 @@ function ENProductPromotion() {
 
 	const handleSubmitMeeting = async e => {
 		e.preventDefault()
+
+		if (!datetime && (!userMessage || userMessage.trim() === '')) {
+			alert('Please select a date or enter a message.')
+			return
+		}
+
 		try {
 			await axios.post(`${API_URL}/api/public/schedule-call`, {
 				email: email2,
 				datetime: datetime?.toISOString(),
+				message: userMessage,
 			})
-			setMsg2('Thank you! Your meeting has been scheduled.')
+			setMsg2('Thank you! Your message has been sent.')
 			setEmail2('')
 			setDatetime(null)
 		} catch {
-			setMsg2('Error occurred. Please try again later.')
+			setMsg2('An error occurred while sending. Please try again later.')
 		}
+		console.log({ datetime, email: email2, message })
 	}
 
 	return (
@@ -105,7 +114,7 @@ function ENProductPromotion() {
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<a
@@ -273,32 +282,39 @@ function ENProductPromotion() {
 							<strong>PDF export</strong> – generate printable calendars and leave request forms for archiving.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Security</strong> – the app was designed with strong focus on data security and user privacy.
+							<strong className="text-green-700">Security</strong> – the app was designed with strong focus on data
+							security and user privacy.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Fast performance</strong> – the app runs smoothly even for larger teams.
+							<strong className="text-green-700">Fast performance</strong> – the app runs smoothly even for larger
+							teams.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Language support</strong> – the app is available in both Polish and English.
+							<strong className="text-green-700">Language support</strong> – the app is available in both Polish and
+							English.
 						</li>
 						<li>
 							<strong>Responsive design</strong> – works flawlessly on mobile devices (smartphones, tablets).
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">PWA application</strong> – add Planopia to your phone’s home screen and use it like a
-							full-featured mobile app – no download required from the store.
+							<strong className="text-green-700">PWA application</strong> – add Planopia to your phone’s home screen and
+							use it like a full-featured mobile app – no download required from the store.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Branded appearance</strong> – customize the colors, logo, and style of the app to match your
-							company's visual identity.
+							<strong className="text-green-700">Branded appearance</strong> – customize the colors, logo, and style of
+							the app to match your company's visual identity.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
 							<strong className="text-green-700">Dedicated subdomain and database</strong> – each company gets its own
 							isolated application environment for full privacy and customization.
 						</li>
 						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Integration with RCP systems</strong> – ability to import data from external time tracking systems
-							(e.g. entry/exit badge scans).
+							<strong className="text-green-700">Integration with RCP systems</strong> – ability to import data from
+							external time tracking systems (e.g. entry/exit badge scans).
+						</li>
+						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
+							<strong className="text-green-700">Dedicated support</strong> – we provide personalized assistance and
+							fast support – we're here to help you in any situation.
 						</li>
 					</ul>
 
@@ -307,8 +323,8 @@ function ENProductPromotion() {
 					</h2>
 					<p className="text-gray-700 text-base">
 						Planopia can be tailored to your company’s needs. Need an internal chat? Work schedule? XLSX reports?
-						<strong className="text-green-700"> Additional integrations?</strong> Or perhaps you'd like us to build a completely different IT system? Contact us – we
-						offer
+						<strong className="text-green-700"> Additional integrations?</strong> Or perhaps you'd like us to build a
+						completely different IT system? Contact us – we offer
 						<strong className="text-green-700"> software customization</strong> and dedicated development services.
 					</p>
 				</div>
@@ -326,6 +342,17 @@ function ENProductPromotion() {
 			<section id="prices" className="py-10 px-6 bg-gray-50">
 				<div className="max-w-5xl mx-auto text-center">
 					<h2 className="text-4xl font-bold mb-8">Pricing</h2>
+					<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-10 mt-4">
+						<p className="text-xl sm:text-2xl font-semibold text-green-800 mb-2">
+							First month free — no strings attached.
+						</p>
+						<p className="text-gray-700 mb-4">Contact us and try Planopia completely free of charge.</p>
+						<button
+							onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+							className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
+							Start for free
+						</button>
+					</div>
 					<div className="grid gap-6 md:grid-cols-2 mt-10">
 						<div className="bg-white shadow p-8 rounded-lg">
 							<p className="text-2xl font-semibold mb-2">in progress...</p>
@@ -336,6 +363,23 @@ function ENProductPromotion() {
 							<p className="text-3xl font-bold">...</p>
 						</div>
 					</div>
+				</div>
+
+				<div className="mt-16 max-w-4xl mx-auto text-center">
+					<h3 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Who is Planopia for?</h3>
+					<p className="text-gray-700 text-lg leading-relaxed">
+						Planopia is a perfect solution for teams of all sizes — from small businesses to larger organizations. Our
+						app is designed for companies that want to:
+					</p>
+					<ul className="list-disc text-left mt-6 text-gray-700 text-base space-y-2 pl-8 sm:pl-12">
+						<li>easily and quickly manage work time and leave tracking,</li>
+						<li>avoid paying for features they don’t need,</li>
+						<li>use a secure, modern tool — available under a unique web address dedicated to their company.</li>
+					</ul>
+					<p className="text-gray-600 text-base mt-6">
+						Each company gets its own version of the application, with a separate link, personalized look, and isolated
+						database — ensuring fast, secure, and independent operation for every client.
+					</p>
 				</div>
 
 				<img src="/img/mockupmobile.webp" alt="mobile app mockup graphic" className="planopiaimgaboutmobile" />
@@ -378,7 +422,11 @@ function ENProductPromotion() {
 					{/* Left column – contact info */}
 					<div className="w-full md:w-1/2 flex flex-col items-center md:items-center text-center md:text-left">
 						<div className="flex items-center mb-4 my-person">
-							<img src="/img/1709827103942.webp" alt="profile photo Michał Lipka" className="myimageface object-cover" />
+							<img
+								src="/img/1709827103942.webp"
+								alt="profile photo Michał Lipka"
+								className="myimageface object-cover"
+							/>
 							<p className="mb-0 ml-4 text-lg font-semibold text-left">Michał Lipka</p>
 						</div>
 
@@ -405,12 +453,23 @@ function ENProductPromotion() {
 
 					{/* Right column – meeting form */}
 					<div className="w-full md:w-1/2 p-6 rounded-md">
-						<p className="text-2xl font-bold mb-6 text-center md:text-left">Schedule a meeting</p>
+						<p className="text-2xl font-bold mb-6 text-center md:text-left contactform">Contact form</p>
 						<p className="mb-6 text-gray-700 text-center md:text-left">
-							Choose a date and time, enter your email, and schedule an online meeting.
+							You can schedule an online meeting or just send us a message — whichever works best for you.
 						</p>
 
 						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
+							{/* Email at the top */}
+							<input
+								type="email"
+								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								placeholder="Your email"
+								value={email2}
+								onChange={e => setEmail2(e.target.value)}
+								required
+							/>
+
+							{/* Datepicker second */}
 							<DatePicker
 								selected={datetime}
 								onChange={setDatetime}
@@ -422,23 +481,23 @@ function ENProductPromotion() {
 								timeCaption="Time"
 								locale="en"
 								placeholderText="Select date and time"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-							/>
-
-							<input
-								type="email"
 								className="w-full p-2 border border-gray-300 rounded-md mb-4"
-								placeholder="Your email"
-								value={email2}
-								onChange={e => setEmail2(e.target.value)}
-								required
 							/>
 
+							<textarea
+								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								rows={4}
+								placeholder="Your message"
+								value={userMessage}
+								onChange={e => setUserMessage(e.target.value)}
+							/>
+
+							{/* Submit */}
 							<button
 								type="submit"
 								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
 								style={{ padding: '15px' }}>
-								Schedule
+								Send
 							</button>
 
 							{msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}
@@ -449,7 +508,7 @@ function ENProductPromotion() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}
