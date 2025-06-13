@@ -404,7 +404,7 @@ function ProductPromotion() {
 			<section id="test" className="py-13 px-6 bg-white">
 				<div className="max-w-xl mx-auto text-center">
 					<h2 className="text-4xl font-bold mb-6">Przetestuj aplikację</h2>
-					<p className="mb-6">Wpisz swój email, a wyślemy dane do logowania na konto testowe.</p>
+					<p className="mb-6">Wpisz swój email, a wyślemy dane do logowania na konto testowe, które będzie aktywne przez 7 dni.</p>
 					<form onSubmit={handleSubmit} className="mt-10">
 						<input
 							type="email"

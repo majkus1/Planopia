@@ -391,7 +391,7 @@ function ENProductPromotion() {
 			<section id="test" className="py-13 px-6 bg-white">
 				<div className="max-w-xl mx-auto text-center">
 					<h2 className="text-4xl font-bold mb-6">Try the app</h2>
-					<p className="mb-6">Enter your email and we’ll send you test account login credentials.</p>
+					<p className="mb-6">Enter your email and we’ll send you login credentials for a test account, valid for 7 days.</p>
 					<form onSubmit={handleSubmit} className="mt-10">
 						<input
 							type="email"
