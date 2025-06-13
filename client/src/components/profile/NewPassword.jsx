@@ -114,7 +114,7 @@ function NewPassword() {
 			</div>
 			<Link
 				to="/login"
-				style={{ margin: '20px', fontSize: '16px', textDecoration: 'none', color: 'blue', opacity: '0.6' }}>
+				style={{ margin: '20px', fontSize: '14px', textDecoration: 'none', color: 'blue', opacity: '0.6' }}>
 				{t('resetpass.backto')}
 			</Link>
 		</div>
