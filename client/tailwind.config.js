@@ -3,7 +3,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      scrollBehavior: ['responsive'], // potrzebne jeśli używasz customowych klas
+    },
   },
   plugins: [],
 }

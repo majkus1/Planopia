@@ -31,7 +31,7 @@ function ENBlogThree() {
 				/>
 				<meta property="og:type" content="article" />
 				<meta property="og:url" content="https://planopia.pl/en/blog/leave-planning" />
-				<meta property="og:image" content="https://planopia.pl/img/planvacationblog.png" />
+				<meta property="og:image" content="https://planopia.pl/img/planvacationblog.webp" />
 				<meta property="og:site_name" content="Planopia" />
 
 				<meta name="twitter:card" content="summary_large_image" />
@@ -40,7 +40,7 @@ function ENBlogThree() {
 					name="twitter:description"
 					content="Effectively manage leave and avoid chaos in your team with Planopia – smart HR software for modern businesses."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/planvacationblog.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/planvacationblog.webp" />
 
 				<script type="application/ld+json">
 					{`
@@ -49,7 +49,7 @@ function ENBlogThree() {
 		  "@type": "BlogPosting",
 		  "headline": "How to Plan Employee Leave Effectively? Practical Tips for Teams",
 		  "description": "Discover how to effectively manage employee leave in your organization. Learn practical tips and tools like Planopia to simplify absence planning and improve team workflow.",
-		  "image": "https://planopia.pl/img/planvacationblog.png",
+		  "image": "https://planopia.pl/img/planvacationblog.webp",
 		  "author": {
 		    "@type": "Person",
 		    "name": "Michał Lipka"
@@ -59,7 +59,7 @@ function ENBlogThree() {
 		    "name": "Planopia",
 		    "logo": {
 		      "@type": "ImageObject",
-		      "url": "https://planopia.pl/img/planopiaheader.png"
+		      "url": "https://planopia.pl/img/planopiaheader.webp"
 		    }
 		  },
 		  "url": "https://planopia.pl/en/blog/leave-planning",
@@ -72,7 +72,7 @@ function ENBlogThree() {
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
 					<RouterLink to="/en" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -117,7 +117,7 @@ function ENBlogThree() {
 							Login
 						</RouterLink>
 						<RouterLink to="/blog/planowanie-urlopow" className="flex items-center languagechoose">
-							<img src="/img/poland.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -180,7 +180,7 @@ function ENBlogThree() {
 							to="/blog/planowanie-urlopow"
 							className="flex items-center languagechoose"
 							style={{ marginTop: '15px' }}>
-							<img src="/img/poland.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -196,7 +196,7 @@ function ENBlogThree() {
 							</h1>
 						</div>
 						<img
-							src="/img/planvacationblog.png"
+							src="/img/planvacationblog.webp"
 							alt="person plan vacation easy in our app"
 							className="rounded-xl shadow-lg"
 						/>
@@ -269,7 +269,7 @@ function ENBlogThree() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

@@ -30,7 +30,7 @@ function BlogOne() {
 				/>
 				<meta property="og:type" content="article" />
 				<meta property="og:url" content="https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow" />
-				<meta property="og:image" content="https://planopia.pl/img/mockupdesktop.png" />
+				<meta property="og:image" content="https://planopia.pl/img/mockupdesktop.webp" />
 				<meta property="og:site_name" content="Planopia" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="Jak skutecznie ewidencjonować czas pracy? Poznaj aplikację Planopia" />
@@ -38,7 +38,7 @@ function BlogOne() {
 					name="twitter:description"
 					content="Poznaj aplikację Planopia – nowoczesne narzędzie do ewidencji czasu pracy, urlopów i nieobecności w firmie."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/mockupdesktop.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/mockupdesktop.webp" />
 
 				<script type="application/ld+json">
 					{`
@@ -47,7 +47,7 @@ function BlogOne() {
 		  "@type": "BlogPosting",
 		  "headline": "Jak skutecznie ewidencjonować czas pracy? Poznaj aplikację Planopia",
 		  "description": "Poznaj zalety aplikacji Planopia – nowoczesnego systemu do ewidencji czasu pracy, zarządzania urlopami i usprawniania procesów kadrowych.",
-		  "image": "https://planopia.pl/img/mockupdesktop.png",
+		  "image": "https://planopia.pl/img/mockupdesktop.webp",
 		  "author": {
 		    "@type": "Person",
 		    "name": "Michał Lipka"
@@ -57,7 +57,7 @@ function BlogOne() {
 		    "name": "Planopia",
 		    "logo": {
 		      "@type": "ImageObject",
-		      "url": "https://planopia.pl/img/planopiaheader.png"
+		      "url": "https://planopia.pl/img/planopiaheader.webp"
 		    }
 		  },
 		  "url": "https://planopia.pl/blog/ewidencja-czasu-pracy-i-urlopow",
@@ -73,7 +73,7 @@ function BlogOne() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -118,7 +118,7 @@ function BlogOne() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en/blog/time-tracking-and-leave-management" className="flex items-center languagechoose">
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -181,7 +181,7 @@ function BlogOne() {
 							to="/en/blog/time-tracking-and-leave-management"
 							className="flex items-center languagechoose"
 							style={{ marginTop: '15px' }}>
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -197,7 +197,7 @@ function BlogOne() {
 							</h1>
 						</div>
 						<img
-							src="/img/mockupdesktop.png"
+							src="/img/mockupdesktop.webp"
 							alt="mockup naszej aplikacji na komputerze"
 							className="rounded-xl shadow-lg"
 						/>
@@ -284,7 +284,7 @@ function BlogOne() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

@@ -29,7 +29,7 @@ function Blog() {
 					property="og:description"
 					content="Dowiedz się więcej o ewidencji czasu pracy, zarządzaniu urlopami i pracy zdalnej. Porady i nowości od twórców aplikacji Planopia."
 				/>
-				<meta property="og:image" content="https://planopia.pl/img/blog.png" />
+				<meta property="og:image" content="https://planopia.pl/img/blog.webp" />
 				<meta property="og:url" content="https://planopia.pl/blog" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +38,7 @@ function Blog() {
 					name="twitter:description"
 					content="Dowiedz się więcej o zarządzaniu czasem pracy, urlopami i nieobecnościami w firmie z bloga Planopii."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/blog.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/blog.webp" />
 				<script type="application/ld+json">
 					{`
 		{
@@ -63,7 +63,7 @@ function Blog() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -108,7 +108,7 @@ function Blog() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en/blog" className="flex items-center languagechoose">
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -168,7 +168,7 @@ function Blog() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en/blog" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -181,7 +181,7 @@ function Blog() {
 						<div className="ordering">
 							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 blogh1">Blog</h1>
 						</div>
-						<img src="/img/blog.png" alt="grafika główna bloga" className="rounded-xl shadow-lg" />
+						<img src="/img/blog.webp" alt="grafika główna bloga" className="rounded-xl shadow-lg" />
 					</div>
 				</div>
 			</section>
@@ -191,7 +191,7 @@ function Blog() {
 					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{/* Karta wpisu 1 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/mockupdesktop.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/mockupdesktop.webp" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Planopia – nowoczesna aplikacja do ewidencji czasu pracy i zarządzania urlopami
 							</h3>
@@ -207,7 +207,7 @@ function Blog() {
 
 						{/* Karta wpisu 2 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/rcpblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/rcpblog.webp" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Integracja z systemami RCP – wykorzystaj pełen potencjał Twojego systemu
 							</h3>
@@ -224,7 +224,7 @@ function Blog() {
 
 						{/* Karta wpisu 3 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/planvacationblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/planvacationblog.webp" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Jak planować urlopy pracowników? Praktyczne wskazówki
 							</h3>
@@ -241,7 +241,7 @@ function Blog() {
 
 						{/* Karta wpisu 4 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/worktimeblog.png" alt="..." className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/worktimeblog.webp" alt="..." className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Jak prosto i wygodnie ewidencjonować czas pracy?
 							</h3>
@@ -260,7 +260,7 @@ function Blog() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

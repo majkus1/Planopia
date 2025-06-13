@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link as RouterLink } from 'react-router-dom'
-import { Link as ScrollLink } from 'react-scroll'
 import axios from 'axios'
 import { API_URL } from '../config'
 import DatePicker from 'react-datepicker'
@@ -74,7 +73,7 @@ function ProductPromotion() {
 					property="og:description"
 					content="Nowoczesna aplikacja do zarządzania czasem pracy, urlopami i nieobecnościami w firmie."
 				/>
-				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.png" />
+				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.webp" />
 				<meta property="og:url" content="https://planopia.pl" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
@@ -83,7 +82,7 @@ function ProductPromotion() {
 					name="twitter:description"
 					content="Nowoczesne narzędzie do zarządzania czasem pracy i urlopami w firmach."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.webp" />
 				<script type="application/ld+json">
 					{`
 	{
@@ -110,41 +109,41 @@ function ProductPromotion() {
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
-						<ScrollLink
-							to="oaplikacji"
+						<a
+							href="#oaplikacji"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							O Aplikacji
-						</ScrollLink>
-						<ScrollLink
-							to="cennik"
+						</a>
+						<a
+							href="#cennik"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Cennik
-						</ScrollLink>
-						<ScrollLink
-							to="test"
+						</a>
+						<a
+							href="#test"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Test
-						</ScrollLink>
-						<ScrollLink
-							to="kontakt"
+						</a>
+						<a
+							href="#kontakt"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Kontakt
-						</ScrollLink>
+						</a>
 						<RouterLink
 							to="/blog"
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
@@ -158,7 +157,7 @@ function ProductPromotion() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en" className="flex items-center languagechoose">
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -173,38 +172,38 @@ function ProductPromotion() {
 					<div
 						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
-						<ScrollLink
-							to="oaplikacji"
+						<a
+							href="#oaplikacji"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							O Aplikacji
-						</ScrollLink>
-						<ScrollLink
-							to="cennik"
+						</a>
+						<a
+							href="#cennik"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Cennik
-						</ScrollLink>
-						<ScrollLink
-							to="test"
+						</a>
+						<a
+							href="#test"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Test
-						</ScrollLink>
-						<ScrollLink
-							to="kontakt"
+						</a>
+						<a
+							href="#kontakt"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Kontakt
-						</ScrollLink>
+						</a>
 						<RouterLink
 							to="/blog"
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
@@ -218,7 +217,7 @@ function ProductPromotion() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -238,7 +237,7 @@ function ProductPromotion() {
 							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p>
 						</div>
 						<img
-							src="/img/planopiaheader.png"
+							src="/img/planopiaheader.webp"
 							alt="biznesmen zaznaczający aplikację"
 							className="rounded-xl"
 						/>
@@ -247,7 +246,7 @@ function ProductPromotion() {
 			</section>
 
 			<section className="py-13 px-6 bg-white" id="oaplikacji">
-				<div className="max-w-6xl mx-auto">
+				<div className="max-w-5xl mx-auto">
 					<h2 className="text-4xl font-bold" style={{ marginBottom: '35px' }}>
 						O aplikacji Planopia
 					</h2>
@@ -326,10 +325,10 @@ function ProductPromotion() {
 					</p>
 				</div>
 
-				<img src="/img/planopiaimage.png" alt="grafika promująca aplikację" className="planopiaimgaboutmobile" />
+				<img src="/img/planopiaimage.webp" alt="grafika promująca aplikację" className="planopiaimgaboutmobile" />
 				<div
 					className="h-[400px] bg-fixed bg-center bg-cover mt-16 rounded-xl shadow-md planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/planopiaimage.png')" }}></div>
+					style={{ backgroundImage: "url('/img/planopiaimage.webp')" }}></div>
 			</section>
 
 			{/* CENNIK */}
@@ -349,13 +348,13 @@ function ProductPromotion() {
 				</div>
 
 				<img
-					src="/img/mockupmobile.png"
+					src="/img/mockupmobile.webp"
 					alt="grafika promująca aplikację desktopową"
 					className="planopiaimgaboutmobile"
 				/>
 				<div
 					className="h-[600px] bg-fixed bg-center bg-cover mt-16 rounded-xl planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/mockupdesktop.png')" }}></div>
+					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
 			</section>
 
 			{/* TESTUJ */}
@@ -394,7 +393,7 @@ function ProductPromotion() {
 					<div className="w-full md:w-1/2 flex flex-col items-center md:items-center text-center md:text-left">
 						<div className="flex items-center mb-4 my-person">
 							<img
-								src="/img/1709827103942.jpg"
+								src="/img/1709827103942.webp"
 								alt="zdjęcie profilowe Michał Lipka"
 								className="myimageface object-cover"
 							/>
@@ -406,7 +405,7 @@ function ProductPromotion() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="flex items-center mb-2 text-blue-600 hover:underline">
-							<img src="/img/linkedin.png" alt="logo linkedin" className="mylinkedin mr-2" />
+							<img src="/img/linkedin.webp" alt="logo linkedin" className="mylinkedin mr-2" />
 							LinkedIn
 						</a>
 
@@ -429,7 +428,7 @@ function ProductPromotion() {
 							Wybierz datę i godzinę, podaj swój e-mail i umów się na spotkanie online
 						</p>
 
-						<form onSubmit={handleSubmitMeeting} className="text-center">
+						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
 							<DatePicker
 								selected={datetime}
 								onChange={setDatetime}
@@ -468,7 +467,7 @@ function ProductPromotion() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

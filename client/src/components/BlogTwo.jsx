@@ -30,7 +30,7 @@ function BlogTwo() {
 				/>
 				<meta property="og:type" content="article" />
 				<meta property="og:url" content="https://planopia.pl/blog/integracja-z-rcp" />
-				<meta property="og:image" content="https://planopia.pl/img/rcpblog.png" />
+				<meta property="og:image" content="https://planopia.pl/img/rcpblog.webp" />
 				<meta property="og:site_name" content="Planopia" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="Integracja z systemami RCP – Rozszerz możliwości rejestracji czasu pracy" />
@@ -38,7 +38,7 @@ function BlogTwo() {
 					name="twitter:description"
 					content="Integracja z RCP w aplikacji Planopia – automatyczne uzupełnianie czasu pracy na podstawie odbić z kart pracowniczych."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/rcpblog.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/rcpblog.webp" />
 
 				<script type="application/ld+json">
 					{`
@@ -47,7 +47,7 @@ function BlogTwo() {
 		  "@type": "BlogPosting",
 		  "headline": "Integracja z systemami RCP – Rozszerz możliwości rejestracji czasu pracy",
 		  "description": "Zobacz, jak możesz połączyć swój system RCP z aplikacją Planopia i automatycznie uzupełniać kalendarz pracy. Nowoczesne rozwiązania bez rezygnacji z obecnych urządzeń.",
-		  "image": "https://planopia.pl/img/rcpblog.png",
+		  "image": "https://planopia.pl/img/rcpblog.webp",
 		  "author": {
 		    "@type": "Person",
 		    "name": "Michał Lipka"
@@ -57,7 +57,7 @@ function BlogTwo() {
 		    "name": "Planopia",
 		    "logo": {
 		      "@type": "ImageObject",
-		      "url": "https://planopia.pl/img/planopiaheader.png"
+		      "url": "https://planopia.pl/img/planopiaheader.webp"
 		    }
 		  },
 		  "url": "https://planopia.pl/blog/integracja-z-rcp",
@@ -70,7 +70,7 @@ function BlogTwo() {
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
 					<RouterLink to="/" className="logoinmenu text-2xl font-bold text-blue-700 companyname" style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -115,7 +115,7 @@ function BlogTwo() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en/blog/time-attendance-integration" className="flex items-center languagechoose">
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -175,7 +175,7 @@ function BlogTwo() {
 							Logowanie
 						</RouterLink>
 						<RouterLink to="/en/blog/time-attendance-integration" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
-							<img src="/img/united-kingdom.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -190,7 +190,7 @@ function BlogTwo() {
 								Integracja z systemami RCP – wykorzystaj pełen potencjał Twojego systemu rejestracji czasu pracy
 							</h1>
 						</div>
-						<img src="/img/rcpblog.png" alt="osoba korzystajaca z systemu rcp w swojej pracy" className="rounded-xl shadow-lg" />
+						<img src="/img/rcpblog.webp" alt="osoba korzystajaca z systemu rcp w swojej pracy" className="rounded-xl shadow-lg" />
 					</div>
 				</div>
 			</section>
@@ -252,7 +252,7 @@ function BlogTwo() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

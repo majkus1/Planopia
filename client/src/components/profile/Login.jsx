@@ -91,8 +91,7 @@ function Login() {
 					<div className="card-body login-card-body padr">
 						<form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
 							{/* Email */}
-							<div>
-								
+							<div style={{ marginBottom: '15px' }}>
 								<div className="relative">
 									<input
 										type="email"

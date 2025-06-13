@@ -29,7 +29,7 @@ function ENBlog() {
 					property="og:description"
 					content="Explore articles about work time tracking, leave planning, remote work, and modern HR practices from the creators of Planopia."
 				/>
-				<meta property="og:image" content="https://planopia.pl/img/blog.png" />
+				<meta property="og:image" content="https://planopia.pl/img/blog.webp" />
 				<meta property="og:url" content="https://planopia.pl/en/blog" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +38,7 @@ function ENBlog() {
 					name="twitter:description"
 					content="Read helpful content about managing work hours, leave requests, and employee productivity with Planopia."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/blog.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/blog.webp" />
 
 				<script type="application/ld+json">
 					{`
@@ -64,7 +64,7 @@ function ENBlog() {
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -109,7 +109,7 @@ function ENBlog() {
 							Login
 						</RouterLink>
 						<RouterLink to="/blog" className="flex items-center languagechoose">
-							<img src="/img/poland.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -169,7 +169,7 @@ function ENBlog() {
 							Login
 						</RouterLink>
 						<RouterLink to="/blog" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
-							<img src="/img/poland.png" alt="English version" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -182,7 +182,7 @@ function ENBlog() {
 						<div className="ordering">
 							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 blogh1">Blog</h1>
 						</div>
-						<img src="/img/blog.png" alt="blog graphic" className="rounded-xl shadow-lg" />
+						<img src="/img/blog.webp" alt="blog graphic" className="rounded-xl shadow-lg" />
 					</div>
 				</div>
 			</section>
@@ -193,7 +193,7 @@ function ENBlog() {
 						{/* Karta wpisu 1 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
 							<img
-								src="/img/mockupdesktop.png"
+								src="/img/mockupdesktop.webp"
 								alt="Title img of article1"
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
@@ -213,7 +213,7 @@ function ENBlog() {
 
 						{/* Karta wpisu 2 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/rcpblog.png" alt="Title img of article 2" className="rounded-md mb-4 h-48 object-cover" />
+							<img src="/img/rcpblog.webp" alt="Title img of article 2" className="rounded-md mb-4 h-48 object-cover" />
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
 								Integrate Your Time & Attendance System (T&A) with Planopia – Take Full Control of Work Time Tracking
 							</h3>
@@ -231,7 +231,7 @@ function ENBlog() {
 						{/* Karta wpisu 3 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
 							<img
-								src="/img/planvacationblog.png"
+								src="/img/planvacationblog.webp"
 								alt="Title img of article 3"
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
@@ -251,7 +251,7 @@ function ENBlog() {
 
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
 							<img
-								src="/img/worktimeblog.png"
+								src="/img/worktimeblog.webp"
 								alt="Title img of article 4"
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
@@ -275,7 +275,7 @@ function ENBlog() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

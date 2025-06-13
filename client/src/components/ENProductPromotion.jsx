@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Route, Link as RouterLink } from 'react-router-dom'
-import { Link as ScrollLink } from 'react-scroll'
 import axios from 'axios'
 import { API_URL } from '../config'
 import DatePicker from 'react-datepicker'
@@ -70,7 +69,7 @@ function ENProductPromotion() {
 					property="og:description"
 					content="Modern application for managing work time, leaves, and internal communication in your company."
 				/>
-				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.png" />
+				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.webp" />
 				<meta property="og:url" content="https://planopia.pl/en" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
@@ -79,7 +78,7 @@ function ENProductPromotion() {
 					name="twitter:description"
 					content="Streamline employee time tracking and vacation planning with Planopia."
 				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.png" />
+				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.webp" />
 				<script type="application/ld+json">
 					{`
 					{
@@ -106,41 +105,41 @@ function ENProductPromotion() {
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
-						<ScrollLink
-							to="aboutapp"
+						<a
+							href="#aboutapp"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							About the App
-						</ScrollLink>
-						<ScrollLink
-							to="prices"
+						</a>
+						<a
+							href="#prices"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Pricing
-						</ScrollLink>
-						<ScrollLink
-							to="test"
+						</a>
+						<a
+							href="#test"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Try the App
-						</ScrollLink>
-						<ScrollLink
-							to="contact"
+						</a>
+						<a
+							href="#contact"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Contact
-						</ScrollLink>
+						</a>
 						<RouterLink
 							to="/en/blog"
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition"
@@ -154,7 +153,7 @@ function ENProductPromotion() {
 							Login
 						</RouterLink>
 						<RouterLink to="/" className="flex items-center languagechoose">
-							<img src="/img/poland.png" alt="Wersja Polska" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="Wersja Polska" className="w-6 h-6" />
 						</RouterLink>
 					</nav>
 
@@ -168,38 +167,38 @@ function ENProductPromotion() {
 
 				{menuOpen && (
 					<div className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start">
-						<ScrollLink
-							to="aboutapp"
+						<a
+							href="#aboutapp"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							About the App
-						</ScrollLink>
-						<ScrollLink
-							to="prices"
+						</a>
+						<a
+							href="#prices"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Pricing
-						</ScrollLink>
-						<ScrollLink
-							to="test"
+						</a>
+						<a
+							href="#test"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Try the App
-						</ScrollLink>
-						<ScrollLink
-							to="contact"
+						</a>
+						<a
+							href="#contact"
 							smooth={true}
 							duration={500}
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Contact
-						</ScrollLink>
+						</a>
 						<RouterLink
 							to="/en/blog"
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4"
@@ -213,7 +212,7 @@ function ENProductPromotion() {
 							Login
 						</RouterLink>
 						<RouterLink to="/" className="flex items-center languagechoose mt-4">
-							<img src="/img/poland.png" alt="Polish version" className="w-6 h-6" />
+							<img src="/img/poland.webp" alt="Polish version" className="w-6 h-6" />
 						</RouterLink>
 					</div>
 				)}
@@ -233,7 +232,7 @@ function ENProductPromotion() {
 							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Simple. Light. Clear.</p>
 						</div>
 						<img
-							src="/img/planopiaheader.png"
+							src="/img/planopiaheader.webp"
 							alt="businessman highlighting an application"
 							className="rounded-xl"
 						/>
@@ -242,7 +241,7 @@ function ENProductPromotion() {
 			</section>
 
 			<section className="py-13 px-6 bg-white" id="aboutapp">
-				<div className="max-w-7xl mx-auto">
+				<div className="max-w-6xl mx-auto">
 					<h2 className="text-4xl font-bold mb-4" style={{ marginBottom: '35px' }}>
 						About the Planopia App
 					</h2>
@@ -315,13 +314,13 @@ function ENProductPromotion() {
 				</div>
 
 				<img
-					src="/img/planopiaimage.png"
+					src="/img/planopiaimage.webp"
 					alt="promotional graphic of the application"
 					className="planopiaimgaboutmobile"
 				/>
 				<div
 					className="h-[400px] bg-fixed bg-center bg-cover mt-16 rounded-xl shadow-md planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/planopiaimage.png')" }}></div>
+					style={{ backgroundImage: "url('/img/planopiaimage.webp')" }}></div>
 			</section>
 
 			<section id="prices" className="py-10 px-6 bg-gray-50">
@@ -339,10 +338,10 @@ function ENProductPromotion() {
 					</div>
 				</div>
 
-				<img src="/img/mockupmobile.png" alt="mobile app mockup graphic" className="planopiaimgaboutmobile" />
+				<img src="/img/mockupmobile.webp" alt="mobile app mockup graphic" className="planopiaimgaboutmobile" />
 				<div
 					className="h-[600px] bg-fixed bg-center bg-cover mt-16 rounded-xl planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/mockupdesktop.png')" }}></div>
+					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
 			</section>
 
 			<section id="test" className="py-13 px-6 bg-white">
@@ -379,7 +378,7 @@ function ENProductPromotion() {
 					{/* Left column – contact info */}
 					<div className="w-full md:w-1/2 flex flex-col items-center md:items-center text-center md:text-left">
 						<div className="flex items-center mb-4 my-person">
-							<img src="/img/1709827103942.jpg" alt="profile photo Michał Lipka" className="myimageface object-cover" />
+							<img src="/img/1709827103942.webp" alt="profile photo Michał Lipka" className="myimageface object-cover" />
 							<p className="mb-0 ml-4 text-lg font-semibold text-left">Michał Lipka</p>
 						</div>
 
@@ -388,7 +387,7 @@ function ENProductPromotion() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="flex items-center mb-2 text-blue-600 hover:underline">
-							<img src="/img/linkedin.png" alt="LinkedIn logo" className="mylinkedin mr-2" />
+							<img src="/img/linkedin.webp" alt="LinkedIn logo" className="mylinkedin mr-2" />
 							LinkedIn
 						</a>
 
@@ -411,7 +410,7 @@ function ENProductPromotion() {
 							Choose a date and time, enter your email, and schedule an online meeting.
 						</p>
 
-						<form onSubmit={handleSubmitMeeting} className="text-center">
+						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
 							<DatePicker
 								selected={datetime}
 								onChange={setDatetime}
@@ -450,7 +449,7 @@ function ENProductPromotion() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}
