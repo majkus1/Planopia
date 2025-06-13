@@ -160,7 +160,7 @@ function ENProductPromotion() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '25px' }}>
+						style={{ fontSize: '32px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>

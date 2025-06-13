@@ -21,7 +21,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import './i18n.js'
 import { registerSW } from 'virtual:pwa-register'
 import "@fontsource/titillium-web";      // domyślny styl (400)
-import "@fontsource/titillium-web/600.css"; // np. bold
+import "@fontsource/titillium-web/700.css"; // np. bold
+import "@fontsource/titillium-web/600.css";
 import "@fontsource/teko";               // domyślny styl Teko (400)
 import "@fontsource/teko/700.css";        // np. bold
 
