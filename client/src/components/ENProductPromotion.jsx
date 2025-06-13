@@ -219,7 +219,7 @@ function ENProductPromotion() {
 			</header>
 
 			{/* HERO */}
-			<section className="px-4 py-20 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
+			<section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
 				<div className="max-w-7xl mx-auto text-left">
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
@@ -241,7 +241,7 @@ function ENProductPromotion() {
 			</section>
 
 			<section className="py-13 px-6 bg-white" id="aboutapp">
-				<div className="max-w-6xl mx-auto">
+				<div className="max-w-5xl mx-auto">
 					<h2 className="text-4xl font-bold mb-4" style={{ marginBottom: '35px' }}>
 						About the Planopia App
 					</h2>

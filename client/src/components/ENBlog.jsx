@@ -176,7 +176,7 @@ function ENBlog() {
 			</header>
 
 			{/* HERO */}
-			<section className="px-4 py-20 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
+			<section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
 				<div className="max-w-7xl mx-auto text-left">
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
