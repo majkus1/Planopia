@@ -1690,6 +1690,10 @@ input {
 	width: 80px;
 }
 
+.react-datepicker-wrapper {
+	width: 100% !important;
+}
+
 .mylinkedin {
 	border-radius: 30px;
 	width: 30px;

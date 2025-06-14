@@ -374,11 +374,14 @@ function ENProductPromotion() {
 					<ul className="list-disc text-left mt-6 text-gray-700 text-base space-y-2 pl-8 sm:pl-12">
 						<li>easily and quickly manage work time and leave tracking,</li>
 						<li>avoid paying for features they don’t need,</li>
-						<li>use a secure, modern tool — available under a unique web address dedicated to their company.</li>
+						<li>
+							use a secure, modern tool — available at a unique web address dedicated to your company, with the option
+							to use it just like a mobile app.
+						</li>
 					</ul>
 					<p className="text-gray-600 text-base mt-6">
-						Each company gets its own version of the application, with a separate link, personalized look, and isolated
-						database — ensuring fast, secure, and independent operation for every client.
+						Each company gets its own version of the application — with a unique link and an isolated database —
+						ensuring fast, secure, and independent operation for every client.
 					</p>
 				</div>
 
@@ -391,7 +394,9 @@ function ENProductPromotion() {
 			<section id="test" className="py-13 px-6 bg-white">
 				<div className="max-w-xl mx-auto text-center">
 					<h2 className="text-4xl font-bold mb-6">Try the app</h2>
-					<p className="mb-6">Enter your email and we’ll send you login credentials for a test account, valid for 7 days.</p>
+					<p className="mb-6">
+						Enter your email and we’ll send you login credentials for a test account, valid for 7 days.
+					</p>
 					<form onSubmit={handleSubmit} className="mt-10">
 						<input
 							type="email"

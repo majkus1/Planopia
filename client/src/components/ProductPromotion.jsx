@@ -380,13 +380,11 @@ function ProductPromotion() {
 						<li>łatwo i szybko prowadzić ewidencję czasu pracy i urlopów,</li>
 						<li>nie przepłacać za funkcje, których nie potrzebują,</li>
 						<li>
-							korzystać z bezpiecznej, nowoczesnej aplikacji — dostępnej pod adresem przypisanym wyłącznie Twojej
-							firmie.
+							korzystać z bezpiecznej, nowoczesnej aplikacji — dostępnej pod adresem przypisanym wyłącznie Twojej firmie, z możliwością używania jej także jak aplikacji mobilnej.
 						</li>
 					</ul>
 					<p className="text-gray-600 text-base mt-6">
-						Każda firma otrzymuje własną wersję aplikacji, z osobnym linkiem oraz oddzielną bazą danych — dzięki temu
-						Planopia działa szybko, bezpiecznie i niezależnie dla każdego klienta.
+						Każda firma otrzymuje własną wersję aplikacji — z unikalnym linkiem oraz oddzielną bazą danych — dzięki czemu Planopia działa szybko, bezpiecznie i niezależnie dla każdego klienta.
 					</p>
 				</div>
 
