@@ -358,7 +358,7 @@ function ENProductPromotion() {
 						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-green-500">
 							<h3 className="text-2xl font-semibold mb-4">Monthly Plan</h3>
 							<p className="text-4xl font-bold text-green-600 mb-2">
-								11.10 zł <span className="text-lg font-normal text-gray-700">/user/month (9.00 zł net)</span>
+								$2.99 <span className="text-lg font-normal text-gray-700">/user/month ($2.43 net)</span>
 							</p>
 							<p className="text-gray-700 mb-4">Billed monthly. Cancel anytime.</p>
 							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
@@ -380,7 +380,7 @@ function ENProductPromotion() {
 						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-blue-500">
 							<h3 className="text-2xl font-semibold mb-4">Yearly Plan</h3>
 							<p className="text-4xl font-bold text-blue-600 mb-2">
-								111.00 zł <span className="text-lg font-normal text-gray-700">/user/year (90.24 zł net)</span>
+								$29.99 <span className="text-lg font-normal text-gray-700">/user/year ($24.38 net)</span>
 							</p>
 							<p className="text-gray-700 mb-4">2 months free with annual upfront payment.</p>
 							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
