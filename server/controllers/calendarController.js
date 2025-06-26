@@ -1,4 +1,5 @@
-const CalendarConfirmation = require('../models/CalendarConfirmation')
+const { firmDb } = require('../db/db')
+const CalendarConfirmation = require('../models/CalendarConfirmation')(firmDb)
 
 exports.getCalendarConfirmationStatus = async (req, res) => {
 	const { month, year } = req.query

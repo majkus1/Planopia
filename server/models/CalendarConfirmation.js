@@ -7,4 +7,5 @@ const CalendarConfirmationSchema = new mongoose.Schema({
   isConfirmed: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("CalendarConfirmation", CalendarConfirmationSchema);
+module.exports = conn => (conn.models.CalendarConfirmation || conn.model('CalendarConfirmation', CalendarConfirmationSchema));
+

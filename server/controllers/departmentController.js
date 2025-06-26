@@ -1,5 +1,6 @@
 // controllers/departmentController.js
-const User = require('../models/user');
+const { firmDb } = require('../db/db')
+const User = require('../models/user')(firmDb);
 
 exports.getDepartments = async (req, res) => {
     try {

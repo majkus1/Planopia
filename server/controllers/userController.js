@@ -1,5 +1,6 @@
+const { firmDb } = require('../db/db')
 const jwt = require('jsonwebtoken')
-const User = require('../models/user')
+const User = require('../models/user')(firmDb)
 const { sendEmail } = require('../services/emailService')
 const { createLog } = require('../services/logService')
 const bcrypt = require('bcryptjs')

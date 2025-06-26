@@ -671,7 +671,8 @@ select {
 	#list-employee,
 	#calendars-works-review,
 	#leave-requests-review,
-	#pdf-leave-request {
+	#pdf-leave-request,
+	.tickets {
 		margin-left: 290px !important;
 	}
 	#list-employee {

@@ -1,5 +1,6 @@
-const LeaveRequest = require('../models/LeaveRequest')
-const User = require('../models/user')
+const { firmDb } = require('../db/db')
+const LeaveRequest = require('../models/LeaveRequest')(firmDb)
+const User = require('../models/user')(firmDb)
 const { sendEmail } = require('../services/emailService')
 const { findSupervisorsForDepartment } = require('../services/roleService')
 const { appUrl } = require('../config')

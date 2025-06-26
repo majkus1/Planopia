@@ -32,6 +32,7 @@ import BlogFour from './components/BlogFour.jsx'
 import ENBlogFour from './components/ENBlogFour.jsx'
 import ENBlogThree from './components/ENBlogThree.jsx'
 import ENBlogTwo from './components/ENBlogTwo.jsx'
+import HelpTicket from './components/tickets/HelpTicket.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import { isAdmin, isHR, isDepartmentSupervisor, isDepartmentViewer, isWorker } from './utils/roleHelpers'
 import { Helmet } from 'react-helmet-async'
@@ -171,6 +172,7 @@ function AppContent() {
 								)
 							}
 						/>
+						<Route path="/helpcenter" element={isAdmin(role) ? <HelpTicket /> : <Navigate to="/" />} />
 						<Route path="/leave-plans/:userId" element={<EmployeeLeaveCalendar />} />
 						<Route path="/all-leave-plans" element={<AdminAllLeaveCalendar />} />
 					</Route>

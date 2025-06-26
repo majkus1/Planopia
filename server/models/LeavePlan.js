@@ -7,6 +7,5 @@ const leavePlanSchema = new mongoose.Schema({
   date: { type: String, required: true },
 });
 
-const LeavePlan = mongoose.model("LeavePlan", leavePlanSchema);
+module.exports = conn => (conn.models.LeavePlan || conn.model('LeavePlan', leavePlanSchema));
 
-module.exports = LeavePlan;

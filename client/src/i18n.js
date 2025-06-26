@@ -40,7 +40,7 @@ i18n
 						messok: 'If the email address is registered, an email with a password reset link will be sent.',
 						messfail: 'If the email address is registered, an email with a password reset link will be sent.',
 						toomany: 'Too many password reset attempts. Please try again in 15 minutes.',
-						backto: '< Back (Login)'
+						backto: '< Back (Login)',
 					},
 					newpass: {
 						h2: 'Set password',
@@ -140,7 +140,7 @@ i18n
 							pending: 'Pending',
 							rejected: 'Rejected',
 						},
-						listsofreq: 'List of requests:'
+						listsofreq: 'List of requests:',
 					},
 					leaveplanner: {
 						vactiontitle: 'Vacation',
@@ -223,7 +223,7 @@ i18n
 						department2: 'Add new department',
 						department3: 'Select from list',
 						department4: 'Enter a new department',
-						department5: 'Edit department'
+						department5: 'Edit department',
 					},
 					logs: {
 						user: 'User',
@@ -239,6 +239,39 @@ i18n
 						actionth: 'Action',
 						detailsth: 'Details',
 						timeth: 'Time',
+					},
+					tickets: {
+						title: 'Help Center',
+						new: 'New Ticket',
+						topic: 'Subject',
+						description: 'Describe your issue',
+						addAttachment: 'Add Attachment',
+						chooseFile: 'Choose File',
+						sendTicket: 'Submit Ticket',
+						myTickets: 'Your Tickets',
+						notask: 'No Tickets',
+						status: 'Status',
+						date: 'Date',
+						details: 'Details',
+						backToList: 'Back to Tickets',
+						author: 'Author',
+						createdAt: 'Created At',
+						messageContent: 'Ticket Message',
+						replyHistory: 'Reply History',
+						downloadAttachment: 'Download Attachment',
+						writeReply: 'Write a reply...',
+						sendReply: 'Send Reply',
+						status1: 'Open',
+						status2: 'Closed',
+						noanswer: 'No Answer',
+						nocontent: 'No Content',
+						fetchError: 'Failed to load tickets.',
+						createSuccess: 'Ticket submitted successfully!',
+						createError: 'Failed to submit ticket.',
+						replySuccess: 'Reply sent.',
+						replyError: 'Failed to send reply.',
+						detailsError: 'Failed to load ticket details.',
+						company: 'Company'
 					},
 				},
 			},
@@ -271,7 +304,7 @@ i18n
 						messfail:
 							'Jeśli adres e-mail jest zarejestrowany, wiadomość z linkiem do resetowania hasła zostanie wysłana.',
 						toomany: 'Zbyt wiele prób resetowania hasła. Spróbuj ponownie za 15 minut.',
-						backto: '< Wróc do logowania'
+						backto: '< Wróc do logowania',
 					},
 					newpass: {
 						h2: 'Ustaw hasło',
@@ -369,7 +402,7 @@ i18n
 							pending: 'Oczekuje na akceptacje',
 							rejected: 'Odrzucone',
 						},
-						listsofreq: 'Lista wniosków:'
+						listsofreq: 'Lista wniosków:',
 					},
 					leaveplanner: {
 						vactiontitle: 'Urlop',
@@ -392,7 +425,7 @@ i18n
 					},
 					pdf: {
 						filename: 'czas_pracy',
-						filename2: 'wniosek_urlopowy'
+						filename2: 'wniosek_urlopowy',
 					},
 					adminleavereq: {
 						h3: 'Zgłoszenia urlopów/nieobecności',
@@ -452,7 +485,7 @@ i18n
 						department2: 'Dodaj nowy dział',
 						department3: 'Wybierz z listy',
 						department4: 'Wpisz nowy dział',
-						department5: 'Edytuj dział'
+						department5: 'Edytuj dział',
 					},
 					logs: {
 						user: 'Użytkownik',
@@ -468,6 +501,38 @@ i18n
 						actionth: 'Akcja',
 						detailsth: 'Szczegóły',
 						timeth: 'Czas',
+					},
+					tickets: {
+						title: 'Centrum pomocy',
+						new: 'Nowe zgłoszenie',
+						topic: 'Temat',
+						description: 'Opisz swój problem',
+						addAttachment: 'Dodaj załącznik',
+						chooseFile: 'Wybierz plik',
+						sendTicket: 'Wyślij zgłoszenie',
+						myTickets: 'Twoje zgłoszenia',
+						notask: 'Brak zgłoszeń',
+						date: 'Data',
+						details: 'Szczegóły',
+						backToList: 'Wróć do zgłoszeń',
+						author: 'Autor',
+						createdAt: 'Data utworzenia',
+						messageContent: 'Treść zgłoszenia',
+						replyHistory: 'Historia odpowiedzi',
+						downloadAttachment: 'Pobierz załącznik',
+						writeReply: 'Napisz odpowiedź...',
+						sendReply: 'Wyślij odpowiedź',
+						status1: 'Otwarte',
+						status2: 'Zamknięte',
+						noanswer: 'Brak odpowiedzi',
+						nocontent: 'Brak treści zgłoszenia',
+						fetchError: 'Nie udało się pobrać zgłoszeń.',
+						createSuccess: 'Zgłoszenie zostało wysłane!',
+						createError: 'Nie udało się wysłać zgłoszenia.',
+						replySuccess: 'Odpowiedź wysłana.',
+						replyError: 'Nie udało się wysłać odpowiedzi.',
+						detailsError: 'Nie udało się pobrać szczegółów zgłoszenia.',
+						company: 'Firma'
 					},
 				},
 			},

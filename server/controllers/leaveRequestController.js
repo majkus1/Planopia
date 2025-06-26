@@ -1,6 +1,7 @@
-const LeaveRequest = require('../models/LeaveRequest')
+const { firmDb } = require('../db/db')
+const LeaveRequest = require('../models/LeaveRequest')(firmDb)
 const { sendEmailToHR, sendEmail } = require('../services/emailService')
-const User = require('../models/user')
+const User = require('../models/user')(firmDb)
 const { appUrl } = require('../config')
 
 exports.markLeaveRequestAsProcessed = async (req, res) => {

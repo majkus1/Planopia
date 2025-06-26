@@ -1,4 +1,5 @@
-const Log = require('../models/log')
+const { firmDb } = require('../db/db')
+const Log = require('../models/log')(firmDb)
 
 exports.getLogs = async (req, res) => {
 	try {

@@ -147,6 +147,13 @@ function Sidebar() {
 								{t('sidebar.btn9')}
 							</NavLink>
 						)}
+						{isAdmin(role) && (
+							<NavLink
+								to="/helpcenter"
+								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								{t('tickets.title')}
+							</NavLink>
+						)}
 					</div>
 					<br />
 					<br />

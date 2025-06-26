@@ -1,5 +1,6 @@
-const Workday = require('../models/Workday')
-const User = require('../models/user')
+const { firmDb } = require('../db/db')
+const Workday = require('../models/Workday')(firmDb)
+const User = require('../models/user')(firmDb)
 
 exports.addWorkday = async (req, res) => {
 	const { date, hoursWorked, additionalWorked, realTimeDayWorked, absenceType } = req.body

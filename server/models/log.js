@@ -8,4 +8,5 @@ const logSchema = new mongoose.Schema({
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
-module.exports = mongoose.model('Log', logSchema);
+module.exports = conn => (conn.models.Log || conn.model('Log', logSchema));
+

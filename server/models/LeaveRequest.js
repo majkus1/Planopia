@@ -27,4 +27,5 @@ const leaveRequestSchema = new mongoose.Schema({
 	isProcessed: { type: Boolean, default: false },
 })
 
-module.exports = mongoose.model('LeaveRequest', leaveRequestSchema)
+module.exports = conn => (conn.models.LeaveRequest || conn.model('LeaveRequest', leaveRequestSchema));
+

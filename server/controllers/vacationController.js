@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const { firmDb } = require('../db/db')
+const User = require('../models/user')(firmDb)
 
 exports.updateVacationDays = async (req, res) => {
 	const { userId } = req.params

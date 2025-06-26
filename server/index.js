@@ -11,7 +11,7 @@ const leavePlanRoutes = require('./routes/leavePlanRoutes')
 const leaveRequestRoutes = require('./routes/leaveRequestRoutes')
 const leaveRoutes = require('./routes/leaveRoutes')
 const vacationRoutes = require('./routes/vacationRoutes')
-
+const ticketsRoutes = require('./routes/ticketsRoutes')
 const publicRoutes = require('./routes/publicRoutes') // nowy import
 const i18next = require('i18next')
 const Backend = require('i18next-fs-backend')
@@ -20,6 +20,7 @@ const csurf = require('csurf')
 const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
 const helmet = require('helmet')
+const { firmDb, centralTicketConnection } = require('./db/db')
 
 const app = express()
 
@@ -34,13 +35,18 @@ i18next
 		},
 	})
 
-mongoose
-	.connect(process.env.DB_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => console.log('MongoDB connected successfully.'))
-	.catch(err => console.log('Failed to connect to MongoDB:', err))
+firmDb.on('connected', () => console.log('Firm DB connected.'))
+firmDb.on('error', err => console.log('Firm DB error:', err))
+centralTicketConnection.on('connected', () => console.log('Central tickets DB connected.'))
+centralTicketConnection.on('error', err => console.log('Central tickets DB error:', err))
+
+// mongoose
+// 	.connect(process.env.DB_URI, {
+// 		useNewUrlParser: true,
+// 		useUnifiedTopology: true,
+// 	})
+// 	.then(() => console.log('MongoDB connected successfully.'))
+// 	.catch(err => console.log('Failed to connect to MongoDB:', err))
 
 const corsOptions = {
 	origin: process.env.NODE_ENV === 'production' ? 'https://planopia.pl' : 'http://localhost:3001',
@@ -75,7 +81,9 @@ app.use('/api/planlea', leavePlanRoutes)
 app.use('/api/requlea', leaveRequestRoutes)
 app.use('/api/leaveworks', leaveRoutes)
 app.use('/api/vacations', vacationRoutes)
-app.use('/api/departments', require('./routes/department'));
+app.use('/api/tickets', ticketsRoutes)
+app.use('/api/departments', require('./routes/department'))
+app.use('/uploads', express.static('uploads'))
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server is running on port ${process.env.PORT || 3000}`)

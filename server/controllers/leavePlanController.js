@@ -1,4 +1,5 @@
-const LeavePlan = require('../models/LeavePlan')
+const { firmDb } = require('../db/db')
+const LeavePlan = require('../models/LeavePlan')(firmDb)
 
 exports.getUserLeavePlans = async (req, res) => {
 	try {
