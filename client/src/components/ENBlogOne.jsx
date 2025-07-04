@@ -9,7 +9,7 @@ function ENBlogOne() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'en' }}>
-				<title>Planopia – work time and leave management in one place</title>
+				<title>Work time and leave management in one place | Planopia</title>
 				<meta
 					name="description"
 					content="Discover all the features of the Planopia app. Track work hours, manage leave requests, report absences, and integrate with RCP systems."

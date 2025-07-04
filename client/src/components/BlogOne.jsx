@@ -9,7 +9,7 @@ function BlogOne() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'pl' }}>
-				<title>Planopia – ewidencja czasu pracy i urlopów w jednym miejscu</title>
+				<title>Ewidencja czasu pracy i urlopów w jednym miejscu | Planopia</title>
 				<meta
 					name="description"
 					content="Poznaj wszystkie funkcje aplikacji Planopia. Ewidencjonuj czas pracy, planuj urlopy, zgłaszaj nieobecności i integruj system z RCP."
