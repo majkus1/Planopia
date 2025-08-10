@@ -1209,9 +1209,9 @@ textarea {
 	border-radius: 5px !important;
 }
 
-input {
+/* input {
 	max-width: 400px !important;
-}
+} */
 
 #formleave input {
 	max-width: 100% !important;
@@ -1746,4 +1746,16 @@ div.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard > div.fc-header-toolba
 
 #formleave div:nth-child(2) {
 	max-width: 300px !important;
+}
+
+#planopia-welcome {
+	margin-top: 90px;
+}
+
+header {
+	position: fixed;
+}
+
+section {
+  scroll-margin-top: 95px; /* wysokość Twojego nagłówka */
 }

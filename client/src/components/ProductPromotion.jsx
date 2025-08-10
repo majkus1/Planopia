@@ -111,7 +111,7 @@ function ProductPromotion() {
 			</Helmet>
 
 			{/* HEADER + MENU */}
-			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
+			<header className="bg-white shadow top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
 					<RouterLink
 						to="/"
@@ -185,6 +185,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							O Aplikacji
 						</a>
@@ -193,6 +194,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Cennik
 						</a>
@@ -201,6 +203,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Test
 						</a>
@@ -209,6 +212,7 @@ function ProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Kontakt
 						</a>
@@ -243,6 +247,11 @@ function ProductPromotion() {
 								Z Planopią wszystko ma swoje miejsce.
 							</h2>
 							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p>
+							<button
+								onClick={() => document.getElementById('cennik')?.scrollIntoView({ behavior: 'smooth' })}
+								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
+								Cennik
+							</button>
 						</div>
 						<img
 							src="/img/planopiaheader.webp"
@@ -250,6 +259,33 @@ function ProductPromotion() {
 							className="rounded-xl w-full h-auto aspect-[3/2]"
 						/>
 					</div>
+				</div>
+			</section>
+
+			{/* TESTUJ */}
+			<section id="test" className="py-13 px-6 bg-white">
+				<div className="max-w-xl mx-auto text-center">
+					<h2 className="text-4xl font-bold mb-6">Przetestuj aplikację</h2>
+					<p className="mb-6">
+						Wpisz swój email, a wyślemy dane do logowania na konto testowe, które będzie aktywne przez 7 dni.
+					</p>
+					<form onSubmit={handleSubmit} className="mt-10">
+						<input
+							type="email"
+							className="w-full p-2 border border-gray-300 rounded-md mb-4"
+							placeholder="Twój email"
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							required
+						/>
+						<button
+							type="submit"
+							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
+							style={{ padding: '15px' }}>
+							Wyślij
+						</button>
+						{message && <p className="mt-2 text-sm">{message}</p>}
+					</form>
 				</div>
 			</section>
 
@@ -438,33 +474,6 @@ function ProductPromotion() {
 					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
 			</section>
 
-			{/* TESTUJ */}
-			<section id="test" className="py-13 px-6 bg-white">
-				<div className="max-w-xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-6">Przetestuj aplikację</h2>
-					<p className="mb-6">
-						Wpisz swój email, a wyślemy dane do logowania na konto testowe, które będzie aktywne przez 7 dni.
-					</p>
-					<form onSubmit={handleSubmit} className="mt-10">
-						<input
-							type="email"
-							className="w-full p-2 border border-gray-300 rounded-md mb-4"
-							placeholder="Twój email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							required
-						/>
-						<button
-							type="submit"
-							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
-							style={{ padding: '15px' }}>
-							Wyślij
-						</button>
-						{message && <p className="mt-2 text-sm">{message}</p>}
-					</form>
-				</div>
-			</section>
-
 			{/* UMÓW ROZMOWĘ */}
 			<section id="kontakt" className="py-13 px-6 bg-gray-50">
 				{/* Nagłówek na środku */}
@@ -515,7 +524,7 @@ function ProductPromotion() {
 							{/* Email na górze */}
 							<input
 								type="email"
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 								placeholder="Twój adres e-mail"
 								value={email2}
 								onChange={e => setEmail2(e.target.value)}
@@ -534,12 +543,12 @@ function ProductPromotion() {
 								timeCaption="Godzina"
 								locale="pl"
 								placeholderText="Wybierz datę i godzinę"
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 							/>
 
 							{/* Wiadomość */}
 							<textarea
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 								rows={4}
 								placeholder="Twoja wiadomość"
 								value={userMessage}

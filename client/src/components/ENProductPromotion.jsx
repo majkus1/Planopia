@@ -108,7 +108,7 @@ function ENProductPromotion() {
 			</Helmet>
 
 			{/* HEADER + MENU */}
-			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
+			<header className="bg-white shadow top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
 					<RouterLink
 						to="/en"
@@ -181,6 +181,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							About the App
 						</a>
@@ -189,6 +190,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Pricing
 						</a>
@@ -197,6 +199,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Try the App
 						</a>
@@ -205,6 +208,7 @@ function ENProductPromotion() {
 							smooth={true}
 							duration={500}
 							offset={-80}
+							onClick={toggleMenu}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
 							Contact
 						</a>
@@ -239,6 +243,11 @@ function ENProductPromotion() {
 								With Planopia, everything is in its place.
 							</h2>
 							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Simple. Light. Clear.</p>
+							<button
+								onClick={() => document.getElementById('prices')?.scrollIntoView({ behavior: 'smooth' })}
+								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
+								Pricing
+							</button>
 						</div>
 						<img
 							src="/img/planopiaheader.webp"
@@ -246,6 +255,32 @@ function ENProductPromotion() {
 							className="rounded-xl w-full h-auto aspect-[3/2]"
 						/>
 					</div>
+				</div>
+			</section>
+
+			<section id="test" className="py-13 px-6 bg-white">
+				<div className="max-w-xl mx-auto text-center">
+					<h2 className="text-4xl font-bold mb-6">Try the app</h2>
+					<p className="mb-6">
+						Enter your email and we’ll send you login credentials for a test account, valid for 7 days.
+					</p>
+					<form onSubmit={handleSubmit} className="mt-10">
+						<input
+							type="email"
+							className="w-full p-2 border border-gray-300 rounded-md mb-4"
+							placeholder="Your email"
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							required
+						/>
+						<button
+							type="submit"
+							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
+							style={{ padding: '15px' }}>
+							Send
+						</button>
+						{message && <p className="mt-2 text-sm">{message}</p>}
+					</form>
 				</div>
 			</section>
 
@@ -426,32 +461,6 @@ function ENProductPromotion() {
 					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
 			</section>
 
-			<section id="test" className="py-13 px-6 bg-white">
-				<div className="max-w-xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-6">Try the app</h2>
-					<p className="mb-6">
-						Enter your email and we’ll send you login credentials for a test account, valid for 7 days.
-					</p>
-					<form onSubmit={handleSubmit} className="mt-10">
-						<input
-							type="email"
-							className="w-full p-2 border border-gray-300 rounded-md mb-4"
-							placeholder="Your email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							required
-						/>
-						<button
-							type="submit"
-							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
-							style={{ padding: '15px' }}>
-							Send
-						</button>
-						{message && <p className="mt-2 text-sm">{message}</p>}
-					</form>
-				</div>
-			</section>
-
 			{/* CONTACT & BOOKING */}
 			<section id="contact" className="py-13 px-6 bg-gray-50">
 				{/* Centered heading */}
@@ -502,7 +511,7 @@ function ENProductPromotion() {
 							{/* Email at the top */}
 							<input
 								type="email"
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 								placeholder="Your email"
 								value={email2}
 								onChange={e => setEmail2(e.target.value)}
@@ -521,11 +530,11 @@ function ENProductPromotion() {
 								timeCaption="Time"
 								locale="en"
 								placeholderText="Select date and time"
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 							/>
 
 							<textarea
-								className="w-full p-2 border border-gray-300 rounded-md mb-4"
+								className="w-full p-2 border border-gray-300 rounded-md mb-2"
 								rows={4}
 								placeholder="Your message"
 								value={userMessage}
