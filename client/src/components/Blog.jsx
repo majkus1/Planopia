@@ -57,7 +57,7 @@ function Blog() {
 			</Helmet>
 
 			{/* HEADER + MENU */}
-			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
+			<header className="bg-white top-0 z-50 w-full flex justify-between" id="planopiaheader">
 				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent">
 					<RouterLink
 						to="/"
