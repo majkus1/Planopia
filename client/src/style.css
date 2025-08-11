@@ -1749,11 +1749,15 @@ div.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard > div.fc-header-toolba
 }
 
 #planopia-welcome {
-	margin-top: 90px;
+	margin-top: 70px;
 }
 
 header {
 	position: fixed;
+}
+
+header .menucontent {
+	height: 70px;
 }
 
 section {

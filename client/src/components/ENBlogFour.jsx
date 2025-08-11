@@ -70,7 +70,7 @@ function ENBlogFour() {
 			</Helmet>
 
 			<header className="bg-white shadow top-0 z-50 w-full flex justify-between" id="planopiaheader">
-				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent">
 					<RouterLink
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
@@ -127,7 +127,7 @@ function ENBlogFour() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '32px' }}>
+						style={{ fontSize: '34px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
