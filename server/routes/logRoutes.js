@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const auth = require('../middleware/authMiddleware')
 const logController = require('../controllers/logController')
+const { authenticateToken } = require('../middleware/authMiddleware')
 
-router.get('/logs', auth, logController.getLogs)
-router.get('/:userId', auth, logController.getLogsByUser)
+router.get('/logs', authenticateToken, logController.getLogs)
+router.get('/:userId', authenticateToken, logController.getLogsByUser)
 
 module.exports = router

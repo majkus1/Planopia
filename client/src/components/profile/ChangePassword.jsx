@@ -79,7 +79,7 @@ function ChangePassword() {
 						<div className="col-md-8">
 							<div>
 								<div className="card-body">
-									<h4>{t('editprofile.headertxt')}</h4>
+									<h4><img src="img/user-avatar.png" alt="ikonka w sidebar" />{t('editprofile.headertxt')}</h4>
 									<hr />
 
 									<form
@@ -111,7 +111,7 @@ function ChangePassword() {
 
 									<div className="mb-3">
 										<label className="form-label">{t('editprofile.rolelabel')}</label>
-										<input type="text" className="form-control yourrolesinput" value={role} readOnly />
+										<input type="text" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 form-control yourrolesinput" value={role} readOnly />
 									</div>
 
 									<form onSubmit={handleSubmit} className="max-w-md space-y-6 pt-10">

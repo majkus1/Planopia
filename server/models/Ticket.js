@@ -2,8 +2,8 @@
 module.exports = connection => {
 	const mongoose = require('mongoose')
 	const ticketSchema = new mongoose.Schema({
-		company: { type: String, required: true }, // subdomena (firma1, firma2)
-		userEmail: { type: String, required: true }, // email użytkownika
+		company: { type: String, required: true },
+		userEmail: { type: String, required: true },
 		topic: { type: String, required: true },
 		status: {
 			type: String,
@@ -12,15 +12,18 @@ module.exports = connection => {
 		},
 		messages: [
 			{
-				sender: { type: String, required: true }, // 'user' lub 'admin'
+				sender: { type: String, required: true },
 				author: { type: String, required: true },
-				content: { type: String, required: true }, // treść wiadomości
-				files: [String], // nazwy plików (opcjonalnie)
+				content: { type: String, required: true },
+				files: [String],
 				timestamp: { type: Date, default: Date.now },
 			},
 		],
 		createdAt: { type: Date, default: Date.now },
 	})
+
+	ticketSchema.index({ company: 1 });
+	ticketSchema.index({ userEmail: 1 });
 
 	return connection.model('Ticket', ticketSchema)
 }

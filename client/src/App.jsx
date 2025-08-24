@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import axios from 'axios'
 import CreateUser from './components/profile/CreateUser'
 import Login from './components/profile/Login'
+import TeamRegistration from './components/profile/TeamRegistration'
 import Dashboard from './components/dashboard/Dashboard'
 import ChangePassword from './components/profile/ChangePassword'
 import SetPassword from './components/profile/SetPassword'
@@ -80,7 +81,7 @@ function AppContent() {
 				if (element) {
 					setTimeout(() => {
 						element.scrollIntoView({ behavior: 'smooth' })
-					}, 100) // opóźnienie pozwala na załadowanie elementu
+					}, 100)
 				}
 			}
 		}, [hash])
@@ -99,6 +100,7 @@ function AppContent() {
 				<ScrollToTop />
 				<Routes>
 					<Route path="/login" element={loggedIn ? <Navigate to="/dashboard" /> : <Login />} />
+					<Route path="/team-registration" element={loggedIn ? <Navigate to="/dashboard" /> : <TeamRegistration />} />
 					<Route path="/" element={loggedIn ? <Navigate to="/dashboard" replace /> : <ProductPromotion />} />
 					<Route path="/en" element={<ENProductPromotion />} />
 					<Route path="/blog" element={<Blog />} />

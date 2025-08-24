@@ -17,23 +17,43 @@ function AdminAllLeaveCalendar() {
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 	const calendarRef = useRef(null)
 	const [users, setUsers] = useState([])
+	const [selectedUser, setSelectedUser] = useState(null)
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
-	const { role, logout, username } = useAuth()
+	const { role, logout, username, teamId } = useAuth()
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		fetchAllLeavePlans()
-		fetchUsers()
-	}, [])
+		if (teamId) {
+			fetchUsers()
+		}
+	}, [teamId])
+
+	useEffect(() => {
+		if (users.length > 0 && teamId) {
+			console.log('Users loaded, now fetching leave plans')
+			fetchAllLeavePlans()
+		}
+	}, [users, teamId])
 
 	const fetchUsers = async () => {
 		try {
-			const response = await axios.get(`${API_URL}/api/users/alluserplans`)
+			setLoading(true)
+			setError('') 
+			
+			console.log('Fetching users with teamId:', teamId)
+			
+			const response = await axios.get(`${API_URL}/api/users/all-users`, {
+				withCredentials: true
+			})
+			
+			console.log('Users loaded:', response.data.length)
+			console.log('Users data:', response.data)
 			setUsers(response.data)
 		} catch (error) {
-			console.error('Failed to fetch users:', error)
+			console.error('Error fetching users:', error)
+			console.error('Error response:', error.response?.data)
 			setError(t('list.error'))
 		} finally {
 			setLoading(false)
@@ -42,12 +62,30 @@ function AdminAllLeaveCalendar() {
 
 	const fetchAllLeavePlans = async () => {
 		try {
-			const response = await axios.get(`${API_URL}/api/planlea/admin/all-leave-plans`)
-			setLeavePlans(response.data)
+			console.log('Fetching leave plans for users:', users.length)
+			
+			
+			const response = await axios.get(`${API_URL}/api/planlea/admin/all-leave-plans`, {
+				withCredentials: true
+			})
+			
+			console.log('All leave plans loaded:', response.data.length)
+			
+			
+			const teamLeavePlans = response.data.filter(plan => {
+				
+				const hasUser = users.some(user => user._id === plan.userId)
+				if (hasUser) {
+					console.log('Plan for user:', plan.userId, 'included')
+				}
+				return hasUser
+			})
+			
+			console.log('Team leave plans filtered:', teamLeavePlans.length)
+			setLeavePlans(teamLeavePlans)
 		} catch (error) {
-			console.error('Error fetching all leave plans:', error)
-		} finally {
-			setLoading(false)
+			console.error('Failed to fetch leave plans:', error)
+			setError(t('list.error'))
 		}
 	}
 
@@ -105,7 +143,7 @@ function AdminAllLeaveCalendar() {
 				</div>
 			) : (
 			<div id='all-leaveplans' style={{ padding: "20px" }}>
-				<h3>{t('planslist.h3')}</h3>
+				<h3><img src="img/schedule.png" alt="ikonka w sidebar" /> {t('planslist.h3')}</h3>
 				<hr />
 				{error && <p style={{ color: 'red' }}>{error}</p>}
                 <p>{t('planslist.emplo')}</p>

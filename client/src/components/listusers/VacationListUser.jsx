@@ -42,7 +42,7 @@ function VacationListUser() {
 				</div>
 			) : (
 			<div id="list-employee">
-				<h3>{t('vacationlisteq.h3')}</h3>
+				<h3><img src="img/trip.png" alt="ikonka w sidebar" /> {t('vacationlisteq.h3')}</h3>
 				<hr />
 				{error && <p style={{ color: 'red' }}>{error}</p>}
 				<h3 style={{ marginTop: '35px' }}>{t('vacationlisteq.request')}</h3>

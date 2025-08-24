@@ -39,7 +39,7 @@ function Sidebar() {
 	}
 
 	const handleLogoutClick = () => {
-		logout() // ← z contextu
+		logout()
 		navigate('/login')
 	}
 
@@ -51,7 +51,7 @@ function Sidebar() {
 		<div className="container-fluid p-0">
 			<nav className="navbar navbar-expand-lg d-md-none" style={{ paddingLeft: '15px', paddingRight: '15px' }}>
 				<Link to="/" className="navbar-brand">
-					<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
+					<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
 				</Link>
 				<button className="navbar-toggler" type="button" onClick={toggleMenu}>
 					<img src="/img/sort.png" style={{ width: '40px' }} alt="Menu" />
@@ -81,7 +81,7 @@ function Sidebar() {
 				</div>
 
 				<Link to="/" className="logo-sidebar mt-2 mb-2 d-flex justify-center">
-					<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
+					<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
 				</Link>
 
 				<button onClick={toggleMenu} className="closesidebar">
@@ -93,42 +93,42 @@ function Sidebar() {
 				<div className="p-2 btns-pages">
 					<NavLink
 						to="/edit-profile"
-						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						{t('sidebar.btn1')}
+						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						<img src="/img/user-avatar.png" alt="ikonka w sidebar" /> {t('sidebar.btn1')}
 					</NavLink>
 					<NavLink
 						to="/dashboard"
-						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						{t('sidebar.btn2')}
+						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						<img src="/img/clock.png" alt="ikonka w sidebar" /> {t('sidebar.btn2')}
 					</NavLink>
 					<NavLink
 						to="/leave-request"
-						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						{t('sidebar.btn3')}
+						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						<img src="/img/sunbed.png" alt="ikonka w sidebar" /> {t('sidebar.btn3')}
 					</NavLink>
 					<NavLink
 						to="/leave-planner"
-						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						{t('sidebar.btn4')}
+						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+						<img src="/img/calendar.png" alt="ikonka w sidebar" /> {t('sidebar.btn4')}
 					</NavLink>
 					<NavLink
 						to="/all-leave-plans"
-						className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isLeavePlans ? ' active' : '')}>
-						{t('sidebar.btn5')}
+						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isLeavePlans ? ' active' : '')}>
+						<img src="/img/schedule.png" alt="ikonka w sidebar" /> {t('sidebar.btn5')}
 					</NavLink>
 					<div className="admins-links">
 						{(isAdmin(role) || isHR(role) || isDepartmentSupervisor(role) || isDepartmentViewer(role)) && (
 							<NavLink
 								to="/calendars-list"
-								className={() => 'btn btn-primary btn-sm mb-2 w-100' + (isListOrCalendarActive ? ' active' : '')}>
-								{t('sidebar.btn6')}
+								className={() => 'btn btn-success btn-sm mb-2 w-100' + (isListOrCalendarActive ? ' active' : '')}>
+								<img src="/img/schedule time works.png" alt="ikonka w sidebar" /> {t('sidebar.btn6')}
 							</NavLink>
 						)}
 						{(isAdmin(role) || isHR(role) || isDepartmentSupervisor(role) || isDepartmentViewer(role)) && (
 							<NavLink
 								to="/leave-list"
-								className={() => 'btn btn-primary btn-sm mb-2 w-100' + (isListOrLeavereqActive ? ' active' : '')}>
-								{t('sidebar.btn7')}
+								className={() => 'btn btn-success btn-sm mb-2 w-100' + (isListOrLeavereqActive ? ' active' : '')}>
+								<img src="/img/trip.png" alt="ikonka w sidebar" /> {t('sidebar.btn7')}
 							</NavLink>
 						)}
 					</div>
@@ -136,22 +136,22 @@ function Sidebar() {
 						{isAdmin(role) && (
 							<NavLink
 								to="/create-user"
-								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								{t('sidebar.btn8')}
+								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								<img src="/img/add-group.png" alt="ikonka w sidebar" /> {t('sidebar.btn8')}
 							</NavLink>
 						)}
 						{isAdmin(role) && (
 							<NavLink
 								to="/logs"
-								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								{t('sidebar.btn9')}
+								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								<img src="/img/contact-list.png" alt="ikonka w sidebar" /> {t('sidebar.btn9')}
 							</NavLink>
 						)}
 						{isAdmin(role) && (
 							<NavLink
 								to="/helpcenter"
-								className={({ isActive }) => 'btn btn-primary btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								{t('tickets.title')}
+								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
+								<img src="/img/technical-support.png" alt="ikonka w sidebar" /> {t('tickets.title')}
 							</NavLink>
 						)}
 					</div>

@@ -252,7 +252,7 @@ function MonthlyCalendar() {
 	return (
 		<div className="row calendar-my-work">
 			<div className="col-xl-9">
-				<h3>{t('workcalendar.h3')}</h3>
+				<h3><img src="img/clock.png" alt="ikonka w sidebar" />{t('workcalendar.h3')}</h3>
 				<hr />
 
 				<div className="calendar-controls flex flex-wrap gap-4 items-center">
@@ -336,7 +336,7 @@ function MonthlyCalendar() {
 				/>
 			</div>
 			<div className="col-xl-3 resume-month-work">
-				<h3 className="h3resume" style={{ marginBottom: '0px' }}>
+				{/* <h3 className="h3resume" style={{ marginBottom: '0px' }}>
 					{t('workcalendar.confirmmonth')}
 				</h3>
 				<label style={{ marginLeft: '10px', marginTop: '15px', marginBottom: '35px' }}>
@@ -351,24 +351,81 @@ function MonthlyCalendar() {
 						style={{ marginRight: '10px', transform: 'scale(2)', cursor: 'pointer' }}
 					/>
 					{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
-				</label>
+				</label> */}
+				{/* <h3 className="h3resume" style={{ marginBottom: '0px' }}>
+  {t('workcalendar.confirmmonth')}
+</h3> */}
 
-				<h3 className="resumecales h3resume">{t('workcalendar.allfrommonth')}</h3>
-				<p>
-					{t('workcalendar.allfrommonth1')} {totalWorkDays}
+<button
+  onClick={() => {
+    toggleConfirmationStatus()
+    alert(
+      isConfirmed
+        ? t('workcalendar.cancelconfirm')
+        : t('workcalendar.successconfirm')
+    )
+  }}
+  style={{
+    marginLeft: '10px',
+    marginTop: '20px',
+    marginBottom: '35px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    border: 'none',
+    borderRadius: '6px',
+    color: '#fff',
+    backgroundColor: isConfirmed ? '#9ca3af' : '#22c55e', // szary lub zielony
+  }}
+  className='newbutton-confirmmonth'
+>
+  {isConfirmed
+    ? t('workcalendar.cancelconfirmation') 
+    : t('workcalendar.confirmmonthbutton')} 
+</button>
+<br></br>
+{isConfirmed ? (
+  <span style={{ display: 'flex', alignItems: 'center', padding: '15px' }} className='confirm-border'>
+    <img
+      src="/img/check.png"
+      alt=""
+      style={{ width: '38px', marginRight: '8px' }}
+    />
+    {t('workcalendar.confirmed')}
+  </span>
+) : (
+  <span style={{ display: 'flex', alignItems: 'center', padding: '15px' }} className='confirm-border'>
+    <img
+      src="/img/check.png"
+      alt=""
+      style={{
+        width: '38px',
+        marginRight: '8px',
+        filter: 'grayscale(100%)', // 🔥 wyszarzenie
+        opacity: 0.6,              // opcjonalnie przyciemnienie
+      }}
+    />
+    {t('workcalendar.notConfirmed')}
+  </span>
+)}
+
+
+				{/* <h3 className="resumecales h3resume">{t('workcalendar.allfrommonth')}</h3> */}
+				<p className='allfrommonth-p'>
+					<img src="/img/calendar mono.png" /> {t('workcalendar.allfrommonth1')} {totalWorkDays}
 				</p>
-				<p>
-					{t('workcalendar.allfrommonth2')} {totalHours} {t('workcalendar.allfrommonthhours')}
+				<p className='allfrommonth-p'>
+				<img src="/img/time.png" /> {t('workcalendar.allfrommonth2')} {totalHours} {t('workcalendar.allfrommonthhours')}
 				</p>
-				<p>
-					{t('workcalendar.allfrommonth3')} {additionalHours} {t('workcalendar.allfrommonthhours')}
+				<p className='allfrommonth-p'>
+				<img src="/img/clock mono.png" /> {t('workcalendar.allfrommonth3')} {additionalHours} {t('workcalendar.allfrommonthhours')}
 				</p>
 
-				<p>
-					{t('workcalendar.allfrommonth4')} {totalLeaveDays} ({totalLeaveHours} {t('workcalendar.allfrommonthhours')})
+				<p className='allfrommonth-p'>
+				<img src="/img/weekend mono.png" /> {t('workcalendar.allfrommonth4')} {totalLeaveDays} ({totalLeaveHours} {t('workcalendar.allfrommonthhours')})
 				</p>
-				<p>
-					{t('workcalendar.allfrommonth5')} {totalOtherAbsences}
+				<p className='allfrommonth-p'>
+				<img src="/img/dismiss.png" /> {t('workcalendar.allfrommonth5')} {totalOtherAbsences}
 				</p>
 			</div>
 

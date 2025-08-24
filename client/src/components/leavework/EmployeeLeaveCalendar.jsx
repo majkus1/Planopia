@@ -53,7 +53,7 @@ function EmployeeLeaveCalendar() {
 				locale={i18n.resolvedLanguage}
 				height="auto"
 				showNonCurrentDates={false}
-				firstDay={1} // <-- poniedziałek jako pierwszy dzień tygodnia
+				firstDay={1}
 				events={leavePlans.map(date => ({
 					title: t('leaveplanner.vactiontitle'),
 					start: date,
@@ -76,7 +76,7 @@ function EmployeeLeaveCalendar() {
 			<div className="leave-calendar-plans-one-employee">
 				{user && (
 					<h3 style={{ padding: '20px', paddingLeft: '10px' }}>
-						{t('leaveplanone.h3')} {user.firstName} {user.lastName}
+						<img src="/img/schedule.png" alt="ikonka w sidebar" /> {t('leaveplanone.h3')} {user.firstName} {user.lastName}
 					</h3>
 				)}
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>

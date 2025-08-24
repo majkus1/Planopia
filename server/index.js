@@ -12,7 +12,8 @@ const leaveRequestRoutes = require('./routes/leaveRequestRoutes')
 const leaveRoutes = require('./routes/leaveRoutes')
 const vacationRoutes = require('./routes/vacationRoutes')
 const ticketsRoutes = require('./routes/ticketsRoutes')
-const publicRoutes = require('./routes/publicRoutes') // nowy import
+const publicRoutes = require('./routes/publicRoutes')
+const teamRoutes = require('./routes/teamRoutes')
 const i18next = require('i18next')
 const Backend = require('i18next-fs-backend')
 const i18nextMiddleware = require('i18next-http-middleware')
@@ -61,17 +62,18 @@ app.use(mongoSanitize())
 app.use(helmet())
 app.use(i18nextMiddleware.handle(i18next))
 
-// 🔓 Public routes — bez CSRF
-app.use('/api/public', publicRoutes)
 
-// 🔐 CSRF tylko dla tras chronionych
+app.use('/api/public', publicRoutes)
+app.use('/api/teams', teamRoutes) // nowe trasy dla zespołów
+
+
 const csrfProtection = csurf({ cookie: true })
 app.get('/api/csrf-token', csrfProtection, (req, res) => {
 	res.json({ csrfToken: req.csrfToken() })
 })
 app.use(csrfProtection)
 
-// 👥 User routes (z CSRF i auth)
+
 app.use('/api/users', userRoutes)
 app.use('/api/userlogs', logRoutes)
 app.use('/api/workdays', workdayRoutes)

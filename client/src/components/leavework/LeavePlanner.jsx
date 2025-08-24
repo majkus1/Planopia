@@ -95,7 +95,7 @@ function LeavePlanner() {
 				</div>
 			) : (
 				<div style={{ padding: '20px' }} id="leave-planner">
-					<h3>{t('leaveplanner.mainheader')}</h3>
+					<h3><img src="img/calendar.png" alt="ikonka w sidebar" /> {t('leaveplanner.mainheader')}</h3>
 					<hr />
 					<div style={{ marginBottom: '20px' }}>
 						<h4>{t('leaveplanner.header')}</h4>

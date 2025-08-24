@@ -6,21 +6,27 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: false },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    teamId: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Team', 
+        required: true 
+    },
     roles: {
         type: [String],
         enum: [
-            'Admin',                             // Admin (wszystko widzi)
-            'Pracownik (Worker)',                         // Pracownik (Worker) (tylko swoje dane)
-            'Może zatwierdzać urlopy swojego działu (Approve Leaves Department)',    // Przełożony urlopów
+            'Admin',                             
+            'Pracownik (Worker)',                         
+            'Może zatwierdzać urlopy swojego działu (Approve Leaves Department)',   
             'Może widzieć ewidencję czasu pracy swojego działu (View Timesheets Department)',
             'Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)'
         ],
         required: true
     },
-    department: { type: String }, // dowolny tekst wpisany przez usera
+    department: { type: String },
     position: { type: String, required: false },
     leaveDays: { type: Number, default: 0 },
     vacationDays: { type: Number, default: 0 },
+    isTeamAdmin: { type: Boolean, default: false },
 }, { collection: 'users' });
 
 userSchema.pre('save', async function (next) {

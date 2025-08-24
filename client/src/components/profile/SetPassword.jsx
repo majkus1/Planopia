@@ -33,14 +33,14 @@ function SetPassword() {
 			return
 		}
 		try {
-			const response = await axios.post(`${API_URL}/api/users/set-password`, {
+			const response = await axios.post(`${API_URL}/api/users/set-password/${token}`, {
 				password,
-				token,
 				position,
 			})
 			alert(t('newpass.messtwo'))
-			navigate('/')
+			navigate('/login')
 		} catch (error) {
+			console.error('Error setting password:', error)
 			alert(t('newpass.messthree'))
 		}
 	}
@@ -70,14 +70,14 @@ function SetPassword() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card">
 					<div className="set-pass">
 						<h2 style={{ marginTop: '20px', marginBottom: '20px' }}>{t('newpass.h2n')}</h2>
 						<form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
-							{/* Hasło */}
+							
 							<input
 								type="password"
 								id="password"
@@ -88,7 +88,7 @@ function SetPassword() {
 								className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
 							/>
 
-							{/* Powtórz hasło */}
+							
 							<input
 								type="password"
 								id="confirmPassword"
@@ -99,10 +99,10 @@ function SetPassword() {
 								className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
 							/>
 
-							{/* Wymagania hasła */}
+							
 							<small className="text-gray-500 block">{t('newpass.requirements')}</small>
 
-							{/* Stanowisko */}
+							
 							<input
 								type="text"
 								id="position"
@@ -113,7 +113,7 @@ function SetPassword() {
 								className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 mt-3"
 							/>
 
-							{/* Przycisk */}
+							
 							<button
 								type="submit"
 								className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition mb-4">

@@ -16,7 +16,7 @@ function Logs() {
 	const [loading, setLoading] = useState(true)
 	const [departments, setDepartments] = useState([])
 	const [editedDepartment, setEditedDepartment] = useState('')
-	const [departmentMode, setDepartmentMode] = useState('choose') // 'choose' lub 'new'
+	const [departmentMode, setDepartmentMode] = useState('choose')
 
 	const availableRoles = [
 		'Admin',
@@ -26,24 +26,32 @@ function Logs() {
 		'Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)',
 	]
 
+	const fetchDepartments = async () => {
+		try {
+			console.log('Fetching departments...');
+			const response = await axios.get(`${API_URL}/api/departments`, { withCredentials: true })
+			console.log('Departments response:', response.data);
+			setDepartments(response.data)
+		} catch (error) {
+			console.error('Błąd pobierania departmentów:', error)
+			console.error('Error response:', error.response?.data);
+		}
+	}
+
+	const refreshDepartments = async () => {
+		await fetchDepartments()
+	}
+
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
-				const response = await axios.get(`${API_URL}/api/users/all-users`)
+				const response = await axios.get(`${API_URL}/api/users/all-users`, { withCredentials: true })
 				setUsers(response.data)
 			} catch (error) {
 				console.error('Error fetching users:', error)
 				setError('Nie udało się pobrać listy użytkowników')
 			} finally {
 				setLoading(false)
-			}
-		}
-		const fetchDepartments = async () => {
-			try {
-				const response = await axios.get(`${API_URL}/api/departments`)
-				setDepartments(response.data)
-			} catch (error) {
-				console.error('Błąd pobierania departmentów:', error)
 			}
 		}
 
@@ -53,7 +61,7 @@ function Logs() {
 
 	const fetchLogs = async userId => {
 		try {
-			const response = await axios.get(`${API_URL}/api/userlogs/${userId}`)
+			const response = await axios.get(`${API_URL}/api/userlogs/${userId}`, { withCredentials: true })
 			const filteredLogs = response.data.filter(log => log.action !== 'LOGOUT')
 			setLogs(prevLogs => ({
 				...prevLogs,
@@ -91,15 +99,22 @@ function Logs() {
 
 	const handleSaveRoles = async userId => {
 		try {
+			if (departmentMode === 'new' && editedDepartment && !departments.includes(editedDepartment)) {
+				await axios.post(`${API_URL}/api/departments`, { name: editedDepartment }, { withCredentials: true })
+				await refreshDepartments()
+			}
+
 			await axios.patch(`${API_URL}/api/users/${userId}/roles`, {
 				roles: editedRoles,
 				department: editedDepartment,
-			})
+			}, { withCredentials: true })
+			
 			setUsers(prevUsers =>
 				prevUsers.map(user =>
 					user._id === userId ? { ...user, roles: editedRoles, department: editedDepartment } : user
 				)
 			)
+			
 			setEditingUser(null)
 			alert(t('logs.alert'))
 		} catch (error) {
@@ -146,12 +161,6 @@ function Logs() {
 											style={{ margin: '3px' }}>
 											{t('logs.actionbtn')}
 										</button>
-										{/* <button
-										className='btn btn-danger btn-sm'
-										onClick={() => handleDeleteUser(user._id)}
-										style={{ margin: '3px' }}>
-										Usuń
-									</button> */}
 									</td>
 								</tr>
 								{editingUser?._id === user._id && (
@@ -174,8 +183,9 @@ function Logs() {
 											<h3 className='mt-3'>{t('newuser.department5')}</h3>
 											{departments.length > 0 && departmentMode === 'choose' ? (
 												<>
+												<div className='edit-department'>
 													<div>
-														{departments.map(dep => (
+														{departments.map((dep, index) => (
 															<label key={dep} style={{ marginRight: '10px' }}>
 																<input
 																	type="radio"
@@ -191,34 +201,37 @@ function Logs() {
 													</div>
 													<button
 														type="button"
-														className="btn btn-link ms-2 py-1 mb-4"
+														className="btn btn-link ms-2 py-1 mb-4 to-left-max"
 														onClick={() => {
 															setEditedDepartment('')
 															setDepartmentMode('new')
 														}}>
 														{t('newuser.department2')}
 													</button>
+													</div>
 												</>
 											) : (
 												<>
+												<div className='edit-department'>
 													<input
 														type="text"
 														placeholder={t('newuser.department4')}
 														value={editedDepartment}
 														onChange={e => setEditedDepartment(e.target.value)}
-														className="w-full border border-gray-300 rounded-md px-4 py-2 m-2 mb-4"
+														className="w-full border border-gray-300 rounded-md px-4 py-2 m-2 width-custom"
 													/>
 													{departments.length > 0 && (
 														<button
 															type="button"
-															className="btn btn-link p-2 ms-2"
+															className="btn btn-link p-2 ms-2 mb-4"
 															onClick={() => setDepartmentMode('choose')}>
 															{t('newuser.department3')}
 														</button>
 													)}
+													</div>
 												</>
 											)}
-											<br></br>
+											{/* <br></br> */}
 											<button
 												className="btn btn-success btn-sm me-2"
 												onClick={() => handleSaveRoles(user._id)}
@@ -226,7 +239,7 @@ function Logs() {
 												{t('logs.save')}
 											</button>
 											<button
-												className="btn btn-secondary btn-sm"
+												className="btn btn-danger btn-sm"
 												onClick={() => setEditingUser(null)}
 												style={{ margin: '3px' }}>
 												{t('logs.notsave')}

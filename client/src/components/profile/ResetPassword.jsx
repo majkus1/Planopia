@@ -61,14 +61,14 @@ function ResetPassword() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card">
 					<div className="reset-password-container">
 						<h2 style={{ marginBottom: '20px', marginTop: '20px' }}>{t('resetpass.txt1')}</h2>
 						<form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
-							{/* Email input */}
+							
 							<div>
 								<input
 									type="email"
@@ -81,14 +81,14 @@ function ResetPassword() {
 								/>
 							</div>
 
-							{/* Submit button */}
+							
 							<button
 								type="submit"
 								className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition mb-4">
 								{t('resetpass.txt3')}
 							</button>
 
-							{/* Optional message */}
+							
 							{message && <p className="text-sm text-gray-700 max-w-xs">{message}</p>}
 						</form>
 					</div>

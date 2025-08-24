@@ -2,7 +2,7 @@ const multer = require('multer')
 const path = require('path')
 const crypto = require('crypto')
 
-// Konfiguracja zapisu pliku z oryginalnym rozszerzeniem
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/')

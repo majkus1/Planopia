@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
-const User = require('../models/user')
+const { firmDb } = require('../db/db')
+const User = require('../models/user')(firmDb)
 const { appUrl } = require('../config')
 
 const sendEmail = async (to, link, subject, html) => {
@@ -23,32 +24,38 @@ const sendEmail = async (to, link, subject, html) => {
 	console.log('Message sent: %s', info.messageId)
 }
 
-// Funkcja wysyłająca email do wszystkich z rolą HR (czyli "Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)")
-const sendEmailToHR = async (leaveRequest, user, updatedByUser, t, updatedByInfo) => {
+
+const sendEmailToHR = async (leaveRequest, user, updatedByUser, t, updatedByInfo, teamId) => {
 	try {
 		const hrUsers = await User.find({
-			roles: { $in: ['Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)'] }
+			teamId, 
+			roles: { $in: ['Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)'] },
 		})
 
-		const mailContent = `
-			<p><b>${t('email.leaveRequest.employee')}:</b> ${user.firstName} ${user.lastName}</p>
-			<p><b>${t('email.leaveRequest.type')}:</b> ${t(leaveRequest.type)}</p>
-			<p><b>${t('email.leaveRequest.dates')}:</b> ${leaveRequest.startDate.toISOString().split('T')[0]} - ${leaveRequest.endDate.toISOString().split('T')[0]}</p>
-			<p><b>${t('email.leaveRequest.days')}:</b> ${leaveRequest.daysRequested}</p>
-			${updatedByInfo}
-			<p><a href="${appUrl}/leave-requests/${user._id}">${t('email.leaveRequest.goToRequest')}</a></p>
-		`
-
-		for (const hrUser of hrUsers) {
-			await sendEmail(
-				hrUser.username,
-				null,
-				`${t('email.leaveRequest.titlemail')} ${t(leaveRequest.type)} ${t(leaveRequest.status)}`,
-				mailContent
-			)
+		if (hrUsers.length === 0) {
+			console.log('Brak użytkowników HR w tym zespole')
+			return
 		}
 
-		console.log('Email sent to HR users successfully')
+		const emailPromises = hrUsers.map(hrUser =>
+			sendEmail(
+				hrUser.username,
+				`${appUrl}/leave-requests/${user._id}`,
+				`${t('email.leaveRequest.title')} ${t(leaveRequest.type)} ${t(leaveRequest.status)}`,
+				`<h3>${t('email.leaveRequest.title')} ${t(leaveRequest.type)} ${t(leaveRequest.status)}</h3>
+				<p><b>${t('email.leaveRequest.employee')}:</b> ${user.firstName} ${user.lastName}</p>
+				<p><b>${t('email.leaveRequest.type')}:</b> ${t(leaveRequest.type)}</p>
+				<p><b>${t('email.leaveRequest.dates')}:</b> ${leaveRequest.startDate.toISOString().split('T')[0]} - ${
+					leaveRequest.endDate.toISOString().split('T')[0]
+				}</p>
+				<p><b>${t('email.leaveRequest.days')}:</b> ${leaveRequest.daysRequested}</p>
+				${updatedByInfo}
+				<p><a href="${appUrl}/leave-requests/${user._id}">${t('email.leaveRequest.goToRequest')}</a></p>`
+			)
+		)
+
+		await Promise.all(emailPromises)
+		console.log('Email sent to HR users successfully (team scoped, all departments)')
 	} catch (error) {
 		console.error('Błąd podczas wysyłania maila do HR:', error)
 	}

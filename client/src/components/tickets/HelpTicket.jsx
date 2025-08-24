@@ -24,7 +24,6 @@ const HelpTicket = () => {
 		setReplyFiles(Array.from(e.target.files))
 	}
 
-	// Pobierz tickety po zalogowaniu
 	useEffect(() => {
 		fetchTickets()
 	}, [])
@@ -32,7 +31,7 @@ const HelpTicket = () => {
 	const fetchTickets = async () => {
 		setLoading(true)
 		try {
-			const res = await axios.get(`${API_URL}/api/tickets/my-tickets`)
+			const res = await axios.get(`${API_URL}/api/tickets/my-tickets`, { withCredentials: true })
 			setTickets(res.data)
 			setError('')
 		} catch (err) {
@@ -41,7 +40,6 @@ const HelpTicket = () => {
 		setLoading(false)
 	}
 
-	// Obsługa formularza nowego ticketa
 	const handleNewTicketChange = e => {
 		const { name, value } = e.target
 		setNewTicket(prev => ({ ...prev, [name]: value }))
@@ -50,7 +48,7 @@ const HelpTicket = () => {
 	const handleFileChange = e => {
 		setNewTicket(prev => ({
 			...prev,
-			attachments: Array.from(e.target.files), // <--- tablica plików!
+			attachments: Array.from(e.target.files),
 		}))
 	}
 
@@ -63,15 +61,15 @@ const HelpTicket = () => {
 			const formData = new FormData()
 			formData.append('topic', newTicket.topic)
 			formData.append('message', newTicket.message)
-			formData.append('frontendUrl', window.location.origin)
 			if (newTicket.attachments && newTicket.attachments.length > 0) {
 				newTicket.attachments.forEach(file => {
-					formData.append('attachments', file) // ważne: pole 'attachments' (liczba mnoga)
+					formData.append('attachments', file)
 				})
 			}
 
 			await axios.post(`${API_URL}/api/tickets/create`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
+				withCredentials: true
 			})
 			setSuccess(t('tickets.createSuccess'))
 			setNewTicket({ topic: '', message: '', attachment: null })
@@ -82,7 +80,6 @@ const HelpTicket = () => {
 		setLoading(false)
 	}
 
-	// Odpowiedź na wybrany ticket
 	const handleSendReply = async e => {
 		e.preventDefault()
 		setLoading(true)
@@ -93,12 +90,12 @@ const HelpTicket = () => {
 			replyFiles.forEach(file => formData.append('attachments', file))
 			await axios.post(`${API_URL}/api/tickets/${selectedTicket._id}/reply`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
+				withCredentials: true
 			})
 			setReply('')
 			setReplyFiles([])
 			fetchTickets()
-			// Refresh selected ticket details (after reply)
-			const updatedTicket = await axios.get(`${API_URL}/api/tickets/${selectedTicket._id}`)
+			const updatedTicket = await axios.get(`${API_URL}/api/tickets/${selectedTicket._id}`, { withCredentials: true })
 			setSelectedTicket(updatedTicket.data)
 			setSuccess(t('tickets.replySuccess'))
 		} catch (err) {
@@ -107,13 +104,12 @@ const HelpTicket = () => {
 		setLoading(false)
 	}
 
-	// Pobierz szczegóły ticketa
 	const handleOpenTicket = async ticket => {
 		setLoading(true)
 		setSelectedTicket(null)
 		setError('')
 		try {
-			const res = await axios.get(`${API_URL}/api/tickets/${ticket._id}`)
+			const res = await axios.get(`${API_URL}/api/tickets/${ticket._id}`, { withCredentials: true })
 			setSelectedTicket(res.data)
 		} catch (err) {
 			setError(t('tickets.detailsError'))
@@ -121,7 +117,6 @@ const HelpTicket = () => {
 		setLoading(false)
 	}
 
-	// Zamknij widok ticketa
 	const handleBackToList = () => {
 		setSelectedTicket(null)
 		setReply('')
@@ -134,9 +129,8 @@ const HelpTicket = () => {
 			<Sidebar />
 
 			<div className="flex-1 p-6 max-w-3xl tickets">
-				<h2 className="text-2xl font-bold mb-4">{t('tickets.title')}</h2>
-
-				{/* Wyślij nowe zgłoszenie */}
+				<h2 className="text-2xl font-bold mb-4"><img src="img/technical-support.png" alt="ikonka w sidebar" /> {t('tickets.title')}</h2>
+				<hr />
 				{!selectedTicket && (
 					<div className="mb-8 border bg-white rounded-xl shadow p-5">
 						<h3 className="font-semibold text-lg mb-3">{t('tickets.new')}</h3>
@@ -148,7 +142,7 @@ const HelpTicket = () => {
 								value={newTicket.topic}
 								onChange={handleNewTicketChange}
 								required
-								className="input input-bordered p-2"
+								className="input input-bordered p-2 w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 							/>
 							<textarea
 								name="message"
@@ -156,11 +150,10 @@ const HelpTicket = () => {
 								value={newTicket.message}
 								onChange={handleNewTicketChange}
 								required
-								className="input input-bordered min-h-[80px] p-2"
+								className="input input-bordered min-h-[80px] p-2 w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 							/>
 							<div>
 								<label className="cursor-pointer flex items-center gap-2">
-									{/* <Paperclip size={18} /> */}
 									<span>{t('tickets.addAttachment')}</span>
 									<input
 										type="file"
@@ -168,7 +161,7 @@ const HelpTicket = () => {
 										className="hidden"
 										ref={fileInputRef}
 										onChange={handleFileChange}
-										multiple // <----- ważne!
+										multiple
 									/>
 									{newTicket.attachments && newTicket.attachments.length > 0 && (
 										<ul className="ml-2 text-xs text-gray-500">
@@ -191,7 +184,6 @@ const HelpTicket = () => {
 					</div>
 				)}
 
-				{/* Lista ticketów */}
 				{!selectedTicket && (
 					<div>
 						<h3 className="font-semibold text-lg mb-2">{t('tickets.myTickets')}</h3>
@@ -199,7 +191,7 @@ const HelpTicket = () => {
 							<table className="table">
 								<thead>
 									<tr>
-										<th>{t('tickets.company')}</th> {/* nowy nagłówek */}
+										<th>{t('tickets.company')}</th>
 										<th>{t('tickets.topic')}</th>
 										<th>Status</th>
 										<th>{t('tickets.date')}</th>
@@ -217,7 +209,7 @@ const HelpTicket = () => {
 									)}
 									{tickets.map(ticket => (
 										<tr key={ticket._id}>
-											<td>{ticket.company.replace(/^https?:\/\/(www\.)?/, '')}</td>
+											<td>{ticket.company}</td>
 											<td>{ticket.topic}</td>
 											<td>
 												{ticket.status === 'Otwarte'
@@ -241,7 +233,6 @@ const HelpTicket = () => {
 					</div>
 				)}
 
-				{/* Szczegóły zgłoszenia + odpowiedzi */}
 				{selectedTicket && (
 					<div className="border bg-white rounded-xl shadow p-5 mt-6">
 						<button className="btn btn-sm btn-outline mb-3" onClick={handleBackToList}>
@@ -252,7 +243,6 @@ const HelpTicket = () => {
 							<span>{t('tickets.author')}:</span> {selectedTicket.userEmail}
 						</p>
 						{isAdmin(role) ? (
-							// Admin – może zmienić status
 							<div className="mb-2">
 								<label className="font-semibold mr-2">Status:</label>
 								<select
@@ -260,20 +250,19 @@ const HelpTicket = () => {
 									onChange={async e => {
 										const newStatus = e.target.value
 										try {
-											await axios.patch(`${API_URL}/api/tickets/${selectedTicket._id}/status`, { status: newStatus })
+											await axios.patch(`${API_URL}/api/tickets/${selectedTicket._id}/status`, { status: newStatus }, { withCredentials: true })
 											setSelectedTicket(prev => ({ ...prev, status: newStatus }))
 											fetchTickets()
 										} catch (err) {
 											setError(t('tickets.statusUpdateError'))
 										}
 									}}
-									className="select select-sm select-bordered">
+									className="select select-sm select-bordered border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 									<option value="Otwarte">{t('tickets.status1')}</option>
 									<option value="Zamknięte">{t('tickets.status2')}</option>
 								</select>
 							</div>
 						) : (
-							// User – tylko widzi status
 							<p className="mb-2">
 								<span className="font-semibold">Status:</span>{' '}
 								{selectedTicket.status === 'Otwarte'
@@ -314,11 +303,9 @@ const HelpTicket = () => {
 
 						<hr className="my-4" />
 
-						{/* Historia odpowiedzi */}
 						<div>
 							<h4 className="font-semibold mb-2">{t('tickets.replyHistory')}</h4>
 							<div className="flex flex-col gap-2 max-h-64 overflow-y-auto">
-								{/* Pokaż odpowiedzi od drugiego wpisu (indeks 1) */}
 								{selectedTicket.messages && selectedTicket.messages.length > 1 ? (
 									selectedTicket.messages.slice(1).map((msg, idx) => (
 										<div
@@ -330,7 +317,6 @@ const HelpTicket = () => {
 											}`}>
 											<div className="text-sm">{msg.content}</div>
 
-											{/* Załączniki do odpowiedzi */}
 											{msg.files && msg.files.length > 0 && (
 												<div className="mt-1 text-xs flex flex-col gap-1">
 													{msg.files.map((file, fileIdx) => (
@@ -358,13 +344,12 @@ const HelpTicket = () => {
 							</div>
 						</div>
 
-						{/* Dodaj odpowiedź */}
 						<form className="mt-4 flex flex-col gap-2" onSubmit={handleSendReply} encType="multipart/form-data">
 							<textarea
 								value={reply}
 								onChange={e => setReply(e.target.value)}
 								placeholder={t('tickets.writeReply')}
-								className="input input-bordered min-h-[60px] p-2"
+								className="input input-bordered min-h-[60px] p-2 w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 							/>
 							<label className="cursor-pointer flex items-center gap-2">
 								<span>{t('tickets.addAttachment')}</span>

@@ -22,7 +22,7 @@ function Login() {
 	const location = useLocation()
 	const from = location.state?.from?.pathname || '/dashboard'
 	const { t, i18n } = useTranslation()
-	const { setLoggedIn, setRole, setUsername } = useAuth()
+	const { setLoggedIn, setRole, setUsername, setTeamId, setIsTeamAdmin } = useAuth()
 
 	const lngs = {
 		en: { nativeName: '', flag: '/img/united-kingdom.png' },
@@ -44,6 +44,8 @@ function Login() {
 			setRole(response.data.roles)
 			setLoggedIn(true)
 			setUsername(response.data.username)
+			setTeamId(response.data.teamId)
+			setIsTeamAdmin(response.data.isTeamAdmin)
 			navigate(from)
 		} catch (error) {
 			console.error('Login error:', error)
@@ -84,13 +86,13 @@ function Login() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card boxlog">
 					<div className="card-body login-card-body padr">
 						<form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
-							{/* Email */}
+							
 							<div style={{ marginBottom: '15px' }}>
 								<div className="relative">
 									<input
@@ -108,7 +110,7 @@ function Login() {
 								</div>
 							</div>
 
-							{/* Password */}
+							
 							<div>
 								
 								<div className="relative">
@@ -127,20 +129,44 @@ function Login() {
 								</div>
 							</div>
 
-							{/* Login button */}
+							
 							<div>
 								<button
 									type="submit"
-									className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
+									className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 btn-success"
+								>
 									{t('login.loginto')}
 								</button>
 							</div>
 
-							{/* Forgot password */}
+							
 							<div className="text-center">
 								<Link to="/reset-password" className="text-sm text-blue-600 hover:underline">
 									{t('login.forgotpass')}
 								</Link>
+							</div>
+
+							
+							<div className="relative">
+								<div className="absolute inset-0 flex items-center">
+									<div className="w-full border-t border-gray-300" />
+								</div>
+								<div className="relative flex justify-center text-sm">
+									<span className="px-2 bg-white text-gray-500">lub</span>
+								</div>
+							</div>
+
+							
+							<div>
+								<Link
+									to="/team-registration"
+									className="w-full bg-blue-600 text-white py-2 px-4 rounded-md transition block text-center btn-primary"
+									style={{ textDecoration: 'none' }}>
+									Utwórz nowy zespół
+								</Link>
+								<p className="text-xs text-gray-500 text-center mt-2">
+									Załóż swój zespół i zarządzaj czasem pracy oraz urlopami do 8 użytkowników za darmo!
+								</p>
 							</div>
 						</form>
 

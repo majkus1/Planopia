@@ -68,7 +68,7 @@ function NewPassword() {
 			<div className="login-box">
 				<div className="login-logo">
 					<div>
-						<img src="/img/planopialogo.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</div>
 				</div>
 				<div className="card boxlog">
@@ -76,7 +76,7 @@ function NewPassword() {
 						<div className="set-pass">
 							<h2 style={{ marginBottom: '20px' }}>{t('newpass.h2')}</h2>
 							<form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
-								{/* New password */}
+								
 								<input
 									type="password"
 									id="password"
@@ -87,7 +87,7 @@ function NewPassword() {
 									className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
 								/>
 
-								{/* Confirm password */}
+								
 								<input
 									type="password"
 									id="confirmPassword"
@@ -98,10 +98,10 @@ function NewPassword() {
 									className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
 								/>
 
-								{/* Password requirements */}
+								
 								<small className="text-gray-500 block">{t('newpass.requirements')}</small>
 
-								{/* Submit button */}
+								
 								<button
 									type="submit"
 									className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">

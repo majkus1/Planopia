@@ -106,7 +106,7 @@ function AdminLeaveRequests() {
 				</div>
 			) : (
 			<div id="leave-requests-review">
-				<h3>{t('adminleavereq.h3')}</h3>
+				<h3><img src="/img/trip.png" alt="ikonka w sidebar" /> {t('adminleavereq.h3')}</h3>
 				<hr />
 				{user && (
 					<h3 style={{ marginBottom: '25px' }}>

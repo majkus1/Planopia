@@ -112,12 +112,12 @@ function ProductPromotion() {
 
 			{/* HEADER + MENU */}
 			<header className="bg-white top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
-				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent">
+				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent" style={{ maxWidth: '1350px' }}>
 					<RouterLink
 						to="/"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<a
@@ -137,14 +137,6 @@ function ProductPromotion() {
 							Cennik
 						</a>
 						<a
-							href="#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
-							Test
-						</a>
-						<a
 							href="#kontakt"
 							smooth={true}
 							duration={500}
@@ -159,11 +151,21 @@ function ProductPromotion() {
 							Blog
 						</RouterLink>
 						<RouterLink
-							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-							onClick={toggleMenu}>
-							Logowanie
-						</RouterLink>
+  to="/login"
+  onClick={toggleMenu}
+  className="bg-transparent text-blue-600 font-semibold py-2 px-4 border border-blue-600 rounded hover:bg-blue-50 hover:text-blue-700 transition"
+>
+  Logowanie
+</RouterLink>
+
+<RouterLink
+  to="/signup" // <- tutaj raczej kierujesz na rejestrację zespołu
+  onClick={toggleMenu}
+  className="bg-green-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-700 transition ctamenu"
+>
+  Załóż darmowy zespół
+</RouterLink>
+
 						<RouterLink to="/en" className="flex items-center languagechoose">
 							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
@@ -199,15 +201,6 @@ function ProductPromotion() {
 							Cennik
 						</a>
 						<a
-							href="#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							onClick={toggleMenu}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
-							Test
-						</a>
-						<a
 							href="#kontakt"
 							smooth={true}
 							duration={500}
@@ -223,11 +216,21 @@ function ProductPromotion() {
 							Blog
 						</RouterLink>
 						<RouterLink
-							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
-							onClick={toggleMenu}>
-							Logowanie
-						</RouterLink>
+  to="/login"
+  onClick={toggleMenu}
+  className="w-full text-center bg-transparent text-blue-600 font-semibold py-2 px-4 border border-blue-600 rounded mb-4 hover:bg-blue-50 hover:text-blue-700 transition"
+>
+  Logowanie
+</RouterLink>
+
+<RouterLink
+  to="/signup" // <- tu najlepiej daj ścieżkę do rejestracji zespołu
+  onClick={toggleMenu}
+  className="ctamenu w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded mb-4 shadow hover:bg-green-700 transition"
+>
+  Załóż darmowy zespół
+</RouterLink>
+
 						<RouterLink to="/en" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
 							<img src="/img/united-kingdom.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
@@ -241,17 +244,17 @@ function ProductPromotion() {
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
 							<h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
-								Aplikacja do ewidencji czasu pracy i zarządzania urlopami.
+							Ewidencja czasu pracy i urlopów – za darmo do 8 użytkowników
 							</h1>{' '}
-							<h2 className="font-semibold text-gray-800 mb-2" id="underheader">
-								Z Planopią wszystko ma swoje miejsce.
+							<h2 className="font-semibold text-gray-800" id="underheader">
+							Planopia pomaga zespołom i firmom uporządkować czas pracy i urlopy.
 							</h2>
-							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p>
-							<button
-								onClick={() => document.getElementById('cennik')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
-								Cennik
-							</button>
+							{/* <p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p> */}
+							<RouterLink
+								to="/team-registration"
+								className="bg-green-600 text-white font-semibold py-3 px-4 rounded shadow hover:bg-green-700 transition mt-2">
+								Załóż darmowy zespół
+							</RouterLink>
 						</div>
 						<img
 							src="/img/planopiaheader.webp"
@@ -262,316 +265,411 @@ function ProductPromotion() {
 				</div>
 			</section>
 
-			{/* TESTUJ */}
-			<section id="test" className="py-13 px-6 bg-white">
-				<div className="max-w-xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-6">Przetestuj aplikację</h2>
-					<p className="mb-6">
-						Wpisz swój email, a wyślemy dane do logowania na konto testowe, które będzie aktywne przez 7 dni.
-					</p>
-					<form onSubmit={handleSubmit} className="mt-10">
-						<input
-							type="email"
-							className="w-full p-2 border border-gray-300 rounded-md mb-4"
-							placeholder="Twój email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							required
-						/>
-						<button
-							type="submit"
-							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
-							style={{ padding: '15px' }}>
-							Wyślij
-						</button>
-						{message && <p className="mt-2 text-sm">{message}</p>}
-					</form>
-				</div>
-			</section>
+			<section id="oaplikacji" className="py-16 bg-white px-4">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-10 items-center">
+      {/* Tekst */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+          Planopia — proste zarządzanie czasem pracy i urlopami
+        </h2>
+        <p className="mt-4 text-lg text-gray-600">
+          Zapomnij o Excelach i mailach. Planopia automatyzuje ewidencję, zgłaszanie nieobecności i akceptacje — szybciej, czytelniej, bez błędów.
+        </p>
 
-			<section className="py-13 px-6 bg-white" id="oaplikacji">
-				<div className="max-w-5xl mx-auto">
-					<h2 className="text-4xl font-bold" style={{ marginBottom: '35px' }}>
-						O aplikacji Planopia
-					</h2>
-					<p className="text-lg text-gray-700 mb-6 text-justify mt-10">
-						Planopia to nowoczesna aplikacja webowa stworzona z myślą o firmach, które chcą w prosty sposób prowadzić
-						<strong> ewidencję czasu pracy</strong>, zarządzać
-						<strong> urlopami i nieobecnościami</strong> oraz usprawnić komunikację wewnętrzną. Dzięki intuicyjnemu
-						interfejsowi i automatyzacji procesów kadrowych, oszczędzasz czas, unikasz błędów i zyskujesz pełną kontrolę
-						nad organizacją pracy w Twoim zespole.
-					</p>
+        {/* Feature grid */}
+        <div className="mt-8 grid sm:grid-cols-2 gap-4">
+          {/* 1 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/schedule time works.png" className='icon-landing-about'/>
+            <div>
+              <p className="font-semibold text-gray-900">Ewidencja czasu pracy</p>
+              <p className="text-sm text-gray-600">Kalendarz, nadgodziny i podsumowania pracy.</p>
+            </div>
+          </div>
+          {/* 2 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+		  <img src="img/sunbed.png" className='icon-landing-about'/>
+            <div>
+              <p className="font-semibold text-gray-900">Urlopy i nieobecności</p>
+              <p className="text-sm text-gray-600">Wnioski, akceptacje, powiadomienia.</p>
+            </div>
+          </div>
+          {/* 3 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+		  <img src="img/pdf.png" className='icon-landing-about'/>
+            <div>
+			<p className="font-semibold text-gray-900">Dokumenty</p>
+<p className="text-sm text-gray-600">Generowanie PDF: kalendarze pracy i wnioski urlopowe zawsze pod ręką.</p>
+            </div>
+          </div>
+          {/* 4 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+		  <img src="img/verified.png" className='icon-landing-about'/>
+            <div>
+              <p className="font-semibold text-gray-900">Bezpieczeństwo</p>
+              <p className="text-sm text-gray-600">Bezpieczne logowanie i szyfrowane połączenia chronią Twoją firmę.</p>
+            </div>
+          </div>
+          {/* 5 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+		  <img src="img/booking.png" className='icon-landing-about'/>
+            <div>
+              <p className="font-semibold text-gray-900">PWA i mobile</p>
+              <p className="text-sm text-gray-600">Dodaj do ekranu i używaj jak appki.</p>
+            </div>
+          </div>
+          {/* 6 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+		  <img src="img/technical-support.png" className='icon-landing-about'/>
+            <div>
+			<p className="font-semibold text-gray-900">Indywidualne wsparcie</p>
+<p className="text-sm text-gray-600">Czat i pomoc dla Twojego zespołu — w razie pytań lub problemów.</p>
 
-					<ul className="list-disc pl-4 text-gray-800 text-base space-y-2 mb-4">
-						<li>
-							<strong>Ewidencja czasu pracy</strong> – intuicyjny kalendarz z możliwością zapisu godzin i trybu pracy.
-						</li>
-						<li>
-							<strong>Automatyczne zliczanie godzin pracy</strong> – w tym nadgodzin i pracy zdalnej.
-						</li>
-						<li>
-							<strong>Zgłaszanie urlopów i nieobecności</strong> – formularz z natychmiastowym powiadomieniem
-							przełożonego.
-						</li>
-						<li>
-							<strong>Planowanie urlopów</strong> – możliwość tworzenia rocznych planów urlopowych dla pracowników.
-						</li>
-						<li>
-							<strong>Powiadomienia e-mail</strong> – automatyczne informacje o złożonych i zaakceptowanych wnioskach.
-						</li>
-						<li>
-							<strong>Wydruk PDF</strong> – generowanie kalendarzy pracy oraz wniosków urlopowych do druku lub
-							archiwizacji.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Bezpieczeństwo</strong> – aplikacja została zaprojektowana z dużym
-							naciskiem na bezpieczeństwo informacji i prywatność użytkowników.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Błyskawiczne działanie</strong> – aplikacja działa szybko i płynnie,
-							nawet w większych zespołach.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Dostępność językowa</strong> – aplikacja dostępna jest w dwóch wersjach
-							językowych: polskiej i angielskiej.
-						</li>
-						<li>
-							<strong>Responsywność</strong> – aplikacja działa poprawnie i wygodnie również na urządzeniach mobilnych
-							(smartfony, tablety).
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Aplikacja PWA</strong> – dodaj Planopię do ekranu głównego swojego
-							telefonu i korzystaj z niej jak z pełnoprawnej aplikacji mobilnej – bez pobierania ze sklepu.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Wygląd dopasowany do firmy</strong> – personalizacja kolorów, logo i
-							stylu aplikacji zgodnie z identyfikacją marki.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Osobna subdomena i baza danych</strong> – każda firma otrzymuje własne,
-							odizolowane środowisko aplikacji dla pełnej prywatności i personalizacji.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Integracja z systemami RCP</strong> – możliwość dostosowania aplikacji
-							do importu danych z systemów rejestracji czasu pracy (np. dane z kart wejścia/wyjścia).
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Indywidualne wsparcie</strong> – zapewniamy indywidualną opiekę oraz
-							szybkie wsparcie – jesteśmy tu, by pomóc Ci w każdej sytuacji.
-						</li>
-					</ul>
+            </div>
+          </div>
+        </div>
 
-					<h2 className="text-2xl font-semibold" style={{ marginTop: '50px', marginBottom: '15px' }}>
-						Potrzebujesz dodatkowej funkcji lub integracji?
-					</h2>
-					<p className="text-gray-700 text-base">
-						Planopia to aplikacja, którą możemy dopasować do specyfiki Twojej firmy. Potrzebujesz wewnętrznego czatu?
-						Grafiku pracy? Raportów XLSX? <strong className="text-green-700"> Dodatkowych integracji?</strong> A może
-						chcesz zlecić stworzenie innego systemu IT? Skontaktuj się z nami – oferujemy
-						<strong className="text-green-700"> personalizację oprogramowania</strong> oraz realizację dedykowanych
-						usług programistycznych.
-					</p>
-				</div>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+  <p className="text-gray-600">
+    Potrzebujesz więcej funkcji, własnych integracji lub osobnego środowiska dla firmy? 
+  </p>
+  <a
+							href="#cennik"
+							smooth={true}
+							duration={500}
+							offset={-80} className="text-blue-600 font-medium hover:underline">
+    Zobacz cennik →
+  </a>
+</div>
 
-				<img src="/img/planopiaimage.webp" alt="grafika promująca aplikację" className="planopiaimgaboutmobile" />
-				<div
-					className="h-[400px] bg-fixed bg-center bg-cover mt-16 rounded-xl shadow-md planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/planopiaimage.webp')" }}></div>
-			</section>
+      </div>
+{/* Obraz / screen produktu */}
+<div className="relative flex justify-center items-center mockup-rotator">
+  <img
+    src="img/desktop.png"
+    alt="Planopia – widok desktop"
+    className="rounded-xl shadow-xl ring-1 ring-black/5 desktop-mockup"
+  />
+  <img
+    src="img/mobile.png"
+    alt="Planopia – widok mobile"
+    className="rounded-xl shadow-xl ring-1 ring-black/5 mobile-mockup"
+  />
+</div>
 
-			{/* CENNIK */}
-			<section id="cennik" className="py-10 px-6 bg-gray-50">
-				<div className="max-w-5xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-8">Cennik</h2>
-					<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-10 mt-4">
-						<p className="text-xl sm:text-2xl font-semibold text-green-800 mb-2">
-							Pierwszy miesiąc za darmo — bez zobowiązań.
-						</p>
-						<p className="text-gray-700 mb-4">Skontaktuj się z nami i przetestuj Planopię całkowicie za darmo.</p>
-						<button
-							onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
-							className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
-							Zacznij za darmo
-						</button>
-					</div>
+    </div>
+  </div>
+</section>
 
-					<div className="grid gap-6 md:grid-cols-2 mt-10">
-						{/* Miesięczny pakiet */}
-						{/* Miesięczny pakiet */}
-						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-green-500">
-							<h3 className="text-2xl font-semibold mb-4">Pakiet miesięczny</h3>
-							<p className="text-4xl font-bold text-green-600 mb-2">
-								11,10 zł <span className="text-lg font-normal text-gray-700">/os./mies. (9,00 zł netto)</span>
-							</p>
-							<p className="text-gray-700 mb-4">Płatność co miesiąc, możliwość rezygnacji w każdej chwili.</p>
-							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
-								<li>Dostęp do pełnej funkcjonalności</li>
-								<li>Własna subdomena i baza danych</li>
-								<li>Pomoc techniczna i aktualizacje</li>
-							</ul>
-							<p className="text-sm text-gray-500 mb-6">
-								Na życzenie możemy dodać nowe funkcje dopasowane do Twoich potrzeb — ich koszt ustalamy indywidualnie, w
-								zależności od zakresu prac.
-							</p>
-							<button
-								onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition w-full">
-								Wybieram pakiet miesięczny
-							</button>
-						</div>
 
-						{/* Roczny pakiet */}
-						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-blue-500">
-							<h3 className="text-2xl font-semibold mb-4">Pakiet roczny</h3>
-							<p className="text-4xl font-bold text-blue-600 mb-2">
-								111,00 zł <span className="text-lg font-normal text-gray-700">/os./rok (90,24 zł netto)</span>
-							</p>
-							<p className="text-gray-700 mb-4">2 miesiące gratis przy płatności z góry za cały rok.</p>
-							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
-								<li>Dostęp do pełnej funkcjonalności</li>
-								<li>Własna subdomena i baza danych</li>
-								<li>Pomoc techniczna i aktualizacje</li>
-							</ul>
-							<p className="text-sm text-gray-500 mb-6">
-								Na życzenie możemy dodać nowe funkcje dopasowane do Twoich potrzeb — ich koszt ustalamy indywidualnie, w
-								zależności od zakresu prac.
-							</p>
-							<button
-								onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition w-full">
-								Wybieram pakiet roczny
-							</button>
-						</div>
-					</div>
-				</div>
-				<div className="mt-16 max-w-4xl mx-auto text-center">
-					<h3 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Dla kogo jest Planopia?</h3>
-					<p className="text-gray-700 text-lg leading-relaxed">
-						Planopia to idealne rozwiązanie dla zespołów każdej wielkości — od kilku do kilkuset pracowników. Nasza
-						aplikacja została stworzona z myślą o firmach, które chcą:
-					</p>
-					<ul className="list-disc text-left mt-6 text-gray-700 text-base space-y-2 pl-8 sm:pl-12">
-						<li>łatwo i szybko prowadzić ewidencję czasu pracy i urlopów,</li>
-						<li>nie przepłacać za funkcje, których nie potrzebują,</li>
-						<li>
-							korzystać z bezpiecznej, nowoczesnej aplikacji — dostępnej pod adresem przypisanym wyłącznie Twojej
-							firmie, z możliwością używania jej także jak aplikacji mobilnej.
-						</li>
-					</ul>
-					<p className="text-gray-600 text-base mt-6">
-						Każda firma otrzymuje własną wersję aplikacji — z unikalnym linkiem oraz oddzielną bazą danych — dzięki
-						czemu Planopia działa szybko, bezpiecznie i niezależnie dla każdego klienta.
-					</p>
-				</div>
+<section id="dlakogo" className="py-16 bg-gray-50 px-4 for">
+  <div className="max-w-7xl mx-auto">
+    <div className="max-w-3xl mb-10">
+      <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900">Dla kogo jest Planopia?</h3>
+      <p className="mt-3 text-lg text-gray-600">
+        Od kilku do kilkuset pracowników — Planopia skaluje się razem z Twoją organizacją. Wybierz sposób pracy, a my uprościmy resztę.
+      </p>
+    </div>
 
-				<img
-					src="/img/mockupmobile.webp"
-					alt="grafika promująca aplikację desktopową"
-					className="planopiaimgaboutmobile"
-				/>
-				<div
-					className="h-[600px] bg-fixed bg-center bg-cover mt-16 rounded-xl planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
-			</section>
+    <div className="grid md:grid-cols-3 gap-6 mb-4">
+      {/* 1: Małe zespoły */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 text-green-700 font-semibold">👥</span>
+          <p className="font-semibold text-gray-900">Małe zespoły</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Szybka ewidencja, proste wnioski, przejrzysty kalendarz. <span className="font-semibold text-green-700">Do 8 użytkowników za darmo.</span>
+        </p>
+      </div>
 
-			{/* UMÓW ROZMOWĘ */}
-			<section id="kontakt" className="py-13 px-6 bg-gray-50">
-				{/* Nagłówek na środku */}
-				<h2 className="text-4xl font-bold text-center mb-12">Kontakt</h2>
+      {/* 2: Firmy i organizacje */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-700 font-semibold">🏢</span>
+          <p className="font-semibold text-gray-900">Firmy i organizacje</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Centralna kontrola nad czasem pracy, akceptacjami i raportami. Integracje oraz uprawnienia dla ról.
+        </p>
+      </div>
 
-				{/* Dwie kolumny: dane kontaktowe i formularz */}
-				<div className="flex flex-col md:flex-row max-w-6xl mx-auto items-center justify-center mt-10">
-					{/* Lewa kolumna – dane kontaktowe */}
-					<div className="w-full md:w-1/2 flex flex-col items-center md:items-center text-center md:text-left">
-						<div className="flex items-center mb-4 my-person">
-							<img
-								src="/img/1709827103942.webp"
-								alt="zdjęcie profilowe Michał Lipka"
-								className="myimageface object-cover"
-							/>
-							<p className="mb-0 ml-4 text-lg font-semibold text-left">Michał Lipka</p>
-						</div>
+      {/* 3: HR i menedżerowie */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 text-purple-700 font-semibold">👩‍💼</span>
+          <p className="font-semibold text-gray-900">HR i menedżerowie</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Sprawna obsługa wniosków, powiadomienia e-mail i komplet dokumentów do kontroli i rozliczeń.
+        </p>
+      </div>
+    </div>
+	
+	<RouterLink
+								to="/team-registration"
+								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition mt-4 for">
+								Załóż darmowy zespół
+							</RouterLink>
+  </div>
+</section>
 
-						<a
-							href="https://www.linkedin.com/in/michal-lipka-wd/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="flex items-center mb-2 text-blue-600 hover:underline">
-							<img src="/img/linkedin.webp" alt="logo linkedin" className="mylinkedin mr-2" />
-							LinkedIn
-						</a>
 
-						<a href="tel:+48516598792" className="mb-2 block text-gray-800 hover:underline">
-							+48 516 598 792
-						</a>
-						<a href="mailto:michalipka1@gmail.com" className="mb-2 block text-gray-800 hover:underline">
-							michalipka1@gmail.com
-						</a>
-						<p className="text-gray-700 text-sm mb-4 max-w-xs" style={{ marginTop: '10px' }}>
-							Chętnie wdrożę u Ciebie swoją aplikację lub wykonam inne zlecenia IT/programistyczne. Zapraszam do
-							kontaktu!
-						</p>
-					</div>
+{/* CENNIK */}
+<section id="cennik" className="py-16 px-4">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Cennik</h2>
 
-					{/* Prawa kolumna – formularz */}
-					<div className="w-full md:w-1/2 p-6 rounded-md">
-						<p className="text-2xl font-bold mb-6 text-center md:text-left contactform">Formularz kontaktowy</p>
-						<p className="mb-6 text-gray-700 text-center md:text-left">
-							Możesz umówić się na rozmowę online lub po prostu wysłać wiadomość — wybierz to, co Ci bardziej odpowiada.
-						</p>
+	<p className="mt-3 text-gray-600 max-w-3xl">Darmowy plan obejmuje maksymalnie 8 aktywnych użytkowników.<br></br>
+  Po przekroczeniu tego limitu cała organizacja przechodzi na plan płatny 
+  i opłata naliczana jest za wszystkich aktywnych użytkowników.</p>
 
-						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
-							{/* Email na górze */}
-							<input
-								type="email"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-								placeholder="Twój adres e-mail"
-								value={email2}
-								onChange={e => setEmail2(e.target.value)}
-								required
-							/>
+  <p className="mt-3 text-gray-600">
+      Ta sama funkcjonalność, różne formy rozliczenia.</p>
 
-							{/* Datepicker */}
-							<DatePicker
-								selected={datetime}
-								onChange={setDatetime}
-								showTimeSelect
-								timeIntervals={30}
-								minTime={minTime}
-								maxTime={maxTime}
-								dateFormat="Pp"
-								timeCaption="Godzina"
-								locale="pl"
-								placeholderText="Wybierz datę i godzinę"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-							/>
+    {/* Karty planów */}
+    <div className="grid gap-6 md:grid-cols-2 mt-10">
+      {/* Pakiet miesięczny */}
+      <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
+        <h3 className="text-2xl font-semibold mb-4">Pakiet miesięczny</h3>
+        <p className="text-4xl font-extrabold text-green-600 mb-2">
+          11,10&nbsp;zł <span className="text-lg font-normal text-gray-700">/os./mies. (9,00&nbsp;zł netto)</span>
+        </p>
+        <p className="text-gray-600 mb-8">Płatność co miesiąc, możesz zrezygnować w każdej chwili.</p>
+        <button
+          onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+          className="w-full px-6 py-3 bg-green-600 text-white rounded-md font-medium shadow hover:bg-green-700 transition"
+        >
+          Wybieram pakiet miesięczny
+        </button>
+      </div>
 
-							{/* Wiadomość */}
-							<textarea
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-								rows={4}
-								placeholder="Twoja wiadomość"
-								value={userMessage}
-								onChange={e => setUserMessage(e.target.value)}
-							/>
+      {/* Pakiet roczny */}
+      <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
+        <h3 className="text-2xl font-semibold mb-4">Pakiet roczny</h3>
+        <p className="text-4xl font-extrabold text-blue-600 mb-2">
+          111,00&nbsp;zł <span className="text-lg font-normal text-gray-700">/os./rok (90,24&nbsp;zł netto)</span>
+        </p>
+        <p className="text-gray-600 mb-8">2 miesiące gratis przy płatności z góry za cały rok.</p>
+        <button
+          onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+          className="w-full px-6 py-3 bg-blue-600 text-white rounded-md font-medium shadow hover:bg-blue-700 transition"
+        >
+          Wybieram pakiet roczny
+        </button>
+      </div>
+    </div>
 
-							{/* Przycisk */}
-							<button
-								type="submit"
-								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
-								style={{ padding: '15px' }}>
-								Wyślij
-							</button>
+    {/* Co zyskujesz ponad wersję FREE */}
+    <div className="mt-14">
+      <h4 className="text-2xl font-bold text-gray-900">Co zyskujesz w planach płatnych?</h4>
+      <p className="mt-2 text-gray-600">
+        Wszystko z wersji darmowej + elastyczność i wsparcie dopasowane do firmy.
+      </p>
 
-							{msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}
-						</form>
-					</div>
-				</div>
-			</section>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 text-left">
+        {/* Więcej użytkowników */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/add-user.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Nielimitowana liczba użytkowników</p>
+            <p className="text-sm text-gray-600">Rośniesz bez ograniczeń — dodawaj kolejne osoby.</p>
+          </div>
+        </div>
+
+        {/* Personalizacja wyglądu */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/creativity.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Wygląd dopasowany do firmy</p>
+            <p className="text-sm text-gray-600">Twoje logo, kolory i branding w całej aplikacji.</p>
+          </div>
+        </div>
+
+        {/* Funkcje na życzenie */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/settings.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Funkcje na życzenie</p>
+            <p className="text-sm text-gray-600">Dodatki i modyfikacje pod procesy w Twojej firmie.</p>
+          </div>
+        </div>
+
+        {/* Integracje */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/add.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Integracje na zamówienie</p>
+            <p className="text-sm text-gray-600">RCP, importy, automaty — łączymy Planopię z Twoimi systemami.</p>
+          </div>
+        </div>
+
+        {/* Wsparcie 24/7 */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/technical-support.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Indywidualne wsparcie 24/7</p>
+            <p className="text-sm text-gray-600">Czat i szybka pomoc, gdy czegoś potrzebujesz.</p>
+          </div>
+        </div>
+
+        {/* Dedykowane środowisko */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/database.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">Osobne środowisko</p>
+            <p className="text-sm text-gray-600">Dedykowana subdomena i odizolowana baza danych.</p>
+          </div>
+        </div>
+
+        {/* Mobile / PWA */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+		<img src="img/booking.png" className='icon-landing-about'/>
+          <div>
+            <p className="font-semibold text-gray-900">PWA i mobile</p>
+            <p className="text-sm text-gray-600">Dodaj do ekranu i używaj jak aplikacji mobilnej.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section id="kontakt" className="py-16 px-4 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900">Kontakt</h2>
+    <p className="mt-3 text-left text-gray-600">
+      Masz pytania, chcesz wdrożenie lub prezentację? Napisz, zadzwoń albo umów rozmowę online.
+    </p>
+
+    <div className="mt-10 grid gap-8 md:grid-cols-2 max-w-7xl mx-auto">
+      {/* Lewa kolumna – dane kontaktowe */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-center">
+          <img
+            src="/img/1709827103942.webp"
+            alt="Zdjęcie profilowe Michał Lipka"
+            className="w-16 h-16 rounded-full object-cover"
+          />
+          <div className="ml-4">
+            <p className="text-lg font-semibold text-gray-900 mb-0">Michał Lipka</p>
+            <p className="text-sm text-gray-600">Twórca Planopii • Wdrożenia i wsparcie</p>
+          </div>
+        </div>
+
+        <div className="mt-6 space-y-3 mb-4">
+          <a
+            href="mailto:michalipka1@gmail.com"
+            className="flex items-center gap-3 text-gray-800 hover:underline"
+          >
+            <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            michalipka1@gmail.com
+          </a>
+
+          <a href="tel:+48516598792" className="flex items-center gap-3 text-gray-800 hover:underline">
+            <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none">
+              <path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 12 19.8 19.8 0 0 1 .08 3.69 2 2 0 0 1 2.06 1.5h2A2 2 0 0 1 6 3.09c.12.9.35 1.77.68 2.6.2.5.06 1.07-.32 1.44l-1 1a16 16 0 0 0 6.4 6.4l1-1c.37-.38.94-.52 1.44-.32.83.33 1.7.56 2.6.68A2 2 0 0 1 20 16.92z" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
+            +48 516 598 792
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/michal-lipka-wd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-blue-600 hover:underline"
+          >
+            <img src="/img/linkedin.webp" alt="Logo LinkedIn" className="w-5 h-5" />
+            LinkedIn
+          </a>
+        </div>
+
+        <p className="mt-6 text-gray-600 text-sm">
+          Wdrożę Planopię w Twojej firmie i pomogę dopasować funkcje do procesów. Odezwij się — odpowiem szybko.
+        </p>
+      </div>
+
+      {/* Prawa kolumna – formularz */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <p className="text-2xl font-bold mb-2 text-gray-900">Formularz kontaktowy</p>
+        <p className="mb-6 text-gray-600">
+          Umów rozmowę online lub zostaw wiadomość — wrócę z odpowiedzią.
+        </p>
+
+        <form onSubmit={handleSubmitMeeting} className="space-y-3">
+          {/* Email */}
+          <div>
+            <label htmlFor="contact-email" className="sr-only">E-mail</label>
+            <input
+              id="contact-email"
+              type="email"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Twój adres e-mail"
+              value={email2}
+              onChange={e => setEmail2(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Datepicker */}
+          <div>
+            <label htmlFor="contact-date" className="sr-only">Data i godzina</label>
+            <DatePicker
+              id="contact-date"
+              selected={datetime}
+              onChange={setDatetime}
+              showTimeSelect
+              timeIntervals={30}
+              minTime={minTime}
+              maxTime={maxTime}
+              dateFormat="Pp"
+              timeCaption="Godzina"
+              locale="pl"
+              placeholderText="Wybierz datę i godzinę (opcjonalnie)"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          {/* Wiadomość */}
+          <div>
+            <label htmlFor="contact-message" className="sr-only">Wiadomość</label>
+            <textarea
+              id="contact-message"
+              rows={4}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Twoja wiadomość"
+              value={userMessage}
+              onChange={e => setUserMessage(e.target.value)}
+            />
+          </div>
+
+          {/* Przycisk */}
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white rounded-md hover:bg-green-700 px-6 py-3 font-medium transition"
+          >
+            Wyślij
+          </button>
+
+          {msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
+				<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}

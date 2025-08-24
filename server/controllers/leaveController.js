@@ -8,6 +8,7 @@ const { appUrl } = require('../config')
 exports.submitLeaveRequest = async (req, res) => {
 	const { type, startDate, endDate, daysRequested, replacement, additionalInfo } = req.body
 	const userId = req.user.userId
+	const teamId = req.user.teamId
 	const t = req.t
 
 	try {
@@ -22,15 +23,11 @@ exports.submitLeaveRequest = async (req, res) => {
 		})
 		await leaveRequest.save()
 
-		const user = await User.findById(userId).select('firstName lastName roles department')
+		const user = await User.findById(userId).select('firstName lastName roles department username')
 		if (!user) return res.status(404).send('Użytkownik nie znaleziony.')
 
-		const supervisors = (await findSupervisorsForDepartment(user.department)).filter(u => u.username !== user.username)
-		// const supervisors = await User.find({ roles: supervisorRole }).select('username firstName lastName')
-
-		console.log(
-			'Supervisorzy:',
-			supervisors.map(u => u.username)
+		const supervisors = (await findSupervisorsForDepartment(user.department, teamId)).filter(
+			sup => sup.username !== user.username
 		)
 
 		const emailPromises = supervisors.map(supervisor =>
@@ -49,12 +46,13 @@ exports.submitLeaveRequest = async (req, res) => {
 
 		await Promise.all(emailPromises)
 
-		// Wyszukaj HR
+		
 		const hrUsers = await User.find({
-			roles: { $in: ['Może widzieć wszystkie wnioski i ewidencje (HR) (viewAllLeavesAndTimesheets)'] },
+			teamId,
+			roles: { $in: ['Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)'] },
 		})
 
-		// Wyślij powiadomienie do wszystkich HR
+		
 		const hrEmailPromises = hrUsers.map(hr =>
 			sendEmail(
 				hr.username,
@@ -71,7 +69,7 @@ exports.submitLeaveRequest = async (req, res) => {
 
 		await Promise.all(hrEmailPromises)
 
-		console.log('Wysłano wszystkie maile do przełożonych')
+		console.log('Wysłano wszystkie maile do przełożonych i HR w obrębie zespołu')
 
 		res.status(201).json({ message: 'Wniosek został wysłany i powiadomienie zostało dostarczone.', leaveRequest })
 	} catch (error) {

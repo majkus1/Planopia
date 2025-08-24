@@ -77,14 +77,14 @@ exports.getUserWorkdays = async (req, res) => {
 			return res.status(403).send('Brak uprawnień');
 		}
 
-		// Admin lub HR widzą zawsze
+		
 		const isAdmin = requestingUser.roles.includes('Admin');
 		const isHR = requestingUser.roles.includes('Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)');
 
-		// Użytkownik widzi swoje własne dni pracy
+		
 		const isSelf = requestingUser._id.toString() === userId;
 
-		// Przełożony widzi pracowników ze swojego działu
+		
 		const userToView = await User.findById(userId);
 		const isSupervisorOfDepartment =
 			requestingUser.roles.includes('Może zatwierdzać urlopy swojego działu (Approve Leaves Department)') &&

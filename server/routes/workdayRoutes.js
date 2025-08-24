@@ -1,18 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const auth = require('../middleware/authMiddleware')
 const workdayController = require('../controllers/workdayController')
+const { authenticateToken } = require('../middleware/authMiddleware')
+// router.post('/workdays', authenticateToken, workdayController.addWorkday)
+// router.get('/workdays', authenticateToken, workdayController.getWorkdays)
+// router.delete('/workdays/:id', authenticateToken, workdayController.deleteWorkday)
+// router.get('/workdays/:userId', authenticateToken, workdayController.getUserWorkdays)
 
-// router.post('/workdays', auth, workdayController.addWorkday)
-// router.get('/workdays', auth, workdayController.getWorkdays)
-// router.delete('/workdays/:id', auth, workdayController.deleteWorkday)
-// router.get('/workdays/:userId', auth, workdayController.getUserWorkdays)
-
-// workdayRoutes.js
-router.post('/', auth, workdayController.addWorkday) // POST /api/users/workdays
-router.get('/', auth, workdayController.getWorkdays) // GET /api/users/workdays (własne)
-router.delete('/:id', auth, workdayController.deleteWorkday) // DELETE /api/users/workdays/:id
-router.get('/user/:userId', auth, workdayController.getUserWorkdays) // GET /api/users/workdays/user/:userId
-
+// Trasy dla ewidencji czasu pracy
+router.post('/', authenticateToken, workdayController.addWorkday) // POST /api/users/workdays
+router.get('/', authenticateToken, workdayController.getWorkdays) // GET /api/users/workdays (własne)
+router.delete('/:id', authenticateToken, workdayController.deleteWorkday) // DELETE /api/users/workdays/:id
+router.get('/user/:userId', authenticateToken, workdayController.getUserWorkdays) // GET /api/users/workdays/user/:userId
 
 module.exports = router

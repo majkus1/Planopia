@@ -6,6 +6,11 @@ exports.loginLimiter = rateLimit({
 	message: 'Zbyt wiele prób logowania. Spróbuj ponownie za 15 minut.',
 	standardHeaders: true,
 	legacyHeaders: false,
+	keyGenerator: (req) => {
+		return req.ip + ':' + (req.body.username || 'unknown')
+	},
+	skipSuccessfulRequests: true,
+	skipFailedRequests: false,
 })
 
 exports.resetPasswordLimiter = rateLimit({
@@ -16,4 +21,22 @@ exports.resetPasswordLimiter = rateLimit({
 	},
 	standardHeaders: true,
 	legacyHeaders: false,
+	keyGenerator: (req) => {
+		return req.ip + ':' + (req.body.username || 'unknown')
+	},
+	skipSuccessfulRequests: true,
+	skipFailedRequests: false,
+})
+
+exports.teamRegistrationLimiter = rateLimit({
+	windowMs: 60 * 60 * 1000,
+	max: 3,
+	message: 'Zbyt wiele prób tworzenia zespołów. Spróbuj ponownie za godzinę.',
+	standardHeaders: true,
+	legacyHeaders: false,
+	keyGenerator: (req) => {
+		return req.ip + ':' + (req.body.adminEmail || 'unknown')
+	},
+	skipSuccessfulRequests: true,
+	skipFailedRequests: false,
 })

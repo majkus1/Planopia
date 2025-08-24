@@ -3,6 +3,7 @@ import axios from 'axios'
 import Sidebar from '../dashboard/Sidebar'
 import { API_URL } from '../../config.js'
 import { useTranslation } from 'react-i18next'
+import { useAuth } from '../../context/AuthContext'
 
 const availableRoles = [
     'Admin',
@@ -19,15 +20,42 @@ function CreateUser() {
     const [selectedRoles, setSelectedRoles] = useState([])
     const [department, setDepartment] = useState('')
     const [departments, setDepartments] = useState([])
-    const [departmentMode, setDepartmentMode] = useState('choose') // 'choose' lub 'new'
+    const [departmentMode, setDepartmentMode] = useState('choose')
+    const [teamInfo, setTeamInfo] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const { t } = useTranslation()
+    const { teamId } = useAuth()
 
     useEffect(() => {
-        // pobierz departmenty z backendu
-        axios.get(`${API_URL}/api/departments`)
-            .then(res => setDepartments(res.data))
-            .catch(() => setDepartments([]))
-    }, [])
+        if (teamId) {
+            fetchDepartments()
+            fetchTeamInfo()
+        }
+    }, [teamId])
+
+    const fetchDepartments = async () => {
+        try {
+            console.log('CreateUser: Fetching departments...');
+            const response = await axios.get(`${API_URL}/api/departments`, { withCredentials: true })
+            console.log('CreateUser: Departments response:', response.data);
+            setDepartments(response.data)
+        } catch (error) {
+            console.error('CreateUser: Błąd pobierania departmentów:', error)
+            console.error('CreateUser: Error response:', error.response?.data);
+            setDepartments([])
+        }
+    }
+
+    const fetchTeamInfo = async () => {
+        try {
+            const response = await axios.get(`${API_URL}/api/teams/${teamId}/check-limit`, {
+                withCredentials: true
+            })
+            setTeamInfo(response.data)
+        } catch (error) {
+            console.error('Error fetching team info:', error)
+        }
+    }
 
     const handleRoleClick = role => {
         setSelectedRoles(prev => prev.includes(role)
@@ -51,26 +79,44 @@ function CreateUser() {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        
+        if (teamInfo && !teamInfo.canAddUser) {
+            alert(t('newuser.errorUserLimit', { maxUsers: teamInfo.maxUsers }))
+            return
+        }
+
+        setIsLoading(true)
         try {
+            if (departmentMode === 'new' && department && !departments.includes(department)) {
+                await axios.post(`${API_URL}/api/departments`, { name: department }, { withCredentials: true })
+                await fetchDepartments()
+            }
+
             const newUser = { username, firstName, lastName, roles: selectedRoles, department }
-            const response = await axios.post(`${API_URL}/api/users/register`, newUser)
-            if (response.status === 201) {
-                alert(t('newuser.alertone'))
+            const response = await axios.post(`${API_URL}/api/users/register`, newUser, {
+                withCredentials: true
+            })
+            
+            if (response.data.success) {
+                alert(t('newuser.successMessage', { email: username }))
+                
                 setUsername('')
                 setFirstName('')
                 setLastName('')
                 setSelectedRoles([])
                 setDepartment('')
-            } else {
-                throw new Error('Error')
+                
+                fetchTeamInfo()
             }
         } catch (error) {
             const code = error.response?.data?.code
             if (code === 'USER_EXISTS') {
                 alert(t('newuser.error_user_exists'))
             } else {
-                alert(t('newuser.error_generic') || error.message)
+                alert(error.response?.data?.message || t('newuser.errorGeneric'))
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -82,7 +128,25 @@ function CreateUser() {
                     <div className="col-md-8">
                         <div>
                             <div className="card-body">
-                                <h4>{t('newuser.h4')}</h4>
+                                <h4><img src="img/add-group.png" alt="ikonka w sidebar" /> {t('newuser.h4')}</h4>
+                                
+                                {teamInfo && (
+                                    <div className={`mb-4 p-3 rounded-md ${teamInfo.canAddUser ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                                        <h6 className="font-semibold mb-2">Informacje o zespole:</h6>
+                                        <p className="text-sm mb-1">
+                                            <strong>Limit użytkowników:</strong> {teamInfo.currentCount} / {teamInfo.maxUsers}
+                                        </p>
+                                        <p className="text-sm mb-1">
+                                            <strong>Pozostałe miejsca:</strong> {teamInfo.remainingSlots}
+                                        </p>
+                                        {!teamInfo.canAddUser && (
+                                            <p className="text-sm text-red-600 font-semibold">
+                                                Osiągnięto limit użytkowników!
+                                            </p>
+                                        )}
+                                    </div>
+                                )}
+                                
                                 <hr />
                                 <form onSubmit={handleSubmit} className="max-w-2xl space-y-6" id="addusers">
                                     
@@ -93,6 +157,7 @@ function CreateUser() {
 										<br></br>
 										<input
 											type="email"
+                                            placeholder={t('newuser.placeholder1')}
 											id="username"
 											value={username}
 											onChange={handleUsernameChange}
@@ -109,6 +174,7 @@ function CreateUser() {
 										<input
 											type="text"
 											id="firstName"
+                                            placeholder={t('newuser.placeholder2')}
 											value={firstName}
 											onChange={e => setFirstName(e.target.value)}
 											required
@@ -124,6 +190,7 @@ function CreateUser() {
 										<input
 											type="text"
 											id="lastName"
+                                            placeholder={t('newuser.placeholder3')}
 											value={lastName}
 											onChange={e => setLastName(e.target.value)}
 											required
@@ -151,7 +218,7 @@ function CreateUser() {
                                                 </div>
                                                 <button
                                                     type="button"
-                                                    className="btn btn-link p-2 ms-2"
+                                                    className="btn btn-link p-2 ms-2 to-left-max"
                                                     onClick={() => { setDepartment(''); setDepartmentMode('new') }}
                                                 >{t('newuser.department2')}</button>
                                             </>
@@ -167,7 +234,7 @@ function CreateUser() {
                                                 {departments.length > 0 && (
                                                     <button
                                                         type="button"
-                                                        className="btn btn-link p-2 ms-2"
+                                                        className="btn btn-link p-2 ms-2 to-left-max"
                                                         onClick={() => setDepartmentMode('choose')}
                                                     >{t('newuser.department3')}</button>
                                                 )}
@@ -186,7 +253,12 @@ function CreateUser() {
                                             ))}
                                         </div>
                                     </div>
-                                    <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mb-5">{t('newuser.register')}</button>
+                                    <button 
+                                        type="submit" 
+                                        disabled={isLoading || (teamInfo && !teamInfo.canAddUser)}
+                                        className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mb-5 disabled:opacity-50 disabled:cursor-not-allowed">
+                                        {isLoading ? 'Tworzenie użytkownika...' : t('newuser.register')}
+                                    </button>
                                 </form>
                             </div>
                         </div>

@@ -100,7 +100,7 @@ function LeaveRequestForm() {
 				</div>
 			) : (
 				<div id="leave-request-form">
-					<h2 style={{ marginTop: '0px' }}>{t('leaveform.header')}</h2>
+					<h2 style={{ marginTop: '0px' }}><img src="img/sunbed.png" alt="ikonka w sidebar" />{t('leaveform.header')}</h2>
 					<hr />
 					<p>
 						{t('leaveform.availableday')}{' '}
@@ -112,7 +112,7 @@ function LeaveRequestForm() {
 					</p>
 
 					<form onSubmit={submitLeaveRequest} id="formleave" className="space-y-6 max-w-xl">
-						{/* Typ urlopu */}
+						
 						<div>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.type')}</label>
 							<select
@@ -127,7 +127,7 @@ function LeaveRequestForm() {
 							</select>
 						</div>
 
-						{/* Daty od-do */}
+						
 						<div style={{ maxWidth: '400px', marginRight: '2px' }}>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.datefrom')}</label>
 							<input
@@ -148,7 +148,7 @@ function LeaveRequestForm() {
 							/>
 						</div>
 
-						{/* Liczba dni */}
+						
 						<div>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.numberdayreq')}</label>
 							<input
@@ -159,7 +159,7 @@ function LeaveRequestForm() {
 							/>
 						</div>
 
-						{/* Osoba zastępująca */}
+						
 						<div>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.substitute')}</label>
 							<input
@@ -171,7 +171,7 @@ function LeaveRequestForm() {
 							/>
 						</div>
 
-						{/* Dodatkowe informacje */}
+						
 						<div>
 							<label className="block text-gray-700 font-medium mb-1">{t('leaveform.addinfo')}</label>
 							<textarea
@@ -182,7 +182,7 @@ function LeaveRequestForm() {
 							/>
 						</div>
 
-						{/* Przycisk */}
+					
 						<div className="flex justify-end">
 							<button
 								type="submit"

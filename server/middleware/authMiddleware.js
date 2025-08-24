@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const { firmDb } = require('../db/db');
+const User = require('../models/user')(firmDb);
 
-module.exports = (req, res, next) => {
+const authenticateToken = (req, res, next) => {
   try {
     const token = req.cookies.token;
     if (!token) {
@@ -10,8 +11,10 @@ module.exports = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = { 
       userId: decoded.userId, 
+      teamId: decoded.teamId,
       roles: decoded.roles,
-      username: decoded.username
+      username: decoded.username,
+      isTeamAdmin: decoded.isTeamAdmin
     };
     console.log("Authenticated user:", req.user);
     next();
@@ -20,3 +23,5 @@ module.exports = (req, res, next) => {
     res.status(401).send('Unauthorized');
   }
 };
+
+module.exports = { authenticateToken };

@@ -181,6 +181,10 @@ exports.updateLeaveRequestStatus = async (req, res) => {
 	const { t } = req
 
 	try {
+		
+		console.log('Debug - req.user:', req.user)
+		console.log('Debug - req.user.teamId:', req.user.teamId)
+
 		const leaveRequest = await LeaveRequest.findById(id)
 		if (!leaveRequest) {
 			return res.status(404).send('Leave request not found.')
@@ -190,7 +194,7 @@ exports.updateLeaveRequestStatus = async (req, res) => {
 		const user = await User.findById(leaveRequest.userId).select('firstName lastName username department')
 		const updatedByUser = await User.findById(req.user.userId).select('firstName lastName department roles')
 
-		// Kto może edytować?
+		
 		const isAdmin = requestingUser.roles.includes('Admin')
 		const isSupervisorOfDepartment =
 			requestingUser.roles.includes('Może zatwierdzać urlopy swojego działu (Approve Leaves Department)') &&
@@ -212,7 +216,7 @@ exports.updateLeaveRequestStatus = async (req, res) => {
 			updatedByUser.lastName
 		}</p>`
 
-		// --- EMAIL DO OSOBY, KTÓRA ZGŁASZAŁA WNIOSEK ---
+		
 		const mailContent = `
 		  <p><b>${t('email.leaveRequest.employee')}:</b> ${user.firstName} ${user.lastName}</p>
 		  <p><b>${t('email.leaveRequest.type')}:</b> ${t(leaveRequest.type)}</p>
@@ -231,8 +235,9 @@ exports.updateLeaveRequestStatus = async (req, res) => {
 			mailContent
 		)
 
-		// --- EMAIL DO HR ---
-		await sendEmailToHR(leaveRequest, user, updatedByUser, t, updatedByInfo)
+		
+		console.log('Debug - Przed wywołaniem sendEmailToHR, teamId:', req.user.teamId)
+		await sendEmailToHR(leaveRequest, user, updatedByUser, t, updatedByInfo, req.user.teamId)
 
 		res.status(200).json({ message: 'Status updated successfully.', leaveRequest })
 	} catch (error) {

@@ -1,15 +1,18 @@
 // services/roleService.js
+const { firmDb } = require('../db/db')
+const User = require('../models/user')(firmDb)
 
 /**
  * Zwraca userów będących przełożonymi działu (mogą zatwierdzać urlopy)
+ * TYLKO w obrębie tego samego zespołu i tego samego działu
  * @param {String} department
- * @returns {Array<User>}
+ * @param {String|ObjectId} teamId
+ * @returns {Promise<Array<User>>}
  */
-exports.findSupervisorsForDepartment = async (department) => {
-    const User = require('../models/user')
-    // Szuka userów w tym samym dziale z rolą 'Może zatwierdzać urlopy swojego działu (approveLeavesDepartment)'
-    return User.find({
-        department,
-        roles: { $in: ['Może zatwierdzać urlopy swojego działu (Approve Leaves Department)'] }
-    });
-};
+exports.findSupervisorsForDepartment = async (department, teamId) => {
+	return User.find({
+		department,
+		teamId,
+		roles: { $in: ['Może zatwierdzać urlopy swojego działu (Approve Leaves Department)'] },
+	})
+}
