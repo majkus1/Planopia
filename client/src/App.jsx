@@ -27,12 +27,8 @@ import ENBlogOne from './components/ENBlogOne.jsx'
 import Blog from './components/Blog.jsx'
 import ENBlog from './components/ENBlog.jsx'
 import BlogOne from './components/BlogOne.jsx'
-import BlogTwo from './components/BlogTwo.jsx'
 import BlogThree from './components/BlogThree.jsx'
-import BlogFour from './components/BlogFour.jsx'
-import ENBlogFour from './components/ENBlogFour.jsx'
 import ENBlogThree from './components/ENBlogThree.jsx'
-import ENBlogTwo from './components/ENBlogTwo.jsx'
 import HelpTicket from './components/tickets/HelpTicket.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import { isAdmin, isHR, isDepartmentSupervisor, isDepartmentViewer, isWorker } from './utils/roleHelpers'
@@ -105,14 +101,10 @@ function AppContent() {
 					<Route path="/en" element={<ENProductPromotion />} />
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/en/blog" element={<ENBlog />} />
-					<Route path="/blog/ewidencja-czasu-pracy-i-urlopow" element={<BlogOne />} />
-					<Route path="/en/blog/time-tracking-and-leave-management" element={<ENBlogOne />} />
-					<Route path="/blog/integracja-z-rcp" element={<BlogTwo />} />
-					<Route path="/en/blog/time-attendance-integration" element={<ENBlogTwo />} />
+					<Route path="/blog/ewidencja-czasu-pracy-online" element={<BlogOne />} />
+					<Route path="/en/blog/time-tracking-online" element={<ENBlogOne />} />
 					<Route path="/blog/planowanie-urlopow" element={<BlogThree />} />
 					<Route path="/en/blog/leave-planning" element={<ENBlogThree />} />
-					<Route path="/blog/ewidencja-czasu-pracy" element={<BlogFour />} />
-					<Route path="/en/blog/work-time-tracking" element={<ENBlogFour />} />
 					<Route path="/set-password/:token" element={<SetPassword />} />
 					<Route path="/reset-password" element={<ResetPassword />} />
 					<Route path="/new-password/:token" element={<NewPassword />} />

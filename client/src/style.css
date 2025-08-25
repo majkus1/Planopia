@@ -25,7 +25,7 @@ html {
 	}
 }
 
-.headerpromotionmenu {
+.headerpromotionmenu, #planopiaheader {
 	-webkit-box-shadow: 0px 29px 24px -34px rgba(0, 0, 0, 1) !important;
 -moz-box-shadow: 0px 29px 24px -34px rgba(0, 0, 0, 1) !important;
 box-shadow: 0px 29px 24px -34px rgba(0, 0, 0, 1) !important;

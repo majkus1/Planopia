@@ -59,12 +59,12 @@ function ENBlog() {
 
 			{/* HEADER + MENU */}
 			<header className="bg-white top-0 z-50 w-full flex justify-between" id="planopiaheader">
-				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent">
+				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent" style={{ maxWidth: '1350px' }}>
 					<RouterLink
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<RouterLink
@@ -81,14 +81,6 @@ function ENBlog() {
 							Pricing
 						</RouterLink>
 						<RouterLink
-							to="/en#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
-							Try the App
-						</RouterLink>
-						<RouterLink
 							to="/en#contact"
 							smooth={true}
 							duration={500}
@@ -103,11 +95,20 @@ function ENBlog() {
 							Blog
 						</RouterLink>
 						<RouterLink
-							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-							onClick={toggleMenu}>
-							Login
-						</RouterLink>
+  to="/login"
+  onClick={toggleMenu}
+  className="bg-transparent text-blue-600 font-semibold py-2 px-4 border border-blue-600 rounded hover:bg-blue-50 hover:text-blue-700 transition"
+>
+  Login
+</RouterLink>
+
+<RouterLink
+  to="/team-registration" // <- tutaj raczej kierujesz na rejestrację zespołu
+  onClick={toggleMenu}
+  className="bg-green-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-700 transition ctamenu"
+>
+  Create a free team
+</RouterLink>
 						<RouterLink to="/blog" className="flex items-center languagechoose">
 							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
@@ -141,14 +142,6 @@ function ENBlog() {
 							Pricing
 						</RouterLink>
 						<RouterLink
-							to="/en#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
-							Try the App
-						</RouterLink>
-						<RouterLink
 							to="/en#contact"
 							smooth={true}
 							duration={500}
@@ -163,11 +156,20 @@ function ENBlog() {
 							Blog
 						</RouterLink>
 						<RouterLink
-							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-							onClick={toggleMenu}>
-							Login
-						</RouterLink>
+  to="/login"
+  onClick={toggleMenu}
+  className="w-full text-center bg-transparent text-blue-600 font-semibold py-2 px-4 border border-blue-600 rounded mb-4 hover:bg-blue-50 hover:text-blue-700 transition"
+>
+  Login
+</RouterLink>
+
+<RouterLink
+  to="/team-registration" // <- tu najlepiej daj ścieżkę do rejestracji zespołu
+  onClick={toggleMenu}
+  className="ctamenu w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded mb-4 shadow hover:bg-green-700 transition"
+>
+  Create a free team
+</RouterLink>
 						<RouterLink to="/blog" className="flex items-center languagechoose" style={{ marginTop: '15px' }}>
 							<img src="/img/poland.webp" alt="English version" className="w-6 h-6" />
 						</RouterLink>
@@ -180,9 +182,8 @@ function ENBlog() {
 				<div className="max-w-7xl mx-auto text-left">
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
-							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 blogh1">Blog</h1>
+							<h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 blogh1 text-left mt-4">Blog</h1>
 						</div>
-						<img src="/img/blog.webp" alt="blog graphic" className="rounded-xl w-full h-auto aspect-[3/2] shadow-lg" />
 					</div>
 				</div>
 			</section>
@@ -190,43 +191,7 @@ function ENBlog() {
 			<section className="px-4 py-16 bg-white">
 				<div className="max-w-7xl mx-auto">
 					<div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-						{/* Karta wpisu 1 */}
-						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img
-								src="/img/mockupdesktop.webp"
-								alt="Title img of article1"
-								className="rounded-md mb-4 h-48 object-cover"
-							/>
-							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Planopia – modern software for employee time tracking and leave management
-							</h3>
-							<p className="text-gray-600 flex-1">
-								In today’s fast-paced world, efficient work time tracking and employee absence management are key to
-								every company's success.
-							</p>
-							<RouterLink
-								to="/en/blog/time-tracking-and-leave-management"
-								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
-								Read more
-							</RouterLink>
-						</div>
-
-						{/* Karta wpisu 2 */}
-						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
-							<img src="/img/rcpblog.webp" alt="Title img of article 2" className="rounded-md mb-4 h-48 object-cover" />
-							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Integrate Your Time & Attendance System (T&A) with Planopia – Take Full Control of Work Time Tracking
-							</h3>
-							<p className="text-gray-600 flex-1">
-								Does your company use badge readers, biometric terminals, or access gates to record employee attendance?
-								With <strong>Planopia</strong>, you don’t need to abandon your current infrastructure.
-							</p>
-							<RouterLink
-								to="/en/blog/time-attendance-integration"
-								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
-								Read more
-							</RouterLink>
-						</div>
+						
 
 						{/* Karta wpisu 3 */}
 						<div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
@@ -236,11 +201,10 @@ function ENBlog() {
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								Leave Management Made Simple – How to Effectively Plan Employee Absences
+							Employee leave planning – best tools and practices
 							</h3>
 							<p className="text-gray-600 flex-1">
-								Managing employee leave is one of the biggest challenges for HR teams and team leaders. Regardless of
-								company size, a lack of transparency in staff availability can lead to chaos, downtime, and frustration.
+							Leave planning is one of the most common HR challenges. Traditional methods—paper forms or spreadsheets—lead to chaos and errors. Learn how an online leave calendar and leave management software like Planopia make absence management simple, transparent, and fast.
 							</p>
 							<RouterLink
 								to="/en/blog/leave-planning"
@@ -256,15 +220,13 @@ function ENBlog() {
 								className="rounded-md mb-4 h-48 object-cover"
 							/>
 							<h3 className="text-xl font-semibold text-gray-800 mb-2">
-								How to easily and efficiently track employee work time?
+							Online Time Tracking – modern solutions for companies
 							</h3>
 							<p className="text-gray-600 flex-1">
-								Accurate work time tracking is a legal obligation for every employer and a key element of effective team
-								management. Regardless of the industry or company size, a lack of transparency in recording working
-								hours can lead to misunderstandings, payroll errors, and inefficiencies.
+							Accurate time tracking is a requirement for every business. Traditional methods like paper timesheets or Excel spreadsheets are often inefficient and error-prone. That’s why more and more companies choose online time tracking appsthat automate and organize the process.
 							</p>
 							<RouterLink
-								to="/en/blog/work-time-tracking"
+								to="/en/blog/time-tracking-online"
 								className="mt-4 inline-block bg-blue-600 text-dark font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
 								Read more
 							</RouterLink>
@@ -275,7 +237,7 @@ function ENBlog() {
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
+				<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }}/>
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}
