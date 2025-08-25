@@ -159,7 +159,7 @@ function ProductPromotion() {
 </RouterLink>
 
 <RouterLink
-  to="/signup" // <- tutaj raczej kierujesz na rejestrację zespołu
+  to="/team-registration" // <- tutaj raczej kierujesz na rejestrację zespołu
   onClick={toggleMenu}
   className="bg-green-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-700 transition ctamenu"
 >
@@ -224,7 +224,7 @@ function ProductPromotion() {
 </RouterLink>
 
 <RouterLink
-  to="/signup" // <- tu najlepiej daj ścieżkę do rejestracji zespołu
+  to="/team-registration" // <- tu najlepiej daj ścieżkę do rejestracji zespołu
   onClick={toggleMenu}
   className="ctamenu w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded mb-4 shadow hover:bg-green-700 transition"
 >
@@ -249,7 +249,6 @@ function ProductPromotion() {
 							<h2 className="font-semibold text-gray-800" id="underheader">
 							Planopia pomaga zespołom i firmom uporządkować czas pracy i urlopy.
 							</h2>
-							{/* <p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Prosto. Lekko. Przejrzyście.</p> */}
 							<RouterLink
 								to="/team-registration"
 								className="bg-green-600 text-white font-semibold py-3 px-4 rounded shadow hover:bg-green-700 transition mt-2">

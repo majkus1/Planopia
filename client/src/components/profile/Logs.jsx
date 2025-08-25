@@ -28,9 +28,7 @@ function Logs() {
 
 	const fetchDepartments = async () => {
 		try {
-			console.log('Fetching departments...');
 			const response = await axios.get(`${API_URL}/api/departments`, { withCredentials: true })
-			console.log('Departments response:', response.data);
 			setDepartments(response.data)
 		} catch (error) {
 			console.error('Błąd pobierania departmentów:', error)
@@ -89,8 +87,8 @@ function Logs() {
 	const handleEditClick = user => {
 		setEditingUser(editingUser?._id === user._id ? null : user)
 		setEditedRoles(user.roles || [])
-		setEditedDepartment(user.department || '')
-		setDepartmentMode('choose')
+		setEditedDepartment(user.department || '')  // Ustaw obecny dział użytkownika
+		setDepartmentMode('choose')  // Zawsze zaczynaj od trybu wyboru
 	}
 
 	const handleRoleChange = role => {
@@ -99,11 +97,13 @@ function Logs() {
 
 	const handleSaveRoles = async userId => {
 		try {
+			// Jeśli to nowy dział i nie istnieje w liście, dodaj go do kolekcji departments
 			if (departmentMode === 'new' && editedDepartment && !departments.includes(editedDepartment)) {
 				await axios.post(`${API_URL}/api/departments`, { name: editedDepartment }, { withCredentials: true })
 				await refreshDepartments()
 			}
 
+			// Zaktualizuj użytkownika z nowymi rolami i działem
 			await axios.patch(`${API_URL}/api/users/${userId}/roles`, {
 				roles: editedRoles,
 				department: editedDepartment,
@@ -115,6 +115,8 @@ function Logs() {
 				)
 			)
 			
+			// Resetuj tryb do wyboru działu i odśwież listę
+			setDepartmentMode('choose')
 			setEditingUser(null)
 			alert(t('logs.alert'))
 		} catch (error) {
@@ -181,37 +183,39 @@ function Logs() {
 											<br />
 
 											<h3 className='mt-3'>{t('newuser.department5')}</h3>
-											{departments.length > 0 && departmentMode === 'choose' ? (
-												<>
-												<div className='edit-department'>
-													<div>
-														{departments.map((dep, index) => (
-															<label key={dep} style={{ marginRight: '10px' }}>
-																<input
-																	type="radio"
-																	name="department"
-																	value={dep}
-																	checked={editedDepartment === dep}
-																	onChange={e => setEditedDepartment(e.target.value)}
-																	style={{ margin: '3px' }}
-																/>
-																{dep}
-															</label>
-														))}
-													</div>
-													<button
-														type="button"
-														className="btn btn-link ms-2 py-1 mb-4 to-left-max"
-														onClick={() => {
-															setEditedDepartment('')
-															setDepartmentMode('new')
-														}}>
-														{t('newuser.department2')}
-													</button>
-													</div>
-												</>
-											) : (
-												<>
+											
+											{/* Zawsze pokazuj listę działów */}
+											<div className='edit-department'>
+												<div>
+													{departments.map((dep, index) => (
+														<label key={dep} style={{ marginRight: '10px' }}>
+															<input
+																type="radio"
+																name="department"
+																value={dep}
+																checked={editedDepartment === dep}
+																onChange={e => setEditedDepartment(e.target.value)}
+																style={{ margin: '3px' }}
+															/>
+															{dep}
+														</label>
+													))}
+												</div>
+												
+												{/* Przycisk dodaj nowy dział */}
+												<button
+													type="button"
+													className="btn btn-link ms-2 py-1 mb-4 to-left-max"
+													onClick={() => {
+														setEditedDepartment('')
+														setDepartmentMode('new')
+													}}>
+													{t('newuser.department2')}
+												</button>
+											</div>
+											
+											{/* Input dla nowego działu - tylko gdy departmentMode === 'new' */}
+											{departmentMode === 'new' && (
 												<div className='edit-department'>
 													<input
 														type="text"
@@ -220,18 +224,17 @@ function Logs() {
 														onChange={e => setEditedDepartment(e.target.value)}
 														className="w-full border border-gray-300 rounded-md px-4 py-2 m-2 width-custom"
 													/>
-													{departments.length > 0 && (
-														<button
-															type="button"
-															className="btn btn-link p-2 ms-2 mb-4"
-															onClick={() => setDepartmentMode('choose')}>
-															{t('newuser.department3')}
-														</button>
-													)}
-													</div>
-												</>
+													<button
+														type="button"
+														className="btn btn-link p-2 ms-2 mb-4"
+														onClick={() => {
+															setEditedDepartment('')
+															setDepartmentMode('choose')
+														}}>
+														{t('newuser.department3')}
+													</button>
+												</div>
 											)}
-											{/* <br></br> */}
 											<button
 												className="btn btn-success btn-sm me-2"
 												onClick={() => handleSaveRoles(user._id)}

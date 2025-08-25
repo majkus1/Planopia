@@ -41,8 +41,8 @@ const sendEmailToHR = async (leaveRequest, user, updatedByUser, t, updatedByInfo
 			sendEmail(
 				hrUser.username,
 				`${appUrl}/leave-requests/${user._id}`,
-				`${t('email.leaveRequest.title')} ${t(leaveRequest.type)} ${t(leaveRequest.status)}`,
-				`<h3>${t('email.leaveRequest.title')} ${t(leaveRequest.type)} ${t(leaveRequest.status)}</h3>
+				`${t(leaveRequest.type)} ${t(leaveRequest.status)}`,
+				`<h3>${t(leaveRequest.type)} ${t(leaveRequest.status)}</h3>
 				<p><b>${t('email.leaveRequest.employee')}:</b> ${user.firstName} ${user.lastName}</p>
 				<p><b>${t('email.leaveRequest.type')}:</b> ${t(leaveRequest.type)}</p>
 				<p><b>${t('email.leaveRequest.dates')}:</b> ${leaveRequest.startDate.toISOString().split('T')[0]} - ${

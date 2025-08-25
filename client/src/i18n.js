@@ -298,11 +298,11 @@ i18n
     "submit": "Create team",
     "creating": "Creating team...",
     "afterCreate": "After creating the team you will be automatically logged in as the administrator.",
-    "successMessage": "Zespół został utworzony pomyślnie!",
-    "errorGeneric": "Błąd podczas tworzenia zespołu",
-    "errorTeamExists": "Zespół o takiej nazwie już istnieje",
-    "errorEmailExists": "Użytkownik o tym emailu już istnieje",
-    "errorValidation": "Wszystkie pola są wymagane"
+	"successMessage": "Team created successfully!",
+    "errorGeneric": "Error creating team",
+    "errorTeamExists": "Team with this name already exists",
+    "errorEmailExists": "User with this email already exists",
+    "errorValidation": "All fields are required"
   }
 				},
 			},
@@ -590,11 +590,11 @@ i18n
     "submit": "Utwórz zespół",
     "creating": "Tworzenie zespołu...",
     "afterCreate": "Po utworzeniu zespołu zostaniesz automatycznie zalogowany jako administrator.",
-    "successMessage": "Team created successfully!",
-    "errorGeneric": "Error creating team",
-    "errorTeamExists": "Team with this name already exists",
-    "errorEmailExists": "User with this email already exists",
-    "errorValidation": "All fields are required"
+    "successMessage": "Zespół został utworzony pomyślnie!",
+    "errorGeneric": "Błąd podczas tworzenia zespołu",
+    "errorTeamExists": "Zespół o takiej nazwie już istnieje",
+    "errorEmailExists": "Użytkownik o tym emailu już istnieje",
+    "errorValidation": "Wszystkie pola są wymagane"
   }
 				},
 			},

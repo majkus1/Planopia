@@ -109,12 +109,12 @@ function ENProductPromotion() {
 
 			{/* HEADER + MENU */}
 			<header className="bg-white top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
-				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent">
+				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 menucontent" style={{ maxWidth: '1350px' }}>
 					<RouterLink
 						to="/en"
 						className="logoinmenu text-2xl font-bold text-blue-700 companyname"
 						style={{ marginBottom: '0px' }}>
-						<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
 					</RouterLink>
 					<nav className="hidden flex space-x-8 navdesktop">
 						<a
@@ -132,14 +132,6 @@ function ENProductPromotion() {
 							offset={-80}
 							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
 							Pricing
-						</a>
-						<a
-							href="#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition">
-							Try the App
 						</a>
 						<a
 							href="#contact"
@@ -161,6 +153,13 @@ function ENProductPromotion() {
 							onClick={toggleMenu}>
 							Login
 						</RouterLink>
+						<RouterLink
+  to="/team-registration" // <- tutaj raczej kierujesz na rejestrację zespołu
+  onClick={toggleMenu}
+  className="bg-green-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-700 transition ctamenu"
+>
+Create a free team
+</RouterLink>
 						<RouterLink to="/" className="flex items-center languagechoose">
 							<img src="/img/poland.webp" alt="Wersja Polska" className="w-6 h-6" />
 						</RouterLink>
@@ -195,15 +194,6 @@ function ENProductPromotion() {
 							Pricing
 						</a>
 						<a
-							href="#test"
-							smooth={true}
-							duration={500}
-							offset={-80}
-							onClick={toggleMenu}
-							className="cursor-pointer text-gray-700 font-medium hover:text-blue-600 transition mb-4">
-							Try the App
-						</a>
-						<a
 							href="#contact"
 							smooth={true}
 							duration={500}
@@ -219,11 +209,20 @@ function ENProductPromotion() {
 							Blog
 						</RouterLink>
 						<RouterLink
-							to="/login"
-							className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
-							onClick={toggleMenu}>
-							Login
-						</RouterLink>
+  to="/login"
+  onClick={toggleMenu}
+  className="w-full text-center bg-transparent text-blue-600 font-semibold py-2 px-4 border border-blue-600 rounded mb-4 hover:bg-blue-50 hover:text-blue-700 transition"
+>
+  Login
+</RouterLink>
+
+<RouterLink
+  to="/team-registration" // <- tu najlepiej daj ścieżkę do rejestracji zespołu
+  onClick={toggleMenu}
+  className="ctamenu w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded mb-4 shadow hover:bg-green-700 transition"
+>
+  Create a free team
+</RouterLink>
 						<RouterLink to="/" className="flex items-center languagechoose mt-4">
 							<img src="/img/poland.webp" alt="Polish version" className="w-6 h-6" />
 						</RouterLink>
@@ -232,332 +231,437 @@ function ENProductPromotion() {
 			</header>
 
 			{/* HERO */}
-			<section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
-				<div className="max-w-7xl mx-auto text-left">
-					<div className="grid md:grid-cols-2 gap-10 items-center">
-						<div className="ordering">
-							<h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
-								A time tracking and leave management app.
-							</h1>
-							<h2 className="font-semibold text-gray-800 mb-2" id="underheader">
-								With Planopia, everything is in its place.
-							</h2>
-							<p className="text-lg sm:text-xl text-gray-600 mb-6 underheadertwo">Simple. Light. Clear.</p>
-							<button
-								onClick={() => document.getElementById('prices')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
-								Pricing
-							</button>
-						</div>
-						<img
-							src="/img/planopiaheader.webp"
-							alt="businessman highlighting an application"
-							className="rounded-xl w-full h-auto aspect-[3/2]"
-						/>
-					</div>
-				</div>
-			</section>
+<section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="planopia-welcome">
+  <div className="max-w-7xl mx-auto text-left">
+    <div className="grid md:grid-cols-2 gap-10 items-center">
+      <div className="ordering">
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
+          Time and leave tracking – free for up to 8 users
+        </h1>
+        <h2 className="font-semibold text-gray-800" id="underheader">
+          Planopia helps teams and companies organize working hours and leave management.
+        </h2>
+        <RouterLink
+          to="/team-registration"
+          className="bg-green-600 text-white font-semibold py-3 px-4 rounded shadow hover:bg-green-700 transition mt-2"
+        >
+          Create a free team
+        </RouterLink>
+      </div>
+      <img
+        src="/img/planopiaheader.webp"
+        alt="businessman managing calendar in the app"
+        className="rounded-xl w-full h-auto aspect-[3/2]"
+      />
+    </div>
+  </div>
+</section>
 
-			<section id="test" className="py-13 px-6 bg-white">
-				<div className="max-w-xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-6">Try the app</h2>
-					<p className="mb-6">
-						Enter your email and we’ll send you login credentials for a test account, valid for 7 days.
-					</p>
-					<form onSubmit={handleSubmit} className="mt-10">
-						<input
-							type="email"
-							className="w-full p-2 border border-gray-300 rounded-md mb-4"
-							placeholder="Your email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							required
-						/>
-						<button
-							type="submit"
-							className="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700"
-							style={{ padding: '15px' }}>
-							Send
-						</button>
-						{message && <p className="mt-2 text-sm">{message}</p>}
-					</form>
-				</div>
-			</section>
 
-			<section className="py-13 px-6 bg-white" id="aboutapp">
-				<div className="max-w-5xl mx-auto">
-					<h2 className="text-4xl font-bold mb-4" style={{ marginBottom: '35px' }}>
-						About the Planopia App
-					</h2>
-					<p className="text-lg text-gray-700 mb-6 text-justify">
-						Planopia is a modern web application designed for companies that want a simple way to manage
-						<strong> working time records</strong>, handle
-						<strong> leaves and absences</strong>, and improve internal communication. With an intuitive interface and
-						HR process automation, you save time, avoid mistakes, and gain full control over work organization in your
-						team.
-					</p>
+<section id="aboutapp" className="py-16 bg-white px-4">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-10 items-center">
+      {/* Text */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+          Planopia — simple time and leave management
+        </h2>
+        <p className="mt-4 text-lg text-gray-600">
+          Forget Excel sheets and endless emails. Planopia automates time tracking, absence requests, and approvals — faster, clearer, and error-free.
+        </p>
 
-					<ul className="list-disc pl-4 text-gray-800 text-base space-y-2 mb-4">
-						<li>
-							<strong>Work time tracking</strong> – intuitive calendar with options to log hours and work mode.
-						</li>
-						<li>
-							<strong>Automatic hour calculation</strong> – including overtime and remote work.
-						</li>
-						<li>
-							<strong>Leave and absence requests</strong> – form with instant notification to the supervisor.
-						</li>
-						<li>
-							<strong>Leave planning</strong> – ability to create yearly leave plans for employees.
-						</li>
-						<li>
-							<strong>Email notifications</strong> – automated info about submitted and approved requests.
-						</li>
-						<li>
-							<strong>PDF export</strong> – generate printable calendars and leave request forms for archiving.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Security</strong> – the app was designed with strong focus on data
-							security and user privacy.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Fast performance</strong> – the app runs smoothly even for larger
-							teams.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Language support</strong> – the app is available in both Polish and
-							English.
-						</li>
-						<li>
-							<strong>Responsive design</strong> – works flawlessly on mobile devices (smartphones, tablets).
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">PWA application</strong> – add Planopia to your phone’s home screen and
-							use it like a full-featured mobile app – no download required from the store.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Branded appearance</strong> – customize the colors, logo, and style of
-							the app to match your company's visual identity.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Dedicated subdomain and database</strong> – each company gets its own
-							isolated application environment for full privacy and customization.
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Integration with RCP systems</strong> – ability to import data from
-							external time tracking systems (e.g. entry/exit badge scans).
-						</li>
-						<li className="bg-green-50 border-l-4 border-green-600 p-4 rounded list-disc pl-6 custom-marker">
-							<strong className="text-green-700">Dedicated support</strong> – we provide personalized assistance and
-							fast support – we're here to help you in any situation.
-						</li>
-					</ul>
+        {/* Feature grid */}
+        <div className="mt-8 grid sm:grid-cols-2 gap-4">
+          {/* 1 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/schedule time works.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">Work time tracking</p>
+              <p className="text-sm text-gray-600">Calendar, overtime, and work summaries.</p>
+            </div>
+          </div>
+          {/* 2 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/sunbed.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">Leaves and absences</p>
+              <p className="text-sm text-gray-600">Requests, approvals, notifications.</p>
+            </div>
+          </div>
+          {/* 3 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/pdf.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">Documents</p>
+              <p className="text-sm text-gray-600">Generate PDFs: work calendars and leave requests always at hand.</p>
+            </div>
+          </div>
+          {/* 4 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/verified.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">Security</p>
+              <p className="text-sm text-gray-600">Secure login and encrypted connections protect your company.</p>
+            </div>
+          </div>
+          {/* 5 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/booking.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">PWA & mobile</p>
+              <p className="text-sm text-gray-600">Add to your screen and use it like an app.</p>
+            </div>
+          </div>
+          {/* 6 */}
+          <div className="flex gap-3 p-4 rounded-xl border border-gray-200">
+            <img src="img/technical-support.png" className="icon-landing-about"/>
+            <div>
+              <p className="font-semibold text-gray-900">Dedicated support</p>
+              <p className="text-sm text-gray-600">Chat and help for your team — whenever you need it.</p>
+            </div>
+          </div>
+        </div>
 
-					<h2 className="text-2xl font-semibold mt-12 mb-4" style={{ marginTop: '50px', marginBottom: '15px' }}>
-						Need a custom feature or integration?
-					</h2>
-					<p className="text-gray-700 text-base">
-						Planopia can be tailored to your company’s needs. Need an internal chat? Work schedule? XLSX reports?
-						<strong className="text-green-700"> Additional integrations?</strong> Or perhaps you'd like us to build a
-						completely different IT system? Contact us – we offer
-						<strong className="text-green-700"> software customization</strong> and dedicated development services.
-					</p>
-				</div>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <p className="text-gray-600">
+            Need more features, custom integrations, or a dedicated environment for your company?
+          </p>
+          <a
+            href="#prices"
+            className="text-blue-600 font-medium hover:underline"
+          >
+            See pricing →
+          </a>
+        </div>
+      </div>
 
-				<img
-					src="/img/planopiaimage.webp"
-					alt="promotional graphic of the application"
-					className="planopiaimgaboutmobile"
-				/>
-				<div
-					className="h-[400px] bg-fixed bg-center bg-cover mt-16 rounded-xl shadow-md planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/planopiaimage.webp')" }}></div>
-			</section>
+      {/* Product mockup */}
+      <div className="relative flex justify-center items-center mockup-rotator">
+        <img
+          src="img/desktop-en.png"
+          alt="Planopia – desktop view"
+          className="rounded-xl shadow-xl ring-1 ring-black/5 desktop-mockup"
+        />
+        <img
+          src="img/mobile-en.png"
+          alt="Planopia – mobile view"
+          className="rounded-xl shadow-xl ring-1 ring-black/5 mobile-mockup"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="for" className="py-16 bg-gray-50 px-4 for">
+  <div className="max-w-7xl mx-auto">
+    <div className="max-w-3xl mb-10">
+      <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900">Who is Planopia for?</h3>
+      <p className="mt-3 text-lg text-gray-600">
+        From just a few to hundreds of employees — Planopia scales with your organization. Choose how you work, and we’ll simplify the rest.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-6 mb-4">
+      {/* 1: Small teams */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 text-green-700 font-semibold">👥</span>
+          <p className="font-semibold text-gray-900">Small teams</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Quick tracking, simple requests, clear calendar. <span className="font-semibold text-green-700">Free for up to 8 users.</span>
+        </p>
+      </div>
+
+      {/* 2: Companies and organizations */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-700 font-semibold">🏢</span>
+          <p className="font-semibold text-gray-900">Companies & organizations</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Central control over work time, approvals, and reports. Integrations and role-based permissions included.
+        </p>
+      </div>
+
+      {/* 3: HR and managers */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 text-purple-700 font-semibold">👩‍💼</span>
+          <p className="font-semibold text-gray-900">HR & managers</p>
+        </div>
+        <p className="mt-3 text-gray-600 text-sm">
+          Efficient request handling, email notifications, and complete documentation for audits and settlements.
+        </p>
+      </div>
+    </div>
+	
+    <RouterLink
+      to="/team-registration"
+      className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition mt-4 for"
+    >
+      Create a free team
+    </RouterLink>
+  </div>
+</section>
+
+
+
 
 			{/* PRICING */}
-			<section id="prices" className="py-10 px-6 bg-gray-50">
-				<div className="max-w-5xl mx-auto text-center">
-					<h2 className="text-4xl font-bold mb-8">Pricing</h2>
-					<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-10 mt-4">
-						<p className="text-xl sm:text-2xl font-semibold text-green-800 mb-2">First month free — no commitment.</p>
-						<p className="text-gray-700 mb-4">Contact us and try Planopia completely free of charge.</p>
-						<button
-							onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-							className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
-							Start for free
-						</button>
-					</div>
+<section id="prices" className="py-16 px-4">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Pricing</h2>
 
-					<div className="grid gap-6 md:grid-cols-2 mt-10">
-						{/* Monthly Plan */}
-						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-green-500">
-							<h3 className="text-2xl font-semibold mb-4">Monthly Plan</h3>
-							<p className="text-4xl font-bold text-green-600 mb-2">
-								$2.99 <span className="text-lg font-normal text-gray-700">/user/month (net)</span>
-							</p>
-							<p className="text-gray-700 mb-4">Billed monthly. Cancel anytime.</p>
-							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
-								<li>Full access to all features</li>
-								<li>Own subdomain and database</li>
-								<li>Technical support and updates</li>
-							</ul>
-							<p className="text-sm text-gray-500 mb-6">
-								Custom features on request — priced individually depending on the complexity.
-							</p>
-							<button
-								onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition w-full">
-								Choose monthly plan
-							</button>
-						</div>
+    <p className="mt-3 text-gray-600 max-w-3xl">
+      The free plan includes up to 8 active users.<br />
+      Once this limit is exceeded, the entire organization switches to a paid plan 
+      and the fee applies to all active users.
+    </p>
 
-						{/* Yearly Plan */}
-						<div className="bg-white shadow p-8 rounded-lg border-t-4 border-blue-500">
-							<h3 className="text-2xl font-semibold mb-4">Yearly Plan</h3>
-							<p className="text-4xl font-bold text-blue-600 mb-2">
-								$29.99 <span className="text-lg font-normal text-gray-700">/user/year (net)</span>
-							</p>
-							<p className="text-gray-700 mb-4">2 months free with annual upfront payment.</p>
-							<ul className="text-gray-700 text-left list-disc pl-5 space-y-2 mb-6">
-								<li>Full access to all features</li>
-								<li>Own subdomain and database</li>
-								<li>Technical support and updates</li>
-							</ul>
-							<p className="text-sm text-gray-500 mb-6">
-								Custom features on request — priced individually depending on the complexity.
-							</p>
-							<button
-								onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-								className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition w-full">
-								Choose yearly plan
-							</button>
-						</div>
-					</div>
-				</div>
+    <p className="mt-3 text-gray-600">
+      Same functionality, different billing options.
+    </p>
 
-				<div className="mt-16 max-w-4xl mx-auto text-center">
-					<h3 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Who is Planopia for?</h3>
-					<p className="text-gray-700 text-lg leading-relaxed">
-						Planopia is the perfect solution for teams of any size — from just a few employees to several hundred. Our
-						application was built for companies that want to:
-					</p>
-					<ul className="list-disc text-left mt-6 text-gray-700 text-base space-y-2 pl-8 sm:pl-12">
-						<li>easily track working hours and time off,</li>
-						<li>avoid overpaying for features they don’t need,</li>
-						<li>
-							use a secure, modern app — accessible at a unique link dedicated to your company, with an option to use it
-							like a mobile app.
-						</li>
-					</ul>
-					<p className="text-gray-600 text-base mt-6">
-						Each company gets its own dedicated version of the app — with a unique link and separate database — so
-						Planopia runs fast, securely, and independently for every client.
-					</p>
-				</div>
+    {/* Plan cards */}
+    <div className="grid gap-6 md:grid-cols-2 mt-10">
+      {/* Monthly plan */}
+      <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
+        <h3 className="text-2xl font-semibold mb-4">Monthly plan</h3>
+        <p className="text-4xl font-extrabold text-green-600 mb-2">
+          11.10&nbsp;PLN <span className="text-lg font-normal text-gray-700">/user/month (9.00&nbsp;PLN net)</span>
+        </p>
+        <p className="text-gray-600 mb-8">Pay monthly, cancel anytime.</p>
+        <button
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="w-full px-6 py-3 bg-green-600 text-white rounded-md font-medium shadow hover:bg-green-700 transition"
+        >
+          Choose monthly plan
+        </button>
+      </div>
 
-				<img src="/img/mockupmobile.webp" alt="Planopia mobile preview" className="planopiaimgaboutmobile" />
-				<div
-					className="h-[600px] bg-fixed bg-center bg-cover mt-16 rounded-xl planopiaimgparallax"
-					style={{ backgroundImage: "url('/img/mockupdesktop.webp')" }}></div>
-			</section>
+      {/* Yearly plan */}
+      <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
+        <h3 className="text-2xl font-semibold mb-4">Yearly plan</h3>
+        <p className="text-4xl font-extrabold text-blue-600 mb-2">
+          111.00&nbsp;PLN <span className="text-lg font-normal text-gray-700">/user/year (90.24&nbsp;PLN net)</span>
+        </p>
+        <p className="text-gray-600 mb-8">2 months free when paid upfront for the whole year.</p>
+        <button
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="w-full px-6 py-3 bg-blue-600 text-white rounded-md font-medium shadow hover:bg-blue-700 transition"
+        >
+          Choose yearly plan
+        </button>
+      </div>
+    </div>
 
-			{/* CONTACT & BOOKING */}
-			<section id="contact" className="py-13 px-6 bg-gray-50">
-				{/* Centered heading */}
-				<h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
+    {/* Benefits over FREE */}
+    <div className="mt-14">
+      <h4 className="text-2xl font-bold text-gray-900">What do you get in paid plans?</h4>
+      <p className="mt-2 text-gray-600">
+        Everything from the free version + flexibility and support tailored to your company.
+      </p>
 
-				{/* Two columns: contact info & form */}
-				<div className="flex flex-col md:flex-row max-w-6xl mx-auto items-center justify-center mt-10">
-					{/* Left column – contact info */}
-					<div className="w-full md:w-1/2 flex flex-col items-center md:items-center text-center md:text-left">
-						<div className="flex items-center mb-4 my-person">
-							<img
-								src="/img/1709827103942.webp"
-								alt="profile photo Michał Lipka"
-								className="myimageface object-cover"
-							/>
-							<p className="mb-0 ml-4 text-lg font-semibold text-left">Michał Lipka</p>
-						</div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 text-left">
+        {/* More users */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/add-user.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Unlimited users</p>
+            <p className="text-sm text-gray-600">Grow without limits — add as many people as you need.</p>
+          </div>
+        </div>
 
-						<a
-							href="https://www.linkedin.com/in/michal-lipka-wd/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="flex items-center mb-2 text-blue-600 hover:underline">
-							<img src="/img/linkedin.webp" alt="LinkedIn logo" className="mylinkedin mr-2" />
-							LinkedIn
-						</a>
+        {/* Custom branding */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/creativity.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Custom branding</p>
+            <p className="text-sm text-gray-600">Your logo, colors, and company style in the app.</p>
+          </div>
+        </div>
 
-						<a href="tel:+48516598792" className="mb-2 block text-gray-800 hover:underline">
-							+48 516 598 792
-						</a>
-						<a href="mailto:michalipka1@gmail.com" className="mb-2 block text-gray-800 hover:underline">
-							michalipka1@gmail.com
-						</a>
-						<p className="text-gray-700 text-sm mb-4 max-w-xs" style={{ marginTop: '10px' }}>
-							I’d be happy to implement my application in your company or carry out custom IT or development projects
-							for you. Feel free to reach out!
-						</p>
-					</div>
+        {/* Custom features */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/settings.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Custom features</p>
+            <p className="text-sm text-gray-600">Add-ons and modifications tailored to your processes.</p>
+          </div>
+        </div>
 
-					{/* Right column – meeting form */}
-					<div className="w-full md:w-1/2 p-6 rounded-md">
-						<p className="text-2xl font-bold mb-6 text-center md:text-left contactform">Contact form</p>
-						<p className="mb-6 text-gray-700 text-center md:text-left">
-							You can schedule an online meeting or just send us a message — whichever works best for you.
-						</p>
+        {/* Integrations */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/add.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Custom integrations</p>
+            <p className="text-sm text-gray-600">RCP, imports, automations — connect Planopia with your systems.</p>
+          </div>
+        </div>
 
-						<form onSubmit={handleSubmitMeeting} className="text-center mt-10">
-							{/* Email at the top */}
-							<input
-								type="email"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-								placeholder="Your email"
-								value={email2}
-								onChange={e => setEmail2(e.target.value)}
-								required
-							/>
+        {/* Support */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/technical-support.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Dedicated 24/7 support</p>
+            <p className="text-sm text-gray-600">Chat and quick help whenever you need it.</p>
+          </div>
+        </div>
 
-							{/* Datepicker second */}
-							<DatePicker
-								selected={datetime}
-								onChange={setDatetime}
-								showTimeSelect
-								timeIntervals={30}
-								minTime={minTime}
-								maxTime={maxTime}
-								dateFormat="Pp"
-								timeCaption="Time"
-								locale="en"
-								placeholderText="Select date and time"
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-							/>
+        {/* Dedicated environment */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/database.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">Dedicated environment</p>
+            <p className="text-sm text-gray-600">Unique subdomain and isolated database for your company.</p>
+          </div>
+        </div>
 
-							<textarea
-								className="w-full p-2 border border-gray-300 rounded-md mb-2"
-								rows={4}
-								placeholder="Your message"
-								value={userMessage}
-								onChange={e => setUserMessage(e.target.value)}
-							/>
+        {/* PWA / Mobile */}
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm flex gap-3">
+          <img src="img/booking.png" className="icon-landing-about"/>
+          <div>
+            <p className="font-semibold text-gray-900">PWA & mobile</p>
+            <p className="text-sm text-gray-600">Add to your home screen and use it like a mobile app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-							{/* Submit */}
-							<button
-								type="submit"
-								className="w-full bg-green-600 text-white rounded-md hover:bg-green-700"
-								style={{ padding: '15px' }}>
-								Send
-							</button>
 
-							{msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}
-						</form>
-					</div>
-				</div>
-			</section>
+<section id="contact" className="py-16 px-4 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900">Contact</h2>
+    <p className="mt-3 text-left text-gray-600">
+      Have questions, need an implementation or a demo? Send a message, call, or schedule an online meeting.
+    </p>
+
+    <div className="mt-10 grid gap-8 md:grid-cols-2 max-w-7xl mx-auto">
+      {/* Left column – contact details */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-center">
+          <img
+            src="/img/1709827103942.webp"
+            alt="Michał Lipka profile photo"
+            className="w-16 h-16 rounded-full object-cover"
+          />
+          <div className="ml-4">
+            <p className="text-lg font-semibold text-gray-900 mb-0">Michał Lipka</p>
+            <p className="text-sm text-gray-600">Creator of Planopia • Implementation & Support</p>
+          </div>
+        </div>
+
+        <div className="mt-6 space-y-3 mb-4">
+          <a
+            href="mailto:michalipka1@gmail.com"
+            className="flex items-center gap-3 text-gray-800 hover:underline"
+          >
+            <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            michalipka1@gmail.com
+          </a>
+
+          <a href="tel:+48516598792" className="flex items-center gap-3 text-gray-800 hover:underline">
+            <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none">
+              <path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 12 19.8 19.8 0 0 1 .08 3.69 2 2 0 0 1 2.06 1.5h2A2 2 0 0 1 6 3.09c.12.9.35 1.77.68 2.6.2.5.06 1.07-.32 1.44l-1 1a16 16 0 0 0 6.4 6.4l1-1c.37-.38.94-.52 1.44-.32.83.33 1.7.56 2.6.68A2 2 0 0 1 20 16.92z" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
+            +48 516 598 792
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/michal-lipka-wd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-blue-600 hover:underline"
+          >
+            <img src="/img/linkedin.webp" alt="LinkedIn logo" className="w-5 h-5" />
+            LinkedIn
+          </a>
+        </div>
+
+        <p className="mt-6 text-gray-600 text-sm">
+          I will implement Planopia in your company and help adapt its features to your processes. Reach out — I’ll get back quickly.
+        </p>
+      </div>
+
+      {/* Right column – form */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <p className="text-2xl font-bold mb-2 text-gray-900">Contact form</p>
+        <p className="mb-6 text-gray-600">
+          Schedule an online meeting or leave a message — I’ll get back to you shortly.
+        </p>
+
+        <form onSubmit={handleSubmitMeeting} className="space-y-3">
+          {/* Email */}
+          <div>
+            <label htmlFor="contact-email" className="sr-only">E-mail</label>
+            <input
+              id="contact-email"
+              type="email"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Your e-mail address"
+              value={email2}
+              onChange={e => setEmail2(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Datepicker */}
+          <div>
+            <label htmlFor="contact-date" className="sr-only">Date and time</label>
+            <DatePicker
+              id="contact-date"
+              selected={datetime}
+              onChange={setDatetime}
+              showTimeSelect
+              timeIntervals={30}
+              minTime={minTime}
+              maxTime={maxTime}
+              dateFormat="Pp"
+              timeCaption="Time"
+              locale="en"
+              placeholderText="Pick a date and time (optional)"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          {/* Message */}
+          <div>
+            <label htmlFor="contact-message" className="sr-only">Message</label>
+            <textarea
+              id="contact-message"
+              rows={4}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Your message"
+              value={userMessage}
+              onChange={e => setUserMessage(e.target.value)}
+            />
+          </div>
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white rounded-md hover:bg-green-700 px-6 py-3 font-medium transition"
+          >
+            Send
+          </button>
+
+          {msg2 && <p className="mt-2 text-sm text-center text-gray-700">{msg2}</p>}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 			{/* FOOTER */}
 			<footer className="py-10 px-6 bg-white border-t text-center d-flex justify-center">
-				<img src="/img/planopialogo.webp" alt="logo oficjalne planopia" style={{ maxWidth: '180px' }} />
+				<img src="/img/new-logoplanopia.png" alt="official logo planopia" style={{ maxWidth: '180px' }} />
 				{/* <a href="/blog/jak-usprawnic-firme" className="text-sm text-gray-600 hover:underline mt-2 block">
 					Aplikacja do ewidencji czasu pracy może usprawnić Twoją firmę
 				</a> */}
