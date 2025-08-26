@@ -22,6 +22,13 @@ export default defineConfig({
 		tailwindcss(),
 		VitePWA({
 			registerType: 'autoUpdate',
+			workbox: {
+				globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+				cleanupOutdatedCaches: true,
+				sourcemap: true,
+				skipWaiting: true,
+				clientsClaim: true,
+			},
 			includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
 			manifest: {
 				name: 'Planopia',

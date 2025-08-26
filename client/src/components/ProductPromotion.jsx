@@ -264,7 +264,7 @@ function ProductPromotion() {
 					<div className="grid md:grid-cols-2 gap-10 items-center">
 						<div className="ordering">
 							<h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
-							Ewidencja czasu pracy i urlopów – za darmo do 8 użytkowników
+							Ewidencja czasu pracy i urlopów – za darmo do 8 użytkownikówHEHE
 							</h1>{' '}
 							<h2 className="font-semibold text-gray-800" id="underheader">
 							Planopia pomaga zespołom i firmom uporządkować czas pracy i urlopy.
