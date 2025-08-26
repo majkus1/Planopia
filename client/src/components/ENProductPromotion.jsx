@@ -62,7 +62,7 @@ function ENProductPromotion() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'en' }}>
-  <title>Planopia – Free Time Tracking & Leave Management App (up to 8 users)</title>
+  <title>Planopia – Free Time Tracking & Leave Management App</title>
 
   <meta
     name="description"

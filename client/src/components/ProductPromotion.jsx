@@ -62,7 +62,7 @@ function ProductPromotion() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'pl' }}>
-  <title>Planopia – Darmowa aplikacja do ewidencji czasu pracy i urlopów (do 8 użytkowników)</title>
+  <title>Planopia – Darmowa aplikacja do ewidencji czasu pracy i urlopów</title>
 
   <meta
     name="description"
