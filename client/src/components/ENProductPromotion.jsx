@@ -62,50 +62,73 @@ function ENProductPromotion() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'en' }}>
-				<title>Planopia – Time Tracking and Leave Management App</title>
-				<meta
-					name="description"
-					content="Planopia is a modern web application for time tracking and managing employee leave. Streamline team scheduling and work hour recording."
-				/>
-				<meta name="keywords" content="time tracking app, leave management, HR software, employee scheduling" />
-				<meta name="author" content="Michał Lipka" />
-				<meta name="robots" content="index, follow" />
-				<link rel="canonical" href="https://planopia.pl/en" />
-				<link rel="alternate" href="https://planopia.pl/" hreflang="pl" />
-				<link rel="alternate" href="https://planopia.pl/en" hreflang="en" />
-				<meta property="og:title" content="Planopia – Time Tracking and Leave Management App" />
-				<meta
-					property="og:description"
-					content="Modern application for managing work time, leaves, and internal communication in your company."
-				/>
-				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.webp" />
-				<meta property="og:url" content="https://planopia.pl/en" />
-				<meta property="og:type" content="website" />
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content="Planopia – Time Tracking and Leave Management App" />
-				<meta
-					name="twitter:description"
-					content="Streamline employee time tracking and vacation planning with Planopia."
-				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.webp" />
-				<script type="application/ld+json">
-					{`
-					{
-						"@context": "https://schema.org",
-						"@type": "SoftwareApplication",
-						"name": "Planopia",
-						"url": "https://planopia.pl/en",
-						"applicationCategory": "BusinessApplication",
-						"operatingSystem": "Web",
-						"author": {
-							"@type": "Person",
-							"name": "Michał Lipka"
-						},
-						"description": "Web app for time tracking and leave management."
-					}
-					`}
-				</script>
-			</Helmet>
+  <title>Planopia – Free Time Tracking & Leave Management App (up to 8 users)</title>
+
+  <meta
+    name="description"
+    content="Planopia is a free time tracking and leave management app for teams up to 8 users. Manage work hours, overtime, and vacation requests online. Paid plans available for unlimited users, advanced features, and integrations."
+  />
+
+  <meta
+    name="keywords"
+    content="free time tracking app, free leave management software, employee scheduling, HR software, work hours tracking, vacation calendar, Planopia"
+  />
+
+  <meta name="author" content="Michał Lipka" />
+  <meta name="robots" content="index, follow" />
+
+  {/* Canonical + alternates */}
+  <link rel="canonical" href="https://planopia.pl/en" />
+  <link rel="alternate" href="https://planopia.pl/" hreflang="pl" />
+  <link rel="alternate" href="https://planopia.pl/en" hreflang="en" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="Planopia – Free Time Tracking & Leave Management App" />
+  <meta
+    property="og:description"
+    content="Try Planopia for free – time tracking and vacation planning app for up to 8 users. Upgrade to paid plans for unlimited users, flexibility, and integrations."
+  />
+  <meta property="og:image" content="https://planopia.pl/img/headerimage.png" />
+  <meta property="og:url" content="https://planopia.pl/en" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Planopia" />
+
+  {/* Twitter Cards */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Planopia – Free Time Tracking & Leave Management App" />
+  <meta
+    name="twitter:description"
+    content="Free plan for teams up to 8 users. Track work hours, manage leaves, generate reports. Paid plans available for unlimited users and more features."
+  />
+  <meta name="twitter:image" content="https://planopia.pl/img/headerimage.png" />
+
+  {/* Schema.org JSON-LD */}
+  <script type="application/ld+json">
+    {`
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Planopia",
+      "url": "https://planopia.pl/en",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Michał Lipka"
+      },
+      "description": "Planopia is a free time tracking and leave management web app for teams up to 8 users. Paid plans include unlimited users, advanced customization, and integrations.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free",
+        "description": "Free plan for teams up to 8 users"
+      }
+    }
+    `}
+  </script>
+</Helmet>
+
 
 			{/* HEADER + MENU */}
 			<header className="bg-white top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
@@ -168,7 +191,7 @@ Create a free team
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '34px' }}>
+						style={{ fontSize: '36px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
@@ -249,7 +272,7 @@ Create a free team
         </RouterLink>
       </div>
       <img
-        src="/img/planopiaheader.webp"
+        src="/img/headerimage.png"
         alt="businessman managing calendar in the app"
         className="rounded-xl w-full h-auto aspect-[3/2]"
       />
@@ -264,7 +287,7 @@ Create a free team
       {/* Text */}
       <div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-          Planopia — simple time and leave management
+          Simple time and leave management
         </h2>
         <p className="mt-4 text-lg text-gray-600">
           Forget Excel sheets and endless emails. Planopia automates time tracking, absence requests, and approvals — faster, clearer, and error-free.

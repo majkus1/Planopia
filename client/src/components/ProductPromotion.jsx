@@ -62,53 +62,73 @@ function ProductPromotion() {
 	return (
 		<>
 			<Helmet htmlAttributes={{ lang: 'pl' }}>
-				<title>Planopia – Aplikacja do ewidencji czasu pracy i zarządzania urlopami</title>
-				<meta
-					name="description"
-					content="Planopia to nowoczesna aplikacja do ewidencji czasu pracy i zarządzania urlopami. Ułatwia planowanie urlopów, zarządzanie pracownikami i kontrolę nad czasem pracy."
-				/>
-				<meta
-					name="keywords"
-					content="aplikacja do ewidencji czasu pracy, zarządzanie urlopami, oprogramowanie dla firm"
-				/>
-				<meta name="author" content="Michał Lipka" />
-				<meta name="robots" content="index, follow" />
-				<link rel="canonical" href="https://planopia.pl/" />
-				<link rel="alternate" href="https://planopia.pl" hreflang="pl" />
-				<link rel="alternate" href="https://planopia.pl/en" hreflang="en" />
-				<meta property="og:title" content="Planopia – Aplikacja do ewidencji czasu pracy i urlopów" />
-				<meta
-					property="og:description"
-					content="Nowoczesna aplikacja do zarządzania czasem pracy, urlopami i nieobecnościami w firmie."
-				/>
-				<meta property="og:image" content="https://planopia.pl/img/planopiaheader.webp" />
-				<meta property="og:url" content="https://planopia.pl" />
-				<meta property="og:type" content="website" />
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content="Planopia – Aplikacja do ewidencji czasu pracy i urlopów" />
-				<meta
-					name="twitter:description"
-					content="Nowoczesne narzędzie do zarządzania czasem pracy i urlopami w firmach."
-				/>
-				<meta name="twitter:image" content="https://planopia.pl/img/planopiaheader.webp" />
-				<script type="application/ld+json">
-					{`
-	{
-	  "@context": "https://schema.org",
-	  "@type": "SoftwareApplication",
-	  "name": "Planopia",
-	  "url": "https://planopia.pl",
-	  "applicationCategory": "BusinessApplication",
-	  "operatingSystem": "Web",
-	  "author": {
-	    "@type": "Person",
-	    "name": "Michał Lipka"
-	  },
-	  "description": "Aplikacja do ewidencji czasu pracy i zarządzania urlopami."
-	}
-	`}
-				</script>
-			</Helmet>
+  <title>Planopia – Darmowa aplikacja do ewidencji czasu pracy i urlopów (do 8 użytkowników)</title>
+
+  <meta
+    name="description"
+    content="Planopia to darmowa aplikacja online do ewidencji czasu pracy i zarządzania urlopami dla zespołów do 8 osób. Dla większych firm dostępne są plany płatne z nielimitowaną liczbą użytkowników, elastycznymi funkcjami i integracjami."
+  />
+
+  <meta
+    name="keywords"
+    content="darmowa ewidencja czasu pracy, aplikacja do urlopów, kalendarz urlopów online, program HR, zarządzanie czasem pracy, oprogramowanie dla firm, Planopia"
+  />
+
+  <meta name="author" content="Michał Lipka" />
+  <meta name="robots" content="index, follow" />
+
+  {/* Canonical + alternates */}
+  <link rel="canonical" href="https://planopia.pl/" />
+  <link rel="alternate" href="https://planopia.pl/" hreflang="pl" />
+  <link rel="alternate" href="https://planopia.pl/en" hreflang="en" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="Planopia – Darmowa aplikacja do ewidencji czasu pracy i urlopów" />
+  <meta
+    property="og:description"
+    content="Wypróbuj Planopię za darmo – ewidencja godzin pracy, planowanie urlopów i raporty online. Do 8 użytkowników bez opłat. Plany płatne dla większych firm z dodatkowymi funkcjami."
+  />
+  <meta property="og:image" content="https://planopia.pl/img/headerimage.png" />
+  <meta property="og:url" content="https://planopia.pl/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Planopia" />
+
+  {/* Twitter Cards */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Planopia – Darmowa aplikacja do ewidencji czasu pracy i urlopów" />
+  <meta
+    name="twitter:description"
+    content="Darmowa aplikacja do ewidencji czasu pracy i planowania urlopów dla zespołów do 8 osób. Dla większych firm dostępne są płatne plany z większymi możliwościami."
+  />
+  <meta name="twitter:image" content="https://planopia.pl/img/headerimage.png" />
+
+  {/* Schema.org JSON-LD */}
+  <script type="application/ld+json">
+    {`
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Planopia",
+      "url": "https://planopia.pl",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Michał Lipka"
+      },
+      "description": "Darmowa aplikacja online do ewidencji czasu pracy i urlopów dla zespołów do 8 użytkowników. Plany płatne oferują nielimitowaną liczbę użytkowników, elastyczne funkcje i integracje.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "PLN",
+        "category": "Free",
+        "description": "Darmowy plan dla zespołów do 8 użytkowników"
+      }
+    }
+    `}
+  </script>
+</Helmet>
+
 
 			{/* HEADER + MENU */}
 			<header className="bg-white top-0 z-50 w-full flex justify-between headerpromotionmenu" id="planopiaheader">
@@ -174,7 +194,7 @@ function ProductPromotion() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '34px' }}>
+						style={{ fontSize: '36px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
@@ -256,7 +276,7 @@ function ProductPromotion() {
 							</RouterLink>
 						</div>
 						<img
-							src="/img/planopiaheader.webp"
+							src="/img/headerimage.png"
 							alt="biznesmen zaznaczający aplikację"
 							className="rounded-xl w-full h-auto aspect-[3/2]"
 						/>
@@ -270,7 +290,7 @@ function ProductPromotion() {
       {/* Tekst */}
       <div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-          Planopia — proste zarządzanie czasem pracy i urlopami
+          Proste zarządzanie czasem pracy i urlopami
         </h2>
         <p className="mt-4 text-lg text-gray-600">
           Zapomnij o Excelach i mailach. Planopia automatyzuje ewidencję, zgłaszanie nieobecności i akceptacje — szybciej, czytelniej, bez błędów.

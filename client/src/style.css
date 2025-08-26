@@ -1245,6 +1245,18 @@ button, .btn {
 	border-radius: 5px;
 }
 
+.cta-blog .first-cta {
+	background-color: #28a745 !important;
+	text-decoration: none;
+	min-width: 200px;
+}
+
+.cta-blog .sec-cta {
+	background-color: #007bff !important;
+	text-decoration: none;
+	min-width: 200px;
+}
+
 .btn-primary {
 	/* background: transparent; */
 	color: white;
@@ -1957,4 +1969,20 @@ header .menucontent {
 
 section {
   scroll-margin-top: 95px; /* wysokość Twojego nagłówka */
+}
+
+.mockup-blog-desktop {
+	display: none;
+}
+
+@media(min-width: 1280px) {
+	.content-blog {
+		margin-top: 30px;
+	}
+	.mockup-blog-desktop {
+		display: block;
+	}
+	.mockup-blog-mobile {
+		display: none;
+	}
 }

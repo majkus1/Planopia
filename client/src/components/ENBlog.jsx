@@ -117,7 +117,7 @@ function ENBlog() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '34px' }}>
+						style={{ fontSize: '36px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>

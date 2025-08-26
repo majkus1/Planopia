@@ -135,7 +135,7 @@ function ENBlogThree() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '34px' }}>
+						style={{ fontSize: '36px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
@@ -199,29 +199,64 @@ function ENBlogThree() {
 				)}
 			</header>
 
-			{/* HERO */}
+{/* HERO */}
 <section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="blog-hero" style={{ marginTop: '70px' }}>
-  <div className="max-w-7xl mx-auto text-left">
-    <div className="grid md:grid-cols-2 gap-10 items-center">
+  <div className="max-w-7xl mx-auto text-left content-blog">
+    <div className="grid xl:grid-cols-2 gap-10 items-center">
       <div>
         <h1 className="text-4xl font-bold mb-6">
           Employee leave planning – best tools and practices
         </h1>
         <p className="text-gray-700 text-lg">
-          <strong>Leave planning</strong> is one of the most common HR challenges. 
-          Traditional methods—paper forms or spreadsheets—lead to chaos and errors. 
-          Learn how an <strong>online leave calendar</strong> and leave management software like Planopia 
-          make <strong>absence management</strong> simple, transparent, and fast.
+          <strong>Leave planning</strong> is one of the most common challenges for HR departments and team managers.  
+          Traditional methods – paper requests or Excel – often lead to chaos and mistakes.  
+          Discover how an <strong>online leave calendar</strong> and apps like Planopia  
+          make absence management simple and effective.
         </p>
+
+        {/* CTA boxes */}
+        <div className="mt-6 grid sm:grid-cols-2 gap-4 cta-blog">
+          <div className="bg-white border border-gray-200 rounded-xl py-5 px-4 shadow-sm text-center">
+            <p className="text-gray-800 mb-3">
+              👉 <strong>Free leave planning app</strong>  
+              <br />for teams up to 8 users
+            </p>
+            <a
+              href="/team-registration"
+              className="inline-block first-cta bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700 transition"
+            >
+              Create a free team
+            </a>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-xl py-5 px-4 shadow-sm text-center">
+            <p className="text-gray-800 mb-3">
+              👉 <strong>For larger companies: </strong>  
+              unlimited users, flexible features and integrations
+            </p>
+            <a
+              href="/en#prices"
+              className="inline-block sec-cta bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition"
+            >
+              View pricing
+            </a>
+          </div>
+        </div>
       </div>
+
       <img
-        src="/img/desktop.png"
-        alt="Leave management software – Planopia desktop preview"
-        className="rounded-xl w-full h-auto aspect-[4/2] shadow-lg"
+        src="/img/desktop-en.png"
+        alt="Leave planning software – Planopia"
+        className="rounded-xl w-full h-auto aspect-[4/2] shadow-lg mockup-blog-desktop"
+      />
+      <img
+        src="/img/mobile-en.png"
+        alt="Leave planning app – Planopia"
+        className="rounded-xl shadow-xl ring-1 ring-black/5 mx-auto mockup-blog-mobile"
       />
     </div>
   </div>
 </section>
+
 
 <article className="max-w-6xl mx-auto px-6 py-12">
   <h2 className="text-2xl font-semibold mb-3">Why is leave planning critical?</h2>

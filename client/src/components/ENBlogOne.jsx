@@ -137,7 +137,7 @@ function ENBlogOne() {
 					<button
 						className="lg:hidden text-gray-700 text-3xl focus:outline-none"
 						onClick={toggleMenu}
-						style={{ fontSize: '34px' }}>
+						style={{ fontSize: '36px' }}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
@@ -202,8 +202,8 @@ function ENBlogOne() {
 
 			{/* HERO */}
 <section className="px-4 py-10 bg-gradient-to-r from-blue-50 to-white" id="blog-hero" style={{ marginTop: '70px' }}>
-  <div className="max-w-7xl mx-auto text-left">
-    <div className="grid md:grid-cols-2 gap-10 items-center">
+  <div className="max-w-7xl mx-auto text-left content-blog">
+    <div className="grid xl:grid-cols-2 gap-10 items-center">
       <div>
         <h1 className="text-4xl font-bold mb-6">
           Online Time Tracking – modern solutions for companies
@@ -214,14 +214,47 @@ function ENBlogOne() {
           That’s why more and more companies choose <strong>online time tracking apps </strong>  
            that automate and organize the process.
         </p>
+      {/* CTA boxy */}
+  <div className="mt-6 grid sm:grid-cols-2 gap-4 cta-blog">
+          <div className="bg-white border border-gray-200 rounded-xl py-5 px-4 shadow-sm text-center">
+            <p className="text-gray-800 mb-3">
+            👉 <strong>Free time tracking app</strong>  
+            <br />for teams up to 8 users
+            </p>
+            <a
+              href="/team-registration"
+              className="inline-block first-cta bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700 transition"
+            >
+              Create a free team
+            </a>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-xl py-5 px-4 shadow-sm text-center">
+            <p className="text-gray-800 mb-3">
+            👉 <strong>For larger companies: </strong>  
+            unlimited users, more features and flexibility
+            </p>
+            <a
+              href="/en#prices"
+              className="inline-block sec-cta bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition"
+            >
+              View pricing
+            </a>
+          </div>
+        </div>
       </div>
+
       <img
-        src="/img/desktop.png"
-        alt="Time tracking software – Planopia"
-        className="rounded-xl w-full h-auto aspect-[4/2] shadow-lg"
+        src="/img/desktop-en.png"
+        alt="Program do planowania urlopów – Planopia"
+        className="rounded-xl w-full h-auto aspect-[4/2] shadow-lg mockup-blog-desktop"
+      />
+      <img
+        src="/img/mobile-en.png"
+        alt="Program do planowania urlopów – Planopia"
+        className="rounded-xl shadow-xl ring-1 ring-black/5 mx-auto mockup-blog-mobile"
       />
     </div>
-  </div>
+    </div>
 </section>
 
 <article className="max-w-6xl mx-auto px-6 py-12">
