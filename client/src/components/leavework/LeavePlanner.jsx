@@ -10,6 +10,7 @@ import Loader from '../Loader'
 
 function LeavePlanner() {
 	const [selectedDates, setSelectedDates] = useState([])
+	const [acceptedLeaveRequests, setAcceptedLeaveRequests] = useState([])
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 	const calendarRef = useRef(null)
@@ -18,6 +19,7 @@ function LeavePlanner() {
 
 	useEffect(() => {
 		fetchLeavePlans()
+		fetchAcceptedLeaveRequests()
 	}, [])
 
 	const handleMonthSelect = event => {
@@ -45,6 +47,29 @@ function LeavePlanner() {
 			console.error('Error fetching leave plans:', error)
 		} finally {
 			setLoading(false)
+		}
+	}
+
+	const fetchAcceptedLeaveRequests = async () => {
+		try {
+			console.log('Fetching accepted leave requests for current user')
+			
+			const response = await axios.get(`${API_URL}/api/leaveworks/user-accepted-leave-requests`, {
+				withCredentials: true
+			})
+			
+			console.log('Accepted leave requests loaded:', response.data.length)
+			console.log('Sample request data:', response.data[0])
+			
+			// Filtruj tylko wnioski z poprawnymi datami
+			const validRequests = response.data.filter(request => 
+				request.startDate && request.endDate && request.userId
+			)
+			
+			console.log('Valid requests filtered:', validRequests.length)
+			setAcceptedLeaveRequests(validRequests)
+		} catch (error) {
+			console.error('Error fetching accepted leave requests:', error)
 		}
 	}
 
@@ -84,6 +109,18 @@ function LeavePlanner() {
 		const newYear = info.view.currentStart.getFullYear()
 		setCurrentMonth(newMonth)
 		setCurrentYear(newYear)
+	}
+
+	const handleEventClick = (clickInfo) => {
+		const { type } = clickInfo.event.extendedProps
+		if (type === 'plan') {
+			// Dla planów - usuń datę (klikalne)
+			const date = clickInfo.event.startStr
+			toggleDate(date)
+		} else if (type === 'request') {
+			// Dla zaakceptowanych wniosków - tylko informacja
+			console.log('To jest zaakceptowany wniosek urlopowy - nie można go edytować')
+		}
 	}
 
 	return (
@@ -184,12 +221,29 @@ function LeavePlanner() {
 							height="auto"
 							firstDay={1}
 							showNonCurrentDates={false}
-							events={selectedDates.map(date => ({
-								title: t('leaveplanner.vactiontitle'),
-								start: date,
-								allDay: true,
-								backgroundColor: 'blue',
-							}))}
+							eventClick={handleEventClick}
+							events={[
+								// Plany urlopów (klikalne)
+								...selectedDates.map(date => ({
+									title: t('leaveplanner.vactiontitle'),
+									start: date,
+									allDay: true,
+									backgroundColor: 'blue',
+									extendedProps: { type: 'plan', date: date }
+								})),
+								// Zaakceptowane wnioski urlopowe (tylko do wyświetlania)
+								...acceptedLeaveRequests
+									.filter(request => request.startDate && request.endDate) // Sprawdź czy daty istnieją
+									.map(request => ({
+										title: `${t(request.type)} - Zaakceptowano`,
+										start: request.startDate,
+										end: request.endDate,
+										allDay: true,
+										backgroundColor: 'green',
+										borderColor: 'darkgreen',
+										extendedProps: { type: 'request', requestId: request._id }
+									}))
+							]}
 							dateClick={info => toggleDate(info.dateStr)}
 							ref={calendarRef}
 							datesSet={handleMonthChange}

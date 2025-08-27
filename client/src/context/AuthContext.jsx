@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
 	const location = useLocation()
 
-	const publicPaths = ['/login', '/reset-password', '/new-password', '/set-password', '/team-registration', '/en', '/blog', '/en/blog', '/blog/ewidencja-czasu-pracy-i-urlopow', '/en/blog/time-tracking-and-leave-management', '/blog/integracja-z-rcp', '/en/blog/time-attendance-integration', '/blog/planowanie-urlopow', '/en/blog/leave-planning', '/blog/ewidencja-czasu-pracy', '/en/blog/work-time-tracking']
+	const publicPaths = [ '/reset-password', '/new-password', '/set-password' ]
 
 	useEffect(() => {
 		if (publicPaths.includes(location.pathname)) {

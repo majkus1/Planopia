@@ -129,157 +129,403 @@ function Logs() {
 		<>
 			<Sidebar />
 
-			{error && <p className="text-danger">{error}</p>}
-
-			{loading ? (
-				<div className="content-with-loader">
-					<Loader />
+			<div className="logs-container" style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+				<div className="logs-header" style={{ marginBottom: '30px', textAlign: 'center' }}>
+					
 				</div>
-			) : (
-				<table className="table table-bordered" id="userandlogs">
-					<thead>
-						<tr>
-							<th>{t('logs.user')}</th>
-							<th>{t('logs.action')}</th>
-						</tr>
-					</thead>
-					<tbody>
-						{users.map(user => (
-							<React.Fragment key={user._id}>
-								<tr>
-									<td>
-										{user.username} ({user.roles?.join(', ') || 'Brak ról'})
-									</td>
-									<td>
-										<button
-											className="btn btn-primary btn-sm me-2"
-											onClick={() => handleEditClick(user)}
-											style={{ margin: '3px' }}>
-											{t('logs.rolebtn')}
-										</button>
-										<button
-											className="btn btn-info btn-sm me-2"
-											onClick={() => handleExpandLogs(user._id)}
-											style={{ margin: '3px' }}>
-											{t('logs.actionbtn')}
-										</button>
-									</td>
-								</tr>
-								{editingUser?._id === user._id && (
-									<tr>
-										<td colSpan="2">
-											<h3>{t('logs.editrole')}</h3>
-											{availableRoles.map(role => (
-												<label key={role} style={{ marginRight: '10px' }}>
-													<input
-														type="checkbox"
-														checked={editedRoles.includes(role)}
-														onChange={() => handleRoleChange(role)}
-														style={{ margin: '3px' }}
-													/>
-													{role}
-												</label>
-											))}
-											<br />
 
-											<h3 className='mt-3'>{t('newuser.department5')}</h3>
-											
-											{/* Zawsze pokazuj listę działów */}
-											<div className='edit-department'>
-												<div>
-													{departments.map((dep, index) => (
-														<label key={dep} style={{ marginRight: '10px' }}>
-															<input
-																type="radio"
-																name="department"
-																value={dep}
-																checked={editedDepartment === dep}
-																onChange={e => setEditedDepartment(e.target.value)}
-																style={{ margin: '3px' }}
-															/>
-															{dep}
-														</label>
-													))}
-												</div>
-												
-												{/* Przycisk dodaj nowy dział */}
-												<button
-													type="button"
-													className="btn btn-link ms-2 py-1 mb-4 to-left-max"
-													onClick={() => {
-														setEditedDepartment('')
-														setDepartmentMode('new')
-													}}>
-													{t('newuser.department2')}
-												</button>
-											</div>
-											
-											{/* Input dla nowego działu - tylko gdy departmentMode === 'new' */}
-											{departmentMode === 'new' && (
-												<div className='edit-department'>
-													<input
-														type="text"
-														placeholder={t('newuser.department4')}
-														value={editedDepartment}
-														onChange={e => setEditedDepartment(e.target.value)}
-														className="w-full border border-gray-300 rounded-md px-4 py-2 m-2 width-custom"
-													/>
-													<button
-														type="button"
-														className="btn btn-link p-2 ms-2 mb-4"
-														onClick={() => {
-															setEditedDepartment('')
-															setDepartmentMode('choose')
+				{error && (
+					<div style={{ 
+						backgroundColor: '#f8d7da', 
+						color: '#721c24', 
+						padding: '15px', 
+						borderRadius: '8px', 
+						marginBottom: '20px',
+						border: '1px solid #f5c6cb'
+					}}>
+						{error}
+					</div>
+				)}
+
+				{loading ? (
+					<div className="content-with-loader">
+						<Loader />
+					</div>
+				) : (
+					<div className="logs-content">
+						<div className="users-table-container" style={{ 
+							backgroundColor: 'white', 
+							borderRadius: '12px', 
+							boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+							overflow: 'hidden'
+						}}>
+							<table className="table" style={{ margin: 0 }}>
+								<thead style={{ backgroundColor: '#f8f9fa' }}>
+									<tr>
+										<th style={{ 
+											padding: '20px', 
+											borderBottom: '2px solid #dee2e6',
+											color: '#495057',
+											fontWeight: '600'
+										}}>
+											{t('logs.user')}
+										</th>
+										<th style={{ 
+											padding: '20px', 
+											borderBottom: '2px solid #dee2e6',
+											color: '#495057',
+											fontWeight: '600',
+											textAlign: 'center'
+										}}>
+											{t('logs.action')}
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{users.map((user, index) => (
+										<React.Fragment key={user._id}>
+											<tr style={{ 
+												backgroundColor: index % 2 === 0 ? '#ffffff' : '#f8f9fa',
+												transition: 'background-color 0.2s'
+											}}>
+												<td style={{ padding: '20px', verticalAlign: 'middle' }}>
+													<div style={{ display: 'flex', alignItems: 'center' }}>
+														<div style={{ 
+															width: '40px', 
+															height: '40px', 
+															borderRadius: '50%', 
+															backgroundColor: '#3498db',
+															display: 'flex',
+															alignItems: 'center',
+															justifyContent: 'center',
+															color: 'white',
+															fontWeight: 'bold',
+															marginRight: '15px'
 														}}>
-														{t('newuser.department3')}
-													</button>
-												</div>
+															{user.username.charAt(0).toUpperCase()}
+														</div>
+														<div>
+															<div style={{ fontWeight: '600', color: '#2c3e50', marginBottom: '5px' }}>
+																{user.username}
+															</div>
+															<div style={{ fontSize: '14px', color: '#7f8c8d' }}>
+																{user.roles?.join(', ') || 'Brak ról'}
+															</div>
+															{user.department && (
+																<div style={{ fontSize: '12px', color: '#95a5a6', marginTop: '3px' }}>
+																	Dział: {user.department}
+																</div>
+															)}
+														</div>
+													</div>
+												</td>
+												<td style={{ padding: '20px', textAlign: 'center' }}>
+													<div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+														<button
+															className="btn btn-primary"
+															onClick={() => handleEditClick(user)}
+															style={{ 
+																padding: '8px 16px',
+																borderRadius: '6px',
+																border: 'none',
+																fontSize: '14px',
+																fontWeight: '500',
+																transition: 'all 0.2s',
+																boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+															}}>
+															{t('logs.rolebtn')}
+														</button>
+														<button
+															className="btn btn-info"
+															onClick={() => handleExpandLogs(user._id)}
+															style={{ 
+																padding: '8px 16px',
+																borderRadius: '6px',
+																border: 'none',
+																fontSize: '14px',
+																fontWeight: '500',
+																transition: 'all 0.2s',
+																boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+															}}>
+															{t('logs.actionbtn')}
+														</button>
+													</div>
+												</td>
+											</tr>
+											{editingUser?._id === user._id && (
+												<tr>
+													<td colSpan="2" style={{ padding: '0' }}>
+														<div style={{ 
+															backgroundColor: '#f8f9fa', 
+															padding: '30px',
+															borderTop: '1px solid #dee2e6'
+														}}>
+															<div style={{ maxWidth: '800px', margin: '0 auto' }}>
+																<h4 style={{ 
+																	color: '#2c3e50', 
+																	marginBottom: '20px',
+																	paddingBottom: '10px',
+																	borderBottom: '2px solid #3498db'
+																}}>
+																	{t('logs.editrole')}
+																</h4>
+																
+																{/* Role */}
+																<div style={{ marginBottom: '30px' }}>
+																	<h5 style={{ color: '#34495e', marginBottom: '15px' }}>Role użytkownika:</h5>
+																	<div style={{ 
+																		display: 'grid', 
+																		gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+																		gap: '10px'
+																	}}>
+																		{availableRoles.map(role => (
+																			<label key={role} style={{ 
+																				display: 'flex', 
+																				alignItems: 'center',
+																				padding: '12px',
+																				backgroundColor: 'white',
+																				borderRadius: '6px',
+																				border: '1px solid #dee2e6',
+																				cursor: 'pointer',
+																				transition: 'all 0.2s',
+																				boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+																			}}>
+																				<input
+																					type="checkbox"
+																					checked={editedRoles.includes(role)}
+																					onChange={() => handleRoleChange(role)}
+																					style={{ 
+																						marginRight: '10px',
+																						transform: 'scale(1.2)'
+																					}}
+																				/>
+																				<span style={{ fontSize: '14px' }}>{role}</span>
+																			</label>
+																		))}
+																	</div>
+																</div>
+
+																{/* Dział */}
+																<div style={{ marginBottom: '30px' }}>
+																	<h5 style={{ color: '#34495e', marginBottom: '15px' }}>
+																		{t('newuser.department5')}
+																	</h5>
+																	
+																	{/* Tryb wyboru z listy */}
+																	{departmentMode === 'choose' && (
+																		<div style={{ marginBottom: '20px' }}>
+																			<div style={{ 
+																				display: 'grid', 
+																				gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+																				gap: '10px',
+																				marginBottom: '15px'
+																			}}>
+																				{departments.map((dep) => (
+																					<label key={dep} style={{ 
+																						display: 'flex', 
+																						alignItems: 'center',
+																						padding: '10px',
+																						backgroundColor: 'white',
+																						borderRadius: '6px',
+																						border: '1px solid #dee2e6',
+																						cursor: 'pointer',
+																						transition: 'all 0.2s'
+																					}}>
+																						<input
+																							type="radio"
+																							name="department"
+																							value={dep}
+																							checked={editedDepartment === dep}
+																							onChange={e => setEditedDepartment(e.target.value)}
+																							style={{ marginRight: '10px', transform: 'scale(1.2)' }}
+																						/>
+																						<span>{dep}</span>
+																					</label>
+																				))}
+																			</div>
+																			
+																			<button
+																				type="button"
+																				className="btn btn-outline-primary"
+																				onClick={() => {
+																					setEditedDepartment('')
+																					setDepartmentMode('new')
+																				}}
+																				style={{ 
+																					padding: '8px 16px',
+																					borderRadius: '6px',
+																					border: '1px solid #3498db',
+																					backgroundColor: 'transparent',
+																					color: '#3498db',
+																					transition: 'all 0.2s'
+																				}}>
+																				{t('newuser.department2')}
+																			</button>
+																		</div>
+																	)}
+																	
+																	{/* Tryb dodawania nowego działu */}
+																	{departmentMode === 'new' && (
+																		<div style={{ 
+																			backgroundColor: 'white',
+																			padding: '20px',
+																			borderRadius: '8px',
+																			border: '2px solid #3498db'
+																		}}>
+																			<div style={{ marginBottom: '15px' }}>
+																				<label style={{ 
+																					display: 'block',
+																					marginBottom: '8px',
+																					fontWeight: '600',
+																					color: '#2c3e50'
+																				}}>
+																					{t('newuser.department2')}
+																				</label>
+																				<input
+																					type="text"
+																					placeholder={t('newuser.department4')}
+																					value={editedDepartment}
+																					onChange={e => setEditedDepartment(e.target.value)}
+																					style={{ 
+																						width: '100%',
+																						padding: '12px',
+																						border: '1px solid #bdc3c7',
+																						borderRadius: '6px',
+																						fontSize: '16px',
+																						transition: 'border-color 0.2s'
+																					}}
+																				/>
+																			</div>
+																			
+																			<div style={{ display: 'flex', gap: '10px' }}>
+																				
+																				
+																				<button
+																					type="button"
+																					className="btn btn-outline-primary"
+																					onClick={() => setDepartmentMode('choose')}
+																					style={{ 
+																						padding: '8px 16px',
+																						borderRadius: '6px',
+																						border: '1px solid #3498db',
+																						backgroundColor: 'transparent',
+																						color: '#3498db'
+																					}}>
+																					{t('newuser.department3')}
+																				</button>
+																			</div>
+																		</div>
+																	)}
+																</div>
+
+																{/* Przyciski akcji */}
+																<div style={{ 
+																	display: 'flex', 
+																	gap: '15px',
+																	paddingTop: '20px',
+																	borderTop: '1px solid #dee2e6'
+																}}>
+																	<button
+																		className="btn btn-success"
+																		onClick={() => handleSaveRoles(user._id)}
+																		style={{ 
+																			padding: '12px 24px',
+																			borderRadius: '6px',
+																			border: 'none',
+																			fontSize: '16px',
+																			fontWeight: '500',
+																			transition: 'all 0.2s',
+																			boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+																		}}>
+																		{t('logs.save')}
+																	</button>
+																	<button
+																		className="btn btn-danger"
+																		onClick={() => setEditingUser(null)}
+																		style={{ 
+																			padding: '12px 24px',
+																			borderRadius: '6px',
+																			border: 'none',
+																			fontSize: '16px',
+																			fontWeight: '500',
+																			transition: 'all 0.2s',
+																			boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+																		}}>
+																		{t('logs.notsave')}
+																	</button>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
 											)}
-											<button
-												className="btn btn-success btn-sm me-2"
-												onClick={() => handleSaveRoles(user._id)}
-												style={{ margin: '3px' }}>
-												{t('logs.save')}
-											</button>
-											<button
-												className="btn btn-danger btn-sm"
-												onClick={() => setEditingUser(null)}
-												style={{ margin: '3px' }}>
-												{t('logs.notsave')}
-											</button>
-										</td>
-									</tr>
-								)}
-								{expandedLogs.includes(user._id) && logs[user._id] && (
-									<tr id="logstable">
-										<td colSpan="2">
-											<h3>{t('logs.userl')}</h3>
-											<table className="table table-bordered">
-												<thead>
-													<tr>
-														<th>{t('logs.actionth')}</th>
-														<th>{t('logs.detailsth')}</th>
-														<th>{t('logs.timeth')}</th>
-													</tr>
-												</thead>
-												<tbody>
-													{logs[user._id].map(log => (
-														<tr key={log._id}>
-															<td data-label="Akcja">{log.action}</td>
-															<td data-label="Szczegóły">{log.details}</td>
-															<td data-label="Czas">{new Date(log.timestamp).toLocaleString()}</td>
-														</tr>
-													))}
-												</tbody>
-											</table>
-										</td>
-									</tr>
-								)}
-							</React.Fragment>
-						))}
-					</tbody>
-				</table>
-			)}
+											{expandedLogs.includes(user._id) && logs[user._id] && (
+												<tr>
+													<td colSpan="2" style={{ padding: '0' }}>
+														<div style={{ 
+															backgroundColor: '#f8f9fa', 
+															padding: '30px',
+															borderTop: '1px solid #dee2e6'
+														}}>
+															<h4 style={{ 
+																color: '#2c3e50', 
+																marginBottom: '20px',
+																paddingBottom: '10px',
+																borderBottom: '2px solid #3498db'
+															}}>
+																{t('logs.userl')} - {user.username}
+															</h4>
+															<div style={{ 
+																backgroundColor: 'white',
+																borderRadius: '8px',
+																overflow: 'hidden',
+																boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+															}}>
+																<table className="table" style={{ margin: 0 }}>
+																	<thead style={{ backgroundColor: '#f8f9fa' }}>
+																		<tr>
+																			<th style={{ padding: '15px', color: '#495057', fontWeight: '600' }}>
+																				{t('logs.actionth')}
+																			</th>
+																			<th style={{ padding: '15px', color: '#495057', fontWeight: '600' }}>
+																				{t('logs.detailsth')}
+																			</th>
+																			<th style={{ padding: '15px', color: '#495057', fontWeight: '600' }}>
+																				{t('logs.timeth')}
+																			</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		{logs[user._id].map((log, logIndex) => (
+																			<tr key={log._id} style={{ 
+																				backgroundColor: logIndex % 2 === 0 ? '#ffffff' : '#f8f9fa'
+																			}}>
+																				<td style={{ padding: '15px', fontWeight: '500', color: '#2c3e50' }}>
+																					{log.action}
+																				</td>
+																				<td style={{ padding: '15px', color: '#7f8c8d' }}>
+																					{log.details}
+																				</td>
+																				<td style={{ padding: '15px', color: '#95a5a6', fontSize: '14px' }}>
+																					{new Date(log.timestamp).toLocaleString()}
+																				</td>
+																			</tr>
+																		))}
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</td>
+												</tr>
+											)}
+										</React.Fragment>
+									))}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				)}
+			</div>
 		</>
 	)
 }

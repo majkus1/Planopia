@@ -197,7 +197,7 @@ Create a free team
 				</div>
 
 				{menuOpen && (
-					<div className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start">
+					<div className="navmobile lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start">
 						<a
 							href="#aboutapp"
 							smooth={true}

@@ -280,32 +280,9 @@ exports.getAllVisibleUsers = async (req, res) => {
         
         const teamFilter = { teamId: currentUser.teamId };
 
-        if (
-            currentUser.roles.includes('Admin') ||
-            currentUser.roles.includes('Może widzieć wszystkie wnioski i ewidencje (HR) (View All Leaves And Timesheets)')
-        ) {
-            
-            const users = await User.find(teamFilter).select('username firstName lastName roles position department teamId');
-            return res.json(users);
-        }
-
-       
-        if (
-            currentUser.roles.includes('Może zatwierdzać urlopy swojego działu (Approve Leaves Department)') ||
-            currentUser.roles.includes('Może widzieć ewidencję czasu pracy swojego działu (View Timesheets Department)')
-        ) {
-            const users = await User.find({ 
-                ...teamFilter,
-                department: currentUser.department 
-            }).select('username firstName lastName roles position department teamId');
-            return res.json(users);
-        }
-
-       
-        const users = await User.find({ 
-            ...teamFilter,
-            _id: currentUser._id 
-        }).select('username firstName lastName roles position department teamId');
+        // Każda rola w zespole widzi wszystkich użytkowników ze swojego zespołu
+        // (z wyjątkiem szczególnie wrażliwych informacji)
+        const users = await User.find(teamFilter).select('username firstName lastName roles position department teamId');
         return res.json(users);
 
     } catch (error) {
@@ -483,7 +460,7 @@ exports.getMe = async (req, res) => {
 			isTeamAdmin: user.isTeamAdmin
 		})
 	} catch (error) {
-		console.error('Błąd w /me:', error)
+		// console.error('Błąd w /me:', error)
 		return res.status(500).json({ message: 'Błąd serwera' })
 	}
 }

@@ -11,6 +11,7 @@ import Loader from '../Loader'
 function EmployeeLeaveCalendar() {
 	const { userId } = useParams()
 	const [leavePlans, setLeavePlans] = useState([])
+	const [acceptedLeaveRequests, setAcceptedLeaveRequests] = useState([])
 	const currentYear = new Date().getFullYear()
 	const [user, setUser] = useState(null)
 	const { t, i18n } = useTranslation()
@@ -19,6 +20,7 @@ function EmployeeLeaveCalendar() {
 	useEffect(() => {
 		fetchUserDetails()
 		fetchLeavePlans()
+		fetchAcceptedLeaveRequests()
 	}, [userId])
 
 	const fetchUserDetails = async () => {
@@ -43,6 +45,29 @@ function EmployeeLeaveCalendar() {
 		}
 	}
 
+	const fetchAcceptedLeaveRequests = async () => {
+		try {
+			console.log('Fetching accepted leave requests for user:', userId)
+			
+			const response = await axios.get(`${API_URL}/api/leaveworks/accepted-leave-requests/${userId}`, {
+				withCredentials: true
+			})
+			
+			console.log('Accepted leave requests loaded:', response.data.length)
+			console.log('Sample request data:', response.data[0])
+			
+			// Filtruj tylko wnioski z poprawnymi datami
+			const validRequests = response.data.filter(request => 
+				request.startDate && request.endDate && request.userId
+			)
+			
+			console.log('Valid requests filtered:', validRequests.length)
+			setAcceptedLeaveRequests(validRequests)
+		} catch (error) {
+			console.error('Error fetching accepted leave requests:', error)
+		}
+	}
+
 	const renderMonths = () => {
 	return Array.from({ length: 12 }, (_, month) => (
 		<div key={month} className="month-calendar allleaveplans" style={{ margin: '10px', border: '1px solid #ddd' }}>
@@ -54,12 +79,28 @@ function EmployeeLeaveCalendar() {
 				height="auto"
 				showNonCurrentDates={false}
 				firstDay={1}
-				events={leavePlans.map(date => ({
-					title: t('leaveplanner.vactiontitle'),
-					start: date,
-					allDay: true,
-					backgroundColor: 'blue',
-				}))}
+				events={[
+					// Plany urlopów
+					...leavePlans.map(date => ({
+						title: t('leaveplanner.vactiontitle'),
+						start: date,
+						allDay: true,
+						backgroundColor: 'blue',
+						extendedProps: { type: 'plan', date: date }
+					})),
+					// Zaakceptowane wnioski urlopowe
+					...acceptedLeaveRequests
+						.filter(request => request.startDate && request.endDate) // Sprawdź czy daty istnieją
+						.map(request => ({
+							title: `${t(request.type)} - Zaakceptowano`,
+							start: request.startDate,
+							end: request.endDate,
+							allDay: true,
+							backgroundColor: 'green',
+							borderColor: 'darkgreen',
+							extendedProps: { type: 'request', requestId: request._id }
+						}))
+				]}
 			/>
 		</div>
 	))
@@ -80,6 +121,7 @@ function EmployeeLeaveCalendar() {
 					</h3>
 				)}
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>
+				
 			</div>
 			)}
 		</>

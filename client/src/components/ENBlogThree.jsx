@@ -231,7 +231,7 @@ function ENBlogThree() {
           <div className="bg-white border border-gray-200 rounded-xl py-5 px-4 shadow-sm text-center">
             <p className="text-gray-800 mb-3">
               👉 <strong>For larger companies: </strong>  
-              unlimited users, flexible features and integrations
+              unlimited users, flexible features.
             </p>
             <a
               href="/en#prices"

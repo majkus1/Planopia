@@ -11,6 +11,7 @@ import Loader from '../Loader'
 
 function AdminAllLeaveCalendar() {
 	const [leavePlans, setLeavePlans] = useState([])
+	const [acceptedLeaveRequests, setAcceptedLeaveRequests] = useState([])
 	const colorsRef = useRef({})
 	const usedColors = useRef(new Set())
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
@@ -34,6 +35,7 @@ function AdminAllLeaveCalendar() {
 		if (users.length > 0 && teamId) {
 			console.log('Users loaded, now fetching leave plans')
 			fetchAllLeavePlans()
+			fetchAcceptedLeaveRequests()
 		}
 	}, [users, teamId])
 
@@ -85,6 +87,35 @@ function AdminAllLeaveCalendar() {
 			setLeavePlans(teamLeavePlans)
 		} catch (error) {
 			console.error('Failed to fetch leave plans:', error)
+			setError(t('list.error'))
+		}
+	}
+
+	const fetchAcceptedLeaveRequests = async () => {
+		try {
+			console.log('Fetching accepted leave requests')
+			
+			const response = await axios.get(`${API_URL}/api/leaveworks/accepted-leave-requests`, {
+				withCredentials: true
+			})
+			
+			console.log('Accepted leave requests loaded:', response.data.length)
+			console.log('Sample request data:', response.data[0])
+			
+			// Filtruj tylko wnioski użytkowników z tego samego teamu i sprawdź czy userId istnieje
+			const teamLeaveRequests = response.data.filter(request => {
+				if (!request.userId || !request.userId._id) {
+					console.log('Request without userId:', request)
+					return false
+				}
+				const hasUser = users.some(user => user._id === request.userId._id)
+				return hasUser
+			})
+			
+			console.log('Team leave requests filtered:', teamLeaveRequests.length)
+			setAcceptedLeaveRequests(teamLeaveRequests)
+		} catch (error) {
+			console.error('Failed to fetch accepted leave requests:', error)
 			setError(t('list.error'))
 		}
 	}
@@ -190,13 +221,29 @@ function AdminAllLeaveCalendar() {
 						height='auto'
 						firstDay={1}
 						showNonCurrentDates={false}
-						events={leavePlans.map(plan => ({
-							title: `${plan.firstName} ${plan.lastName}`,
-							start: plan.date,
-							allDay: true,
-							backgroundColor: getColorForUser(plan.username),
-							borderColor: getColorForUser(plan.username),
-						}))}
+						events={[
+							// Plany urlopów
+							...leavePlans.map(plan => ({
+								title: `${plan.firstName} ${plan.lastName} (Plan)`,
+								start: plan.date,
+								allDay: true,
+								backgroundColor: getColorForUser(plan.username),
+								borderColor: getColorForUser(plan.username),
+								extendedProps: { type: 'plan', userId: plan.userId }
+							})),
+							// Zaakceptowane wnioski urlopowe
+							...acceptedLeaveRequests
+								.filter(request => request.userId && request.userId.username) // Dodatkowe zabezpieczenie
+								.map(request => ({
+									title: `${request.userId.firstName} ${request.userId.lastName} (${t(request.type)})`,
+									start: request.startDate,
+									end: request.endDate,
+									allDay: true,
+									backgroundColor: getColorForUser(request.userId.username),
+									borderColor: getColorForUser(request.userId.username),
+									extendedProps: { type: 'request', userId: request.userId._id, requestId: request._id }
+								}))
+						]}
 						ref={calendarRef}
 						datesSet={handleMonthChange}
 					/>

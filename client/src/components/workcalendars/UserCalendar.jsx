@@ -146,14 +146,42 @@ function UserCalendar() {
 
 	const generatePDF = () => {
 		const input = pdfRef.current
-		html2canvas(input, { scale: 2 }).then(canvas => {
+		
+		// Lepsze opcje dla html2canvas
+		html2canvas(input, { 
+			scale: 1.5,
+			useCORS: true,
+			allowTaint: true,
+			backgroundColor: '#ffffff'
+		}).then(canvas => {
 			const imgData = canvas.toDataURL('image/png')
-			const pdf = new jsPDF('p', 'mm', 'a4')
+			const pdf = new jsPDF('l', 'mm', 'a4') // Orientacja pozioma (landscape)
+			
 			const imgProps = pdf.getImageProperties(imgData)
 			const pdfWidth = pdf.internal.pageSize.getWidth()
-			const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
-
-			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
+			const pdfHeight = pdf.internal.pageSize.getHeight()
+			
+			// Oblicz optymalne wymiary żeby kalendarz zajmował całą stronę
+			const imgWidth = pdfWidth - 20 // Margines 10mm z każdej strony
+			const imgHeight = (imgProps.height * imgWidth) / imgProps.width
+			
+			// Jeśli obraz jest za wysoki, zmniejsz proporcjonalnie
+			let finalWidth = imgWidth
+			let finalHeight = imgHeight
+			
+			if (imgHeight > pdfHeight - 20) {
+				finalHeight = pdfHeight - 20
+				finalWidth = (imgProps.width * finalHeight) / imgProps.height
+			}
+			
+			// Wycentruj obraz na stronie
+			const x = (pdfWidth - finalWidth) / 2
+			const y = (pdfHeight - finalHeight) / 2
+			
+			pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight)
+			
+			
+			
 			pdf.save(`${t('pdf.filename')}_${user?.firstName}_${user?.lastName}_${currentMonth + 1}_${currentYear}.pdf`)
 		})
 	}
@@ -193,19 +221,64 @@ function UserCalendar() {
 						})}
 					</select>
 				</label>
-				<div ref={pdfRef} style={{ marginTop: '30px', padding: '10px' }}>
+				<div ref={pdfRef} style={{ 
+					marginTop: '30px', 
+					padding: '20px',
+					backgroundColor: '#ffffff',
+					border: '1px solid #e5e7eb',
+					borderRadius: '8px',
+					boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
+				}}>
 					{user && (
-						<h3 style={{ marginLeft: '20px' }}>
-							{t('workcalendar.h3admin')}{' '}
-							<span style={{ fontWeight: 'bold' }}>
-								{user.firstName} {user.lastName} ({user.position})
-							</span>
-						</h3>
+						<div style={{ 
+							marginBottom: '20px',
+							padding: '15px',
+							backgroundColor: '#f8fafc',
+							borderRadius: '6px',
+							borderLeft: '4px solid #3b82f6'
+						}}>
+							<h3 style={{ 
+								margin: '0',
+								color: '#1e40af',
+								fontSize: '18px',
+								fontWeight: '600'
+							}}>
+								{t('workcalendar.h3admin')} {' '} 
+								<span style={{ 
+									fontWeight: 'bold',
+									color: '#1f2937',
+									marginLeft: '7px'
+								}}>
+									 {user.firstName} {user.lastName} {user.position && `(${user.position})`}
+								</span>
+							</h3>
+						</div>
 					)}
 
-					<div className="calendar-controls" style={{ marginTop: '15px' }}>
-						<label style={{ marginLeft: '25px', display: 'flex', alignItems: 'center' }}>
-							<input type="checkbox" checked={isConfirmed} readOnly style={{ marginRight: '5px' }} />
+					<div className="calendar-controls" style={{ 
+						marginBottom: '20px',
+						padding: '10px 15px',
+						// backgroundColor: isConfirmed ? '#dcfce7' : '#fef3c7',
+						borderRadius: '6px',
+						// border: `1px solid ${isConfirmed ? '#22c55e' : '#f59e0b'}`
+					}}>
+						<label style={{ 
+							display: 'flex', 
+							alignItems: 'center',
+							margin: '0',
+							color: isConfirmed ? '#166534' : '#92400e',
+							fontWeight: '500',
+							padding: '0'
+						}}>
+							{/* <input 
+								type="checkbox" 
+								checked={isConfirmed} 
+								readOnly 
+								style={{ 
+									marginRight: '8px',
+									transform: 'scale(1.2)'
+								}} 
+							/> */}
 							{isConfirmed ? t('workcalendar.confirmed') : t('workcalendar.notConfirmed')}
 						</label>
 					</div>

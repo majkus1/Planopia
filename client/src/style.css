@@ -705,6 +705,9 @@ select {
 	.d-md-none {
 		display: none !important;
 	}
+	.logs-container {
+		margin-left: 300px !important;
+	}
 	.content.p-3 {
 		margin-left: 300px;
 	}
@@ -1249,6 +1252,11 @@ button, .btn {
 	background-color: #28a745 !important;
 	text-decoration: none;
 	min-width: 200px;
+}
+
+.navmobile a {
+	width: 100%;
+	text-align: center;
 }
 
 .cta-blog .sec-cta {

@@ -95,9 +95,9 @@ function AppContent() {
 				<ScrollToHashElement />
 				<ScrollToTop />
 				<Routes>
-					<Route path="/login" element={loggedIn ? <Navigate to="/dashboard" /> : <Login />} />
+					<Route path="/login" element={loggedIn ? <Navigate to="/dashboard" replace /> : <Login />} />
 					<Route path="/team-registration" element={loggedIn ? <Navigate to="/dashboard" /> : <TeamRegistration />} />
-					<Route path="/" element={loggedIn ? <Navigate to="/dashboard" replace /> : <ProductPromotion />} />
+					<Route path="/" element={<ProductPromotion />} />
 					<Route path="/en" element={<ENProductPromotion />} />
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/en/blog" element={<ENBlog />} />
