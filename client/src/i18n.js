@@ -33,6 +33,8 @@ i18n
 						forgotpass: 'I dont remember my password',
 						failed: 'Login failed',
 						alerttoomanyreq: 'Too many login attempts. Please try again in 15 minutes.',
+						createTeam: 'Create new team',
+						teamDescription: 'Create your team and manage working time and leave for up to 8 users for free!',
 					},
 					resetpass: {
 						txt1: 'Reset password',
@@ -326,6 +328,8 @@ i18n
 						forgotpass: 'Nie pamiętam hasła',
 						failed: 'Logowanie nie powiodło się',
 						alerttoomanyreq: 'Zbyt wiele prób logowania. Spróbuj ponownie za 15 minut.',
+						createTeam: 'Utwórz nowy zespół',
+						teamDescription: 'Załóż swój zespół i zarządzaj czasem pracy oraz urlopami do 8 użytkowników za darmo!',
 					},
 					resetpass: {
 						txt1: 'Resetowanie hasła',

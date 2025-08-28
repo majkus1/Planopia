@@ -162,10 +162,10 @@ function Login() {
 									to="/team-registration"
 									className="w-full bg-blue-600 text-white py-2 px-4 rounded-md transition block text-center btn-primary"
 									style={{ textDecoration: 'none' }}>
-									Utwórz nowy zespół
+									{t('login.createTeam')}
 								</Link>
 								<p className="text-xs text-gray-500 text-center mt-2">
-									Załóż swój zespół i zarządzaj czasem pracy oraz urlopami do 8 użytkowników za darmo!
+									{t('login.teamDescription')}
 								</p>
 							</div>
 						</form>
