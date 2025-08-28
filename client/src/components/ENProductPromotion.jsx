@@ -452,7 +452,7 @@ Create a free team
       <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
         <h3 className="text-2xl font-semibold mb-4">Monthly plan</h3>
         <p className="text-4xl font-extrabold text-green-600 mb-2">
-          11.10&nbsp;PLN <span className="text-lg font-normal text-gray-700">/user/month (9.00&nbsp;PLN net)</span>
+        $3.00 <span className="text-lg font-normal text-gray-700">/user/month</span>
         </p>
         <p className="text-gray-600 mb-8">Pay monthly, cancel anytime.</p>
         <button
@@ -467,7 +467,7 @@ Create a free team
       <div className="bg-white shadow p-8 rounded-2xl border border-gray-200">
         <h3 className="text-2xl font-semibold mb-4">Yearly plan</h3>
         <p className="text-4xl font-extrabold text-blue-600 mb-2">
-          111.00&nbsp;PLN <span className="text-lg font-normal text-gray-700">/user/year (90.24&nbsp;PLN net)</span>
+        $29 <span className="text-lg font-normal text-gray-700">/user/year</span>
         </p>
         <p className="text-gray-600 mb-8">2 months free when paid upfront for the whole year.</p>
         <button

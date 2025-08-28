@@ -143,7 +143,7 @@ function ENBlogOne() {
 				</div>
 				{menuOpen && (
 					<div
-						className="lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
+						className="navmobile lg:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3 flex flex-col items-start
 ">
 						<RouterLink
 							to="/en#aboutapp"
