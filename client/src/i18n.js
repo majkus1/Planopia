@@ -42,7 +42,7 @@ i18n
 						messok: 'If the email address is registered, an email with a password reset link will be sent.',
 						messfail: 'If the email address is registered, an email with a password reset link will be sent.',
 						toomany: 'Too many password reset attempts. Please try again in 15 minutes.',
-						backto: '< Back (Login)',
+						backto: 'Back (Login)',
 					},
 					newpass: {
 						h2: 'Set password',
@@ -304,7 +304,8 @@ i18n
     "errorGeneric": "Error creating team",
     "errorTeamExists": "Team with this name already exists",
     "errorEmailExists": "User with this email already exists",
-    "errorValidation": "All fields are required"
+    "errorValidation": "All fields are required",
+    "backToLogin": "Back to login"
   }
 				},
 			},
@@ -598,7 +599,8 @@ i18n
     "errorGeneric": "Błąd podczas tworzenia zespołu",
     "errorTeamExists": "Zespół o takiej nazwie już istnieje",
     "errorEmailExists": "Użytkownik o tym emailu już istnieje",
-    "errorValidation": "Wszystkie pola są wymagane"
+    "errorValidation": "Wszystkie pola są wymagane",
+    "backToLogin": "Wróć do logowania"
   }
 				},
 			},
