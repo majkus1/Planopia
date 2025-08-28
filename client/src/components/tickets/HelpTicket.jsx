@@ -208,7 +208,7 @@ const HelpTicket = () => {
 										</tr>
 									)}
 									{tickets.map(ticket => (
-										<tr key={ticket._id}>
+										<tr key={ticket._id} onClick={() => handleOpenTicket(ticket)} style={{ cursor: 'pointer' }}>
 											<td>{ticket.company}</td>
 											<td>{ticket.topic}</td>
 											<td>
