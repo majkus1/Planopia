@@ -259,7 +259,7 @@ Create a free team
     <div className="grid md:grid-cols-2 gap-10 items-center">
       <div className="ordering">
         <h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
-          Time and leave tracking – free for up to 8 users
+        Time and leave tracking app – free for up to 8 users
         </h1>
         <h2 className="font-semibold text-gray-800" id="underheader">
           Planopia helps teams and companies organize working hours and leave management.
