@@ -82,7 +82,7 @@ function EmployeeLeaveCalendar() {
 				events={[
 					// Plany urlopów
 					...leavePlans.map(date => ({
-						title: t('leaveplanner.vactiontitle'),
+						title: `${t('leaveplanner.vactiontitle')} (Plan)`,
 						start: date,
 						allDay: true,
 						backgroundColor: 'blue',
@@ -92,7 +92,7 @@ function EmployeeLeaveCalendar() {
 					...acceptedLeaveRequests
 						.filter(request => request.startDate && request.endDate) // Sprawdź czy daty istnieją
 						.map(request => ({
-							title: `${t(request.type)} - Zaakceptowano`,
+							title: `${t(request.type)}`,
 							start: request.startDate,
 							end: request.endDate,
 							allDay: true,
@@ -120,6 +120,40 @@ function EmployeeLeaveCalendar() {
 						<img src="/img/schedule.png" alt="ikonka w sidebar" /> {t('leaveplanone.h3')} {user.firstName} {user.lastName}
 					</h3>
 				)}
+
+				{/* Sekcja zaakceptowanych wniosków */}
+				{acceptedLeaveRequests.length > 0 && (
+					<div style={{ padding: '0 20px 20px 20px' }}>
+						<h4 style={{ color: 'green', marginBottom: '15px', fontSize: '18px' }}>
+							{t('leaveplanner.acceptedRequests')}
+						</h4>
+						<div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+							{acceptedLeaveRequests.map(request => (
+								<div
+									key={request._id}
+									style={{
+										padding: '10px 15px',
+										border: '2px solid #4ade80',
+										backgroundColor: '#f0fdf4',
+										borderRadius: '8px',
+										minWidth: '250px',
+										boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+									}}>
+									<div style={{ fontWeight: 'bold', marginBottom: '8px', color: '#059669' }}>
+										{t(request.type)}
+									</div>
+									<div style={{ fontSize: '14px', color: '#666', marginBottom: '5px' }}>
+										{new Date(request.startDate).toLocaleDateString()} - {new Date(request.endDate).toLocaleDateString()}
+									</div>
+									<div style={{ fontSize: '12px', color: '#059669', fontWeight: '500' }}>
+										{request.daysRequested} {t('leaveplanner.days')}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+
 				<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>{renderMonths()}</div>
 				
 			</div>
