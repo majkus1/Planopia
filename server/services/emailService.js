@@ -5,7 +5,7 @@ const { appUrl } = require('../config')
 
 const sendEmail = async (to, link, subject, html) => {
 	const transporter = nodemailer.createTransport({
-		host: 'smtp.gmail.com',
+		host: 'smtp.hostinger.com',
 		port: 465,
 		secure: true,
 		auth: {
@@ -15,7 +15,7 @@ const sendEmail = async (to, link, subject, html) => {
 	})
 
 	const info = await transporter.sendMail({
-		from: '"planopia.pl" <your-email@gmail.com>',
+		from: '"Planopia" <aplikacja@planopia.pl>',
 		to,
 		subject,
 		html,
