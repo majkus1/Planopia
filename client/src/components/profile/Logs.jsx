@@ -409,10 +409,7 @@ function Logs() {
 																						name={`department-${editingUser?._id}`}
 																						value={depName}
 																						checked={editedDepartment === depName}
-																						onChange={e => {
-																							console.log('Desktop: Department changed from', editedDepartment, 'to', e.target.value)
-																							setEditedDepartment(e.target.value)
-																						}}
+																																											onChange={e => setEditedDepartment(e.target.value)}
 																						style={{ marginRight: '10px', transform: 'scale(1.2)' }}
 																					/>
 																					<span>{depName}</span>
@@ -798,48 +795,54 @@ function Logs() {
 												{t('newuser.department5')}
 											</h5>
 											
-											{/* Tryb wyboru z listy */}
-											{departmentMode === 'choose' && departments && departments.length > 0 && (
+																						{/* Tryb wyboru z listy */}
+											{departmentMode === 'choose' && (
 												<div style={{ marginBottom: '20px' }}>
-													{/* Debug info */}
-													
-													
-													<div style={{ 
-														display: 'flex',
-														flexDirection: 'column',
-														gap: '10px',
-														marginBottom: '15px'
-													}}>
-														{departments.map((dep) => {
-															// Upewnij się, że dep to string
-															const depName = typeof dep === 'object' ? dep.name : dep;
-															return (
-																<label key={depName} style={{ 
-																	display: 'flex', 
-																	alignItems: 'center',
-																	padding: '12px',
-																	backgroundColor: 'white',
-																	borderRadius: '8px',
-																	border: '1px solid #dee2e6',
-																	cursor: 'pointer',
-																	transition: 'all 0.2s'
-																}}>
-																	<input
-																		type="radio"
-																		name={`department-mobile-${editingUser?._id}`}
-																		value={depName}
-																		checked={editedDepartment === depName}
-																		onChange={e => {
-																			console.log('Mobile: Department changed from', editedDepartment, 'to', e.target.value)
-																			setEditedDepartment(e.target.value)
-																		}}
-																		style={{ marginRight: '12px', transform: 'scale(1.3)', flexShrink: 0 }}
-																	/>
-																	<span>{depName}</span>
-																</label>
-															);
-														})}
-													</div>
+													{!departments || departments.length === 0 ? (
+														<div style={{ 
+															backgroundColor: '#fff3cd', 
+															padding: '15px', 
+															borderRadius: '6px', 
+															border: '1px solid #ffeaa7',
+															color: '#856404',
+															marginBottom: '15px'
+														}}>
+															Brak dostępnych działów. Możesz dodać nowy dział.
+														</div>
+													) : (
+														<div style={{ 
+															display: 'flex',
+															flexDirection: 'column',
+															gap: '10px',
+															marginBottom: '15px'
+														}}>
+															{departments.map((dep) => {
+																const depName = typeof dep === 'object' ? dep.name : dep;
+																return (
+																	<label key={depName} style={{ 
+																		display: 'flex', 
+																		alignItems: 'center',
+																		padding: '12px',
+																		backgroundColor: 'white',
+																		borderRadius: '8px',
+																		border: '1px solid #dee2e6',
+																		cursor: 'pointer',
+																		transition: 'all 0.2s'
+																	}}>
+																		<input
+																			type="radio"
+																			name={`department-mobile-${editingUser?._id}`}
+																			value={depName}
+																			checked={editedDepartment === depName}
+																			onChange={e => setEditedDepartment(e.target.value)}
+																			style={{ marginRight: '12px', transform: 'scale(1.3)', flexShrink: 0 }}
+																		/>
+																		<span>{depName}</span>
+																	</label>
+																);
+															})}
+														</div>
+													)}
 													
 													<button
 														type="button"
