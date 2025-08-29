@@ -25,6 +25,15 @@ function AdminAllLeaveCalendar() {
 	const { role, logout, username, teamId } = useAuth()
 	const [loading, setLoading] = useState(true)
 
+	// Sprawdź czy teamId jest dostępny
+	useEffect(() => {
+		if (!teamId) {
+			console.log('AdminAllLeaveCalendar: teamId is null, cannot load data')
+			setLoading(false)
+			setError('Team ID is not available')
+		}
+	}, [teamId])
+
 	useEffect(() => {
 		if (teamId) {
 			fetchUsers()

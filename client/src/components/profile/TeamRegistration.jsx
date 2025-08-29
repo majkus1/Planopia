@@ -16,7 +16,7 @@ const TeamRegistration = () => {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
-	const { setLoggedIn, setRole, setUsername } = useAuth()
+	const { setLoggedIn, setRole, setUsername, setTeamId, refreshUserData } = useAuth()
 	const { t, i18n } = useTranslation()
 
 	const lngs = {
@@ -42,9 +42,8 @@ const TeamRegistration = () => {
 			})
 
 			if (response.data.success) {
-				setLoggedIn(true)
-				setRole(response.data.user.roles)
-				setUsername(response.data.user.username)
+				// Odśwież wszystkie dane użytkownika z serwera
+				await refreshUserData()
 
 				alert(t('newteam.successMessage'))
 				

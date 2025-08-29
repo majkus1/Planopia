@@ -1326,14 +1326,14 @@ button, .btn {
 	color: white;
 }
 
-input,
+/* input,
 select,
 textarea {
 	border: 2px solid #213555c7 !important;
 	border-bottom: 3px solid #213555 !important;
 	border-left: 3px solid #213555 !important;
 	border-radius: 5px !important;
-}
+} */
 
 /* input {
 	max-width: 400px !important;

@@ -53,6 +53,22 @@ export const AuthProvider = ({ children }) => {
 		}
 	}
 
+	const refreshUserData = async () => {
+		try {
+			console.log('AuthContext: Refreshing user data...')
+			const res = await axios.get(`${API_URL}/api/users/me`, { withCredentials: true })
+			console.log('AuthContext: Refreshed user data:', res.data)
+			setLoggedIn(true)
+			setRole(res.data.roles)
+			setUsername(res.data.username)
+			setTeamId(res.data.teamId)
+			setIsTeamAdmin(res.data.isTeamAdmin)
+			console.log('AuthContext: Refreshed teamId to:', res.data.teamId)
+		} catch (error) {
+			console.error('Błąd odświeżania danych użytkownika:', error)
+		}
+	}
+
 	return (
 		<AuthContext.Provider
 			value={{
@@ -67,6 +83,7 @@ export const AuthProvider = ({ children }) => {
 				setTeamId,
 				setIsTeamAdmin,
 				logout,
+				refreshUserData,
 			}}>
 			{children}
 		</AuthContext.Provider>
