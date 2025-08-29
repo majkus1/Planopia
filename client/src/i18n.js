@@ -150,6 +150,8 @@ i18n
 						vactiontitle: 'Vacation',
 						header: 'Selected dates:',
 						mainheader: 'Plan your leave',
+						acceptedRequests: 'Accepted leave requests:',
+						days: 'days',
 					},
 					planslist: {
 						h3: 'All employees vacation plans',
@@ -447,6 +449,8 @@ i18n
 						vactiontitle: 'Urlop',
 						header: 'Zaznaczone daty:',
 						mainheader: 'Moje plany urlopowe',
+						acceptedRequests: 'Zaakceptowane wnioski urlopowe:',
+						days: 'dni',
 					},
 					planslist: {
 						h3: 'Plany urlopowe wszystkich pracowników',

@@ -175,6 +175,37 @@ function LeavePlanner() {
 						</ul>
 					</div>
 
+					{/* Sekcja zaakceptowanych wniosków */}
+					{acceptedLeaveRequests.length > 0 && (
+						<div style={{ marginBottom: '20px' }}>
+							<h4 style={{ color: 'green', marginBottom: '10px' }}>{t('leaveplanner.acceptedRequests')}</h4>
+							<ul style={{ listStyle: 'none', padding: 0 }}>
+								{acceptedLeaveRequests.map(request => (
+									<li
+										key={request._id}
+										style={{
+											padding: '8px 12px',
+											border: '1px solid #4ade80',
+											marginBottom: '5px',
+											backgroundColor: '#f0fdf4',
+											borderRadius: '6px',
+											maxWidth: '400px',
+										}}>
+										<div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
+											{t(request.type)}
+										</div>
+										<div style={{ fontSize: '14px', color: '#666' }}>
+											{new Date(request.startDate).toLocaleDateString()} - {new Date(request.endDate).toLocaleDateString()}
+											<span style={{ marginLeft: '10px', color: '#059669' }}>
+												({request.daysRequested} {t('leaveplanner.days')})
+											</span>
+										</div>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+
 					<div className="calendar-controls flex flex-wrap gap-4 items-center" style={{ marginTop: '40px' }}>
 						<label className="flex items-center space-x-2">
 							{t('workcalendar.monthlabel')}
@@ -235,7 +266,7 @@ function LeavePlanner() {
 								...acceptedLeaveRequests
 									.filter(request => request.startDate && request.endDate) // Sprawdź czy daty istnieją
 									.map(request => ({
-										title: `${t(request.type)} - Zaakceptowano`,
+										title: `${t(request.type)}`,
 										start: request.startDate,
 										end: request.endDate,
 										allDay: true,
