@@ -372,18 +372,18 @@ function Logs() {
 
 																
 																{/* Sprawdź czy są departmenty */}
-																{!departments || departments.length === 0 ? (
-																	<div style={{ 
-																		backgroundColor: '#fff3cd', 
-																		padding: '15px', 
-																		borderRadius: '6px', 
-																		border: '1px solid #ffeaa7',
-																		color: '#856404',
-																		marginBottom: '15px'
-																	}}>
-																		Brak dostępnych działów. Możesz dodać nowy dział.
-																	</div>
-																) : (
+																													{!departments || departments.length === 0 ? (
+														<div style={{ 
+															backgroundColor: '#fff3cd', 
+															padding: '15px', 
+															borderRadius: '6px', 
+															border: '1px solid #ffeaa7',
+															color: '#856404',
+															marginBottom: '15px'
+														}}>
+															{t('logs.noDepartments')}
+														</div>
+													) : (
 																	<div style={{ 
 																		display: 'grid', 
 																		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -807,7 +807,7 @@ function Logs() {
 															color: '#856404',
 															marginBottom: '15px'
 														}}>
-															Brak dostępnych działów. Możesz dodać nowy dział.
+															{t('logs.noDepartments')}
 														</div>
 													) : (
 														<div style={{ 

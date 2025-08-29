@@ -250,6 +250,7 @@ i18n
 						actionth: 'Action',
 						detailsth: 'Details',
 						timeth: 'Time',
+						noDepartments: 'No departments available. You can add a new department.',
 					},
 					tickets: {
 						title: 'Help Center',
@@ -546,6 +547,7 @@ i18n
 						actionth: 'Akcja',
 						detailsth: 'Szczegóły',
 						timeth: 'Czas',
+						noDepartments: 'Brak dostępnych działów. Możesz dodać nowy dział.',
 					},
 					tickets: {
 						title: 'Centrum pomocy',
