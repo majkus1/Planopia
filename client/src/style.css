@@ -2163,7 +2163,7 @@ section {
 	display: flex;
 	align-items: center;
 	gap: 15px;
-	padding: 15px 20px;
+	padding: 8px 10px;
 	color: #213555;
 	text-decoration: none;
 	border-radius: 12px;
@@ -2376,7 +2376,7 @@ section {
 	}
 
 	.nav-link {
-		padding: 12px 15px;
+		padding: 8px 15px;
 	}
 
 	.nav-text {
