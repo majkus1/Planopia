@@ -6,6 +6,7 @@ import { isAdmin, isHR, isDepartmentSupervisor, isDepartmentViewer, isWorker } f
 
 function Sidebar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 1500)
+	const [isAnimating, setIsAnimating] = useState(false)
 	const navigate = useNavigate()
 	const { t, i18n } = useTranslation()
 	const location = useLocation()
@@ -35,7 +36,14 @@ function Sidebar() {
 	}, [])
 
 	const toggleMenu = () => {
+		if (isAnimating) return
+		setIsAnimating(true)
 		setIsMenuOpen(!isMenuOpen)
+		
+		// Reset animation flag after transition
+		setTimeout(() => {
+			setIsAnimating(false)
+		}, 400)
 	}
 
 	const handleLogoutClick = () => {
@@ -47,124 +55,205 @@ function Sidebar() {
 		return Array.isArray(role) && requiredRoles.some(requiredRole => role.includes(requiredRole))
 	}
 
+	// Check if mobile navbar should be hidden
+	const shouldHideMobileNav = isMenuOpen && window.innerWidth <= 1500
+
 	return (
 		<div className="container-fluid p-0">
-			<nav className="navbar navbar-expand-lg d-md-none" style={{ paddingLeft: '15px', paddingRight: '15px' }}>
-				<Link to="/" className="navbar-brand">
-					<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
-				</Link>
-				<button className="navbar-toggler" type="button" onClick={toggleMenu}>
-					<img src="/img/sort.png" style={{ width: '40px' }} alt="Menu" />
-				</button>
-			</nav>
+			{/* Mobile Navigation Bar */}
+			{!shouldHideMobileNav && (
+				<nav className="navbar navbar-expand-lg d-md-none mobile-navbar">
+					<Link to="/" className="navbar-brand">
+						<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" className="mobile-logo" />
+					</Link>
+					<button 
+						className={`navbar-toggler ${isMenuOpen ? 'active' : ''}`} 
+						type="button" 
+						onClick={toggleMenu}
+						aria-label="Toggle navigation"
+					>
+						<div className="hamburger-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</button>
+				</nav>
+			)}
 
-			<div className={`sidebar bg-dark text-white ${isMenuOpen ? 'opened' : 'closed'}`} style={{ zIndex: 1050 }}>
-				<div className="language-box">
+			{/* Sidebar */}
+			<div className={`sidebar text-white ${isMenuOpen ? 'opened' : 'closed'} ${isAnimating ? 'animating' : ''}`}>
+				{/* Language Selector */}
+				<div className="language-selector">
 					{Object.keys(lngs).map(lng => (
 						<button
 							key={lng}
 							type="button"
-							style={{
-								fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal',
-								marginRight: '5px',
-							}}
-							className="flag-language"
-							onClick={() => i18n.changeLanguage(lng)}>
+							className={`flag-language-btn ${i18n.resolvedLanguage === lng ? 'active' : ''}`}
+							onClick={() => i18n.changeLanguage(lng)}
+							aria-label={`Change language to ${lng}`}
+						>
 							<img
 								src={lngs[lng].flag}
 								alt={`${lngs[lng].nativeName} flag`}
-								style={{ width: '23px', marginRight: '5px' }}
+								className="flag-icon"
 							/>
-							{lngs[lng].nativeName}
+							<span className="language-text">{lngs[lng].nativeName}</span>
 						</button>
 					))}
 				</div>
 
-				<Link to="/" className="logo-sidebar mt-2 mb-2 d-flex justify-center">
-					<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" style={{ maxWidth: '150px' }} />
+				{/* Logo */}
+				<Link to="/" className="sidebar-logo">
+					<img src="/img/new-logoplanopia.png" alt="logo oficjalne planopia" />
 				</Link>
 
-				<button onClick={toggleMenu} className="closesidebar">
-					X
+				{/* Close Button */}
+				<button 
+					onClick={toggleMenu} 
+					className="sidebar-close-btn"
+					aria-label="Close sidebar"
+				>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+					</svg>
 				</button>
-				<div className="sidebar-header p-3 d-flex justify-content-between align-items-center">
-					<h5>{username}</h5>
+
+				{/* User Header */}
+				<div className="sidebar-header">
+					<div className="user-info">
+						<h5 className="username">{username}</h5>
+					</div>
 				</div>
-				<div className="p-2 btns-pages">
+
+				{/* Navigation Buttons */}
+				<div className="sidebar-navigation">
 					<NavLink
 						to="/edit-profile"
-						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						<img src="/img/user-avatar.png" alt="ikonka w sidebar" /> {t('sidebar.btn1')}
+						className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+						<div className="nav-icon">
+							<img src="/img/user-avatar.png" alt="Profile" />
+						</div>
+						<span className="nav-text">{t('sidebar.btn1')}</span>
 					</NavLink>
+
 					<NavLink
 						to="/dashboard"
-						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						<img src="/img/clock.png" alt="ikonka w sidebar" /> {t('sidebar.btn2')}
+						className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+						<div className="nav-icon">
+							<img src="/img/clock.png" alt="Dashboard" />
+						</div>
+						<span className="nav-text">{t('sidebar.btn2')}</span>
 					</NavLink>
+
 					<NavLink
 						to="/leave-request"
-						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						<img src="/img/sunbed.png" alt="ikonka w sidebar" /> {t('sidebar.btn3')}
+						className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+						<div className="nav-icon">
+							<img src="/img/sunbed.png" alt="Leave Request" />
+						</div>
+						<span className="nav-text">{t('sidebar.btn3')}</span>
 					</NavLink>
+
 					<NavLink
 						to="/leave-planner"
-						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-						<img src="/img/calendar.png" alt="ikonka w sidebar" /> {t('sidebar.btn4')}
+						className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+						<div className="nav-icon">
+							<img src="/img/calendar.png" alt="Leave Planner" />
+						</div>
+						<span className="nav-text">{t('sidebar.btn4')}</span>
 					</NavLink>
+
 					<NavLink
 						to="/all-leave-plans"
-						className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isLeavePlans ? ' active' : '')}>
-						<img src="/img/schedule.png" alt="ikonka w sidebar" /> {t('sidebar.btn5')}
+						className={({ isActive }) => `nav-link ${isLeavePlans ? 'active' : ''}`}>
+						<div className="nav-icon">
+							<img src="/img/schedule.png" alt="Leave Plans" />
+						</div>
+						<span className="nav-text">{t('sidebar.btn5')}</span>
 					</NavLink>
-					<div className="admins-links">
-						{(isAdmin(role) || isHR(role) || isDepartmentSupervisor(role) || isDepartmentViewer(role)) && (
+
+					{/* Admin Links */}
+					{(isAdmin(role) || isHR(role) || isDepartmentSupervisor(role) || isDepartmentViewer(role)) && (
+						<div className="admin-section">
+							
 							<NavLink
 								to="/calendars-list"
-								className={() => 'btn btn-success btn-sm mb-2 w-100' + (isListOrCalendarActive ? ' active' : '')}>
-								<img src="/img/schedule time works.png" alt="ikonka w sidebar" /> {t('sidebar.btn6')}
+								className={({ isActive }) => `nav-link ${isListOrCalendarActive || isActive ? 'active' : ''}`}>
+								<div className="nav-icon">
+									<img src="/img/schedule time works.png" alt="Work Calendars" />
+								</div>
+								<span className="nav-text">{t('sidebar.btn6')}</span>
 							</NavLink>
-						)}
-						{(isAdmin(role) || isHR(role) || isDepartmentSupervisor(role) || isDepartmentViewer(role)) && (
+
 							<NavLink
 								to="/leave-list"
-								className={() => 'btn btn-success btn-sm mb-2 w-100' + (isListOrLeavereqActive ? ' active' : '')}>
-								<img src="/img/trip.png" alt="ikonka w sidebar" /> {t('sidebar.btn7')}
+								className={({ isActive }) => `nav-link ${isListOrLeavereqActive || isActive ? 'active' : ''}`}>
+								<div className="nav-icon">
+									<img src="/img/trip.png" alt="Leave List" />
+								</div>
+								<span className="nav-text">{t('sidebar.btn7')}</span>
 							</NavLink>
-						)}
-					</div>
-					<div className="admins-links">
-						{isAdmin(role) && (
+						</div>
+					)}
+
+					{/* Super Admin Links */}
+					{isAdmin(role) && (
+						<div className="admin-section">
+							
 							<NavLink
 								to="/create-user"
-								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								<img src="/img/add-group.png" alt="ikonka w sidebar" /> {t('sidebar.btn8')}
+								className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+								<div className="nav-icon">
+									<img src="/img/add-group.png" alt="Create User" />
+								</div>
+								<span className="nav-text">{t('sidebar.btn8')}</span>
 							</NavLink>
-						)}
-						{isAdmin(role) && (
+
 							<NavLink
 								to="/logs"
-								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								<img src="/img/contact-list.png" alt="ikonka w sidebar" /> {t('sidebar.btn9')}
+								className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+								<div className="nav-icon">
+									<img src="/img/contact-list.png" alt="Logs" />
+								</div>
+								<span className="nav-text">{t('sidebar.btn9')}</span>
 							</NavLink>
-						)}
-						{isAdmin(role) && (
+
 							<NavLink
 								to="/helpcenter"
-								className={({ isActive }) => 'btn btn-success btn-sm mb-2 w-100' + (isActive ? ' active' : '')}>
-								<img src="/img/technical-support.png" alt="ikonka w sidebar" /> {t('tickets.title')}
+								className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+								<div className="nav-icon">
+									<img src="/img/technical-support.png" alt="Help Center" />
+								</div>
+								<span className="nav-text">{t('tickets.title')}</span>
 							</NavLink>
-						)}
-					</div>
-					<br />
-					<br />
+						</div>
+					)}
+				</div>
+
+				{/* Logout Button */}
+				<div className="sidebar-footer">
 					<button
 						onClick={handleLogoutClick}
-						className="btn btn-danger btn-sm w-100 logout"
-						style={{ maxWidth: '230px' }}>
-						{t('sidebar.btn10')}
+						className="logout-btn"
+						aria-label="Logout"
+					>
+						<div className="logout-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+								<path d="M16 17L21 12L16 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+								<path d="M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+							</svg>
+						</div>
+						<span className="logout-text">{t('sidebar.btn10')}</span>
 					</button>
 				</div>
 			</div>
+
+			{/* Overlay for mobile */}
+			{isMenuOpen && window.innerWidth <= 1500 && (
+				<div className="sidebar-overlay" onClick={toggleMenu}></div>
+			)}
 		</div>
 	)
 }
