@@ -47,10 +47,10 @@ function VacationListUser() {
 				{error && <p style={{ color: 'red' }}>{error}</p>}
 				<h3 style={{ marginTop: '35px' }}>{t('vacationlisteq.request')}</h3>
 				<p>{t('planslist.emplo')}</p>
-				<ul>
+				<ul style={{ listStyle: 'inherit', marginLeft: '20px' }}>
 					{users.map(user => (
-						<li key={user._id} onClick={() => handleUserClick(user._id)} style={{ cursor: 'pointer' }}>
-							{user.firstName} {user.lastName} - {user.roles.join(', ')} - {user.position || 'Brak stanowiska'}
+						<li key={user._id} onClick={() => handleUserClick(user._id)} style={{ cursor: 'pointer', marginBottom: '5px' }}>
+							{user.firstName} {user.lastName} - {user.position || 'Brak stanowiska'}
 						</li>
 					))}
 				</ul>

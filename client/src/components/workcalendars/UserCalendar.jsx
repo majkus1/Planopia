@@ -225,9 +225,7 @@ function UserCalendar() {
 					marginTop: '30px', 
 					padding: '20px',
 					backgroundColor: '#ffffff',
-					border: '1px solid #e5e7eb',
-					borderRadius: '8px',
-					boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
+					borderRadius: '8px'
 				}}>
 					{user && (
 						<div style={{ 
