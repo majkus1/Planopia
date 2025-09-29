@@ -279,16 +279,14 @@ npm run dev
 
 ## 🧪 **Testing**
 
-```bash
-# Run tests
-npm test
+> **Planned for future development** - Testing infrastructure is set up with React Testing Library dependencies, but comprehensive test suite is planned for future releases.
 
-# Run with coverage
-npm run test:coverage
-
-# Run E2E tests
-npm run test:e2e
-```
+**Current Status:**
+- ✅ Testing dependencies installed (`@testing-library/react`, `@testing-library/jest-dom`)
+- ⏳ Test configuration and comprehensive test suite - **Planned**
+- ⏳ Unit tests for components - **Planned**
+- ⏳ Integration tests for API endpoints - **Planned**
+- ⏳ E2E tests for critical user flows - **Planned**
 
 ---
 
