@@ -338,8 +338,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 **Author**
 
 **MICHAŁ LIPKA**
-- GitHub: [@yourusername](https://github.com/majkus1)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/michal-lipka-wd)
+- GitHub: [@majkus1](https://github.com/majkus1)
+- LinkedIn: [Michał Lipka](https://linkedin.com/in/michal-lipka-wd)
 - Email: michalipka1@gmail.com
 
 ---
