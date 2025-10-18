@@ -50,7 +50,7 @@ centralTicketConnection.on('error', err => console.log('Central tickets DB error
 // 	.catch(err => console.log('Failed to connect to MongoDB:', err))
 
 const corsOptions = {
-	origin: process.env.NODE_ENV === 'production' ? 'https://planopia.pl' : 'http://localhost:3001',
+	origin: process.env.NODE_ENV === 'production' ? 'https://app.planopia.pl' : 'http://localhost:3001',
 	credentials: true,
 }
 

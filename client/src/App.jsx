@@ -21,14 +21,14 @@ import EmployeeLeaveCalendar from './components/leavework/EmployeeLeaveCalendar'
 import AdminAllLeaveCalendar from './components/leavework/AdminAllLeaveCalendar'
 import VacationListUser from './components/listusers/VacationListUser'
 import NewPassword from './components/profile/NewPassword'
-import ProductPromotion from './components/ProductPromotion'
-import ENProductPromotion from './components/ENProductPromotion.jsx'
-import ENBlogOne from './components/ENBlogOne.jsx'
-import Blog from './components/Blog.jsx'
-import ENBlog from './components/ENBlog.jsx'
-import BlogOne from './components/BlogOne.jsx'
-import BlogThree from './components/BlogThree.jsx'
-import ENBlogThree from './components/ENBlogThree.jsx'
+// import ProductPromotion from './components/ProductPromotion'
+// import ENProductPromotion from './components/ENProductPromotion.jsx'
+// import ENBlogOne from './components/ENBlogOne.jsx'
+// import Blog from './components/Blog.jsx'
+// import ENBlog from './components/ENBlog.jsx'
+// import BlogOne from './components/BlogOne.jsx'
+// import BlogThree from './components/BlogThree.jsx'
+// import ENBlogThree from './components/ENBlogThree.jsx'
 import HelpTicket from './components/tickets/HelpTicket.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import { isAdmin, isHR, isDepartmentSupervisor, isDepartmentViewer, isWorker } from './utils/roleHelpers'
@@ -97,14 +97,14 @@ function AppContent() {
 				<Routes>
 					<Route path="/login" element={loggedIn ? <Navigate to="/dashboard" replace /> : <Login />} />
 					<Route path="/team-registration" element={loggedIn ? <Navigate to="/dashboard" /> : <TeamRegistration />} />
-					<Route path="/" element={<ProductPromotion />} />
-					<Route path="/en" element={<ENProductPromotion />} />
+					<Route path="/" element={loggedIn ? <Navigate to="/dashboard" replace /> : <Login />} />
+					{/* <Route path="/en" element={<ENProductPromotion />} />
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/en/blog" element={<ENBlog />} />
 					<Route path="/blog/ewidencja-czasu-pracy-online" element={<BlogOne />} />
 					<Route path="/en/blog/time-tracking-online" element={<ENBlogOne />} />
 					<Route path="/blog/planowanie-urlopow" element={<BlogThree />} />
-					<Route path="/en/blog/leave-planning" element={<ENBlogThree />} />
+					<Route path="/en/blog/leave-planning" element={<ENBlogThree />} /> */}
 					<Route path="/set-password/:token" element={<SetPassword />} />
 					<Route path="/reset-password" element={<ResetPassword />} />
 					<Route path="/new-password/:token" element={<NewPassword />} />
